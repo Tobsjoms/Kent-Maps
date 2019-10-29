@@ -4,18 +4,26 @@
     flex-direction: row;
     margin: 0;
   }
-  #svg {
-    overflow: visible;
-    margin-right: 50%;
-  }
-
-  #CC03 {
-    display: none;
-  }
 
   .container {
-    margin-right: 100%;
-  }
+  width: 50%;
+  max-width: 530px;
+  float: left;
+}
+
+.bar-highlight {
+    fill: #ec008c;
+    opacity: 1;
+    
+}
+
+#Green1:hover {
+    fill: ec008c;
+}
+
+#svg {
+    overflow: visible;
+}
   .col-2 {
     display: flex;
     flex-direction: column;

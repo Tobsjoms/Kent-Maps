@@ -2,10 +2,11 @@
 <html>
 <head>
 <link rel="stylesheet" type = "text/css" href="css/style.css">
-<script src="js/svg.js"></script>
 <script src="js/jquery-3.4.1.js"></script>
-<script src="js/snap.svg.js"></script>
-<script src="js/mapDraw.js"></script>
+<script src="js/d3.js"></script>
+<script src="js/mapLoad.js"></script>
+<script>
+  </script>
 </head>
 
 <title>Example</title>
@@ -17,9 +18,7 @@
 
     </main>
   </div>
-  <div class = "container">
-  <svg id='svg'></svg>
-
-</div>
+  <object id ="svg-object" data="floorplans\map.svg" type = "image/svg+xml"></object>
+  <button onclick="removeButton()">Remove</button>
 </body>
 </html>
