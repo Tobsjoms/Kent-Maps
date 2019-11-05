@@ -10,10 +10,6 @@ $(function() {
     });
     
 });
-    
-    $("svgLoaded").each(function(){
-        var $img = $(this);
-        console.log($img);
-    })
+
 
 });
