@@ -1,0 +1,13 @@
+#Rectangles rect {
+    fill: green;
+}
+
+#Green1:hover {
+transform-origin: centre;
+transform:scale(1.25);
+}
+
+#Rectangles:hover rect {
+  fill: #ec008c;
+
+}

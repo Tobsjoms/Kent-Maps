@@ -17,11 +17,7 @@
     
 }
 
-#Rectangles:hover rect {
-  fill: #ec008c !important;
-  transform: scale(0.5, 0.5);
-  transform: 
-}
+
 
 #svg {
     overflow: visible;

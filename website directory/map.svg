@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
-
+<?xml-stylesheet type="text/css" href="style.css" ?>
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -71,15 +71,16 @@
        inkscape:label="#g5255">
       <rect
          inkscape:label="#Green1"
-         style="fill:#98da94;fill-opacity:1;stroke-width:0.07523966"
+          
          y="67.148201"
          x="69.757355"
          height="37.417732"
          width="71.093689"
          id="Green1" />
+       
       <rect
          inkscape:label="#Green2"
-         style="fill:#98da94;fill-opacity:1;stroke-width:0.07523966"
+         
          y="137.17282"
          x="69.757355"
          height="37.417732"
