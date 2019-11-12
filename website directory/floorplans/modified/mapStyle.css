@@ -1,0 +1,15 @@
+#Offices rect {
+    fill: #84cded;
+    stroke:#000000;
+    stroke-width:0.14;
+    stroke-miterlimit:4;
+    stroke-dasharray:none;
+    stroke-opacity:1;
+}
+
+#Offices rect:hover {
+fill: #c3e9fa;
+stroke-width:0.60;
+stroke:#e8da6c;
+}
+

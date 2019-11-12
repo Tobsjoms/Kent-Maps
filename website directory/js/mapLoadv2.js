@@ -1,15 +1,13 @@
 $( document ).ready(function() {
 
-$(function() {
-    $("#stage").load('map.svg', function(response) {
-        $(this).addClass("svgLoaded");
-        
-        if(!response) {
-            alert("Error Loading SVG");
-        }
-    });
+});
+
+$(window).on('load', (function(){
+
+    var a = document.getElementById('stage');
+    var svgDoc = a.contentDocument;
+    var svgItem = svgDoc.getElementById("Offices");
+    console.log(svgItem);
+
     
-});
-
-
-});
+}));
