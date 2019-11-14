@@ -6,26 +6,23 @@ $(window).on('load', (function(){
 
     var a = document.getElementById('stage');
     var svgDoc = a.contentDocument;
-    var svgItem = svgDoc.getElementById("Offices");
-    
+    var svgItem = svgDoc.getElementById("Offices"); //All items under the Office Layer
+    var allSVG= svgDoc.getElementById("svg8");
     var b = svgItem.getElementsByTagName("rect");
     console.log(svgDoc);
     console.log(svgItem);
     console.log(b);
     var rectID = new Array();
-
- 
-    
-    
     for(i=0; i < b.length; i++) {
+        //pushing all rect elements within svgItem into an array for search functionality
         rectID.push(b[i].id);
     }
-    
-    
 
-    svgItem.onclick = function() {
-        
+    
+        allSVG.onclick = function() {
         var currentID = event.target.id;
+        //get current id of object within svgItem
+        console.log(currentID);
     }
     
     function getRoomData(currentID) {
@@ -34,5 +31,7 @@ $(window).on('load', (function(){
         //php returns dataset, loops through and displays
         //as side popup
     }
+    
+
     
 }));
