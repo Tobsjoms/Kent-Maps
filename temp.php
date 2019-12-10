@@ -36,7 +36,7 @@
 				window.onload = function(){
 					var a = document.getElementById('stage');
 	    			var svgDoc = a.contentDocument;
-	    			var allSVG= svgDoc.getElementById("svg16");
+	    			var allSVG= svgDoc.getElementById("CW-SW-GF");
 				    var panZoom = svgPanZoom(allSVG, {
 				        zoomEnabled: true,
 				        minZoom: 0.8,
