@@ -26,19 +26,26 @@ $(window).on('load', (function(){
         controlIconsEnabled: false
     });
     
-    var rectID = new Array();
+    var roomIDs = new Array();
     console.log(roomPaths);
-    for(i=0; i < roomRect.length; i++) {
-        //pushing all rect elements within svgItem into an array for search functionality
-        rectID.push(roomRect[i].id);
-        console.log(rectID[i]);
-    }
-
     
+    for(i=0; i < roomRect.length; i++) {
+        //pushing all rect elements within mapRooms into an array for search functionality
+        rectID.push(roomRect[i].id);
+    }    
+    
+    for(i=0; i < roomPaths.length; i++) {
+        //pushing all path elements within mapRooms into an array for search functionality
+        rectID.push(roomPaths[i].id);
+    }
+    
+    
+
+    //Click anywhere on the SVG 
         allSVG.onclick = function() {
-        var currentID = event.target.id;
-        //get current id of object within svgItem
-        console.log(currentID);
+        var currentID = event.target.id; //get current ID of object clicked on within 'AllSVG'
+        console.log(currentID); //log each click in the console
+        getRoomData(currentID); //call with current ID on each click
     }
     
     function getRoomData(currentID) {
