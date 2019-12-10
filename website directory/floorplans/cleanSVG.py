@@ -145,7 +145,7 @@ class CleanSVG:
 
 
 
-    def removeAttribute(self, attribute, exception_list= ["text"]):
+    def removeAttribute(self, attribute, exception_list= []):
         """ Remove all instances of an attribute ignoring any with a value in the exception list. """
 
         if exception_list is None: exception_list = []

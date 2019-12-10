@@ -19,7 +19,7 @@ dest = shutil.copyfile("Cornwallis-SW-GF.svg", "test.svg")
 
 
 svg = CleanSVG("test.svg")
-svg.removeAttribute('style')
+#svg.removeAttribute('style')
+svg.extractStyles()
 svg.write("test.svg")
-
 
