@@ -1,8 +1,8 @@
 
-#layer4 path {
+#Buildings path {
     fill: yellow;
 }
 
-#layer4 path:hover {
+#Buildings path:hover {
     fill: green;
 }
