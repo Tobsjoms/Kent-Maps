@@ -23,10 +23,11 @@ $index = 0;
 while($row = mysqli_fetch_assoc($result)) {
     $data[$index] = $row;
     $index++;
+    //echo to spit out onto a page as is or use the Json encode below
 }
 
 
-echo json_encode($data);
+echo json_encode($data); //econdes as JSON Array
 
 
 
