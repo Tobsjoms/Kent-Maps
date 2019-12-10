@@ -21,3 +21,8 @@
 #Roads path{
 	fill: #616161;
 }
+
+#Text text {
+	/* Prevent text from being hovered, instead target shape below */
+    pointer-events: none;
+}

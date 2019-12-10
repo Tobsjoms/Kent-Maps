@@ -25,4 +25,6 @@ fill: #c3e9fa;
 stroke:#e8da6c;
 }
 
-
+#layer5 text {
+    pointer-events: none;
+}
