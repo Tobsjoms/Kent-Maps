@@ -39,8 +39,12 @@
 	    			var allSVG= svgDoc.getElementById("svg16");
 				    var panZoom = svgPanZoom(allSVG, {
 				        zoomEnabled: true,
+				        minZoom: 0.8,
 				        controlIconsEnabled: false
 				    });
+
+				    panZoom.zoom(0.8);
+				    panZoom.center();
 
 				    updateSVGColourScheme();
 				};

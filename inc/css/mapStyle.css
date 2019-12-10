@@ -1,8 +1,23 @@
 
 #Buildings path {
-    fill: yellow;
+	fill: #D9DDEB;
+	stroke: #ADB4D1;
 }
 
 #Buildings path:hover {
     fill: green;
+}
+
+#Pathways path{
+    fill: #616161;
+    stroke: none;
+}
+
+#Ground path{
+	fill: #8BE786;
+    stroke: #64D85E;
+}
+
+#Roads path{
+	fill: #616161;
 }
