@@ -50,8 +50,9 @@ body.sidebar-open #main-container{
 }
 
 /* SVG STAGE */
-#map object#stage{ 
+#map object#stage{
 	width:100%;
+	background-color:#333;
 }
 
 #topbar{
