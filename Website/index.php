@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include 'inc/php/timetable-funcs.php';
 	// Timetable source
 	$file = 'http://www.kent.ac.uk/timetabling/ical/143131.ics';
@@ -20,7 +21,7 @@
 
 <HTML>	
 	<head>
-		<title>KentMap</title>
+		<title>UKCGURU</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="inc/css/style.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,7 +29,7 @@
 		<script src="inc/js/svg-colours.js"></script>
 	</head>
 
-	<body class="sidebar-open">
+	<body <?php if (isset($_SESSION['id'])){ echo 'class="logged-in"'; } ?> >
 
 		<div id="main-container">
 			<div id="map"><object id="stage" data="floorplans/Campus Map Entire.svg" type="image/svg+xml"></object></div>
@@ -70,42 +71,44 @@
 			</div>
 		</div>
 
-		<div id="sidebar">
-			<div class="navigation">
-				<a href="#" class="selected"><i class="material-icons">date_range</i></a>
-				<a href="#"><i class="material-icons">alarm</i><span>1</span></a>
-			</div>
-			<div id="timetable">
-				<?php
-					if (count($events) == 0){
-						echo"<div id='no-events'>You have no events this week.</div>";
-					}
-					else{
-						foreach ($events as $date => $events)
-						{
-							$day = DateTime::createFromFormat('Y-m-d', $date)->format('l');
-							echo "<div class='day'><span class='day-label'>$day</span>";
-								foreach ($events as $event)
-								{
-									$title = $event->title();
-									$start = date('H:i', $event->startTime());
-									$end = date('H:i', $event->endTime());
-									$location = $event->location();
-									$generatedColour = colorFromString($title);
-
-									echo "
-										<div class='card' style='border-color: $generatedColour;'>
-											<div class='details'>$title</div>
-											<div class='start-end-location'><a href='https://www.kent.ac.uk/timetabling/rooms/room.html?room=$location'>$location</a> | $start - $end</div>
-										</div>
-									";
-								}
-							echo "</div>";
+		<?php if (isset($_SESSION['id'])){ ?>
+			<div id="sidebar">
+				<div class="navigation">
+					<a href="#" class="selected"><i class="material-icons">date_range</i></a>
+					<a href="#"><i class="material-icons">alarm</i><span>1</span></a>
+				</div>
+				<div id="timetable">
+					<?php
+						if (count($events) == 0){
+							echo"<div id='no-events'>You have no events this week.</div>";
 						}
-					}
-				?>
+						else{
+							foreach ($events as $date => $events)
+							{
+								$day = DateTime::createFromFormat('Y-m-d', $date)->format('l');
+								echo "<div class='day'><span class='day-label'>$day</span>";
+									foreach ($events as $event)
+									{
+										$title = $event->title();
+										$start = date('H:i', $event->startTime());
+										$end = date('H:i', $event->endTime());
+										$location = $event->location();
+										$generatedColour = colorFromString($title);
 
+										echo "
+											<div class='card' style='border-color: $generatedColour;'>
+												<div class='details'>$title</div>
+												<div class='start-end-location'><a href='https://www.kent.ac.uk/timetabling/rooms/room.html?room=$location'>$location</a> | $start - $end</div>
+											</div>
+										";
+									}
+								echo "</div>";
+							}
+						}
+					?>
+
+				</div>
 			</div>
-		</div>
+		<?php } ?>
 	</body>
 </HTML>

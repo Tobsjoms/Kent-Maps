@@ -24,7 +24,7 @@ html, body {
 	overflow:hidden;
 }
 
-body.sidebar-open #main-container{
+body.logged-in #main-container{
 	width:calc(100% - 24em);
 	left:24em;
 }
@@ -197,7 +197,7 @@ body.sidebar-open #main-container{
 	padding:4em;
 }
 
-body.sidebar-open #sidebar{
+body.logged-in #sidebar{
 	width:24em;
 }
 
@@ -268,6 +268,10 @@ body.sidebar-open #sidebar{
 /* Remove ugly scrollbar */
 #timetable::-webkit-scrollbar { display: none; }
 
+#no-events{
+	background-color:;
+}
+
 #timetable .day{
 	position:relative;
 	color:rgba(0,0,0,0.75);
@@ -330,7 +334,7 @@ body.sidebar-open #sidebar{
 		padding:calc(50vh - 4em - 1em - 2.8em) 2em 0 2em;
 	}
 
-	body.sidebar-open .main-container{
+	body.logged-in .main-container{
 		width:100%;
 		position:static;
 		height:100vh;
@@ -356,7 +360,7 @@ body.sidebar-open #sidebar{
 		padding-bottom:0;
 	}
 
-	body.sidebar-open #sidebar{
+	body.logged-in #sidebar{
 		width:100%;
 	}
 }
