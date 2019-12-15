@@ -59,15 +59,17 @@
 					<a href="#"><i class="material-icons">search</i></a>
 				</div>
 
-				<div id="user-panel">
-					<div class="user">
-						<i class="material-icons">account_circle</i>
-						<div class="details">
-							<span class="email">hn65@kent.ac.uk</span>
-							<a href="#" class="logout">Log out</a>
+				<?php if (isset($_SESSION['id'])){ ?>
+					<div id="user-panel">
+						<div class="user">
+							<i class="material-icons">account_circle</i>
+							<div class="details">
+								<span class="email"><?= $_SESSION['email'] ?></span>
+								<a href="logout.php" class="logout">Log out</a>
+							</div>
 						</div>
 					</div>
-				</div>
+				<?php } ?>
 			</div>
 		</div>
 
@@ -80,7 +82,7 @@
 				<div id="timetable">
 					<?php
 						if (count($events) == 0){
-							echo"<div id='no-events'>You have no events this week.</div>";
+							echo"<div class='day'><span class='day-label'>Nothing!</span><div id='no-events'>You have no events this week.</div>";
 						}
 						else{
 							foreach ($events as $date => $events)
