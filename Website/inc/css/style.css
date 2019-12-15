@@ -54,6 +54,8 @@ body.sidebar-open #main-container{
 	background-color:#f5f6fa;
 }
 
+/* SEARCH BAR & LOGO */
+
 #topbar{
 	box-sizing:border-box;
 	position:absolute;
@@ -68,13 +70,6 @@ body.sidebar-open #main-container{
 	clear: both;
 	display: table;
 }
-
-
-/******************************************************
-
-	SEARCH BAR & LOGO
-
-******************************************************/
 
 #topbar #logo, #topbar #search{
 	float:left;
@@ -138,11 +133,7 @@ body.sidebar-open #main-container{
 	left:calc(50% - 12px);
 }
 
-/******************************************************
-
-	USER PANEL
-
-******************************************************/
+/* USER PANEL */
 
 #user-panel{
 	float:right;
@@ -190,11 +181,7 @@ body.sidebar-open #main-container{
 	clear:left;
 }
 
-/******************************************************
-
-	SIDEBAR
-
-******************************************************/
+/* SIDEBAR */
 
 #sidebar{
 	position:absolute;
@@ -336,6 +323,7 @@ body.sidebar-open #sidebar{
 #timetable .card .start-end-location a:hover{
 	text-decoration:underline;
 }
+
 
 @media only screen and (max-width: 1000px) {
 	.center.search-page{

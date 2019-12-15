@@ -77,26 +77,31 @@
 			</div>
 			<div id="timetable">
 				<?php
-					foreach ($events as $date => $events)
-					{
-						$day = DateTime::createFromFormat('Y-m-d', $date)->format('l');
-						echo "<div class='day'><span class='day-label'>$day</span>";
-							foreach ($events as $event)
-							{
-								$title = $event->title();
-								$start = date('H:i', $event->startTime());
-								$end = date('H:i', $event->endTime());
-								$location = $event->location();
-								$generatedColour = colorFromString($title);
+					if (count($events) == 0){
+						echo"<div id='no-events'>You have no events this week.</div>";
+					}
+					else{
+						foreach ($events as $date => $events)
+						{
+							$day = DateTime::createFromFormat('Y-m-d', $date)->format('l');
+							echo "<div class='day'><span class='day-label'>$day</span>";
+								foreach ($events as $event)
+								{
+									$title = $event->title();
+									$start = date('H:i', $event->startTime());
+									$end = date('H:i', $event->endTime());
+									$location = $event->location();
+									$generatedColour = colorFromString($title);
 
-								echo "
-									<div class='card' style='border-color: $generatedColour;'>
-										<div class='details'>$title</div>
-										<div class='start-end-location'><a href='https://www.kent.ac.uk/timetabling/rooms/room.html?room=$location'>$location</a> | $start - $end</div>
-									</div>
-								";
-							}
-						echo "</div>";
+									echo "
+										<div class='card' style='border-color: $generatedColour;'>
+											<div class='details'>$title</div>
+											<div class='start-end-location'><a href='https://www.kent.ac.uk/timetabling/rooms/room.html?room=$location'>$location</a> | $start - $end</div>
+										</div>
+									";
+								}
+							echo "</div>";
+						}
 					}
 				?>
 
