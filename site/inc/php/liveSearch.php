@@ -10,25 +10,23 @@ $dbconnect = new mysqli($server, $dbusername, $dbpassword, "maps_test");
 
 
 function searchFunc($data) {
-    $sql = "SELECT top 50 * from  "
-}
+    $sql = "SELECT top 50 * FROM buildingdata, roomdata, staff, staff_room, users....  "
+    $result = mysqli_query($dbconnect, $sql);
 
+    $data = array();
 
-$sql = "SELECT * FROM DATABASENAME";
-
-$result = mysqli_query($dbconnect, $sql);
-
-$data = array();
-
-$index = 0;
-while($row = mysqli_fetch_assoc($result)) {
+    $index = 0;
+    while($row = mysqli_fetch_assoc($result)) {
     $data[$index] = $row;
     $index++;
     //echo to spit out onto a page as is or use the Json encode below
+    }
+    echo json_encode($data);     
+        
 }
 
 
-echo json_encode($data); //econdes as JSON Array
+//econdes as JSON Array
 
 
 
