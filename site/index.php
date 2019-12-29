@@ -27,6 +27,7 @@
 		<script src="inc/js/jquery-3.4.1.js"></script>
 		<script src="inc/js/mainMap.js"></script>
 		<script src="inc/js/svg-pan-zoom.js"></script>
+		<script src="inc/js/coreScript.js"></script>
 	</head>
 
 	<body class="sidebar-open">
@@ -39,7 +40,7 @@
 					<b>UKC</b>INFO 
 				</div>
 				<div id="search">
-					<input type="text" spellcheck="false">
+					<input type="text" spellcheck="false" onkeyup="displayResult(this.value)">
 					<a href="#"><i class="material-icons">search</i></a>
 				</div>
 

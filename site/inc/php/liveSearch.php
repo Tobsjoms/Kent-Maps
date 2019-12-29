@@ -1,19 +1,18 @@
-
 <?php
-//UNFINISHED
-
-
-//database credentials
-$dbusername = "";
-$dbpassword = "";
-$server = "127.0.0.1"; //local host
+include 'database.php';
 
 //connect to db
-$dbconnect = new mysqli($server, $dbusername, $dbpassword, "databaseName");
+$dbconnect = new mysqli($server, $dbusername, $dbpassword, "maps_test");
 
  if (!$dbconnect) {
      die("connection failed" . mysqli_connect_error());
  }
+
+
+function searchFunc($data) {
+    $sql = "SELECT top 50 * from  "
+}
+
 
 $sql = "SELECT * FROM DATABASENAME";
 
