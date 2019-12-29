@@ -24,31 +24,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="inc/css/style.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script src="inc/js/jquery-3.4.1.js"></script>
+		<script src="inc/js/mainMap.js"></script>
 		<script src="inc/js/svg-pan-zoom.js"></script>
-		<script src="inc/js/svg-colours.js"></script>
 	</head>
 
 	<body class="sidebar-open">
 
 		<div id="main-container">
 			<div id="map"><object id="stage" data="floorplans/Campus Map Entire.svg" type="image/svg+xml"></object></div>
-			<script>
-				window.onload = function(){
-					var a = document.getElementById('stage');
-	    			var svgDoc = a.contentDocument;
-	    			var allSVG= svgDoc.getElementById("svg16");
-				    var panZoom = svgPanZoom(allSVG, {
-				        zoomEnabled: true,
-				        minZoom: 0.8,
-				        controlIconsEnabled: false
-				    });
 
-				    panZoom.zoom(0.8);
-				    panZoom.center();
-
-				    updateSVGColourScheme();
-				};
-			</script>
 			<div id="topbar">
 				<div id="logo">
 					<b>UKC</b>INFO 

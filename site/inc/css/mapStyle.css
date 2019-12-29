@@ -1,25 +1,30 @@
 
 #Buildings path {
-	fill: #D9DDEB;
+	fill: #d1dce8;
 	stroke: #ADB4D1;
+	stroke-width: 0.18px;
 }
 
 #Buildings path:hover {
-    fill: green;
+    fill: #c0c7d0;
+	stroke: #9096af;
+	stroke-width: 0.35px;
+	cursor: pointer;
 }
 
 #Pathways path{
     fill: #616161;
-    stroke: none;
+    stroke-width: 0.18px;
 }
 
 #Ground path{
-	fill: #8BE786;
-    stroke: #64D85E;
+	fill: #b1e0a3;
+    stroke: none;
 }
 
 #Roads path{
-	fill: #616161;
+	fill: #989898;
+	stroke-width: 0.18px;
 }
 
 #Text text {
