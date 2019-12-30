@@ -11,3 +11,5 @@ function displayResult(str) {
         success: function(response) {alert(response);}
     });
 }
+
+

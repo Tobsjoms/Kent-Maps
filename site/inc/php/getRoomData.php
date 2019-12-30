@@ -1,35 +1,35 @@
 
 <?php
-//UNFINISHED
 
-
-//database credentials
-$dbusername = "";
-$dbpassword = "";
-$server = "127.0.0.1"; //local host
+include 'database.php';
 
 //connect to db
-$dbconnect = new mysqli($server, $dbusername, $dbpassword, "databaseName");
+$dbconnect = new mysqli($server, $dbusername, $dbpassword, "maps_test");
 
  if (!$dbconnect) {
      die("connection failed" . mysqli_connect_error());
  }
 
-$sql = "SELECT * FROM DATABASENAME";
 
-$result = mysqli_query($dbconnect, $sql);
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $data = $_POST['id'];
+ 
+    $sql = "SELECT * FROM staff WHERE RoomID LIKE '$data' ";
+    
+    
+    $result = mysqli_query($dbconnect, $sql);
 
-$data = array();
+    $dataRes = array();
 
-$index = 0;
-while($row = mysqli_fetch_assoc($result)) {
-    $data[$index] = $row;
+    $index = 0;
+    while($row = mysqli_fetch_assoc($result)) {
+    $dataRes[$index] = $row;
     $index++;
     //echo to spit out onto a page as is or use the Json encode below
+    }
+    echo json_encode($dataRes);     
+        
 }
-
-
-echo json_encode($data); //econdes as JSON Array
 
 
 

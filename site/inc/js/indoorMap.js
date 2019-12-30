@@ -23,15 +23,7 @@ controlIconsEnabled: false
 panZoom.zoom(0.8);
 panZoom.center();
 
-updateSVGColourScheme();
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     var roomIDs = new Array();
     console.log(roomPaths);
@@ -50,24 +42,47 @@ updateSVGColourScheme();
 
     //Click anywhere on the SVG 
         mapRooms.onclick = function() {
-        var currentID = event.target.id; //get current ID of object clicked on within 'AllSVG'
-        console.log(currentID); //log each click in the console
-        getRoomData(currentID); //call with current ID on each click
+        var currentID = event.target.id;
+        getRoomData(currentID);
+
     }
     
-    function getRoomData(currentID) {
-    //    alert("you clicked on room " + currentID);
-        //pass id of current room to this func
-        //php script queries DB with roomID providing roomID is PK
-        //php returns dataset, loops through and displays
-        //as side popup
-        roomPopup(currentID);
-    }
-    
-    function roomPopup(currentID) {
-       
-        $("#timetable").html("Room: " + currentID);
+//obtain the roomData        
+function getRoomData(id) {
+    var roomData = []; //data prep for return JSON data
+    console.log(id);
+    $.ajax({
+        type: "POST",
+        url: "../site/inc/php/getRoomData.php",
+        data: {id: id}, //send roomID to script
+        success: function(response) {
+            roomData = JSON.parse(response); //parse as JSON object
+            roomPopup(id, roomData); //pass room and JSON object to RoomPopup function
+        }
+
+    });
+        
+}
+
+    function roomPopup(currentID, roomData) {
+        //consider edge case for getting timetable html back
+        //potentially can be done by clicking anywhere BUT a room returns specific ID and check for that ID returned If SO then don't change or change back to the timetable UI!
+        console.log(roomData);
+        //need more UI Divs to hook onto for each bit of data eg staffid, name, department
+        $("#timetable").html("Room:"  + currentID);
         $("#timetable").css({"font-size": "26px"});
+        
+        var dataLength = roomData.length;
+        str = '<ul>';
+        p = '<p>Staff In: </p>' + currentID;
+        for(i=0; i < dataLength; i++) {
+            index = roomData[i];
+            str += '<li>' + index.Name + '</li>';
+            console.log(index.Name);
+        }
+        str += '</ul>';
+        document.getElementById('timetable').innerHTML = p + str;
+
     }
     
 $("#clicky").click(function() {

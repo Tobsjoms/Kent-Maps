@@ -25,6 +25,7 @@
 		<link rel="stylesheet" type="text/css" href="inc/css/style.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<script src="inc/js/jquery-3.4.1.js"></script>
+		<script src="inc/js/coreScript.js"></script>
 		<script src="inc/js/svg-pan-zoom.js"></script>
 		<script src="inc/js/indoorMap.js"></script>
 		<script src="inc/js/svg-colours.js"></script>
