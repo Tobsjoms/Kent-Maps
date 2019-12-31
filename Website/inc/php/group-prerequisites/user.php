@@ -21,4 +21,13 @@
 			die();
 		}
 	}
+
+	// For pages which require the user to be logged in
+	function ensureLoggedIn(){
+		if(!isset($_SESSION['id'])){
+			// Not logged in 
+			header("Location: index.php");
+			die();
+		}
+	}
 ?>

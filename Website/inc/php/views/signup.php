@@ -4,7 +4,6 @@
 <?php displayMessages() ?>
 
 <form action="?" method="post">
-
     <div class="group">      
         <input id="email-input" name="email" type="text" autocapitalize="off" spellcheck="false" required>
         <span class="highlight"></span>
@@ -22,6 +21,8 @@
 	<span class="note warning clearfix" id="password-note">Passwords must include lowercase, uppercase and numerical characters.</span>
 	<input class="button" id="submit-button" type="submit" name="submit" value="Sign Up" disabled/>
 </form>
+
+<a href="login.php" class="alternate-lilo">Already have an account?</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
 <script>

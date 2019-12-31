@@ -22,4 +22,6 @@
 	<input class="button enabled" id="submit-button" type="submit" name="submit" value="Log In"/>
 </form>
 
+<a href="signup.php" class="alternate-lilo">Don't have an account?</div>
+
 <?php include 'lilo-suffix.php'; ?>

@@ -1,15 +1,18 @@
 <?php
 	session_start();
 	include 'inc/php/timetable-funcs.php';
-	// Timetable source
-	$file = 'http://www.kent.ac.uk/timetabling/ical/143131.ics';
-	$iCal = new iCal($file);
-	// Dates
-	$day = date('w');
-	$week_start = date('Y-m-d', strtotime('-'.$day.' days'));
-	$week_end = date('Y-m-d', strtotime('+'.(6-$day).' days'));
-	// Get
-	$events = $iCal->eventsByDateBetween($week_start, $week_end);
+
+	if (isset($_SESSION['timetable_url']) && $_SESSION['timetable_url'] != NULL){
+		// Timetable source
+		$file = $_SESSION['timetable_url'];
+		$iCal = new iCal($file);
+		// Dates
+		$day = date('w');
+		$week_start = date('Y-m-d', strtotime('-'.$day.' days'));
+		$week_end = date('Y-m-d', strtotime('+'.(6-$day).' days'));
+		// Get
+		$events = $iCal->eventsByDateBetween($week_start, $week_end);
+	}
 
 	function colorFromString($string)
 	{
@@ -69,6 +72,8 @@
 							</div>
 						</div>
 					</div>
+				<?php }else{ ?>
+					<div id="user-panel"><a href="login.php">Log in</a> or <a href="signup.php">sign up</a> to use more features!</div>
 				<?php } ?>
 			</div>
 		</div>
@@ -81,30 +86,36 @@
 				</div>
 				<div id="timetable">
 					<?php
-						if (count($events) == 0){
-							echo"<div class='day'><span class='day-label'>Nothing!</span><div id='no-events'>You have no events this week.</div>";
+						if (!isset($iCal)){
+							// Invalid url
+							echo"<div class='day'><span class='day-label'>Timetable</span><div id='no-events'>You either haven't entered a timetable url, or the current one isn't working.</br></br>Update your <a href='settings.php'>settings</a>.</div>";
 						}
 						else{
-							foreach ($events as $date => $events)
-							{
-								$day = DateTime::createFromFormat('Y-m-d', $date)->format('l');
-								echo "<div class='day'><span class='day-label'>$day</span>";
-									foreach ($events as $event)
-									{
-										$title = $event->title();
-										$start = date('H:i', $event->startTime());
-										$end = date('H:i', $event->endTime());
-										$location = $event->location();
-										$generatedColour = colorFromString($title);
+							if (count($events) == 0){
+								echo"<div class='day'><span class='day-label'>Nothing!</span><div id='no-events'>You have no events this week.</div>";
+							}
+							else{
+								foreach ($events as $date => $events)
+								{
+									$day = DateTime::createFromFormat('Y-m-d', $date)->format('l');
+									echo "<div class='day'><span class='day-label'>$day</span>";
+										foreach ($events as $event)
+										{
+											$title = $event->title();
+											$start = date('H:i', $event->startTime());
+											$end = date('H:i', $event->endTime());
+											$location = $event->location();
+											$generatedColour = colorFromString($title);
 
-										echo "
-											<div class='card' style='border-color: $generatedColour;'>
-												<div class='details'>$title</div>
-												<div class='start-end-location'><a href='https://www.kent.ac.uk/timetabling/rooms/room.html?room=$location'>$location</a> | $start - $end</div>
-											</div>
-										";
-									}
-								echo "</div>";
+											echo "
+												<div class='card' style='border-color: $generatedColour;'>
+													<div class='details'>$title</div>
+													<div class='start-end-location'><a href='https://www.kent.ac.uk/timetabling/rooms/room.html?room=$location'>$location</a> | $start - $end</div>
+												</div>
+											";
+										}
+									echo "</div>";
+								}
 							}
 						}
 					?>

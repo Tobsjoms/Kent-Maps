@@ -10,13 +10,12 @@
 	if ($row != null){
 		// Check input password against the saved password
 		if(password_verify($_POST['password'], $row[1])){
-			echo "s";
 			// Correct username/password combo
 			$_SESSION['id'] = $row[0];
 			$_SESSION['email'] = $_POST['email'];
 			$_SESSION['timetable_url'] = $row[2];
 
-			// Redirect them to index
+			// Redirect them to settings
 			header("Location: index.php");
 			die();
 		}
