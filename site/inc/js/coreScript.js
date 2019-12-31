@@ -45,18 +45,20 @@ function buildingPopup(currentID, buildingData) {
     
 
         str = '<ul>';
-        title = '<p> Building Name: </p>' + name; + '</br>';
+        title = '<p id = test> Building Name:' + name; + '</p>' + '</br>';
         knownAs = '<p> Buiding School: </p>' + desc + '</br>';
         p = '<p>Avaliable Floors: </p>';
+        
+        var x = "";
         for(i=0; i < floorCount; i++) {
-            if (i = 0) { i = 'Ground Floor'};
-            if (i = 1) { i = 'First Floor'};
-            if (i = 2) { i = 'Second Floor'};
-            if (i = 3) { i = 'Third Floor'};
-            
-            str += '<li>' + name + ' Floor ' + i + '</li>';
+            if (i == 0) { x = " Ground Floor"};
+            if (i == 1) { x = " First Floor"};
+            if (i == 2) { x = " Second Floor"};
+            str += '<li>' + name + x + '</li>';
         }
         str += '</ul>';
+            
+        //build into DOM
         document.getElementById('timetable').innerHTML = title + knownAs + p + str;
         }
     //maybe run consider adding more info such as lecture rooms, etc etc
