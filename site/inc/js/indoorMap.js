@@ -6,6 +6,7 @@ $(window).on('load', (function(){
     
     var a = document.getElementById('stage');
     var svgDoc = a.contentDocument;
+    //below line will be changed to be generic
     var allSVG= svgDoc.getElementById("CW-SW-GF");
     
     var mapRooms = svgDoc.getElementById("Rooms"); //AllRooms
@@ -14,17 +15,15 @@ $(window).on('load', (function(){
 
     
 // panning
-var panZoom = svgPanZoom(allSVG, {
-zoomEnabled: true,
-minZoom: 0.8,
-controlIconsEnabled: false
-});
+    var panZoom = svgPanZoom(allSVG, {
+        zoomEnabled: true,
+        minZoom: 0.8,
+        controlIconsEnabled: false
+    });
+    panZoom.zoom(0.8);
+    panZoom.center();
 
-panZoom.zoom(0.8);
-panZoom.center();
-
-
-    
+    //indexing RoomIDs from SVG
     var roomIDs = new Array();
     console.log(roomPaths);
     
@@ -37,16 +36,19 @@ panZoom.center();
         //pushing all path elements within mapRooms into an array for search functionality
         roomIDs.push(roomPaths[i].id);
     }
-    
-    
+
+//SEARCH Autocomplete
+function displayResult(str) {
+    console.log(str);
+}
 
     //Click anywhere on the SVG 
-        mapRooms.onclick = function() {
-        var currentID = event.target.id;
-        getRoomData(currentID);
+    mapRooms.onclick = function() {
+    var currentID = event.target.id;
+        console.log(currentID);
+    getRoomData(currentID);
 
-    }
-    
+}    
 //obtain the roomData        
 function getRoomData(id) {
     var roomData = []; //data prep for return JSON data
@@ -64,58 +66,7 @@ function getRoomData(id) {
         
 }
 
-    function roomPopup(currentID, roomData) {
-        //consider edge case for getting timetable html back
-        //potentially can be done by clicking anywhere BUT a room returns specific ID and check for that ID returned If SO then don't change or change back to the timetable UI!
-        console.log(roomData);
-        //need more UI Divs to hook onto for each bit of data eg staffid, name, department
-        $("#timetable").html("Room:"  + currentID);
-        $("#timetable").css({"font-size": "26px"});
-        
-        var dataLength = roomData.length;
-        str = '<ul>';
-        p = '<p>Staff In: </p>' + currentID;
-        for(i=0; i < dataLength; i++) {
-            index = roomData[i];
-            str += '<li>' + index.Name + '</li>';
-            console.log(index.Name);
-        }
-        str += '</ul>';
-        document.getElementById('timetable').innerHTML = p + str;
 
-    }
     
-$("#clicky").click(function() {
-        for (var i=0; i < b.length; i++) {
-            if (b[i].style.visibility = "visible") {
-            b[i].style.visibility = "hidden";
-            }
-        }
-    });
-    
-    $("#clicky2").click(function() {
-        for (var i=0; i < b.length; i++) {
-            if (b[i].style.visibility = "hidden") {
-            b[i].style.visibility = "visible";
-            }
-        }
-    });
-    
-    
-        $("#clicky3").click(function() {
-        for (var i=0; i < text.length; i++) {
-            if (text[i].style.visibility = "visible") {
-            text[i].style.visibility = "hidden";
-            }
-        }
-    });
-    
-    $("#clicky4").click(function() {
-        for (var i=0; i < text.length; i++) {
-            if (text[i].style.visibility = "hidden") {
-            text[i].style.visibility = "visible";
-            }
-        }
-    });
     
 }));

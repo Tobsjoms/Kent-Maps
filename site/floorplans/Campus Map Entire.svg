@@ -45,9 +45,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="383.62182"
-     inkscape:cy="203.19551"
+     inkscape:zoom="4"
+     inkscape:cx="612.54352"
+     inkscape:cy="535.83903"
      inkscape:document-units="mm"
      inkscape:current-layer="Buildings"
      showgrid="false"
@@ -106,6 +106,11 @@
        orientation="1,0"
        id="guide1269"
        inkscape:locked="false" />
+    <sodipodi:guide
+       position="131.3987,140.97331"
+       orientation="1,0"
+       id="guide1009"
+       inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata13">
@@ -124,7 +129,8 @@
      inkscape:groupmode="layer"
      id="Template"
      transform="translate(0,-87)"
-     style="display:inline" />
+     style="display:none"
+     sodipodi:insensitive="true" />
   <g
      inkscape:groupmode="layer"
      id="Ground"
@@ -558,22 +564,18 @@
        sodipodi:nodetypes="ccccccccccccc" />
     <path
        style="opacity:1;fill:#e8e8e8;fill-opacity:1;stroke:#5a300c;stroke-width:0.05291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:25.3984127;stroke-dasharray:none;stroke-opacity:0.80000006;paint-order:normal"
-       d="m 142.6238,61.748254 h 16.43403 v 3.12247 h 2.24599 v -4.107618 l 6.57361,-8.92e-4 h 11.06558 v 7.34054 h 0.98833 v 3.77982 h -1.64569 v 2.081646 h -10.57257 v 2.62945 h -6.51882 v -3.341586 h -3.45115 v 3.286806 h -15.33843 v -1.53385 h -2.95813 v 1.36951 h -4.49198 v -5.368456 h -2.79379 l -2.03216,-3.51982 h -6.95177 v -9.35351 h 6.51884 l -1e-5,2.191211 3.23203,-10e-7 v 1.3695 h 7.17619 v 3.01292 h 2.46511 z"
-       id="path858-8-8-3"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccc" />
-    <path
-       style="opacity:1;fill:#e8e8e8;fill-opacity:1;stroke:#5a300c;stroke-width:0.05291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:25.3984127;stroke-dasharray:none;stroke-opacity:0.80000006;paint-order:normal"
        d="M 161.30382,60.763106 V 39.83619 h -3.67028 v 1.53385 h -23.06243 v 1.75297 h 0.98605 v 1.75296 h 1.0956 l -1e-5,15.44801 -6.95707,-10e-6 1e-5,-15.448 h 1.6434 v -1.80774 h -2.02687 V 42.0274 h -4.32763 v -8.65525 h 8.87438 v 1.42428 h 20.32343 v -1.0956 h 3.77983 v 1.0956 h 1.20516 v -1.25994 h 5.91625 v -3.72505 h 6.68318 v 5.09455 h -2.84856 v 7.55966 h -1.04083 v 18.296566 z"
-       id="path858-8-8-3-9"
+       id="CW-W"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccc" />
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccc"
+       inkscape:label="#Cornwallis-West" />
     <path
-       id="path858-8-9"
+       id="CW-Oct"
        style="opacity:1;fill:#e8e8e8;fill-opacity:1;stroke:#5a300c;stroke-width:0.05291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:25.3984127;stroke-dasharray:none;stroke-opacity:0.80000006;paint-order:normal"
        d="m 185.58572,61.06199 -4.63163,4.631114 v 2.38488 l -1.02275,0.02477 -0.0173,3.787771 1.15465,0.01483 v 0.772807 l 4.32292,4.322928 h 8.09071 l 4.54163,-4.541113 v -6.808258 l -4.58977,-4.589771 z"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccccccc" />
+       sodipodi:nodetypes="ccccccccccccc"
+       inkscape:label="#Cornwallis-Octogon" />
     <path
        style="display:inline;opacity:1;vector-effect:none;fill:#e8e8e8;fill-opacity:1;stroke:#5a300c;stroke-width:0.05291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:25.3984127;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.80000006;paint-order:normal"
        d="m 186.05968,144.05125 v 6.5481 h -26.09887 v -6.5481 z"
@@ -802,6 +804,20 @@
        id="path1191-8"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccc" />
+    <path
+       id="CW-S"
+       style="opacity:1;fill:#e8e8e8;fill-opacity:1;stroke:#5a300c;stroke-width:0.05291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:25.3984127;stroke-dasharray:none;stroke-opacity:0.80000006;paint-order:normal"
+       d="m 134.29772,71.005826 h 0.6568 v 5.368663 h 4.49172 v -1.369426 h 2.95796 v 1.533756 h 15.3386 v -3.287136 h 3.45147 v 3.341915 h 6.51846 v -2.629815 h 10.57248 v -2.081525 h 1.6459 v -3.779615 h -0.98857 v -7.340637 h -11.06548 l -6.57324,0.0011 v 4.107243 h -2.24637 V 61.74806 h -16.43363 l -0.0553,2.957959 h -2.46497 v -3.012736 h -5.79733 c 0,0 -0.004,9.311963 -0.009,9.312585 z"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccccccc"
+       inkscape:label="#Cornwallis-South" />
+    <path
+       style="opacity:1;fill:#e8e8e8;fill-opacity:1;stroke:#5a300c;stroke-width:0.05291667;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:25.3984127;stroke-dasharray:none;stroke-opacity:0.80000006;paint-order:normal"
+       d="m 134.31212,71.006088 h -2.15134 l -2.03216,-3.519819 h -6.95177 v -9.35351 h 6.51884 l -1e-5,2.191211 3.23203,-1e-6 v 1.3695 h 1.39611 c 0,0 -0.0261,9.312619 -0.0117,9.312619 z"
+       id="CW-SW"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccc"
+       inkscape:label="#Cornwallis-SouthWest" />
   </g>
   <g
      inkscape:groupmode="layer"

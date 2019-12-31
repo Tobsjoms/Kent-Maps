@@ -54,28 +54,33 @@ var panZoom = svgPanZoom(allSVG, {
 
 				    updateSVGColourScheme();
     
-    console.log(svgDoc);
-    console.log(svgItem);
-    console.log(b);
-    
     var rectID = new Array();
     for(i=0; i < b.length; i++) {
         //pushing all rect elements within svgItem into an array for search functionality
         rectID.push(b[i].id);
     }
-
     
-        allSVG.onclick = function() {
-        var currentID = event.target.id;
-        //get current id of object within svgItem
-        console.log(currentID);
+//Building Interactivity---------------------------------
+
+    allSVG.onclick = function() {
+    var currentID = event.target.id;
+    //get current id of object within svgItem
+    getBuildingData(currentID);
     }
     
-    function getRoomData(currentID) {
-        //pass id of current room to this func
-        //php script queries DB with roomID providing roomID is PK
-        //php returns dataset, loops through and displays
-        //as side popup
+    function getBuildingData(id) {
+        var buildingData = [] //JSON Data
+        $.ajax({
+        type: "POST",
+        url: "../site/inc/php/getBuildingData.php",
+        data: {id: id}, //send roomID to script
+        success: function(response) {
+            buildingData = JSON.parse(response); //parse as JSON object
+            buildingPopup(id, buildingData); //pass room and JSON object to RoomPopup function
+        }
+
+    });
+
     }
     
 
