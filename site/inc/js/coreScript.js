@@ -29,38 +29,32 @@ function buildingPopup(currentID, buildingData) {
         //check building has data - if not do this
         if (typeof thisBuilding == 'undefined') {
             console.log("data not found");
-            thisBuilding = {BuildingID: "None", BuildingName: "None", BuildingDescription: "None", BuildingFloorID: "0", FloorCount: "2"}
+            thisBuilding = {BuildingID: "None", BuildingName: currentID, BuildingDescription: "None", BuildingFloorID: "0", FloorCount: "2"}
         }
         
-        else if (typeof thisBuilding != 'undefined') {
-        console.log("data found!");
-        var name = thisBuilding.BuildingName;
-        var id = thisBuilding.BuildingID;
-        var desc = thisBuilding.BuildingDescription;
-        var floorCount = thisBuilding.FloorCount;
-        
-
-        $("#timetable").css({"font-size": "26px"});
-        
-    
-
-        str = '<ul>';
-        title = '<p id = test> Building Name:' + name; + '</p>' + '</br>';
-        knownAs = '<p> Buiding School: </p>' + desc + '</br>';
-        p = '<p>Avaliable Floors: </p>';
-        
-        var x = "";
-        for(i=0; i < floorCount; i++) {
-            if (i == 0) { x = " Ground Floor"};
-            if (i == 1) { x = " First Floor"};
-            if (i == 2) { x = " Second Floor"};
-            str += '<li>' + name + x + '</li>';
+            console.log("data found!");
+            var name = thisBuilding.BuildingName;
+            var id = thisBuilding.BuildingID;
+            var desc = thisBuilding.BuildingDescription;
+            var floorCount = thisBuilding.FloorCount;
+            
+            $("#timetable").css({"font-size": "26px"});
+            str = '<ul>';
+            title = '<p id = test> Building Name:' + name; + '</p>' + '</br>';
+            knownAs = '<p> Buiding Info: </p>' + desc + '</br>';
+            p = '<p>Avaliable Floors: </p>';
+            var x = "";
+            for(i=0; i < floorCount; i++) {
+                if (i == 0) { x = " Ground Floor"};
+                if (i == 1) { x = " First Floor"};
+                if (i == 2) { x = " Second Floor"};
+                str += '<li>' + name + x + '</li>';
         }
-        str += '</ul>';
+            str += '</ul>';
             
         //build into DOM
         document.getElementById('timetable').innerHTML = title + knownAs + p + str;
-        }
+        
     //maybe run consider adding more info such as lecture rooms, etc etc
 
     }
