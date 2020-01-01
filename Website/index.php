@@ -1,10 +1,11 @@
 <?php
 	session_start();
 	include 'inc/php/timetable-funcs.php';
+	include('inc/php/db.php');
 
 	if (isset($_SESSION['timetable_url']) && $_SESSION['timetable_url'] != NULL){
 		// Timetable source
-		$file = $_SESSION['timetable_url'];
+		$file = "http://" . $_SESSION['timetable_url'];
 		$iCal = new iCal($file);
 		// Dates
 		$day = date('w');
@@ -30,6 +31,7 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<script src="inc/js/svg-pan-zoom.js"></script>
 		<script src="inc/js/svg-colours.js"></script>
+		<script src="inc/js/toggle-tab-funcs.js"></script>
 	</head>
 
 	<body <?php if (isset($_SESSION['id'])){ echo 'class="logged-in"'; } ?> >
@@ -80,19 +82,19 @@
 
 		<?php if (isset($_SESSION['id'])){ ?>
 			<div id="sidebar">
-				<div class="navigation">
-					<a href="#" class="selected"><i class="material-icons">date_range</i></a>
-					<a href="#"><i class="material-icons">alarm</i><span>1</span></a>
+				<div class="navigation" id="nav-tabs">
+					<span class="selected" onClick="changeTab(this)" target="timetable"><i class="material-icons">date_range</i></span>
+					<span onClick="changeTab(this)" target="deadlines"><i class="material-icons">alarm</i><span id="deadline-number">1</span></span>
 				</div>
-				<div id="timetable">
+				<div class="tab-content visible" id="timetable">
 					<?php
-						if (!isset($iCal)){
+						if (!isset($events)){
 							// Invalid url
-							echo"<div class='day'><span class='day-label'>Timetable</span><div id='no-events'>You either haven't entered a timetable url, or the current one isn't working.</br></br>Update your <a href='settings.php'>settings</a>.</div>";
+							echo"<div class='day'><span class='day-label'>Timetable</span><div id='no-events'>You either haven't entered a timetable url, or the current one isn't working.</br></br>Update your <a href='settings.php'>settings</a>.</div></div>";
 						}
 						else{
 							if (count($events) == 0){
-								echo"<div class='day'><span class='day-label'>Nothing!</span><div id='no-events'>You have no events this week.</div>";
+								echo"<div class='day'><span class='day-label'>Nothing!</span><div id='no-events'>You have no events this week.</br></br>If you think this is an error, check your URL <a href='settings.php'>setting</a> is valid.</div></div>";
 							}
 							else{
 								foreach ($events as $date => $events)
@@ -119,7 +121,19 @@
 							}
 						}
 					?>
+				</div>
 
+				<div class="tab-content" id="deadlines">
+					<?php include('inc/php/views/get-deadlines.php'); ?>
+
+
+					<form action="inc/php/handlers/handle-add-deadline.php" method="post">
+					    <input name="title" type="text" autocapitalize="off" spellcheck="true" required>   
+					    <input name="link" type="text" autocapitalize="off" spellcheck="true" required>
+					    <input name="date-time" type="datetime-local" required>
+
+						<input class="button" id="submit-button" type="submit" name="submit" value="Save"/>
+					</form>
 				</div>
 			</div>
 		<?php } ?>

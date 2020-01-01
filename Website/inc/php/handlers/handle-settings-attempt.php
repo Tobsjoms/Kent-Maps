@@ -1,19 +1,20 @@
 <?php
+	$userURL = $_POST['timetable-url'];
+	$info = pathinfo($userURL);
 
-	// Open file
-	$handle = @fopen($_POST['timetable-url'], 'r');
-
-	// Check if file exists
-	if(!$handle){
-	    $_SESSION["message"] = "Invalid Timetable URL";
+	// Check if file exists & is the right filetype
+	if($info["extension"] != "ics"){
+	    $_SESSION["message"] = "Invalid Timetable URL" . $handle . $info["extension"];
 		header("Location: ?");
 		die();
 	}
 
+	$userURL = str_replace("webcal://", "", $userURL);
+
 	// Insert new user
    	$stmt = $conn->prepare("UPDATE users SET user_timetable_url = :url WHERE user_id = :id");
     $stmt->bindParam(':id', $_SESSION['id']);
-    $stmt->bindParam(':url', $_POST['timetable-url']);
+    $stmt->bindParam(':url', $userURL);
     $stmt->execute();
 
     // Check it was successful
@@ -25,7 +26,7 @@
     }
 
     // Update session url
-    $_SESSION['timetable_url'] = $_POST['timetable-url'];
+    $_SESSION['timetable_url'] = $userURL;
 
 	// Success, redirect to login
 	header("Location: login.php");

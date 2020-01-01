@@ -216,7 +216,7 @@ body.logged-in #sidebar{
 	display: table;
 }
 
-#sidebar .navigation a{
+#sidebar .navigation span{
 	position:relative;
 	background-color:#f7f7f7;
 	border:1px solid rgba(0,0,0,0.15);
@@ -230,16 +230,17 @@ body.logged-in #sidebar{
 	margin-right:1em;
 }
 
-#sidebar .navigation a:hover{
+#sidebar .navigation span:hover{
 	background-color:rgba(0,0,0,0.15);
+	cursor:pointer;
 }
 
-#sidebar .navigation a .material-icons{
+#sidebar .navigation span .material-icons{
 	font-size:2em;
 	line-height:1em;
 }
 
-#sidebar .navigation a span{
+#sidebar .navigation span span{
 	position:absolute;
 	right:-0.5em;
 	bottom:-0.5em;
@@ -250,15 +251,36 @@ body.logged-in #sidebar{
 	background-color:#e74c3c;
 	color:#fff;
 	border-radius:50%;
+	padding:0;
 }
 
-#sidebar .navigation a:last-child{
+#sidebar .navigation span span:hover{
+	background-color:#e74c3c;
+	cursor:default;
+}
+
+#sidebar .navigation span:last-child{
 	margin-right:0px;
 }
 
-#sidebar .navigation a.selected{
+#sidebar .navigation span.selected{
 	background-color:#2d3436;
 	color:#fff;
+}
+
+.tab-content{
+	display:none;
+}
+
+.tab-content.visible{
+	display:initial;
+}
+
+.card {
+	margin-bottom:1em;
+	padding-left:0.5em;
+	border-left:0.5em solid #dadada;
+	border-radius:4px;
 }
 
 #timetable{
@@ -299,10 +321,6 @@ body.logged-in #sidebar{
 #timetable .card{
 	position:relative;
 	box-sizing:border-box;
-	margin-bottom:1em;
-	padding-left:0.5em;
-	border-left:0.5em solid #dadada;
-	border-radius:4px;
 }
 
 #timetable .day.today .card{ border-left:0.5em solid #3d528a; }
@@ -331,6 +349,31 @@ body.logged-in #sidebar{
 #timetable .card .start-end-location a:hover{
 	text-decoration:underline;
 }
+
+
+
+
+
+
+
+
+
+
+#deadlines{
+
+}
+
+#deadlines .card a{
+	text-decoration:none;
+}
+
+#deadlines .card a:hover{
+	text-decoration:underline;
+}
+
+
+
+
 
 
 @media only screen and (max-width: 1000px) {

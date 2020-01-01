@@ -23,8 +23,8 @@
 
 	if ($result[0][0] != 0){
 		// Email already exists
-		$_SESSION["message"] = "An account already exists with that email address.";
-		header("Location: ?");
+		$_SESSION["message"] = "An account already exists with that email address. Try logging in.";
+		header("Location: login.php");
 		die();
 	}
 
