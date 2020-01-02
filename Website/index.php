@@ -23,7 +23,7 @@
 	}
 ?>
 
-<HTML>	
+<HTML>
 	<head>
 		<title>UKCGURU</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,7 +83,7 @@
 		<?php if (isset($_SESSION['id'])){ ?>
 			<div id="sidebar">
 				<div class="navigation" id="nav-tabs">
-					<span class="selected" onClick="changeTab(this)" target="timetable"><i class="material-icons">date_range</i></span>
+					<span class='selected' onClick="changeTab(this)" target="timetable"><i class="material-icons">date_range</i></span>
 					<span onClick="changeTab(this)" target="deadlines"><i class="material-icons">alarm</i><span id="deadline-number">1</span></span>
 				</div>
 				<div class="tab-content visible" id="timetable">
