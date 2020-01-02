@@ -277,6 +277,7 @@ body.logged-in #sidebar{
 }
 
 .card {
+	position:relative;
 	margin-bottom:1em;
 	padding-left:0.5em;
 	border-left:0.5em solid #dadada;
@@ -319,7 +320,6 @@ body.logged-in #sidebar{
 #timetable .day.today .day-label{ color:#3d528a; }
 
 #timetable .card{
-	position:relative;
 	box-sizing:border-box;
 }
 
@@ -363,6 +363,11 @@ body.logged-in #sidebar{
 
 }
 
+#deadlines h1{
+	font-size:1.2em;
+	font-weight:bold;
+}
+
 #deadlines .card a{
 	text-decoration:none;
 }
@@ -371,7 +376,26 @@ body.logged-in #sidebar{
 	text-decoration:underline;
 }
 
+#deadlines .card a.delete-deadline{
+	display:none;
+	position:absolute;
+	right:0;
+	top:calc(50% - 1em);
+	width:2em;
+	height:2em;
+	line-height:2em;
+	border-radius:1em;
+	text-align:center;
+}
 
+#deadlines .card:hover a.delete-deadline{
+	display:block;
+	background-color:#fff;
+}
+
+#deadlines .card a.delete-deadline:hover{
+	text-decoration:none;
+}
 
 
 

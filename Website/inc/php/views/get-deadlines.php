@@ -30,7 +30,16 @@
 				$borderColour = "#e67e22"; 
 			}
 
-			echo "<div class='card' style='border-color:" . $borderColour . "'><a href='" . $row[3] . "'>" . $row[2] . "</a></br><b>" . dateDifference($row[4]) . "</b></div>";
+			$additionalText = "";
+			$date = new DateTime($row[4]);
+			$now = new DateTime("now", new DateTimeZone('Europe/London') );
+
+			if($date < $now) {
+			    $additionalText = "Overdue by ";
+			    $borderColour = "#000";
+			}
+
+			echo "<div class='card' style='border-color:" . $borderColour . "'><a href='" . $row[3] . "'>" . $row[2] . "</a></br><b>" . $additionalText . dateDifference($row[4]) . "</b><a class='delete-deadline' href='inc/php/handlers/handle-delete-deadline.php?id=" . $row[0] . "'>X</a></div>";
 		}
 	}
 ?>
