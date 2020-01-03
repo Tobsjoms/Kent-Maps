@@ -40,8 +40,8 @@
 				</div>
 				<div id="search">
 					<input type="text" spellcheck="false"
-						   onkeyup="displayResult(this.value)">
-					<a href="#"><i class="material-icons">search</i></a>
+						   id = "sInput">
+					<a href="#" id = 'sButton'><i class="material-icons" onclick="runSearch()">search</i></a>
 				</div>
 
 				<div id="user-panel">

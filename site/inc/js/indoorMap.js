@@ -2,6 +2,17 @@ $( document ).ready(function() {
 
 });
 
+var roomIDs = new Array();
+
+function runSearch() {
+var searchValue = document.getElementById("sInput").value;
+for(var j = 0; j < roomIDs.length; j++) {
+    if (roomIDs[j].match(searchValue)) { 
+        
+        }
+    } getRoomData(searchValue);
+}
+
 $(window).on('load', (function(){
     
     var a = document.getElementById('stage');
@@ -24,7 +35,7 @@ $(window).on('load', (function(){
     panZoom.center();
 
     //indexing RoomIDs from SVG
-    var roomIDs = new Array();
+    
     console.log(roomPaths);
     
     for(i=0; i < roomRect.length; i++) {
@@ -37,18 +48,22 @@ $(window).on('load', (function(){
         roomIDs.push(roomPaths[i].id);
     }
 
-//SEARCH Autocomplete
-function displayResult(str) {
-    console.log(str);
-}
-
     //Click anywhere on the SVG 
     mapRooms.onclick = function() {
     var currentID = event.target.id;
-        console.log(currentID);
+        
     getRoomData(currentID);
 
-}    
+}
+    
+  
+    
+}));
+
+
+
+    
+
 //obtain the roomData        
 function getRoomData(id) {
     var roomData = []; //data prep for return JSON data
@@ -67,6 +82,5 @@ function getRoomData(id) {
 }
 
 
-    
-    
-}));
+
+  

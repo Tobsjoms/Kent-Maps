@@ -1,6 +1,9 @@
 //includes scripts that go across entire site, none page specific such as search funtions.
 
-    function roomPopup(currentID, roomData) {
+
+//SEARCH 
+
+function roomPopup(currentID, roomData) {
         //consider edge case for getting timetable html back
         //potentially can be done by clicking anywhere BUT a room returns specific ID and check for that ID returned If SO then don't change or change back to the timetable UI!
         console.log(roomData);
