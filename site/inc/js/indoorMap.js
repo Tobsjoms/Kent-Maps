@@ -1,4 +1,5 @@
 $(window).on('load', (function(){
+ 
     
     //obtaining SVG elements ready for manipulation
     var a = document.getElementById('stage');

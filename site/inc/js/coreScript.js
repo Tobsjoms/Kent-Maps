@@ -2,10 +2,10 @@
     //consider edge case for getting timetable html back
     //potentially can be done by clicking anywhere BUT a room returns specific ID and check for that ID returned If SO then don't change or change back to the timetable UI!
     //need more UI Divs to hook onto for each bit of data eg staffid, name, department
-function roomPopup(currentID, roomData) {
+function roomPopup(currentID, staffData) {
     //check room has data
-    var thisRoom = roomData[0];
-    console.log(thisRoom);
+    console.log(currentID);
+    var thisRoom = staffData[0];
     if (typeof thisRoom == 'undefined') {
         thisRoom = ["Room Data Not Availiable "];
         alert(thisRoom[0] + "for " + currentID);
@@ -15,11 +15,11 @@ function roomPopup(currentID, roomData) {
     $("#timetable").html("Room:"  + currentID);
     $("#timetable").css({"font-size": "26px"});
 
-    var dataLength = roomData.length;
+    var dataLength = staffData.length;
     str = '<ul>';
     p = '<p>Staff In: </p>' + currentID;
     for(i=0; i < dataLength; i++) {
-            index = roomData[i];
+            index = staffData[i];
             str += '<li>' + index.Name + '</li>';
             console.log(index.Name);
         }
@@ -43,20 +43,18 @@ function buildingPopup(currentID, buildingData) {
         var name = thisBuilding.BuildingName;
         var id = thisBuilding.BuildingID;
         var desc = thisBuilding.BuildingDescription;
-        var floorCount = thisBuilding.FloorCount;
-        var filename = thisBuilding.Filename;
+        var floorCount = thisBuilding.FloorCount; //NO OFF-BY-ONE errors because of the datatype from a database ...JSON
         $("#timetable").css({"font-size": "26px"});
-        
         str = '<ul>';
         title = '<p id = test> Building Name:' + name; + '</p>' + '</br>';
         knownAs = '<p> Buiding Info: </p>' + desc + '</br>';
         p = '<p>Avaliable Floors: </p>';
         var x = "";
         for(i=0; i < floorCount; i++) {
-            if (i == 0) { x = " Ground Floor"};
-            if (i == 1) { x = " First Floor"};
-            if (i == 2) { x = " Second Floor"};
-            str += '<li id = linkgen onclick=window.open("/Kent-Maps/site/temp.php?buildingID=' + filename + '")>' + name + x + '</li>';
+            if (i == 0) { long = " Ground Floor"; short = "GF"};
+            if (i == 1) { long = " First Floor"; short = "FF"};
+            if (i == 2) { long = " Second Floor"; short = "SF" };
+            str += '<li id = linkgen onclick=window.open("/Kent-Maps/site/temp.php?buildingID=' + id + "-" + short + ".svg" + '")>' + name + long + '</li>';
         }
             str += '</ul>';
 

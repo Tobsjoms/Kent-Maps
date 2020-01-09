@@ -18,7 +18,7 @@
 	}
     //load specific building
     $building = $_GET["buildingID"];
-
+    
     $mapElem = "<object id='stage' data='floorplans/$building' type='image/svg+xml'></object>";
 
 ?>
@@ -73,6 +73,7 @@
 			</div>
 			<div id="timetable">
 				<?php
+                echo str_replace(".svg", "", $building);
 					foreach ($events as $date => $events)
 					{
 						$day = DateTime::createFromFormat('Y-m-d', $date)->format('l');

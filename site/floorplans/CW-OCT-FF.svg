@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet href="../inc/css/indoorStyle.css"?><!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="594mm"
+   height="420mm"
+   viewBox="0 0 594 420"
+   version="1.1"
+   id="Map"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="CW-OCT-FF.svg">
+  <defs
+     id="defs2">
+    <clipPath
+       id="clipPath3785"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         style="clip-rule:evenodd"
+         inkscape:connector-curvature="0"
+         id="path3783"
+         d="M 0,248.16 H 7.2 V 588.32001 H 0 Z" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.25"
+     inkscape:cx="1578.1965"
+     inkscape:cy="486.13674"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="1377"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="Building"
+     inkscape:label="Building">
+    <path
+       style="display:inline;fill:#ccefef;fill-opacity:1;stroke:#000000;stroke-width:0.11431373px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 207.46139,-0.05691571 H 442.63257 L 574.16344,119.0825 l -0.004,184.20602 -129.45943,116.76876 -6.31967,2.35356 -230.95113,0.0321 L 75.353907,303.29737 72.778045,284.12704 72.784445,232.765 V 121.43356 Z"
+       id="path9376"
+       inkscape:connector-curvature="0" />
+    <path
+       style="display:inline;fill:#333333;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 241.55785,190.79661 -0.004,6.20741 13.62558,-0.01 -0.008,-10.82509 2.26434,-2.11189 -0.83358,-0.79554 24.07812,-21.74077 0.86053,0.91175 2.38338,-2.20687 26.50467,-0.0156 -0.0102,-12.3241 -6.89301,-0.007 -0.0109,2.38151 h 4.29717 l 0.0109,7.57027 -25.171,-0.0575 -30.1828,27.43022 0.0193,9.38705 -8.33036,0.0152 0.006,-3.7969 z"
+       id="INWALL1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccc"
+       inkscape:label="#path11135" />
+    <path
+       style="display:inline;fill:#333333;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 408.34851,229.34358 0.003,-6.13505 -13.71796,0.0155 -0.0156,10.82508 -2.24102,2.10073 0.83073,0.79963 -24.01654,21.62267 -0.85728,-0.91596 -2.3912,2.19515 -26.58154,0.14751 0.005,12.25225 6.94687,-0.006 0.004,-2.52613 -4.22779,-0.0211 0.009,-7.40756 25.10893,0.0182 30.28013,-27.28216 0.0139,-9.38705 8.15312,0.0527 -0.0114,3.62506 z"
+       id="INWALL2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccc"
+       inkscape:label="#path11135" />
+    <path
+       style="display:inline;fill:#333333;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 303.51852,272.23845 7.03855,-0.004 -0.13484,-12.23544 -26.55716,-0.12202 -2.32342,-2.0864 -0.86055,0.82864 -23.91384,-21.61715 0.67095,-0.86062 -2.26599,-2.10636 0.005,-10.85988 -13.6191,0.0483 v 6.09429 l 2.60121,0.0117 -9.7e-4,-3.82499 8.32972,0.008 -0.0211,9.46983 30.36636,27.36534 24.96945,-0.0676 0.0163,7.65804 -4.29776,0.0295 z"
+       id="INWALL3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccc"
+       inkscape:label="#path11135" />
+    <path
+       style="display:inline;fill:#333333;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 346.30351,147.88648 -6.90868,-0.009 -9e-5,12.33596 26.58364,-0.0144 2.32711,2.10868 0.82015,-0.78796 24.03395,21.77982 -0.77915,0.76088 2.23617,2.06101 0.0295,10.86602 13.71108,0.0135 -0.0111,-6.19263 -2.70483,-0.009 0.0236,3.42259 -8.07148,0.0396 -0.0254,-9.46978 -30.49243,-26.95185 -24.99182,-0.003 0.004,-7.58092 4.21277,0.005 z"
+       id="INWALL4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccc"
+       inkscape:label="#path11135" />
+  </g>
+  <g
+     inkscape:label="Rooms"
+     inkscape:groupmode="layer"
+     id="Rooms"
+     transform="translate(0,123)"
+     style="display:inline">
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 301.58405,-113.71871 -0.0283,86.193491 6.40094,0.01289 -0.0165,31.300298 23.03715,-3.3e-5 0.0574,-31.332579 33.04543,0.04516 0.0686,-86.218167 z"
+       id="SE103"
+       inkscape:connector-curvature="0"
+       inkscape:label="#path11101"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 332.98556,-25.556518 -0.12453,27.888231 30.02984,-0.08223 0.0727,-27.769527 z"
+       id="LIFT"
+       inkscape:connector-curvature="0"
+       inkscape:label="#path11105"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 366.20351,2.149051 16.59018,15.004933 99.63114,-90.032094 -45.15176,-40.83944 -71.07047,0.005 z"
+       id="SE104"
+       inkscape:connector-curvature="0"
+       inkscape:label="#path11103"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 483.93655,-71.542325 -99.69465,90.096284 44.24582,39.912067 99.7353,-90.066164 z"
+       id="SE105"
+       inkscape:connector-curvature="0"
+       inkscape:label="#path11107"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 529.63494,-30.257718 -99.68833,90.096055 3.50793,3.58057 0.0451,24.525493 130.14372,-0.02106 0.0119,-87.42227801 z"
+       id="SE106"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 433.51221,89.754295 -0.0907,24.957225 -60.50521,54.42368 99.70885,90.20014 91.05864,-82.16733 -0.0237,-87.413715 z"
+       id="SE107"
+       inkscape:connector-curvature="0"
+       inkscape:label="#path11125"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 371.52077,170.60427 99.7529,90.05356 -33.97984,30.64869 -224.55464,0.17273 -34.17007,-30.78402 c 32.53634,-30.45742 66.29932,-60.15502 99.53942,-90.18135 l 3.75389,3.36333 c 0.006,-0.15386 0.0369,-0.16936 0.13332,-0.16759 15.14326,0.27272 61.36154,-0.18886 85.75457,0.33253 z"
+       id="SE108"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccscc"
+       inkscape:label="#path11127" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 121.70431,209.2206 c 18.97525,17.26529 37.13748,33.57659 55.52575,50.15319 l 99.53628,-90.14365 -55.49377,-50.09511 z"
+       id="SE109"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:label="#path11129" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 120.36386,207.98395 99.65897,-90.14534 -3.90287,-3.49866 0.12627,-24.593026 -130.137283,-0.0088 -0.03205,87.440666 z"
+       id="SE110"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc"
+       inkscape:label="#path11131" />
+    <path
+       style="fill:#008080;stroke:#000000;stroke-width:0.267088px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 86.101618,87.849463 86.108124,0.46669639 212.57559,-113.68587 c 28.96327,-0.20296 57.92655,-0.0152 86.88982,-0.0227 l -0.14254,88.179275 h 6.45396 V 3.704077 L 282.1123,3.393087 215.76561,63.259332 216.1098,87.75006 Z"
+       id="SE102"
+       inkscape:connector-curvature="0"
+       inkscape:label="#path11133"
+       sodipodi:nodetypes="ccccccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:35.33869934px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.88346761"
+       x="222.14391"
+       y="-19.861702"
+       id="text7874-2-6-2-5"><tspan
+         sodipodi:role="line"
+         id="tspan7872-2-3-9"
+         x="222.14391"
+         y="12.61263"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.88346761" /></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="Labels"
+     inkscape:label="Labels"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:32.81774139px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.82044345"
+       x="166.01302"
+       y="112.36844"
+       id="text7874-2-6-2"
+       transform="scale(0.91496917,1.092933)"><tspan
+         sodipodi:role="line"
+         x="166.01302"
+         y="112.36844"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.82044345"
+         id="tspan6351">SE102</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:17.73467445px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.44336686"
+       x="339.1268"
+       y="57.174225"
+       id="text7874-2-6-2-7"
+       transform="scale(0.91496917,1.092933)"><tspan
+         sodipodi:role="line"
+         x="339.1268"
+         y="57.174225"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.44336686"
+         id="tspan6351-1">SE103</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:24.52205086px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.6130513"
+       x="414.11115"
+       y="63.695343"
+       id="text7874-2-6-2-77"
+       transform="scale(0.91496917,1.092933)"><tspan
+         sodipodi:role="line"
+         x="414.11115"
+         y="63.695343"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.6130513"
+         id="tspan6414">SE104</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:23.83056259px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.59576404"
+       x="466.00659"
+       y="114.64729"
+       id="text7874-2-6-2-1"
+       transform="scale(0.91496917,1.092933)"><tspan
+         sodipodi:role="line"
+         x="466.00659"
+         y="114.64729"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.59576404"
+         id="tspan6351-0">SE105</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:32.81774139px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.82044345"
+       x="523.85107"
+       y="21.197809"
+       id="text7874-2-6-2-9"
+       transform="scale(0.91496917,1.092933)"><tspan
+         sodipodi:role="line"
+         x="523.85107"
+         y="21.197809"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.82044345"
+         id="tspan6351-7">SE102</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:26.03036118px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.65075904"
+       x="525.49225"
+       y="168.65715"
+       id="text7874-2-6-2-96"
+       transform="scale(0.91496917,1.092933)"><tspan
+         sodipodi:role="line"
+         x="525.49225"
+         y="168.65715"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.65075904"
+         id="tspan6351-2">SE106</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:32.81774139px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.82044345"
+       x="487.69351"
+       y="272.37219"
+       id="text7874-2-6-2-4"
+       transform="scale(0.91496917,1.092933)"><tspan
+         sodipodi:role="line"
+         x="487.69351"
+         y="272.37219"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.82044345"
+         id="tspan6351-04">SE107</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:32.81774139px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.82044345"
+       x="310.00604"
+       y="341.91385"
+       id="text7874-2-6-2-53"
+       transform="scale(0.91496917,1.092933)"><tspan
+         sodipodi:role="line"
+         x="310.00604"
+         y="341.91385"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.82044345"
+         id="tspan6351-5">SE108</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:26.03036118px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.65075904"
+       x="179.15315"
+       y="300.8956"
+       id="text7874-2-6-2-8"
+       transform="scale(0.91496917,1.092933)"><tspan
+         sodipodi:role="line"
+         x="179.15315"
+         y="300.8956"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.65075904"
+         id="tspan6351-4">SE109</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:26.78451538px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;display:inline;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.66961288"
+       x="109.98387"
+       y="241.2049"
+       id="text7874-2-6-2-58"
+       transform="scale(0.91496917,1.092933)"><tspan
+         sodipodi:role="line"
+         x="109.98387"
+         y="241.2049"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';fill:#ffffff;fill-opacity:0.59139781;stroke-width:0.66961288"
+         id="tspan6351-09">SE1010</tspan></text>
+  </g>
+</svg>

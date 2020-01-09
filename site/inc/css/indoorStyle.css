@@ -37,11 +37,8 @@ stroke-width: 0.3px;
     stroke-width: 0.5px;
 }
 
-#Building rect {
-    fill: #f5f6fa;
-}
 
-#BuildingShape {
+#Building path {
     fill: #ebe7dc;
     stroke-width: 0.3px;
     stroke: black;

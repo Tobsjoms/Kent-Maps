@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?xml-stylesheet href="../inc/css/indoorStyle.css"?><!-- Created with Inkscape (http://www.inkscape.org/) -->
+<?xml-stylesheet href="../inc/css/indoorStyle.css"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -347,13 +348,6 @@
      id="Building"
      transform="translate(0,-87)"
      style="display:inline">
-    <rect
-       style="display:inline;opacity:0;fill:#f2decb;fill-opacity:1;stroke-width:0.45228392"
-       id="rect899"
-       width="294.68442"
-       height="204.78471"
-       x="1.1835051"
-       y="88.715462" />
     <path
        d="m 51.133951,145.72066 102.016869,0.0784 v 18.03499 h 17.31072 l -1e-5,-26.12381 h 38.47453 l 0.0289,2.05102 h 80.00748 v 44.94828 h 3.8747 l -0.0333,23.1449 h -3.84137 v 17.1122 h -65.22378 l -1e-5,-4.36565 h -14.34331 v 16.10089 H 166.2329 v -20.4615 h -21.13245 v 20.12604 H 51.178739 v -9.39216 H 33.065248 v 8.38584 H 5.5595525 V 202.48755 H 2.7362284 l 0.081343,-57.0239 H 32.904639 v 18.44889 l 18.2339,-0.0784 z"
        id="BuildingShape"
