@@ -14,6 +14,7 @@ $(window).on('load', (function(){
     
 var targets = ["Ground", "Roads", "Pathways", "Buildings", "text"];
 
+updateSVGColourScheme();
 function updateSVGColourScheme() {
 	// Get the SVG element
 	//var svgObject = document.getElementById("stage").contentDocument;
@@ -52,7 +53,7 @@ var panZoom = svgPanZoom(allSVG, {
 				    panZoom.zoom(0.8);
 				    panZoom.center();
 
-				    updateSVGColourScheme();
+				    
     
     var rectID = new Array();
     for(i=0; i < b.length; i++) {
