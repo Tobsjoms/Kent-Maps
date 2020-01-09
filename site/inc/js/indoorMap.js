@@ -49,7 +49,7 @@ $(window).on('load', (function(){
     }
 
     //Click anywhere on the SVG 
-    mapRooms.onclick = function() {
+    mapRooms.onclick = function(event) {
     var currentID = event.target.id;
         
     getRoomData(currentID);
@@ -60,10 +60,6 @@ $(window).on('load', (function(){
     
 }));
 
-
-
-    
-
 //obtain the roomData        
 function getRoomData(id) {
     var roomData = []; //data prep for return JSON data
@@ -73,6 +69,7 @@ function getRoomData(id) {
         url: "../site/inc/php/getRoomData.php",
         data: {id: id}, //send roomID to script
         success: function(response) {
+            //NEED TO INCLUDE EDGE CASES FOR DATABASE ERRORS ie. what happens if cannot connect to DB 
             roomData = JSON.parse(response); //parse as JSON object
             roomPopup(id, roomData); //pass room and JSON object to RoomPopup function
         }

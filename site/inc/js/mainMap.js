@@ -62,7 +62,7 @@ var panZoom = svgPanZoom(allSVG, {
     
 //Building Interactivity---------------------------------
 
-    allSVG.onclick = function() {
+    allSVG.onclick = function(event) {
     var currentID = event.target.id;
     //get current id of object within svgItem
     getBuildingData(currentID);

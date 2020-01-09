@@ -32,7 +32,7 @@ function buildingPopup(currentID, buildingData) {
         //check building has data - if not do this
         if (typeof thisBuilding == 'undefined') {
             console.log("data not found");
-            thisBuilding = {BuildingID: "None", BuildingName: currentID, BuildingDescription: "None", BuildingFloorID: "0", FloorCount: "2"}
+            thisBuilding = {BuildingID: "None", BuildingName: currentID, BuildingDescription: "None", BuildingFloorID: "0", FloorCount: "0"}
         }
         
             console.log("data found!");
