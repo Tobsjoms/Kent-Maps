@@ -44,8 +44,9 @@ function buildingPopup(currentID, buildingData) {
         var id = thisBuilding.BuildingID;
         var desc = thisBuilding.BuildingDescription;
         var floorCount = thisBuilding.FloorCount;
-
+        var filename = thisBuilding.Filename;
         $("#timetable").css({"font-size": "26px"});
+        
         str = '<ul>';
         title = '<p id = test> Building Name:' + name; + '</p>' + '</br>';
         knownAs = '<p> Buiding Info: </p>' + desc + '</br>';
@@ -55,13 +56,21 @@ function buildingPopup(currentID, buildingData) {
             if (i == 0) { x = " Ground Floor"};
             if (i == 1) { x = " First Floor"};
             if (i == 2) { x = " Second Floor"};
-            str += '<li>' + name + x + '</li>';
+            str += '<li id = linkgen onclick=window.open("/Kent-Maps/site/temp.php?buildingID=' + filename + '")>' + name + x + '</li>';
         }
             str += '</ul>';
 
         //build into DOM
         document.getElementById('timetable').innerHTML = title + knownAs + p + str;
+        //enable links
 
     //maybe run consider adding more info such as lecture rooms, etc etc
 
-    }
+
+}
+/**
+link1 = document.getElementById("linkElem0");
+$("#timetable").on("click", "#linkElem0", function(event){
+    window.location.replace("127.0.0.1/Kent-Maps/site/temp.php?buildingID=" + link1);
+});
+*/

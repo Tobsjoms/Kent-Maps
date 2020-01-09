@@ -62,27 +62,26 @@ var panZoom = svgPanZoom(allSVG, {
     
 //Building Interactivity---------------------------------
 
-    allSVG.onclick = function(event) {
-    var currentID = event.target.id;
+allSVG.onclick = function(event) {
+var currentID = event.target.id;
     //get current id of object within svgItem
-    getBuildingData(currentID);
-    }
+getBuildingData(currentID);
+}
     
-    function getBuildingData(id) {
-        var buildingData = [] //JSON Data
-        $.ajax({
-        type: "POST",
-        url: "../site/inc/php/getBuildingData.php",
-        data: {id: id}, //send roomID to script
-        success: function(response) {
-            buildingData = JSON.parse(response); //parse as JSON object
-            buildingPopup(id, buildingData); //pass room and JSON object to RoomPopup function
-        }
-
-    });
-
+function getBuildingData(id) {
+    var buildingData = [] //JSON Data
+    $.ajax({
+    type: "POST",
+    url: "../site/inc/php/getBuildingData.php",
+    data: {id: id}, //send roomID to script
+    success: function(response) {
+        buildingData = JSON.parse(response); //parse as JSON object
+        buildingPopup(id, buildingData); //pass room and JSON object to RoomPopup function
     }
-    
+
+});
+
+}
 
     
 }));

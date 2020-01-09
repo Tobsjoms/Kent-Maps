@@ -16,6 +16,11 @@
 		$hash = substr(sha1($string), 0, 10);
 		return $colors[hexdec($hash) % count($colors)];
 	}
+    //load specific building
+    $building = $_GET["buildingID"];
+
+    $mapElem = "<object id='stage' data='floorplans/$building' type='image/svg+xml'></object>";
+
 ?>
 
 <HTML>	
@@ -33,7 +38,12 @@
 	<body class="sidebar-open">
 
 		<div id="main-container">
-			<div id="map"><object id="stage" data="floorplans/CW-SW-GF-Test.svg" type="image/svg+xml"></object></div>
+			<div id="map">
+            <?php
+                    echo $mapElem;
+                ?>
+            
+            </div>
 			<div id="topbar">
 				<div id="logo">
 					<b>UKC</b>INFO 
