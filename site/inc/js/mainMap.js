@@ -88,6 +88,16 @@ $("#parkToggle").click(function() {
         rectID.push(b[i].id);
     }
     
+    //zoomButtons
+    $("#zoomIn").click(function() {
+        panZoom.zoomIn();
+    });    
+    
+    $("#zoomOut").click(function() {
+        panZoom.zoomOut();
+    });
+    
+    
 //Building Interactivity----------------------------------------------
 //--------------------------------------------------------------------
 svgItem.onclick = function(event) {

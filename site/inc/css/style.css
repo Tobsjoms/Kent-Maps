@@ -147,12 +147,63 @@ footer {
     MAP FILTER CONTROLS
 
 *****************************************************/
+
+#mapZoomContainer {
+    position: absolute;
+    bottom: 3em;
+    float: right;
+    height: 50px;
+    margin-left: 27em;
+    background-color: #fcfcfc;
+    padding: 10px;
+    box-shadow:0 4px 4px rgba(0,0,0,0.06);
+    border:1px solid rgba(0,0,0,0.05);
+    border-radius:4px;
+}
+
+#zoomBox {
+    position: relative;
+    bottom: 6px;
+}
+
+#zoomIn {
+    margin: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #fcfcfc;
+    border-bottom:1px solid rgba(0,0,0,0.1);
+    border-radius:4px;
+}
+
+#zoomOut {
+    margin-top: -5px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #fcfcfc;
+    border-radius:4px;
+    
+}
+
+#zoomIn:hover{
+    background-color: #d9d9d9;
+    cursor: pointer;
+}
+
+#zoomOut:hover{
+    background-color: #d9d9d9;
+    cursor: pointer;
+}
+
+
 #mapFilterBox {
     position: absolute;
     float: left;
     bottom: 3em;
     left: 0;
-    width: 500px;
+    width: 375px;
     height: 50px;
     background-color: #fcfcfc;
     margin-left: 3em;

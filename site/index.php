@@ -54,6 +54,7 @@
 					</div>
 				</div>
 			</div>
+            <div>
                 <div id="mapFilterBox">
                     <div class="parkToggle">
                         <a> Parking Icons</a>
@@ -63,6 +64,13 @@
                         </label>
                     </div>
                 </div>
+                <div id = "mapZoomContainer">
+                    <div id = "zoomBox">
+                    <p id = "zoomIn">+</p>
+                    <p id = "zoomOut">_</p>
+                    </div>
+                </div>
+            </div>
 		</div>
 
 		<div id="sidebar">
