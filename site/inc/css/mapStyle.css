@@ -22,6 +22,10 @@
     stroke: none;
 }
 
+#Ground rect{
+fill: #ebebeb;
+}
+
 #Roads path{
 	fill: #989898;
 	stroke-width: 0.18px;
@@ -30,4 +34,8 @@
 #Text text {
 	/* Prevent text from being hovered, instead target shape below */
     pointer-events: none;
+}
+
+#svgBackground {
+    
 }

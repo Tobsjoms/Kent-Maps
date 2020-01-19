@@ -41,7 +41,7 @@
 				</div>
 				<div id="search">
 					<input type="text" spellcheck="false" onkeyup="displayResult(this.value)">
-					<a href="#"><i class="material-icons">search</i></a>
+					<a href="#" id = "sClick"><i class="material-icons">search</i></a>
 				</div>
 
 				<div id="user-panel">
@@ -54,6 +54,15 @@
 					</div>
 				</div>
 			</div>
+                <div id="mapFilterBox">
+                    <div class="parkToggle">
+                        <a> Parking Icons</a>
+                        <label class="switch">
+                            <input type=checkbox id="parkToggle">
+                            <span class ="slider round"></span>
+                        </label>
+                    </div>
+                </div>
 		</div>
 
 		<div id="sidebar">
