@@ -38,6 +38,49 @@ function updateSVGColourScheme() {
 	    targetedNodes[i].style.removeProperty('opacity');
 	}
 }
+    
+//-----------------PATHFINDING------------------------------------------------//
+
+    var pathLayer = svgDoc.getElementById("Pathways");
+    var pathway = svgDoc.getElementById("path1142");
+    var pathCoord = pathway.getAttribute("d");
+    
+    var sod = pathway.getAttribute("sodipodi:nodetypes");
+    console.log(pathway);
+    console.log(pathCoord);
+    console.log(sod.length + " Paths");
+    
+    $(pathway).click(function() {
+       buildThis();
+        console.log("click");
+    });
+    
+    function buildThis() {
+        //M = base XY, H = Draw Horizontal, V = verticle
+        //each number is a nodePoint
+        pathway.setAttribute("d", "M 5.6594321,94.005023 H 16.557347 27.969756 43.685203 v 31.898617 h 17.679881 16.089625 10.944687 11.599498 11.505956 20.01848 40.5047 17.67988 v -8.60608 -8.60607" );
+        
+        //building new line - doesn't work (doesn't appear?)
+       var newElem = document.createElement("path");
+        newElem.setAttribute("style", "fill-opacity: 1; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;");
+        newElem.setAttribute("d", pathCoord);
+        newElem.setAttribute("inkscape:connector-curvature", "0");
+        newElem.setAttribute("sodipodi:nodetypes", sod);
+        newElem.style.stroke = "#ff0000";
+        newElem.style.visibility = "true";
+        newElem.style.strokeWidth = "5px";
+        pathLayer.append(newElem);
+    }
+    
+    
+        
+    
+    
+    
+    
+    
+    
+//-------------------------------------PATHFINDNIG---------------------------//
   
 // panning
 var panZoom = svgPanZoom(allSVG, {
