@@ -1,4 +1,14 @@
 
+// Object parent to all svg nodes
+allSVG = null;
+
+currentColourMode = null;
+
+function changeColourMode(colourMode){
+    allSVG.classList.remove(currentColourMode);
+    allSVG.classList.add(colourMode);
+    currentColourMode = colourMode;
+}
 
 $(window).on('load', (function(){
     var a = document.getElementById('stage');
@@ -6,25 +16,47 @@ $(window).on('load', (function(){
 
     
     var svgItem = svgDoc.getElementById("Buildings"); //buildings
+    svgItem.classList.add("svg-buildings");
+
     var GroundObject = svgDoc.getElementById("Ground"); //Ground
+    GroundObject.classList.add("svg-ground");
+
     var RoadObject = svgDoc.getElementById("Roads"); //Roads
+    RoadObject.classList.add("svg-roads");
+
     var svgItem2 = svgDoc.getElementById("Pathways"); //Pathways
+    svgItem2.classList.add("svg-pathways");
+
     var textsObject = svgDoc.getElementById("Text"); //Text Layer Objects
+    textsObject.classList.add("svg-text");
+
     var iconsObject = svgDoc.getElementById("Icons"); //Icon Layer Objects
+    iconsObject.classList.add("svg-icons");
+
     var parkIconsObject = svgDoc.getElementById("Park-Symbols"); //Park Symbols 
-    var allSVG= svgDoc.getElementById("svg16");
+    parkIconsObject.classList.add("svg-parksymbols");
+
+
+    allSVG = svgDoc.getElementById("svg16");
+
     var b = svgItem.getElementsByTagName("path");
     
     var targets = ["Ground", "Roads", "Pathways", "Buildings", "Text"];
 
-updateSVGColourScheme();
 
-function updateSVGColourScheme() {
-	// Get the SVG element
-	//var svgObject = document.getElementById("stage").contentDocument;
-	// Get all groups
+    // Set SVG to have the user-set colour scheme (if we have it)
+    if (document.body.id) 
+        changeColourMode(document.body.id);
+    else
+        changeColourMode("default");
+
+    /*
+        REMOVE STYLES FROM SVG ELEMENTS
+    */
+
+    // Get all groups
 	var groups = svgDoc.getElementsByTagName("g");
-
+    // Holds target nodes
 	var targetedNodes = {};
 
 	for (var i = 0; i < groups.length; i++){
@@ -44,42 +76,41 @@ function updateSVGColourScheme() {
 	    targetedNodes[i].style.removeProperty('stroke');
 	    targetedNodes[i].style.removeProperty('stroke-width');
 	    targetedNodes[i].style.removeProperty('opacity');
+        targetedNodes[i].style.removeProperty('font');
 	}
-}
     
-//User Object filtering ------------------------------------------------
+    //User Object filtering ------------------------------------------------
 
     
-var parkIcon = parkIconsObject.getElementsByTagName("use"); //actual parking icons
+    var parkIcon = parkIconsObject.getElementsByTagName("use"); //actual parking icons
 
-$("#parkToggle").click(function() {
-    console.log(parkIcon.length);
-    var checkBox = document.getElementById("parkToggle");
-    
-    if (checkBox.checked == true) {
-        for(i=0; i < parkIcon.length; i++) {
-            parkIcon[i].style.visibility = "hidden";
-        }
-    }
-    else {
-        if (parkIcon[1].style.visibility = "hidden") {
+    $("#parkToggle").click(function() {
+        console.log(parkIcon.length);
+        var checkBox = document.getElementById("parkToggle");
+        
+        if (checkBox.checked == true) {
             for(i=0; i < parkIcon.length; i++) {
-                parkIcon[i].style.visibility = "visible";
+                parkIcon[i].style.visibility = "hidden";
             }
         }
-    }
-});
-
-
+        else {
+            if (parkIcon[1].style.visibility = "hidden") {
+                for(i=0; i < parkIcon.length; i++) {
+                    parkIcon[i].style.visibility = "visible";
+                }
+            }
+        }
+    });
     
-//---------------------------------------------------------------------
-// panning config------------------------------------------------------
+    //---------------------------------------------------------------------
+    // panning config------------------------------------------------------
     var panZoom = svgPanZoom(allSVG, {
         zoomEnabled: true,
         minZoom: 0.8,
-        controlIconsEnabled: false
-        });
-    panZoom.zoom(0.8);
+        controlIconsEnabled: false,
+        preventMouseEventsDefault: false
+    });
+    panZoom.contain();
     panZoom.center();
     var rectID = new Array();
     for(i=0; i < b.length; i++) {
@@ -103,7 +134,6 @@ $("#parkToggle").click(function() {
         var currentID = event.target.id;
         //get current id of object within svgItem
         getBuildingData(currentID);
-        ColourModeSet();
     }
     
     function getBuildingData(id) {
@@ -118,66 +148,5 @@ $("#parkToggle").click(function() {
             }
         });
     }
-    
-//Map Colour Modes (Dark Mode, etc)------------------------------------
-//---------------------------------------------------------------------
-    
-    
-    function ColourModeSet(colour) {
-        //takes colour as param (pass from elsewhere), sets respective colour set and applies
-        //ColSet order is defined as follows - 
-        //[Ground, Buildings, Roads, Pathways, Text, Icons, Background] ground = grass
-        var colSet = [];
-        if (colour == "Dark") {
-            colSet = ["#85b184","#778494","#363636","#c7c7c7","#484848","#707070","#58595a"];
-        }
-        else if (colour == "Light") {
-            colSet = [""];
-        }
-        else if (colour == "Blind") {
-            colSet = [""];
-        }
-        //Ground Objects
-        var GroundElems = GroundObject.getElementsByTagName("path"); 
-        
-        var svgBackground = GroundObject.getElementsByTagName("rect"); 
-        //Building Objects
-        var BuildingElems = svgItem.getElementsByTagName("path"); 
-        //Road Objects
-        var RoadElems = RoadObject.getElementsByTagName("path");
-        //Pathway Objects
-        var PathwayElems = svgItem2.getElementsByTagName("path"); 
-        //Text Objects
-        var textElems = textsObject.getElementsByTagName("tspan");
-        //icons objects
-        var iconsElems = iconsObject.getElementsByTagName("use");
-        
-        
-        
-        //loops for each layer (though could be a single recursive if im smart) potentially via case switch
-        
-        for(i = 0; i < GroundElems.length; i++ ) { //Buildings
-            GroundElems[i].style.fill = colSet[0];
-        }
-        for(i = 0; i < BuildingElems.length; i++ ) { //Pathways
-            BuildingElems[i].style.fill = colSet[1];
-        }
-        for(i = 0; i < RoadElems.length; i++ ) { //Buildings
-            RoadElems[i].style.fill = colSet[2];
-        }
-        for(i = 0; i < PathwayElems.length; i++ ) { //Pathways
-            PathwayElems[i].style.fill = colSet[3];
-        }
-        for(i = 0; i < textElems.length; i++ ) { //Icons
-            textElems[i].style.fill = colSet[4];
-        }
-        for(i = 0; i < iconsElems.length; i++ ) { //Icons
-            iconsElems[i].style.fill = colSet[5];
-            svgBackground[i].style.fill = colSet[6];
-        }
-        
-    }
-    
-    
-    
+ 
 }));

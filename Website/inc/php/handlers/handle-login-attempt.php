@@ -1,6 +1,6 @@
 <?php
 
-	$sql= "SELECT user_id, user_password, user_timetable_url FROM users WHERE user_email = :user_email LIMIT 1";
+	$sql= "SELECT user_id, user_password, user_timetable_url, user_colour_mode FROM users WHERE user_email = :user_email LIMIT 1";
 	$stmt = $conn->prepare($sql);
 	$stmt->bindParam(':user_email', $_POST['email'], PDO::PARAM_STR);
 	$stmt->execute();
@@ -14,6 +14,9 @@
 			$_SESSION['id'] = $row[0];
 			$_SESSION['email'] = $_POST['email'];
 			$_SESSION['timetable_url'] = $row[2];
+
+			// If we have a colour scheme set, set session var
+			if ($row[3] != null) $_SESSION['colour_scheme'] = $row[3];
 
 			// Redirect them to settings
 			header("Location: index.php");

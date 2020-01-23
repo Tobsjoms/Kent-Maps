@@ -55,6 +55,7 @@ body.logged-in #main-container{
 
 #map object#stage{
 	width:100%;
+	height: 100vh;
 	background-color:#f5f6fa;
 }
 

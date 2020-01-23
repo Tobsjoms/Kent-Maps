@@ -31,7 +31,8 @@
 					user_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 					user_email VARCHAR(30) NOT NULL,
 					user_password CHAR(60) NOT NULL,
-					user_timetable_url VARCHAR(50)
+					user_timetable_url VARCHAR(50),
+					user_colour_mode VARCHAR(30)
 				)
 	    	");
 	    	$createUsersStmt->execute();

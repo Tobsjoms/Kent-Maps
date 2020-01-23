@@ -21,6 +21,11 @@
 		$hash = substr(sha1($string), 0, 10);
 		return $colors[hexdec($hash) % count($colors)];
 	}
+
+	// Properties to inject into body element
+	$bodyProperties = "";
+	if (isset($_SESSION['id'])) $bodyProperties .= 'class="logged-in"';
+	if (isset($_SESSION['colour_scheme'])) $bodyProperties .= ' id="' . $_SESSION['colour_scheme'] . '"';
 ?>
 
 <HTML>
@@ -36,7 +41,7 @@
 		<script src="inc/js/toggle-tab-funcs.js"></script>
 	</head>
 
-	<body <?php if (isset($_SESSION['id'])){ echo 'class="logged-in"'; } ?> >
+	<body <?= $bodyProperties ?> >
 
 		<div id="main-container">
 			<div id="map"><object id="stage" data="floorplans/Campus Map Entire.svg" type="image/svg+xml"></object></div>
