@@ -1,7 +1,11 @@
-    //includes scripts that go across entire site, none page specific such as search funtions.
-    //consider edge case for getting timetable html back
-    //potentially can be done by clicking anywhere BUT a room returns specific ID and check for that ID returned If SO then don't change or change back to the timetable UI!
-    //need more UI Divs to hook onto for each bit of data eg staffid, name, department
+
+
+//includes scripts that go across entire site, none page specific such as search funtions.
+//consider edge case for getting timetable html back
+//potentially can be done by clicking anywhere BUT a room returns specific ID and check for that ID returned If SO then don't change or change back to the timetable UI!
+//need more UI Divs to hook onto for each bit of data eg staffid, name, department
+
+
 function roomPopup(currentID, staffData) {
     //check room has data
     console.log(currentID);
@@ -25,12 +29,11 @@ function roomPopup(currentID, staffData) {
         }
     str += '</ul>';
     document.getElementById('timetable').innerHTML = p + str;
-
-    }    
+}    
 
 function buildingPopup(currentID, buildingData) {
-        //need more UI Divs to hook onto for each bit of data eg staffid, name, department
 
+    //need more UI Divs to hook onto for each bit of data eg staffid, name, department
     var thisBuilding = buildingData[0];
 
         //check building has data - if not do this
@@ -63,7 +66,6 @@ function buildingPopup(currentID, buildingData) {
         //enable links
 
     //maybe run consider adding more info such as lecture rooms, etc etc
-
 
 }
 /**

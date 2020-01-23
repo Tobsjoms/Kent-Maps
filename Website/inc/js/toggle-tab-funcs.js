@@ -1,6 +1,8 @@
 
 
 function changeTab(event){
+	// Ignore if we're already on this tab
+	if (event.classList.contains('selected')) return;
 
 	// Full group of tabs,
 	group = Array.from(event.parentElement.childNodes);
@@ -12,6 +14,11 @@ function changeTab(event){
 			tab.classList.remove('selected');
 			contentPanelToClose = document.getElementById(tab.getAttribute("target"));
 			contentPanelToClose.classList.remove('visible');
+			// Delete temporary tab
+			if (tab.classList.contains('temporary')){
+				tab.parentNode.removeChild(tab);
+				contentPanelToClose.parentNode.removeChild(contentPanelToClose);
+			}
 		}
 	});
 
