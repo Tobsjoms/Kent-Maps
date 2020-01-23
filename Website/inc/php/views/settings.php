@@ -24,7 +24,9 @@
 		</select>
     </div>
 
-	<input class="button enabled" id="submit-button" type="submit" name="submit" value="Save Settings"/>
+	<input class="button enabled" id="submit-button" type="submit" name="submit" value="Save Changes"/>
 </form>
+
+<a href="index.php" class="alternate-lilo">Discard Changes</a>
 
 <?php include 'lilo-suffix.php'; ?>

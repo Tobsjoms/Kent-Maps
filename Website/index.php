@@ -62,7 +62,7 @@
 							<i class="material-icons">account_circle</i>
 							<div class="details">
 								<span class="email"><?= $_SESSION['email'] ?></span>
-								<a href="logout.php" class="logout">Log out</a>
+								<a href="settings.php" class="link">Settings</a><a href="logout.php" class="link">Log out</a>
 							</div>
 						</div>
 					</div>

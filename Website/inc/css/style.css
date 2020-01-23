@@ -177,7 +177,7 @@ body.logged-in #main-container{
 	clear:right;
 }
 
-#user-panel .details .logout{
+#user-panel .details a.link{
 	float:left;
 	color:inherit;
 	text-decoration:none;
