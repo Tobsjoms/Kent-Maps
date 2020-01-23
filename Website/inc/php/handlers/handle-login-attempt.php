@@ -13,8 +13,9 @@
 			// Correct username/password combo
 			$_SESSION['id'] = $row[0];
 			$_SESSION['email'] = $_POST['email'];
-			$_SESSION['timetable_url'] = $row[2];
-
+			
+			// If we have a url set, set session var
+			if ($row[2] != null) $_SESSION['timetable_url'] = $row[2];
 			// If we have a colour scheme set, set session var
 			if ($row[3] != null) $_SESSION['colour_scheme'] = $row[3];
 
