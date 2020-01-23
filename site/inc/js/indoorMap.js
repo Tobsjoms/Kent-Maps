@@ -1,7 +1,8 @@
 $(window).on('load', (function(){
  
     
-    //obtaining SVG elements ready for manipulation
+//------SVG Manipulation---------------------------------------------------------------//
+
     var a = document.getElementById('stage');
     var svgDoc = a.contentDocument;
     var allSVG= svgDoc.getElementById("Map");
@@ -10,6 +11,7 @@ $(window).on('load', (function(){
         var roomRect = mapRooms.getElementsByTagName("rect");
     var targets = ["Building", "Rooms", "Pathways", "Doors", "Icons", "Labels"];
     
+//Strip SVG Style
 updateSVGColourScheme();
 function updateSVGColourScheme() {
 	// Get the SVG element
@@ -38,6 +40,7 @@ function updateSVGColourScheme() {
 	    targetedNodes[i].style.removeProperty('opacity');
 	}
 }
+//-----------------------------------------------------------------------------------//
     
 //-----------------PATHFINDING------------------------------------------------//
 
@@ -71,18 +74,10 @@ function updateSVGColourScheme() {
         newElem.style.strokeWidth = "5px";
         pathLayer.append(newElem);
     }
-    
-    
-        
-    
-    
-    
-    
-    
-    
-//-------------------------------------PATHFINDNIG---------------------------//
+
+//-------------------------------------------------------------------------//
   
-// panning
+//---Panning settings ----------------------------------------------------//
 var panZoom = svgPanZoom(allSVG, {
     zoomEnabled: true,
     minZoom: 0.8,
@@ -105,9 +100,11 @@ var panZoom = svgPanZoom(allSVG, {
     getRoomData(currentID);
     }
     
-  
-    
+
 }));
+
+//----------------------------------------------------------------------//   
+//-----API Calls & Obtaing Data----------------------------------------------------------------//
 
 //obtain the roomData        
 function getRoomData(id) {
