@@ -29,8 +29,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="inc/css/style.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script src="inc/js/jquery-3.4.1.js"></script>
 		<script src="inc/js/svg-pan-zoom.js"></script>
-		<script src="inc/js/svg-colours.js"></script>
+		<script src="inc/js/mainMap.js"></script>
+		<script src="inc/js/coreScript.js"></script>
 		<script src="inc/js/toggle-tab-funcs.js"></script>
 	</head>
 
@@ -38,27 +40,12 @@
 
 		<div id="main-container">
 			<div id="map"><object id="stage" data="floorplans/Campus Map Entire.svg" type="image/svg+xml"></object></div>
-			<script>
-				window.onload = function(){
-					var a = document.getElementById('stage');
-	    			var svgDoc = a.contentDocument;
-	    			var allSVG= svgDoc.getElementById("svg16");
-				    var panZoom = svgPanZoom(allSVG, {
-				        zoomEnabled: true,
-				        minZoom: 0.8,
-				        controlIconsEnabled: false
-				    });
-
-				    panZoom.zoom(0.8);
-				    panZoom.center();
-
-				    updateSVGColourScheme();
-				};
-			</script>
 			<div id="topbar">
+
 				<div id="logo">
-					<b>UKC</b>INFO 
+					<b>UKC</b>GURU
 				</div>
+
 				<div id="search">
 					<input type="text" spellcheck="false">
 					<a href="#"><i class="material-icons">search</i></a>
@@ -78,6 +65,24 @@
 					<div id="user-panel"><a href="login.php">Log in</a> or <a href="signup.php">sign up</a> to use more features!</div>
 				<?php } ?>
 			</div>
+
+            <div>
+                <div id="mapFilterBox">
+                    <div class="parkToggle">
+                        <a> Parking Icons</a>
+                        <label class="switch">
+                            <input type=checkbox id="parkToggle">
+                            <span class ="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div id = "mapZoomContainer">
+                    <div id = "zoomBox">
+                    <p id = "zoomIn">+</p>
+                    <p id = "zoomOut">_</p>
+                    </div>
+                </div>
+            </div>
 		</div>
 
 		<?php if (isset($_SESSION['id'])){ ?>
