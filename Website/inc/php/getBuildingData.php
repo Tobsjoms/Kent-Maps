@@ -4,7 +4,7 @@
 include 'database.php';
 
 //connect to db
-$dbconnect = new mysqli($server, $dbusername, $dbpassword, "ukcguru");
+$dbconnect = new mysqli($server, $dbusername, $dbpassword, $dbname);
 
  if (!$dbconnect) {
      die("connection failed" . mysqli_connect_error());

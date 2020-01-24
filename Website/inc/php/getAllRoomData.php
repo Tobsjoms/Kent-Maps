@@ -1,7 +1,7 @@
 <?php
 include 'database.php';
 //connect to db
-$dbconnect = new mysqli($server, $dbusername, $dbpassword, "maps_test");
+$dbconnect = new mysqli($server, $dbusername, $dbpassword, $dbname);
  if (!$dbconnect) {
      die("connection failed" . mysqli_connect_error());
  }
