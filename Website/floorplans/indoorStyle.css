@@ -1,0 +1,30 @@
+#Rooms rect{
+    fill: #84cded;
+    stroke:#000000;
+    stroke-width:0.14;
+    stroke-miterlimit:4;
+    stroke-dasharray:none;
+    stroke-opacity:1;
+}
+#Rooms path{
+    fill: #84cded;
+    stroke:#000000;
+    stroke-width:0.14;
+    stroke-miterlimit:4;
+    stroke-dasharray:none;
+    stroke-opacity:1;
+}
+
+#Rooms path:hover {
+fill: #c3e9fa;
+stroke:#e8da6c;
+}
+
+#Rooms rect:hover {
+fill: #c3e9fa;
+stroke:#e8da6c;
+}
+
+#layer5 text {
+    pointer-events: none;
+}
