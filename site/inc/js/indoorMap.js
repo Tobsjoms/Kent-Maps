@@ -43,7 +43,7 @@ function updateSVGColourScheme() {
 //-----------------------------------------------------------------------------------//
     
 //-----------------PATHFINDING------------------------------------------------//
-
+/**
     var pathLayer = svgDoc.getElementById("Pathways");
     var pathway = svgDoc.getElementById("path1142");
     var pathCoord = pathway.getAttribute("d");
@@ -74,7 +74,8 @@ function updateSVGColourScheme() {
         newElem.style.strokeWidth = "5px";
         pathLayer.append(newElem);
     }
-
+*/
+    
 //-------------------------------------------------------------------------//
   
 //---Panning settings ----------------------------------------------------//
@@ -109,10 +110,9 @@ var panZoom = svgPanZoom(allSVG, {
 //obtain the roomData        
 function getRoomData(id) {
     var roomData = []; //data prep for return JSON data
-    console.log(id);
     $.ajax({
         type: "POST",
-        url: "../site/inc/php/getRoomData.php",
+        url: "../site/inc/php/getAllRoomData.php",
         data: {id: id}, //send roomID to script
         success: function(response) {
             //NEED TO INCLUDE EDGE CASES FOR DATABASE ERRORS ie. what happens if cannot connect to DB 
