@@ -1,15 +1,17 @@
 $(window).on('load', (function(){
  
     
-    //obtaining SVG elements ready for manipulation
+//------SVG Manipulation---------------------------------------------------------------//
+
     var a = document.getElementById('stage');
     var svgDoc = a.contentDocument;
     var allSVG= svgDoc.getElementById("Map");
     var mapRooms = svgDoc.getElementById("Rooms"); //All Rooms
-        var roomPaths = mapRooms.getElementsByTagName("path");
-        var roomRect = mapRooms.getElementsByTagName("rect");
+    var roomPaths = mapRooms.getElementsByTagName("path");
+    var roomRect = mapRooms.getElementsByTagName("rect");
     var targets = ["Building", "Rooms", "Pathways", "Doors", "Icons", "Labels"];
     
+//Strip SVG Style
 updateSVGColourScheme();
 function updateSVGColourScheme() {
 	// Get the SVG element
@@ -38,9 +40,10 @@ function updateSVGColourScheme() {
 	    targetedNodes[i].style.removeProperty('opacity');
 	}
 }
+//-----------------------------------------------------------------------------------//
     
 //-----------------PATHFINDING------------------------------------------------//
-
+/**
     var pathLayer = svgDoc.getElementById("Pathways");
     var pathway = svgDoc.getElementById("path1142");
     var pathCoord = pathway.getAttribute("d");
@@ -71,18 +74,11 @@ function updateSVGColourScheme() {
         newElem.style.strokeWidth = "5px";
         pathLayer.append(newElem);
     }
+*/
     
-    
-        
-    
-    
-    
-    
-    
-    
-//-------------------------------------PATHFINDNIG---------------------------//
+//-------------------------------------------------------------------------//
   
-// panning
+//---Panning settings ----------------------------------------------------//
 var panZoom = svgPanZoom(allSVG, {
     zoomEnabled: true,
     minZoom: 0.8,
@@ -105,17 +101,18 @@ var panZoom = svgPanZoom(allSVG, {
     getRoomData(currentID);
     }
     
-  
-    
+
 }));
+
+//----------------------------------------------------------------------//   
+//-----API Calls & Obtaing Data----------------------------------------------------------------//
 
 //obtain the roomData        
 function getRoomData(id) {
     var roomData = []; //data prep for return JSON data
-    console.log(id);
     $.ajax({
         type: "POST",
-        url: "../site/inc/php/getRoomData.php",
+        url: "../Website/inc/php/getAllRoomData.php",
         data: {id: id}, //send roomID to script
         success: function(response) {
             //NEED TO INCLUDE EDGE CASES FOR DATABASE ERRORS ie. what happens if cannot connect to DB 

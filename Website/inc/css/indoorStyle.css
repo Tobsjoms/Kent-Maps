@@ -1,0 +1,49 @@
+#Rooms rect{
+    fill: #c4e8cf;
+    stroke:#000000;
+    stroke-width:0.14;
+    stroke-miterlimit:4;
+    stroke-dasharray:none;
+    stroke-opacity:1;
+}
+#Rooms path{
+    fill: #c4e8cf;
+    stroke:#000000;
+    stroke-width:0.14;
+    stroke-miterlimit:4;
+    stroke-dasharray:none;
+    stroke-opacity:1;
+}
+
+#Rooms path:hover {
+fill: #cff4db;
+stroke:#000000;
+stroke-width: 0.3px;
+}
+
+#Rooms rect:hover {
+fill: #cff4db;
+stroke:#000000;
+stroke-width: 0.3px;
+}
+
+#layer5 text {
+    pointer-events: none;
+}
+
+
+#Pathways {
+    fill: none;
+    stroke: #383838;
+    stroke-width: 0.5px;
+}
+
+
+#Building path {
+    fill: #ebe7dc;
+    stroke-width: 0.3px;
+    stroke: black;
+    -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.7));
+}
+
+

@@ -6,30 +6,47 @@
 //need more UI Divs to hook onto for each bit of data eg staffid, name, department
 
 
-function roomPopup(currentID, staffData) {
+function roomPopup(currentID, roomInfo) {
     //check room has data
-    console.log(currentID);
-    var thisRoom = staffData[0];
-    if (typeof thisRoom == 'undefined') {
-        thisRoom = ["Room Data Not Availiable "];
-        alert(thisRoom[0] + "for " + currentID);
+    console.log("--------Data------------");
+    console.log(roomInfo);
+    console.log("------------------------");
+    //Check for empty response from DB
+    if (roomInfo.length == 0) {
+        console.log("No DB.Room or DB.Staff Information for " + currentID);
     }
-    //potentially refactor to display data error in sidebar
+    else if (roomInfo.length > 0) {
+        var checkRoomData = roomInfo[roomInfo.length-1].RoomType;
+        if(typeof checkRoomData == "undefined") {
+            console.log("No DB.Room Information for " + currentID);
+        }
+        var checkStaffData = roomInfo[0].StaffID;
+        if(typeof checkStaffData == "undefined") {
+            console.log("No DB.Staff Information for " + currentID);
+            }
+        }
     
+    //plug data into UI elements
+    
+    
+    
+    
+    /**
     $("#timetable").html("Room:"  + currentID);
     $("#timetable").css({"font-size": "26px"});
 
-    var dataLength = staffData.length;
+    var dataLength = roomInfo.length;
     str = '<ul>';
     p = '<p>Staff In: </p>' + currentID;
     for(i=0; i < dataLength; i++) {
-            index = staffData[i];
+            index = roomInfo[i];
             str += '<li>' + index.Name + '</li>';
-            console.log(index.Name);
         }
     str += '</ul>';
     document.getElementById('timetable').innerHTML = p + str;
+*/
 }    
+  
 
 function buildingPopup(currentID, buildingData) {
 
@@ -57,7 +74,7 @@ function buildingPopup(currentID, buildingData) {
             if (i == 0) { long = " Ground Floor"; short = "GF"};
             if (i == 1) { long = " First Floor"; short = "FF"};
             if (i == 2) { long = " Second Floor"; short = "SF" };
-            str += '<li id = linkgen onclick=window.open("/Kent-Maps/site/temp.php?buildingID=' + id + "-" + short + ".svg" + '")>' + name + long + '</li>';
+            str += '<li id = linkgen onclick=window.open("/Kent-Maps/Website/index.php?buildingID=' + id + "-" + short + ".svg" + '")>' + name + long + '</li>';
         }
             str += '</ul>';
 

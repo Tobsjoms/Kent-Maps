@@ -26,6 +26,17 @@
 	$bodyProperties = "";
 	if (isset($_SESSION['id'])) $bodyProperties .= 'class="logged-in"';
 	if (isset($_SESSION['colour_scheme'])) $bodyProperties .= ' id="' . $_SESSION['colour_scheme'] . '"';
+
+    //Map Type Handling
+    $building = $_GET["buildingID"];
+    $mapElem = "<object id='stage' data='floorplans/Campus Map Entire.svg' type='image/svg+xml'></object>";
+    $loadscript = "<script src='inc/js/mainMap.js'></script>";;
+    
+    if($building != "svg16") { //if building is not the entire map file
+        $mapElem = "<object id='stage' data='floorplans/$building' type='image/svg+xml'></object>";
+        $loadscript = "<script src='inc/js/indoorMap.js'></script>";
+    }
+
 ?>
 
 <HTML>
@@ -36,7 +47,9 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<script src="inc/js/jquery-3.4.1.js"></script>
 		<script src="inc/js/svg-pan-zoom.js"></script>
-		<script src="inc/js/mainMap.js"></script>
+        <?php
+        echo $loadscript;
+        ?>
 		<script src="inc/js/coreScript.js"></script>
 		<script src="inc/js/toggle-tab-funcs.js"></script>
 	</head>
@@ -44,7 +57,11 @@
 	<body <?= $bodyProperties ?> >
 
 		<div id="main-container">
-			<div id="map"><object id="stage" data="floorplans/Campus Map Entire.svg" type="image/svg+xml"></object></div>
+			<div id="map">
+            <?php
+            echo $mapElem;
+            ?>
+            </div>
 			<div id="topbar">
 
 				<div id="logo">

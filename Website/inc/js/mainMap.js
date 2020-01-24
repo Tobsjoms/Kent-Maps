@@ -140,7 +140,7 @@ $(window).on('load', (function(){
         var buildingData = [] //JSON Data
         $.ajax({
         type: "POST",
-        url: "inc/php/getBuildingData.php",
+        url: "../Website/inc/php/getBuildingData.php",
         data: {id: id}, //send roomID to script
         success: function(response) {
             buildingData = JSON.parse(response); //parse as JSON object
