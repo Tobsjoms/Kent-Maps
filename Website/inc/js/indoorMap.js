@@ -1,11 +1,6 @@
 $(window).on('load', (function(){
  
     
-  $("#sButton").click(function() {
-      var searchValue = document.getElementById("sInput").value;
-        console.log(searchValue);
-    });
-    
 //------SVG Manipulation---------------------------------------------------------------//
 
     var a = document.getElementById('stage');
@@ -129,27 +124,12 @@ function getRoomData(id) {
         
 }
 
-function getSearchData(id) {
-    var roomData = []; //data prep for return JSON data
-    $.ajax({
-        type: "POST",
-        url: "../Website/inc/php/getSearchData.php",
-        data: {id: searchData}, //send roomID to script
-        success: function(response) {
-            //NEED TO INCLUDE EDGE CASES FOR DATABASE ERRORS ie. what happens if cannot connect to DB 
-            searchData = JSON.parse(response); //parse as JSON object
-           //  roomPopup(id, roomData); //pass room and JSON object to RoomPopup function
-        }
-
-    });
-        
-}
 
 
 var roomIDs = new Array();
 
 function runSearch() {
-
+var searchValue = document.getElementById("sInput").value;
     console.log("")
 for(var j = 0; j < roomIDs.length; j++) {
     if (roomIDs[j].match(searchValue)) { 

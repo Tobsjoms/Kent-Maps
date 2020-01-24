@@ -85,15 +85,6 @@ function buildingPopup(currentID, buildingData) {
     //maybe run consider adding more info such as lecture rooms, etc etc
 
 }
-
-
-function search(searchData){
-    console.log("Search data");
-    
-}
-
-
-
 /**
 link1 = document.getElementById("linkElem0");
 $("#timetable").on("click", "#linkElem0", function(event){
