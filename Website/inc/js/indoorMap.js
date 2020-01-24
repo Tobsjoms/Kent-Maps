@@ -125,19 +125,17 @@ function getRoomData(id) {
 }
 
 
-$( document ).ready(function() {
-
-});
 
 var roomIDs = new Array();
 
 function runSearch() {
 var searchValue = document.getElementById("sInput").value;
+    console.log("")
 for(var j = 0; j < roomIDs.length; j++) {
     if (roomIDs[j].match(searchValue)) { 
         
         }
-    } getRoomData(searchValue);
+    } 
 }
 
   

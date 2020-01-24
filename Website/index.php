@@ -69,8 +69,8 @@
 				</div>
 
 				<div id="search">
-					<input type="text" spellcheck="false">
-					<a href="#"><i class="material-icons">search</i></a>
+					<input type="text" spellcheck="false" id="sInput">
+					<a href="#" id = "sButton"><i class="material-icons">search</i></a>
 				</div>
 
 				<?php if (isset($_SESSION['id'])){ ?>
