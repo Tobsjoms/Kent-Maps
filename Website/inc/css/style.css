@@ -352,14 +352,26 @@ body.logged-in #sidebar{
 }
 
 
+/*****************************************************
+
+    SIDEBAR Map Data Population Styles
+
+*****************************************************/
+
+#linkgen {
+    color: #0a5c81;
+    cursor: pointer;
+    text-decoration: underline;
+}
 
 
+#itemTitle {
+    font-size: 26px;
+}
 
-
-
-
-
-
+#panel-title {
+    font-size: 22px;
+}
 
 
 

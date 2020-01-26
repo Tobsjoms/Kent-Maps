@@ -49,6 +49,38 @@ function roomPopup(currentID, roomInfo) {
   
 
 function buildingPopup(currentID, buildingData) {
+    var gotHOS = true; //got head of school data, assumed true
+    var thisBuilding = buildingData[0];
+    if(typeof thisBuilding == 'undefined') {
+        thisBuilding = {BuildingID: "None", BuildingName: currentID, BuildingDescription: "None", BuildingFloorID: "0", FloorCount: "0"}
+    }
+    if(thisBuilding.StaffDepartment == null) {
+        console.log("Null Data");
+        gotHOS = false;
+        document.getElementById("itemStaffInfo").innerHTML = ""; //empty the staff info div
+        
+    }
+    document.getElementById('itemTitle').innerHTML = "<a>" + thisBuilding.BuildingName + "</a>";
+    document.getElementById('itemInfo').innerHTML = "<a>" + thisBuilding.BuildingDescription + "</a>";
+    
+    if (gotHOS == true) {  //only adding staff data if avaliable
+    document.getElementById('itemStaffInfo').innerHTML = "<a id = 'panel-title'>" + "Head Of School: " + "</br> </a>" + "<a>" + thisBuilding.StaffName + "</br>" + thisBuilding.StaffDescription + "</br>" + thisBuilding.StaffRoomID  + "</br>" + "</a>";
+    }
+    //build links to interior maps
+    var mapLink = "";
+    for(i=0; i < thisBuilding.FloorCount; i++) {
+            if (i == 0) { long = " Ground Floor"; short = "GF"};
+            if (i == 1) { long = " First Floor"; short = "FF"};
+            if (i == 2) { long = " Second Floor"; short = "SF" };
+        mapLink +=  '<a id = linkgen onclick=window.open("/Kent-Maps/Website/index.php?buildingID=' + thisBuilding.BuildingID + "-" + short + ".svg" + '")>' + thisBuilding.BuildingName + long + '</a> </br>';
+    }
+    document.getElementById("itemLinks").innerHTML = "<a id = 'panel-title'> Interior Map Links </a> </br>" + mapLink;
+    console.log(mapLink);
+}
+
+
+
+function buildingPopupOld(currentID, buildingData) {
 
     //need more UI Divs to hook onto for each bit of data eg staffid, name, department
     var thisBuilding = buildingData[0];

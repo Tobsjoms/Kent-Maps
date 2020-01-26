@@ -14,7 +14,7 @@ $dbconnect = new mysqli($server, $dbusername, $dbpassword, $dbname);
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = $_POST['id'];
  
-    $sql = "SELECT * FROM buildingdata WHERE BuildingID LIKE '$data' ";
+    $sql = "SELECT * FROM `buildingdata` LEFT JOIN staff ON buildingdata.SchoolHead=staff.StaffID WHERE BuildingID LIKE '$data' ";
     
     
     $result = mysqli_query($dbconnect, $sql);

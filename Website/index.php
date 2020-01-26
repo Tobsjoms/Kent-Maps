@@ -112,6 +112,7 @@
 				<div class="navigation" id="nav-tabs">
 					<span class='selected' onClick="changeTab(this)" target="timetable"><i class="material-icons">date_range</i></span>
 					<span onClick="changeTab(this)" target="deadlines"><i class="material-icons">alarm</i><span id="deadline-number">1</span></span>
+                    <span onClick="changeTab(this)" target="mapResults"><i class="material-icons">search</i></span>
 				</div>
 				<div class="tab-content visible" id="timetable">
 					<?php
@@ -162,6 +163,14 @@
 						<input class="button" id="submit-button" type="submit" name="submit" value="Save"/>
 					</form>
 				</div>
+                <div class = "tab-content" id="mapResults">
+                    <div id = "itemTitle"><a>The University Of Kent</a></div>
+                    <div id = "itemPicture"></div>
+                    <div id = "itemInfo"></div>
+                    <div id = "itemStaffInfo"></div>
+                    <div id = "itemLinks"></div>
+                    <div id = "itemRooms"></div>
+                </div>
 			</div>
 		<?php } ?>
 	</body>
