@@ -134,6 +134,7 @@ $(window).on('load', (function(){
         var currentID = event.target.id;
         //get current id of object within svgItem
         getBuildingData(currentID);
+        document.getElementById("mapTab").click()
     }
     
     function getBuildingData(id) {

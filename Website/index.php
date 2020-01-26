@@ -112,7 +112,7 @@
 				<div class="navigation" id="nav-tabs">
 					<span class='selected' onClick="changeTab(this)" target="timetable"><i class="material-icons">date_range</i></span>
 					<span onClick="changeTab(this)" target="deadlines"><i class="material-icons">alarm</i><span id="deadline-number">1</span></span>
-                    <span onClick="changeTab(this)" target="mapResults"><i class="material-icons">search</i></span>
+                    <span onClick="changeTab(this)" target="mapResults" id="mapTab"><i class="material-icons">search</i></span>
 				</div>
 				<div class="tab-content visible" id="timetable">
 					<?php
