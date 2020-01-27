@@ -55,7 +55,7 @@ function buildingPopup(currentID, buildingData) {
         thisBuilding = {BuildingID: "None", BuildingName: currentID, BuildingDescription: "None", BuildingFloorID: "0", FloorCount: "0"}
     }
     if(thisBuilding.StaffDepartment == null) {
-        console.log("Null Data");
+        console.log("Null staff Data");
         gotHOS = false;
         document.getElementById("itemStaffInfo").innerHTML = ""; //empty the staff info div
         
@@ -68,55 +68,40 @@ function buildingPopup(currentID, buildingData) {
     }
     //build links to interior maps
     var mapLink = "";
-    for(i=0; i < thisBuilding.FloorCount; i++) {
+    for(i=0; i < thisBuilding.FloorCount; i++) { //generate links to inteior maps based on floorcount of building
             if (i == 0) { long = " Ground Floor"; short = "GF"};
             if (i == 1) { long = " First Floor"; short = "FF"};
             if (i == 2) { long = " Second Floor"; short = "SF" };
+            if (i == 3) { long = " Third Floor"; short = "TF" };
+            if (i == 4) { long = " Fourth Floor"; short = "4F" };
         mapLink +=  '<a id = linkgen onclick=window.open("/Kent-Maps/Website/index.php?buildingID=' + thisBuilding.BuildingID + "-" + short + ".svg" + '")>' + thisBuilding.BuildingName + long + '</a> </br>';
     }
     document.getElementById("itemLinks").innerHTML = "<a id = 'panel-title'> Interior Map Links </a> </br>" + mapLink;
-    console.log(mapLink);
+    
+    if(typeof buildingData[1] != "undefined" || typeof buildingData[1] != null){
+        console.log(buildingData);
+        var LecRooms = "<a id = 'panel-title'> Lecture Theatres </br> </a>";
+        for(i=0; i < buildingData.length; i++) { //Looping through the data and splitting data up based on roomtype
+            if(buildingData[i].RoomType == "Lecture Theatre") {
+                LecRooms += '<a>' + buildingData[i].RoomID + "</a> </br>";
+            } 
+            
+        }
+        
+        var CompRooms = "<a id = 'panel-title'> Computing Rooms </br> </a>";
+        for(i=0; i < buildingData.length; i++) { //Looping through the data and splitting data up based on roomtype
+            if(buildingData[i].RoomType == "Computer Room") {
+                CompRooms += '<a>' + buildingData[i].RoomID + "</a> </br>";
+            }
+            
+        }
+        document.getElementById("itemRooms").innerHTML = LecRooms + CompRooms;
+    }
 }
 
 
 
-function buildingPopupOld(currentID, buildingData) {
 
-    //need more UI Divs to hook onto for each bit of data eg staffid, name, department
-    var thisBuilding = buildingData[0];
-
-        //check building has data - if not do this
-    if (typeof thisBuilding == 'undefined') {
-        console.log("data not found");
-        thisBuilding = {BuildingID: "None", BuildingName: currentID, BuildingDescription: "None", BuildingFloorID: "0", FloorCount: "0"}
-        }
-
-        console.log("data found!");
-        var name = thisBuilding.BuildingName;
-        var id = thisBuilding.BuildingID;
-        var desc = thisBuilding.BuildingDescription;
-        var floorCount = thisBuilding.FloorCount; //NO OFF-BY-ONE errors because of the datatype from a database ...JSON
-        $("#timetable").css({"font-size": "26px"});
-        str = '<ul>';
-        title = '<p id = test> Building Name:' + name; + '</p>' + '</br>';
-        knownAs = '<p> Buiding Info: </p>' + desc + '</br>';
-        p = '<p>Avaliable Floors: </p>';
-        var x = "";
-        for(i=0; i < floorCount; i++) {
-            if (i == 0) { long = " Ground Floor"; short = "GF"};
-            if (i == 1) { long = " First Floor"; short = "FF"};
-            if (i == 2) { long = " Second Floor"; short = "SF" };
-            str += '<li id = linkgen onclick=window.open("/Kent-Maps/Website/index.php?buildingID=' + id + "-" + short + ".svg" + '")>' + name + long + '</li>';
-        }
-            str += '</ul>';
-
-        //build into DOM
-        document.getElementById('timetable').innerHTML = title + knownAs + p + str;
-        //enable links
-
-    //maybe run consider adding more info such as lecture rooms, etc etc
-
-}
 /**
 link1 = document.getElementById("linkElem0");
 $("#timetable").on("click", "#linkElem0", function(event){
