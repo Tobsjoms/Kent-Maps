@@ -1,5 +1,24 @@
 $(window).on('load', (function(){
  
+     $("#sButton").click(function() {
+         var searchValue = document.getElementById("sInput").value;
+             var searchData = []; //data prep for return JSON data
+
+        console.log(searchValue);
+         
+          $.ajax({
+        type: "POST",
+        url: "../Website/inc/php/getSearchData.php",
+        data: {value: searchValue}, 
+        success: function(response) {
+            searchData = JSON.parse(response); //parse as JSON object
+            searchPopup(searchData);
+        }
+
+    });
+         
+         
+    });
     
 //------SVG Manipulation---------------------------------------------------------------//
 
@@ -123,6 +142,8 @@ function getRoomData(id) {
     });
         
 }
+
+
 
 
 

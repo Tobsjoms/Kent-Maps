@@ -27,8 +27,7 @@ function roomPopup(currentID, roomInfo) {
         }
     
     //plug data into UI elements
-    
-    
+
     
     
     /**
@@ -47,7 +46,13 @@ function roomPopup(currentID, roomInfo) {
 */
 }    
   
+    
+ function searchPopup(searchData) {
+    console.log("--------Data------------");
+     console.log(searchData);
+    console.log("------------------------");
 
+ }
 function buildingPopup(currentID, buildingData) {
 
     //need more UI Divs to hook onto for each bit of data eg staffid, name, department
