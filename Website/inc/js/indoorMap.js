@@ -1,7 +1,6 @@
 $(window).on('load', (function(){
  
 $("#sButton").click(function() {
-   console.log("Click!"); 
 });  
     
 //------SVG Manipulation---------------------------------------------------------------//
