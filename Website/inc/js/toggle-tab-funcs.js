@@ -1,6 +1,7 @@
 
 
 function changeTab(event){
+   
 	// Ignore if we're already on this tab
 	if (event.classList.contains('selected')) return;
 

@@ -2,7 +2,7 @@
 //database credentials
 $dbusername = "root";
 $dbpassword = "";
-$server = "192.168.1.68"; //local host
+$server = "localhost"; //local host
 $dbname = "ukcguru";
 
 
