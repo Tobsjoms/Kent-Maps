@@ -6,6 +6,38 @@
 //need more UI Divs to hook onto for each bit of data eg staffid, name, department
 
 
+$(window).on('load', (function(){
+
+     $("#sButton").click(function() {
+         var searchValue = document.getElementById("sInput").value;
+             var searchData = []; //data prep for return JSON data
+
+        console.log(searchValue);
+         
+          $.ajax({
+        type: "POST",
+        url: "../Website/inc/php/getSearchData.php",
+        data: {value: searchValue}, 
+        success: function(response) {
+            searchData = JSON.parse(response); //parse as JSON object
+            searchPopup(searchData);
+        }
+
+    });
+         
+         
+    });
+
+}));
+
+
+ function searchPopup(searchData) {
+    console.log("--------Data------------");
+     console.log(searchData);
+    console.log("------------------------");
+
+ }
+
 function roomPopup(currentID, roomInfo) {
     //check room has data
     console.log("--------Data------------");
@@ -47,7 +79,6 @@ function roomPopup(currentID, roomInfo) {
 */
 }    
   
-
 function buildingPopup(currentID, buildingData) {
     var gotHOS = true; //got head of school data, assumed true
     var thisBuilding = buildingData[0];
