@@ -52,7 +52,11 @@ function buildingPopup(currentID, buildingData) {
     var gotHOS = true; //got head of school data, assumed true
     var thisBuilding = buildingData[0];
     if(typeof thisBuilding == 'undefined') {
-        thisBuilding = {BuildingID: "None", BuildingName: currentID, BuildingDescription: "None", BuildingFloorID: "0", FloorCount: "0"}
+        thisBuilding = {BuildingID: "None", 
+                        BuildingName: currentID, 
+                        BuildingDescription: "None", 
+                        BuildingFloorID: "0", 
+                        FloorCount: "0"};
     }
     if(thisBuilding.StaffDepartment == null) {
         console.log("Null staff Data");
@@ -78,33 +82,33 @@ function buildingPopup(currentID, buildingData) {
     }
     document.getElementById("itemLinks").innerHTML = "<a id = 'panel-title'> Interior Map Links </a> </br>" + mapLink;
     
+    var lecRooms = "<a> None </a> </br>";
+    var CompRooms = "<a> None </a> </br>";
+    var SemRooms = "<a> None </a> </br>";
+    
     if(typeof buildingData[1] != "undefined" || typeof buildingData[1] != null){
         console.log(buildingData);
-        var LecRooms = "<a id = 'panel-title'> Lecture Theatres </br> </a>";
-        for(i=0; i < buildingData.length; i++) { //Looping through the data and splitting data up based on roomtype
-            if(buildingData[i].RoomType == "Lecture Theatre") {
-                LecRooms += '<a>' + buildingData[i].RoomID + "</a> </br>";
-            } 
+        for (i = 0; i < buildingData.length; i++) {
             
-        }
-        
-        var CompRooms = "<a id = 'panel-title'> Computing Rooms </br> </a>";
-        for(i=0; i < buildingData.length; i++) { //Looping through the data and splitting data up based on roomtype
-            if(buildingData[i].RoomType == "Computer Room") {
-                CompRooms += '<a>' + buildingData[i].RoomID + "</a> </br>";
+            if (buildingData[i].RoomType == "Lecture Theatre" && typeof buildingData[i].RoomID != "undefined") {
+                if(lecRooms.includes("None")) {lecRooms = "";}
+                lecRooms += "<a>" + buildingData[i].RoomID + "</a> </br>";
+                
             }
             
+            if (buildingData[i].RoomType == "Computer Room" && typeof buildingData[i].RoomID != "undefined") {
+                if(CompRooms.includes("None")) {CompRooms = "";}
+                CompRooms += "<a>" + buildingData[i].RoomID + "</a> </br>";
+            }
+            
+            if (buildingData[i].RoomType == "Seminar Room" || buildingData[i].RoomType == "Classroom" && typeof buildingData[i].RoomID != "undefined") {
+                if(SemRooms.includes("None")) {SemRooms = "";}
+                SemRooms += "<a>" + buildingData[i].RoomID + "</a> </br>";
+            }
         }
-        document.getElementById("itemRooms").innerHTML = LecRooms + CompRooms;
+        
+
+        document.getElementById("itemRooms").innerHTML = "<a id ='panel-title'> Lecture Rooms </a> </br>" + lecRooms + "<a id ='panel-title'> Computing Rooms </a> </br>" + CompRooms + "<a id ='panel-title'> Seminar Rooms </a> </br>" + SemRooms;
     }
 }
 
-
-
-
-/**
-link1 = document.getElementById("linkElem0");
-$("#timetable").on("click", "#linkElem0", function(event){
-    window.location.replace("127.0.0.1/Kent-Maps/site/temp.php?buildingID=" + link1);
-});
-*/
