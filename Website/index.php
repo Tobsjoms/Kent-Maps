@@ -37,6 +37,10 @@
         $loadscript = "<script src='inc/js/indoorMap.js'></script>";
     }
 
+    if($building == "search") {
+        $mapElem = "<a id = 'panel-title'> search </a> </br>";
+    }
+
 ?>
 
 <HTML>
