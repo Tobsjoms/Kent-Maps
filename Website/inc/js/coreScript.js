@@ -48,35 +48,27 @@ function roomPopup(currentID, roomInfo) {
         console.log("No DB.Room or DB.Staff Information for " + currentID);
     }
     else if (roomInfo.length > 0) {
+        
         var checkRoomData = roomInfo[roomInfo.length-1].RoomType;
+        
         if(typeof checkRoomData == "undefined") {
+            
             console.log("No DB.Room Information for " + currentID);
-        }
+            document.getElementById('itemInfo').innerHTML = "<a> " + "Staff Office" + "</a> </br>";
+            
+        } else {
+            
+            document.getElementById('itemInfo').innerHTML = "<a> " + roomInfo[roomInfo.length-1].RoomType + "</a> </br>";
+               }
+        
         var checkStaffData = roomInfo[0].StaffID;
         if(typeof checkStaffData == "undefined") {
             console.log("No DB.Staff Information for " + currentID);
             }
         }
+    document.getElementById('itemTitle').innerHTML = "<a id = 'panel-title'> " + currentID
     
-    //plug data into UI elements
-    
-    
-    
-    
-    /**
-    $("#timetable").html("Room:"  + currentID);
-    $("#timetable").css({"font-size": "26px"});
 
-    var dataLength = roomInfo.length;
-    str = '<ul>';
-    p = '<p>Staff In: </p>' + currentID;
-    for(i=0; i < dataLength; i++) {
-            index = roomInfo[i];
-            str += '<li>' + index.Name + '</li>';
-        }
-    str += '</ul>';
-    document.getElementById('timetable').innerHTML = p + str;
-*/
 }    
   
 function buildingPopup(currentID, buildingData) {
@@ -109,9 +101,6 @@ function buildingPopup(currentID, buildingData) {
     $("#itemIMG").on("error", function() {
         console.log("NO IMAGE");
         document.getElementById('itemPicture').innerHTML = placeholderImg;
-        
-        
-        
     });
     
     //School Type

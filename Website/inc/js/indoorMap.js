@@ -82,6 +82,7 @@ function updateSVGColourScheme() {
 //-------------------------------------------------------------------------//
   
 //---Panning settings ----------------------------------------------------//
+var roomIDs = new Array();
 var panZoom = svgPanZoom(allSVG, {
     zoomEnabled: true,
     minZoom: 0.8,
@@ -102,6 +103,7 @@ var panZoom = svgPanZoom(allSVG, {
     mapRooms.onclick = function(event) {
     var currentID = event.target.id;
     getRoomData(currentID);
+    document.getElementById("mapTab").click()
     }
     
 
@@ -129,16 +131,7 @@ function getRoomData(id) {
 
 
 
-var roomIDs = new Array();
 
-function runSearch() {
-var searchValue = document.getElementById("sInput").value;
-    console.log("")
-for(var j = 0; j < roomIDs.length; j++) {
-    if (roomIDs[j].match(searchValue)) { 
-        
-        }
-    } 
-}
+
 
   
