@@ -169,8 +169,11 @@
 				</div>
                 <div class = "tab-content" id="mapResults">
                     <div id = "itemTitle"><a>The University Of Kent</a></div>
-                    <div id = "itemPicture"></div>
                     <div id = "itemInfo"></div>
+                    <div id = "itemPicture">
+                        <img id = "itemIMG">
+                    </div>
+                    
                     <div id = "itemStaffInfo"></div>
                     <div id = "itemLinks"></div>
                     <div id = "itemRooms"></div>

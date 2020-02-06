@@ -95,13 +95,33 @@ function buildingPopup(currentID, buildingData) {
         document.getElementById("itemStaffInfo").innerHTML = ""; //empty the staff info div
         
     }
+    
+    //Title and Info
+    console.log(currentID);
     document.getElementById('itemTitle').innerHTML = "<a>" + thisBuilding.BuildingName + "</a>";
+
+    
+    //Building Image
+    var placeholderImg = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/Placeholder.jpg >";
+    var img = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/" + currentID + ".jpg" + " style= 'object-fit: contain'>";
+    document.getElementById('itemPicture').innerHTML = img;
+    //Image error handling
+    $("#itemIMG").on("error", function() {
+        console.log("NO IMAGE");
+        document.getElementById('itemPicture').innerHTML = placeholderImg;
+        
+        
+        
+    });
+    
+    //School Type
     document.getElementById('itemInfo').innerHTML = "<a>" + thisBuilding.BuildingDescription + "</a>";
     
+    //Head of School information
     if (gotHOS == true) {  //only adding staff data if avaliable
     document.getElementById('itemStaffInfo').innerHTML = "<a id = 'panel-title'>" + "Head Of School: " + "</br> </a>" + "<a>" + thisBuilding.StaffName + "</br>" + thisBuilding.StaffDescription + "</br>" + thisBuilding.StaffRoomID  + "</br>" + "</a>";
     }
-    //build links to interior maps
+    //Interior Maps links
     var mapLink = "";
     for(i=0; i < thisBuilding.FloorCount; i++) { //generate links to inteior maps based on floorcount of building
             if (i == 0) { long = " Ground Floor"; short = "GF"};
@@ -113,6 +133,7 @@ function buildingPopup(currentID, buildingData) {
     }
     document.getElementById("itemLinks").innerHTML = "<a id = 'panel-title'> Interior Map Links </a> </br>" + mapLink;
     
+    //Room Types availiable
     var lecRooms = "<a> None </a> </br>";
     var CompRooms = "<a> None </a> </br>";
     var SemRooms = "<a> None </a> </br>";
