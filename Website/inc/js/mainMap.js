@@ -40,6 +40,7 @@ $(window).on('load', (function(){
     allSVG = svgDoc.getElementById("svg16");
 
     var b = svgItem.getElementsByTagName("path");
+    var parkIcon = parkIconsObject.getElementsByTagName("use");
     
     var targets = ["Ground", "Roads", "Pathways", "Buildings", "Text"];
 
@@ -90,6 +91,13 @@ $(window).on('load', (function(){
         var att = document.createAttribute("filter");
        // att.value = "url(#shadow)";
         current.setAttribute("filter", "url(#shadow3)");
+        console.log("set shadow");
+    }
+    for(var i = 0; i < parkIcon.length; i++) {
+        var current = parkIcon[i];
+        var att = document.createAttribute("filter");
+       // att.value = "url(#shadow)";
+        current.setAttribute("filter", "url(#shadow2)");
         console.log("set shadow");
     }
     

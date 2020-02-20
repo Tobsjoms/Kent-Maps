@@ -28,11 +28,12 @@
     </filter>
     <filter
        id="shadow2">
-      <feDropShadow
-         dx="0"
-         dy="0"
+       <feDropShadow
+         dx="1.0"
+         dy="1.0"
          stdDeviation="0.5"
-         flood-color="cyan" />
+         flood-color="black"
+         flood-opacity="0.6" />
     </filter>
     <filter
        id="shadow3">
