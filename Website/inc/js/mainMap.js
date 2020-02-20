@@ -41,6 +41,7 @@ $(window).on('load', (function(){
 
     var b = svgItem.getElementsByTagName("path");
     var parkIcon = parkIconsObject.getElementsByTagName("use");
+    var textElem = textsObject.getElementsByTagName("tspan");
     
     var targets = ["Ground", "Roads", "Pathways", "Buildings", "Text"];
 
@@ -91,13 +92,20 @@ $(window).on('load', (function(){
         var att = document.createAttribute("filter");
        // att.value = "url(#shadow)";
         current.setAttribute("filter", "url(#shadow3)");
-        console.log("set shadow");
+        //console.log("set shadow");
     }
     for(var i = 0; i < parkIcon.length; i++) {
         var current = parkIcon[i];
         var att = document.createAttribute("filter");
        // att.value = "url(#shadow)";
         current.setAttribute("filter", "url(#shadow2)");
+        //console.log("set shadow");
+    }
+        for(var i = 0; i < textElem.length; i++) {
+        var current = textElem[i];
+        var att = document.createAttribute("filter");
+       // att.value = "url(#shadow)";
+        current.setAttribute("filter", "url(#shadow3)");
         console.log("set shadow");
     }
     

@@ -28,12 +28,11 @@
     </filter>
     <filter
        id="shadow2">
-       <feDropShadow
-         dx="1.0"
-         dy="1.0"
+      <feDropShadow
+         dx="0"
+         dy="0"
          stdDeviation="0.5"
-         flood-color="black"
-         flood-opacity="0.6" />
+         flood-color="cyan" />
     </filter>
     <filter
        id="shadow3">
@@ -73,9 +72,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="45.254834"
-     inkscape:cx="-25.709801"
-     inkscape:cy="418.21545"
+     inkscape:zoom="4"
+     inkscape:cx="527.74661"
+     inkscape:cy="668.33963"
      inkscape:document-units="mm"
      inkscape:current-layer="Ground"
      showgrid="false"
@@ -115,17 +114,6 @@
        height="534.47729"
        x="-250.83452"
        y="-29.50535" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:9.96731377px;line-height:1.25;font-family:'Myanmar Text';-inkscape-font-specification:'Myanmar Text Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.24747476;stroke:none;stroke-width:0.24918287"
-       x="69.706078"
-       y="104.76849"
-       id="text6354"><tspan
-         sodipodi:role="line"
-         id="tspan6352"
-         x="69.706078"
-         y="104.76849"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Myanmar Text';-inkscape-font-specification:'Myanmar Text Bold';fill:#ffffff;fill-opacity:0.24747476;stroke-width:0.24918287">THE UNIVERSITY OF KENT</tspan></text>
     <path
        style="display:inline;fill:#cfe4a4;fill-opacity:1;stroke:#cae09b;stroke-width:0.09203061;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 125.34865,173.3873 h 16.50128 l 8.41716,2.25536 v 1.90762 l -24.97075,24.97075 z"
