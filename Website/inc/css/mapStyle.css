@@ -2,18 +2,32 @@
 /***********/
 /* Default */
 /***********/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
 
 .svg-buildings path{
-	fill: #d1dce8;
-	stroke: #ADB4D1;
+	fill: #dbdbdb;
+	stroke: #cccccc;
 	stroke-width: 0.18px;
+     
 }
 
 .svg-buildings path:hover {
-    fill: #c0c7d0;
-	stroke: #9096af;
-	stroke-width: 0.35px;
+    fill: #c7c7c7;
+	stroke:#a5a5a5;
+	stroke-width: 0.24px;
 	cursor: pointer;
+   
+   
+}
+
+@-moz-document url-prefix() {
+    .svg-buildings path{
+	fill: #dbdbdb;
+	stroke: #cccccc;
+	stroke-width: 0.18px;
+    -webkit-filter: drop-shadow(0.3px 0.3px 3px rgba(0, 0, 0, 0.4));
+     
+    }   
 }
 
 .svg-pathways path{
@@ -22,23 +36,23 @@
 }
 
 .svg-ground path{
-	fill: #b1e0a3;
+	fill: #afd18c;
     stroke: none;
 }
 
 .svg-ground rect{
-	fill: #ebebeb;
+	fill: #f0f0f0;
 }
 
 .svg-roads path{
-	fill: #989898;
-	stroke-width: 0.18px;
+	fill: #a3a3a3;
 }
 
 .svg-text text {
 	/* Prevent text from being hovered, instead target shape below */
+    
     pointer-events: none;
-    font: 0.15em arial, sans-serif;
+    font-size: 0.15em;
    	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -46,6 +60,7 @@
 	-ms-user-select: none;
 	user-select: none;
 }
+
 
 /*************/
 /* Dark Mode */

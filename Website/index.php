@@ -40,7 +40,27 @@
     if($building == "search") {
         $mapElem = "<a id = 'panel-title'> search </a> </br>";
     }
-
+    $mapFilterBox =  "<div>
+                <div id='mapFilterBox'>
+                    <div class='parkToggle'>
+                        <a> Parking Icons</a>
+                        <label class='switch'>
+                            <input type=checkbox id='parkToggle'>
+                            <span class ='slider round'></span>
+                        </label>
+                    </div>
+                   <div class = 'textToggle'>
+                    </div>
+                </div>
+                <div id = 'mapZoomContainer'>
+                    <div id = 'zoomBox'>
+                    <p id = 'zoomIn'>+</p>
+                    <p id = 'zoomOut'>_</p>
+                    </div>
+                </div>
+            </div>
+		</div>
+"
 ?>
 
 <HTML>
@@ -91,26 +111,9 @@
 					<div id="user-panel"><a href="login.php">Log in</a> or <a href="signup.php">sign up</a> to use more features!</div>
 				<?php } ?>
 			</div>
-
-            <div>
-                <div id="mapFilterBox">
-                    <div class="parkToggle">
-                        <a> Parking Icons</a>
-                        <label class="switch">
-                            <input type=checkbox id="parkToggle">
-                            <span class ="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-                <div id = "mapZoomContainer">
-                    <div id = "zoomBox">
-                    <p id = "zoomIn">+</p>
-                    <p id = "zoomOut">_</p>
-                    </div>
-                </div>
-            </div>
-		</div>
-
+            <?php
+            echo $mapFilterBox;
+                ?>
 		<?php if (isset($_SESSION['id'])){ ?>
 			<div id="sidebar">
 				<div class="navigation" id="nav-tabs">

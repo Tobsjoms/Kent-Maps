@@ -69,6 +69,7 @@ $(window).on('load', (function(){
 	}
 
 	for (var i = 0; i < targetedNodes.length; i++) {
+        //console.log(targetedNodes[i])
 		// Skip weird # elements
 		if (typeof targetedNodes[i].tagName === 'undefined'){continue};
 		// Remove style
@@ -77,7 +78,22 @@ $(window).on('load', (function(){
 	    targetedNodes[i].style.removeProperty('stroke-width');
 	    targetedNodes[i].style.removeProperty('opacity');
         targetedNodes[i].style.removeProperty('font');
-	}
+        targetedNodes[i].style.removeProperty('font-family');
+        
+
+            
+    }
+    //CHROME FIX FOR OBJECT SHADOWS
+    //USES PRESET "<feDropShadow> shadow3" values inbedded in the "<def>" tag at the top of the SVG doc
+    for(var i = 0; i < b.length; i++) {
+        var current = b[i];
+        var att = document.createAttribute("filter");
+       // att.value = "url(#shadow)";
+        current.setAttribute("filter", "url(#shadow3)");
+        console.log("set shadow");
+    }
+    
+
     
     //User Object filtering ------------------------------------------------
 
