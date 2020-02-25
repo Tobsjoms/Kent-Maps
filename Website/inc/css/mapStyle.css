@@ -31,8 +31,8 @@
 }
 
 .svg-pathways path{
-    fill: #616161;
-    stroke-width: 0.18px;
+    fill: none;
+
 }
 
 .svg-ground path{
@@ -46,6 +46,8 @@
 
 .svg-roads path{
 	fill: #c0c1c3;
+    stroke: #848484;
+    stroke-width: 0.3px;
 }
 
 .svg-text text {

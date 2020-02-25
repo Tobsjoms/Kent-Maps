@@ -15,9 +15,9 @@
 			$_SESSION['email'] = $_POST['email'];
 			
 			// If we have a url set, set session var
-			if ($row[2] != null) $_SESSION['timetable_url'] = $row[2];
+			$_SESSION['timetable_url'] = $row[2];
 			// If we have a colour scheme set, set session var
-			if ($row[3] != null) $_SESSION['colour_scheme'] = $row[3];
+			$_SESSION['colour_scheme'] = $row[3];
 
 			// Redirect them to settings
 			header("Location: index.php");

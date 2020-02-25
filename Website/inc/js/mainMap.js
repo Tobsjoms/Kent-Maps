@@ -105,7 +105,8 @@ $(window).on('load', (function(){
         var current = textElem[i];
         var att = document.createAttribute("filter");
        // att.value = "url(#shadow)";
-        current.setAttribute("filter", "url(#shadow3)");
+        current.setAttribute("filter", "url(#shadow)");
+        
         console.log("set shadow");
     }
     

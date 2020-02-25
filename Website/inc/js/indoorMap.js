@@ -1,9 +1,5 @@
 $(window).on('load', (function(){
  
-$("#sButton").click(function() {
-   console.log("Click!"); 
-});  
-    
 //------SVG Manipulation---------------------------------------------------------------//
 
     var a = document.getElementById('stage');
@@ -13,6 +9,20 @@ $("#sButton").click(function() {
     var roomPaths = mapRooms.getElementsByTagName("path");
     var roomRect = mapRooms.getElementsByTagName("rect");
     var targets = ["Building", "Rooms", "Pathways", "Doors", "Icons", "Labels"];
+    getBuildingRoomData();
+    
+function getBuildingRoomData() {
+//loading in all data for all rooms on a floor, ready to colour each room
+    //get mapName from URL file (buildingID="X-X-X".svg)
+    var URL = window.location.href;
+    console.log(URL);
+    var mapName = URL.substring(
+    URL.lastIndexOf("=") +1,
+        URL.lastIndexOf(".svg")
+        );
+    console.log(mapName);
+    
+}
     
 //Strip SVG Style
 updateSVGColourScheme();
@@ -42,7 +52,16 @@ function updateSVGColourScheme() {
 	    targetedNodes[i].style.removeProperty('stroke-width');
 	    targetedNodes[i].style.removeProperty('opacity');
 	}
+    
+    //var textsObject = svgDoc.getElementById("Text");
+   // var textElem = textsObject.getElementsByTagName("tspan");
 }
+    
+    function loadColorCodes(data) {
+        
+        
+        
+    }
 //-----------------------------------------------------------------------------------//
     
 //-----------------PATHFINDING------------------------------------------------//
