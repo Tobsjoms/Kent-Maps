@@ -31,15 +31,6 @@
     $building = $_GET["buildingID"];
     $mapElem = "<object id='stage' data='floorplans/Campus Map Entire.svg' type='image/svg+xml'></object>";
     $loadscript = "<script src='inc/js/mainMap.js'></script>";;
-    
-    if($building != "svg16") { //if building is not the entire map file
-        $mapElem = "<object id='stage' data='floorplans/$building' type='image/svg+xml'></object>";
-        $loadscript = "<script src='inc/js/indoorMap.js'></script>";
-    }
-
-    if($building == "search") {
-        $mapElem = "<a id = 'panel-title'> search </a> </br>";
-    }
     $mapFilterBox =  "<div>
                 <div id='mapFilterBox'>
                     <div class='parkToggle'>
@@ -59,10 +50,31 @@
                     </div>
                 </div>
             </div>
-		</div>
-"
-?>
+		</div>";
+    
+    if($building != "svg16") { //if building is not the entire map file
+        $mapElem = "<object id='stage' data='floorplans/$building' type='image/svg+xml'></object>";
+        $loadscript = "<script src='inc/js/indoorMap.js'></script>";
+            $mapFilterBox =  "<div>
+                <div id='mapFilterBox'>
+                   <div class = 'textToggle'>
+                    </div>
+                </div>
+                <div id = 'mapZoomContainer'>
+                    <div id = 'zoomBox'>
+                    <p id = 'zoomIn'>+</p>
+                    <p id = 'zoomOut'>_</p>
+                    </div>
+                </div>
+            </div>
+		</div>";
+    }
 
+    if($building == "search") {
+        $mapElem = "<a id = 'panel-title'> search </a> </br>";
+    }
+
+?>
 <HTML>
 	<head>
 		<title>UKCGURU</title>
