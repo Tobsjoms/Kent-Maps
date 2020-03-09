@@ -58,6 +58,10 @@ $(window).on('load', (function(){
     console.log("--------Data------------");
      console.log(searchData);
     console.log("------------------------");
+     //loop through data
+     //add to page on each loop inside a list element
+     //you could check if data exists, so like on lines 79 and 81 if you check for a column and it doesnt exist
+     //then it will return undefined when you try to access it, use that to your advantage in a big if statement
 
  }
 
