@@ -145,14 +145,14 @@ $(window).on('load', (function(){
         beforePan = function(oldPan, newPan){
           var stopHorizontal = false
             , stopVertical = false
-            , gutterWidth = 1000
-            , gutterCustomWidth = 400
-            , gutterCustomHeight = 600
-            , gutterHeight = 1000
+            , gutterWidth = 300
+            , gutterCustomWidthLeft = 900
+            , gutterCustomWidthRight = 100
+            , gutterHeight = 300
               // Computed variables
             , sizes = this.getSizes()
-            , leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth
-            , rightLimit = sizes.width - gutterCustomWidth - (sizes.viewBox.x * sizes.realZoom)
+            , leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterCustomWidthLeft
+            , rightLimit = sizes.width - gutterCustomWidthRight - (sizes.viewBox.x * sizes.realZoom)
             , topLimit = -((sizes.viewBox.y + sizes.viewBox.height) * sizes.realZoom) + gutterHeight
             , bottomLimit = sizes.height - gutterHeight - (sizes.viewBox.y * sizes.realZoom)
 
@@ -216,6 +216,10 @@ $(window).on('load', (function(){
             buildingPopup(id, buildingData); //pass room and JSON object to RoomPopup function
             }
         });
+    }
+    
+    function inspectBuilding(id) {
+        id.style.fill = "red";
     }
  
     
