@@ -129,7 +129,7 @@ if (isset($_GET["search"])) {
 
 				<div id="search">
 					<input type="text" spellcheck="false" id="sInput">
-					<a href="#" id = "sButton"><i class="material-icons">search</i></a>
+					<a id = "sButton"><i class="material-icons">search</i></a>
 				</div>
 
 				<?php if (isset($_SESSION['id'])){ ?>

@@ -7,36 +7,50 @@
 
 
 $(window).on('load', (function(){
-    var searchValue = sessionStorage.getItem("searchValue");
-     
+    var searchValue = "";
+    var URL = window.location.href; 
+    if (URL.includes("search")) {
+    var URLSearchValue = URL.substring(
+    URL.lastIndexOf("=") +1);
+    console.log("URL search = " + URLSearchValue);
+    }
+    
+    if (typeof URLSearchValue != "undefined" ||  typeof URLSearchValue != null || URLSearchValue != "" ) {
+        
+        searchValue = URLSearchValue;
+        console.log(searchValue);
+    }
+    
+    
+    var storedSearchValue = sessionStorage.getItem("searchValue");
+     console.log(searchValue);
+    
+     if (URL.includes("search")) {
+            if (searchValue != "") {
+                $.ajax({
+                    type: "POST",
+                    url: "../Website/inc/php/getSearchData.php",
+                    data: {value: searchValue}, 
+                    success: function(response) {
+                        searchData = JSON.parse(response); //parse as JSON object
+                        searchPopup(searchData);
+                            }
+                        });
+                    }
+                }
+    
      $("#sButton").click(function() {
-         var searchValue = document.getElementById("sInput").value;
-         
-         sessionStorage.setItem("searchValue", searchValue);
-         
-         var URL = window.location.href;
-         if (URL.includes == "search") {
-
+         if(searchValue != "" || searchValue != null || typeof searchValue != "undefined" ) {
+             var searchValue = document.getElementById("sInput").value;
          }
          
-             var searchData = []; //data prep for return JSON data
-
+        sessionStorage.setItem("searchValue", searchValue);
+        location.replace("/Kent-Maps/Website/index.php?search=" + searchValue);
+        var searchData = []; //data prep for return JSON data
         console.log(searchValue);
+    
          
-          $.ajax({
-        type: "POST",
-        url: "../Website/inc/php/getSearchData.php",
-        data: {value: searchValue}, 
-        success: function(response) {
-            searchData = JSON.parse(response); //parse as JSON object
-            searchPopup(searchData);
-        }
-
-    });
-         
-         
-    });
-
+     });
 }));
 
 
