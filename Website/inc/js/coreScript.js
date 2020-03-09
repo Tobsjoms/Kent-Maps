@@ -35,6 +35,8 @@ $(window).on('load', (function(){
     console.log("--------Data------------");
      console.log(searchData);
     console.log("------------------------");
+     
+    url = ".../Website/index.php?buildingID=search";
 
  }
 
