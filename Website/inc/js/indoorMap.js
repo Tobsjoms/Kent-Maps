@@ -1,17 +1,32 @@
 $(window).on('load', (function(){
  
-$("#sButton").click(function() {
-});  
-    
 //------SVG Manipulation---------------------------------------------------------------//
 
     var a = document.getElementById('stage');
     var svgDoc = a.contentDocument;
     var allSVG= svgDoc.getElementById("Map");
+    var buildingEntire = svgDoc.getElementById("Building");
+    var buildingShape = buildingEntire.getElementsByTagName("path");
+    console.log(buildingShape);
     var mapRooms = svgDoc.getElementById("Rooms"); //All Rooms
     var roomPaths = mapRooms.getElementsByTagName("path");
     var roomRect = mapRooms.getElementsByTagName("rect");
     var targets = ["Building", "Rooms", "Pathways", "Doors", "Icons", "Labels"];
+    getBuildingRoomData();
+    
+function getBuildingRoomData() {
+//loading in all data for all rooms on a floor, ready to colour each room
+    //get mapName from URL file (buildingID="X-X-X".svg)
+    var URL = window.location.href;
+    console.log(URL);
+    var mapName = URL.substring(
+    URL.lastIndexOf("=") +1,
+        URL.lastIndexOf(".svg")
+        );
+    console.log(mapName);
+    getRoomData(mapName);
+    
+}
     
 //Strip SVG Style
 updateSVGColourScheme();
@@ -41,7 +56,26 @@ function updateSVGColourScheme() {
 	    targetedNodes[i].style.removeProperty('stroke-width');
 	    targetedNodes[i].style.removeProperty('opacity');
 	}
+    
+        //CHROME FIX FOR OBJECT SHADOWS
+    //USES PRESET "<feDropShadow> shadow3" values inbedded in the "<def>" tag at the top of the SVG doc
+    for(var i = 0; i < buildingShape.length; i++) {
+        var current = buildingShape[i];
+        var att = document.createAttribute("filter");
+       // att.value = "url(#shadow)";
+        current.setAttribute("filter", "url(#shadow2)");
+        console.log("set shadow");
+    }
+    
+    //var textsObject = svgDoc.getElementById("Text");
+   // var textElem = textsObject.getElementsByTagName("tspan");
 }
+    
+    function loadColorCodes(data) {
+        
+        
+        
+    }
 //-----------------------------------------------------------------------------------//
     
 //-----------------PATHFINDING------------------------------------------------//
@@ -81,6 +115,7 @@ function updateSVGColourScheme() {
 //-------------------------------------------------------------------------//
   
 //---Panning settings ----------------------------------------------------//
+var roomIDs = new Array();
 var panZoom = svgPanZoom(allSVG, {
     zoomEnabled: true,
     minZoom: 0.8,
@@ -101,6 +136,7 @@ var panZoom = svgPanZoom(allSVG, {
     mapRooms.onclick = function(event) {
     var currentID = event.target.id;
     getRoomData(currentID);
+    document.getElementById("mapTab").click()
     }
     
 
@@ -128,16 +164,7 @@ function getRoomData(id) {
 
 
 
-var roomIDs = new Array();
 
-function runSearch() {
-var searchValue = document.getElementById("sInput").value;
-    console.log("")
-for(var j = 0; j < roomIDs.length; j++) {
-    if (roomIDs[j].match(searchValue)) { 
-        
-        }
-    } 
-}
+
 
   
