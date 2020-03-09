@@ -40,12 +40,16 @@ stroke-width: 0.3px;
     stroke-width: 0.5px;
 }
 
-
-#Building path {
+    #Building path {
     fill: #ebe7dc;
     stroke-width: 0.3px;
     stroke: black;
+    }
+
+@-moz-document url-prefix() {
+    #Building path {
     -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+    }
 }
 
 

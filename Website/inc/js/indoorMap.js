@@ -5,6 +5,9 @@ $(window).on('load', (function(){
     var a = document.getElementById('stage');
     var svgDoc = a.contentDocument;
     var allSVG= svgDoc.getElementById("Map");
+    var buildingEntire = svgDoc.getElementById("Building");
+    var buildingShape = buildingEntire.getElementsByTagName("path");
+    console.log(buildingShape);
     var mapRooms = svgDoc.getElementById("Rooms"); //All Rooms
     var roomPaths = mapRooms.getElementsByTagName("path");
     var roomRect = mapRooms.getElementsByTagName("rect");
@@ -21,6 +24,7 @@ function getBuildingRoomData() {
         URL.lastIndexOf(".svg")
         );
     console.log(mapName);
+    getRoomData(mapName);
     
 }
     
@@ -52,6 +56,16 @@ function updateSVGColourScheme() {
 	    targetedNodes[i].style.removeProperty('stroke-width');
 	    targetedNodes[i].style.removeProperty('opacity');
 	}
+    
+        //CHROME FIX FOR OBJECT SHADOWS
+    //USES PRESET "<feDropShadow> shadow3" values inbedded in the "<def>" tag at the top of the SVG doc
+    for(var i = 0; i < buildingShape.length; i++) {
+        var current = buildingShape[i];
+        var att = document.createAttribute("filter");
+       // att.value = "url(#shadow)";
+        current.setAttribute("filter", "url(#shadow2)");
+        console.log("set shadow");
+    }
     
     //var textsObject = svgDoc.getElementById("Text");
    // var textElem = textsObject.getElementsByTagName("tspan");

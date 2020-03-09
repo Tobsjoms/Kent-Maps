@@ -135,16 +135,21 @@ $(window).on('load', (function(){
         }
     });
     
-    //---------------------------------------------------------------------
-    // panning config------------------------------------------------------
+//---------------------------------------------------------------------
+// panning config------------------------------------------------------
+    
     var panZoom = svgPanZoom(allSVG, {
         zoomEnabled: true,
         minZoom: 0.8,
+        refreshRate: 60,
         controlIconsEnabled: false,
         preventMouseEventsDefault: false
+        
     });
+    
     panZoom.contain();
     panZoom.center();
+    
     var rectID = new Array();
     for(i=0; i < b.length; i++) {
         //pushing all rect elements within svgItem into an array for search functionality

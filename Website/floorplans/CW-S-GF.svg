@@ -18,6 +18,36 @@
    id="Map"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="CW-SW-GF-Test.svg">
+<defs
+     id="defs5">
+    <filter
+       id="shadow">
+      <feDropShadow
+         dx="0.4"
+         dy="0.4"
+         stdDeviation="0.2"
+         flood-color="black"
+         flood-opacity="0.3" />
+    </filter>
+    <filter
+       id="shadow2">
+      <feDropShadow
+         dx="0.5"
+         dy="0.5"
+         stdDeviation="0.8"
+         flood-color="black"
+         flood-opacity="0.6" />
+    </filter>
+    <filter
+       id="shadow3">
+      <feDropShadow
+         dx="0.3"
+         dy="0.3"
+         stdDeviation="0.2"
+         flood-color="black"
+         flood-opacity="0.4" />
+    </filter>
+  </defs>
   <defs
      id="defs951">
     <inkscape:tag
