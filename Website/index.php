@@ -28,9 +28,12 @@
 	if (isset($_SESSION['colour_scheme'])) $bodyProperties .= ' id="' . $_SESSION['colour_scheme'] . '"';
 
     //Map Type Handling
-    $building = $_GET["buildingID"];
+    
+    if (isset($_GET["buildingID"])) {
+        
+            $building = $_GET["buildingID"];
     $mapElem = "<object id='stage' data='floorplans/Campus Map Entire.svg' type='image/svg+xml'></object>";
-    $loadscript = "<script src='inc/js/mainMap.js'></script>";;
+    $loadscript = "<script src='inc/js/mainMap.js'></script>";
     $mapFilterBox =  "<div>
                 <div id='mapFilterBox'>
                     <div class='parkToggle'>
@@ -68,11 +71,31 @@
                 </div>
             </div>
 		</div>";
+        }
+ 
     }
 
-    if($building == "search") {
-        $mapElem = "<a id = 'panel-title'> search </a> </br>";
-    }
+if (isset($_GET["search"])) {
+    $search = $_GET["search"];
+    $mapElem = "";
+    $loadscript = "";
+    $mapFilterBox =  "<div>
+                <div id='mapFilterBox'>
+                   <div class = 'textToggle'>
+                    </div>
+                </div>
+                <div id = 'mapZoomContainer'>
+                    <div id = 'zoomBox'>
+                    <p id = 'zoomIn'>+</p>
+                    <p id = 'zoomOut'>_</p>
+                    </div>
+                </div>
+            </div>
+		</div>";
+}
+
+
+
 
 ?>
 <HTML>
@@ -124,6 +147,7 @@
 				<?php } ?>
 			</div>
             <?php
+            if(isset($mapFilterBox))
             echo $mapFilterBox;
                 ?>
 		<?php if (isset($_SESSION['id'])){ ?>

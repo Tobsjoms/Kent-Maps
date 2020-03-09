@@ -7,9 +7,18 @@
 
 
 $(window).on('load', (function(){
-
+    var searchValue = sessionStorage.getItem("searchValue");
+     
      $("#sButton").click(function() {
          var searchValue = document.getElementById("sInput").value;
+         
+         sessionStorage.setItem("searchValue", searchValue);
+         
+         var URL = window.location.href;
+         if (URL.includes == "search") {
+
+         }
+         
              var searchData = []; //data prep for return JSON data
 
         console.log(searchValue);
