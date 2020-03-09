@@ -7,27 +7,50 @@
 
 
 $(window).on('load', (function(){
-
-     $("#sButton").click(function() {
-         var searchValue = document.getElementById("sInput").value;
-             var searchData = []; //data prep for return JSON data
-
+    var searchValue = "";
+    var URL = window.location.href; 
+    if (URL.includes("search")) {
+    var URLSearchValue = URL.substring(
+    URL.lastIndexOf("=") +1);
+    console.log("URL search = " + URLSearchValue);
+    }
+    
+    if (typeof URLSearchValue != "undefined" ||  typeof URLSearchValue != null || URLSearchValue != "" ) {
+        
+        searchValue = URLSearchValue;
         console.log(searchValue);
+    }
+    
+    
+    var storedSearchValue = sessionStorage.getItem("searchValue");
+     console.log(searchValue);
+    
+     if (URL.includes("search")) {
+            if (searchValue != "") {
+                $.ajax({
+                    type: "POST",
+                    url: "../Website/inc/php/getSearchData.php",
+                    data: {value: searchValue}, 
+                    success: function(response) {
+                        searchData = JSON.parse(response); //parse as JSON object
+                        searchPopup(searchData);
+                            }
+                        });
+                    }
+                }
+    
+     $("#sButton").click(function() {
+         if(searchValue != "" || searchValue != null || typeof searchValue != "undefined" ) {
+             var searchValue = document.getElementById("sInput").value;
+         }
          
-          $.ajax({
-        type: "POST",
-        url: "../Website/inc/php/getSearchData.php",
-        data: {value: searchValue}, 
-        success: function(response) {
-            searchData = JSON.parse(response); //parse as JSON object
-            searchPopup(searchData);
-        }
-
-    });
+        sessionStorage.setItem("searchValue", searchValue);
+        location.replace("/Kent-Maps/Website/index.php?search=" + searchValue);
+        var searchData = []; //data prep for return JSON data
+        console.log(searchValue);
+    
          
-         
-    });
-
+     });
 }));
 
 
@@ -35,8 +58,10 @@ $(window).on('load', (function(){
     console.log("--------Data------------");
      console.log(searchData);
     console.log("------------------------");
-     
-    url = ".../Website/index.php?buildingID=search";
+     //loop through data
+     //add to page on each loop inside a list element
+     //you could check if data exists, so like on lines 79 and 81 if you check for a column and it doesnt exist
+     //then it will return undefined when you try to access it, use that to your advantage in a big if statement
 
  }
 
@@ -50,35 +75,27 @@ function roomPopup(currentID, roomInfo) {
         console.log("No DB.Room or DB.Staff Information for " + currentID);
     }
     else if (roomInfo.length > 0) {
+        
         var checkRoomData = roomInfo[roomInfo.length-1].RoomType;
+        
         if(typeof checkRoomData == "undefined") {
+            
             console.log("No DB.Room Information for " + currentID);
-        }
+            document.getElementById('itemInfo').innerHTML = "<a> " + "Staff Office" + "</a> </br>";
+            
+        } else {
+            
+            document.getElementById('itemInfo').innerHTML = "<a> " + roomInfo[roomInfo.length-1].RoomType + "</a> </br>";
+               }
+        
         var checkStaffData = roomInfo[0].StaffID;
         if(typeof checkStaffData == "undefined") {
             console.log("No DB.Staff Information for " + currentID);
             }
         }
+    document.getElementById('itemTitle').innerHTML = "<a id = 'panel-title'> " + currentID
     
-    //plug data into UI elements
-    
-    
-    
-    
-    /**
-    $("#timetable").html("Room:"  + currentID);
-    $("#timetable").css({"font-size": "26px"});
 
-    var dataLength = roomInfo.length;
-    str = '<ul>';
-    p = '<p>Staff In: </p>' + currentID;
-    for(i=0; i < dataLength; i++) {
-            index = roomInfo[i];
-            str += '<li>' + index.Name + '</li>';
-        }
-    str += '</ul>';
-    document.getElementById('timetable').innerHTML = p + str;
-*/
 }    
   
 function buildingPopup(currentID, buildingData) {
@@ -97,13 +114,30 @@ function buildingPopup(currentID, buildingData) {
         document.getElementById("itemStaffInfo").innerHTML = ""; //empty the staff info div
         
     }
+    
+    //Title and Info
+    console.log(currentID);
     document.getElementById('itemTitle').innerHTML = "<a>" + thisBuilding.BuildingName + "</a>";
+
+    
+    //Building Image
+    var placeholderImg = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/Placeholder.jpg >";
+    var img = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/" + currentID + ".jpg" + " style= 'object-fit: contain'>";
+    document.getElementById('itemPicture').innerHTML = img;
+    //Image error handling
+    $("#itemIMG").on("error", function() {
+        console.log("NO IMAGE");
+        document.getElementById('itemPicture').innerHTML = placeholderImg;
+    });
+    
+    //School Type
     document.getElementById('itemInfo').innerHTML = "<a>" + thisBuilding.BuildingDescription + "</a>";
     
+    //Head of School information
     if (gotHOS == true) {  //only adding staff data if avaliable
     document.getElementById('itemStaffInfo').innerHTML = "<a id = 'panel-title'>" + "Head Of School: " + "</br> </a>" + "<a>" + thisBuilding.StaffName + "</br>" + thisBuilding.StaffDescription + "</br>" + thisBuilding.StaffRoomID  + "</br>" + "</a>";
     }
-    //build links to interior maps
+    //Interior Maps links
     var mapLink = "";
     for(i=0; i < thisBuilding.FloorCount; i++) { //generate links to inteior maps based on floorcount of building
             if (i == 0) { long = " Ground Floor"; short = "GF"};
@@ -115,6 +149,7 @@ function buildingPopup(currentID, buildingData) {
     }
     document.getElementById("itemLinks").innerHTML = "<a id = 'panel-title'> Interior Map Links </a> </br>" + mapLink;
     
+    //Room Types availiable
     var lecRooms = "<a> None </a> </br>";
     var CompRooms = "<a> None </a> </br>";
     var SemRooms = "<a> None </a> </br>";
