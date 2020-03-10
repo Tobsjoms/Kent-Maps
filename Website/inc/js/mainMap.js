@@ -35,12 +35,16 @@ $(window).on('load', (function(){
 
     var parkIconsObject = svgDoc.getElementById("Park-Symbols"); //Park Symbols 
     parkIconsObject.classList.add("svg-parksymbols");
+    
+    var BusIconsObject = svgDoc.getElementById("Bus-Symbols");
+   // BusIconsObject.classList.add("svg-bussymbols");
 
-
+    console.log(parkIconsObject);
     allSVG = svgDoc.getElementById("svg16");
 
     var b = svgItem.getElementsByTagName("path");
-    var parkIcon = parkIconsObject.getElementsByTagName("use");
+    var parkIcon = parkIconsObject.getElementsByTagName("path");
+    var busIcon = BusIconsObject.getElementsByTagName("path");
     var textElem = textsObject.getElementsByTagName("tspan");
     
     var targets = ["Ground", "Roads", "Pathways", "Buildings", "Text"];
@@ -96,9 +100,19 @@ $(window).on('load', (function(){
     }
     for(var i = 0; i < parkIcon.length; i++) {
         var current = parkIcon[i];
+        
         var att = document.createAttribute("filter");
        // att.value = "url(#shadow)";
-        current.setAttribute("filter", "url(#shadow2)");
+        current.setAttribute("filter", "url(#shadow3)");
+        //console.log("set shadow");
+    }
+    
+        for(var i = 0; i < busIcon.length; i++) {
+        var current = busIcon[i];
+        
+        var att = document.createAttribute("filter");
+       // att.value = "url(#shadow)";
+        current.setAttribute("filter", "url(#shadow3)");
         //console.log("set shadow");
     }
         for(var i = 0; i < textElem.length; i++) {
