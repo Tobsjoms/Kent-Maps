@@ -162,9 +162,12 @@ $(window).on('load', (function(){
         refreshRate: 80,
         controlIconsEnabled: false,
         preventMouseEventsDefault: false,
+        animate: true
 
         
     });
+    
+    var panzoom = Panzoom(allSVG);
     
     panZoom.contain();
     panZoom.center();
@@ -177,7 +180,13 @@ $(window).on('load', (function(){
 
 
 
+    $("#zoomIn").click(function() {
+        panZoom.zoomIn();
+    });    
     
+    $("#zoomOut").click(function() {
+        panZoom.zoomOut();
+    });
     
 
     

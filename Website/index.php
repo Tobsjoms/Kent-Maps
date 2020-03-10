@@ -85,8 +85,8 @@
 		<div id="map">
 			<?php echo "<object id='stage' data='floorplans/$mapFile' type='image/svg+xml'></object>" ?>
         	<div id="zoom-controls">
-        		<button onclick="zoom(true)">+</button>
-        		<button onclick="zoom(false)">-</button>
+        		<button id = "zoomIn">+</button>
+        		<button id = "zoomOut">-</button>
         	</div>
         </div>
 		<div id="topbar">
