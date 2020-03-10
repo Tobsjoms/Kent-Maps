@@ -182,15 +182,16 @@ $(window).on('load', (function(){
         //pushing all rect elements within svgItem into an array for search functionality
         rectID.push(b[i].id);
     }
-    
-    //zoomButtons
-    $("#zoomIn").click(function() {
-        panZoom.zoomIn();
-    });    
-    
-    $("#zoomOut").click(function() {
-        panZoom.zoomOut();
-    });
+
+    function zoom(zoomIn){
+        if (zoomIn){
+            panZoom.zoomIn();
+        }
+        else{
+            panZoom.zoomOut();
+        }
+    }
+
     
     
 
@@ -202,7 +203,7 @@ $(window).on('load', (function(){
         var currentID = event.target.id;
         //get current id of object within svgItem
         getBuildingData(currentID);
-        document.getElementById("mapTab").click()
+        console.log(getBuildingData(currentID));
     }
     
     function getBuildingData(id) {

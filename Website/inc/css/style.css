@@ -9,6 +9,8 @@ html, body {
 	background-color: #f7f7f7;
 	color:#2d3436;
 	box-sizing: border-box;
+	overflow-x: hidden;
+	overflow-y: visible;
 }
 
 *, *:before, *:after {
@@ -17,20 +19,6 @@ html, body {
 
 a{
 	color:#2d3436;
-}
-
-#main-container{
-	height:100vh;
-	width:100%;
-	top:0;
-	left:0;
-	position:absolute;
-	overflow:hidden;
-}
-
-body.logged-in #main-container{
-	width:calc(100% - 24em);
-	left:24em;
 }
 
 .center{
@@ -45,18 +33,41 @@ body.logged-in #main-container{
 	box-sizing:border-box;
 }
 
-#map {
-	position:absolute;
-	top:0;
-	left:0;
+#map, #map object#stage{
 	height: 100vh;
 	width: 100%;
 }
 
 #map object#stage{
-	width:100%;
-	height: 100vh;
 	background-color:#f0f0f0; /*MUST MATCH WITH MAP GROUND RECTANGLE */
+}
+
+#zoom-controls{
+	overflow:hidden;
+	border-radius:4px;
+	background-color:#fff;
+	bottom:32px;
+	left:32px;
+	position:absolute;
+	border:1px solid rgba(0,0,0,0.15);
+	box-shadow: 0 2px 3px rgba(0,0,0,0.06);
+}
+
+#zoom-controls button{
+	cursor:pointer;
+	float:left;
+	background:none;
+	border:none;
+	height:2em;
+	width:2em;
+	font-size:1.2em;
+	color:rgb(134, 134, 134);
+	outline:none;
+}
+
+#zoom-controls button:hover{
+	background-color:rgba(0,0,0,0.1);
+	color:#000;
 }
 
 /* SEARCH BAR & LOGO */
@@ -76,11 +87,8 @@ body.logged-in #main-container{
 	display: table;
 }
 
-#topbar #logo, #topbar #search{
-	float:left;
-}
-
 #logo{
+	float:left;
 	text-align:center;
 	color:#2d3436;
 	font-size:2.2em;
@@ -90,6 +98,7 @@ body.logged-in #main-container{
 }
 
 #search{
+	float:left;
 	font-size:1.2em;
 	border:1px solid rgba(0,0,0,0.15);
 	box-shadow:0 2px 3px rgba(0,0,0,0.06);
@@ -189,26 +198,27 @@ body.logged-in #main-container{
 /* SIDEBAR */
 
 #sidebar{
-	position:absolute;
-	top:0;
-	left:0;
-	height:100vh;
-	float:right;
-	width:0;
-	box-sizing:border-box;
-	overflow:hidden;
-	border-right:1px solid rgba(0,0,0,0.15);
 	background-color:#fff;
-	padding:3em;
+	position:absolute;
+	height:100vh;
+	box-sizing:border-box;
+	width:22em;
+	top:0;
+	right:-22em;
+	transition: right 0.3s ease-out 0s;
+	border-left:1px solid rgba(0,0,0,0.15);
+	padding:32px;
 }
 
-body.logged-in #sidebar{
-	width:24em;
+#sidebar.open{
+	right:0;
 }
 
 #sidebar .navigation{
+	top:16px;
+	left:-96px;
+	position:absolute;
 	text-align:center;
-	margin-bottom:4em;
 }
 
 #sidebar .navigation::after {
@@ -226,13 +236,19 @@ body.logged-in #sidebar{
 	float:left;
 	text-decoration:none;
 	color:inherit;
-	padding:1em;
+	padding:16px;
 	border-radius:50%;
-	margin-right:1.25em;
+	clear:left;
+	margin-bottom:16px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#sidebar .navigation span:last-child{
+	margin-bottom:0;
 }
 
 #sidebar .navigation span:hover{
-	background-color:rgba(0,0,0,0.15);
+	background-color:#d9d9d9;
 	cursor:pointer;
 }
 
@@ -275,6 +291,26 @@ body.logged-in #sidebar{
 
 .tab-content.visible{
 	display:initial;
+}
+
+.tab-content div.heading, .tab-content div.subheading{
+	font-weight:bold;
+	margin-bottom:16px;
+}
+
+.tab-content div.heading{
+	font-size:2em;
+}
+
+.tab-content div.subheading{
+	font-size:1.2em;
+}
+
+.tab-content hr{
+    border: 0;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+    margin: 32px 0px;
 }
 
 .card {
@@ -388,56 +424,6 @@ body.logged-in #sidebar{
     MAP FILTER CONTROLS
 
 *****************************************************/
-
-#mapZoomContainer {
-    position: absolute;
-    bottom: 3em;
-    float: right;
-    height: 50px;
-    margin-left: 27em;
-    background-color: #fcfcfc;
-    padding: 10px;
-    box-shadow:0 4px 4px rgba(0,0,0,0.06);
-    border:1px solid rgba(0,0,0,0.05);
-    border-radius:4px;
-}
-
-#zoomBox {
-    position: relative;
-    bottom: 6px;
-}
-
-#zoomIn {
-    margin: 0;
-    padding-left: 6px;
-    padding-right: 6px;
-    background-color: #fcfcfc;
-    border-bottom:1px solid rgba(0,0,0,0.1);
-    border-radius:4px;
-}
-
-#zoomOut {
-    margin-top: -5px;
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    padding-left: 6px;
-    padding-right: 6px;
-    background-color: #fcfcfc;
-    border-radius:4px;
-    
-}
-
-#zoomIn:hover{
-    background-color: #d9d9d9;
-    cursor: pointer;
-}
-
-#zoomOut:hover{
-    background-color: #d9d9d9;
-    cursor: pointer;
-}
-
 
 #mapFilterBox {
     position: absolute;
@@ -587,37 +573,67 @@ input:checked + .slider:before {
 
 
 @media only screen and (max-width: 1000px) {
+
 	.center.search-page{
 		padding:calc(50vh - 4em - 1em - 2.8em) 2em 0 2em;
 	}
 
-	body.logged-in .main-container{
-		width:100%;
-		position:static;
-		height:100vh;
-	}
-
-	#main-container{
-		position:static;
-	}
-
 	#sidebar{
-		box-sizing:border-box;
-		position:static;
 		height:auto;
-		overflow:auto;
-		padding:4em 2em;
 		width:100%;
-		border-right:0;
+		display:block;
+		position:relative;
+		left:auto;
+		top:auto;
+		right:auto;
 	}
 
-	#timetable{
-		height:auto;
-		overflow:auto;
-		padding-bottom:0;
+	#sidebar .navigation{
+		top:16px;
+		left:0px;
+		position:absolute;
+		text-align:center;
 	}
 
-	body.logged-in #sidebar{
-		width:100%;
+	#topbar{
+		background-color:#fff;
+		padding: 16px 32px;
+	}
+
+	#topbar::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+
+	#logo{
+		float:none;
+		height:auto;
+		margin-right:0;
+		margin-bottom:8px;
+	}
+
+	#search{
+		float:none;
+	}
+
+	#user-panel{
+		float:none;
+		text-align:center;
+		margin-top:8px;
+	}
+
+	#zoom-controls{
+		display:none;
+	}
+
+	#sidebar .navigation{
+		position:relative;
+		left:auto;
+		top:auto;
+	}
+
+	#sidebar .navigation span{
+		clear:none;
 	}
 }

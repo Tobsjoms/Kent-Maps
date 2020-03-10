@@ -15,7 +15,7 @@
     if ($stmt->rowCount() != 1){
 		// This should never happen btw
 		$_SESSION["message"] = "Unknown Error";
-		header("Location: http://www.google.com/");
+		header("Location: ?");
 		die();
     }
 

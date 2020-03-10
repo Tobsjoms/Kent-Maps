@@ -1,5 +1,7 @@
 <?php
-	
+
+	include("../group-prerequisites/user.php");
+
 	// Get posted timetable url
 	$userURL = $_POST['timetable-url'];
 
@@ -8,9 +10,9 @@
 		// Check url is valid
 		$info = pathinfo($userURL);
 		// Check if file exists & is the right filetype
-		if($info["extension"] != "ics"){
+		if($info["extension"] != "ics" || filter_var($userURL, FILTER_VALIDATE_URL) === false && !@get_headers($file)){
 		    $_SESSION["message"] = "Invalid Timetable URL";
-			header("Location: ?");
+			header("Location: /Kent-Maps/Website/index.php");
 			die();
 		}
 		// Shorten
@@ -27,10 +29,10 @@
 	if ($colourScheme != "default" && $colourScheme != "colourblindmode" && $colourScheme != "darkmode"){
 		// Should never happen unless user is fiddling with html
 		$_SESSION["message"] = "Invalid colour scheme selection";
-		header("Location: ?");
+		echo $colourScheme;
+		header("Location: /Kent-Maps/Website/index.php");
 		die();
 	}
-
 	// Update current user
    	$stmt = $conn->prepare("UPDATE users SET user_timetable_url = :url, user_colour_mode = :colourmode WHERE user_id = :id");
     $stmt->bindParam(':id', $_SESSION['id']);
@@ -42,7 +44,7 @@
     if (!$errorless){
 		// This should never happen btw
 		$_SESSION["message"] = "Unknown Error " . $conn->errorCode();
-		header("Location: ?");
+		header("Location: /Kent-Maps/Website/index.php");
 		die();
     }
 
@@ -51,8 +53,8 @@
     // Update session colour scheme
     $_SESSION['colour_scheme'] = $colourScheme;
 
-	// Success, redirect to login
-	header("Location: login.php");
+	// Success, redirect to index
+	header("Location: /Kent-Maps/Website/index.php");
 	die();
 
 ?>

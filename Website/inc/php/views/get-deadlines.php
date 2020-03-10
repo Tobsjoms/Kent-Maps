@@ -16,7 +16,7 @@
 	$rows = $stmt->fetchAll();
 
 	if (count($rows) == 0){
-		echo "<h1>No deadlines!</h1>Deadlines are not added automatically.";
+		echo "<div class='heading'>No deadlines!</div>Add one with the form below.";
 	}
 	else{
 		foreach ($rows as $row){
