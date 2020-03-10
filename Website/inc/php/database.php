@@ -1,10 +1,9 @@
 <?php
 //database credentials
-$dbusername = "root";
-$dbpassword = "";
-$server = "localhost"; //local host
-$dbname = "ukcguru";
-
+	$servername = "krelly.com.mysql";
+	$username = "krelly_com";
+	$password = "DKdKX4mtPLCDUhv6Tf237xjc";
+	$dbname = "krelly_com";
 
 
 
