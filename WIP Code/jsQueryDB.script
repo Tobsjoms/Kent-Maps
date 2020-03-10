@@ -1,9 +1,0 @@
-$.ajax({
-    url: "search.php",
-    data: {search: 'textFromSearchBar'},
-    type: "POST",
-    success: function(data) {
-        // data holds anything returned ("echoed") by php file
-        // do something with data returned
-    } 
-});
