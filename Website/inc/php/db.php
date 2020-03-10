@@ -1,9 +1,9 @@
 <?php
-	$servername = "krelly.com.mysql";
-	$username = "krelly_com";
-	$password = "DKdKX4mtPLCDUhv6Tf237xjc";
-	$dbname = "krelly_com";
 
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "ukcguru";
 
 	function tableExists($conn, $table) {
 		// Check if we can get something from the table
