@@ -154,37 +154,15 @@ $(window).on('load', (function(){
     
         //stop overpanning code
     
-     var beforePan
-
-        beforePan = function(oldPan, newPan){
-          var stopHorizontal = false
-            , stopVertical = false
-            , gutterWidth = 300
-            , gutterCustomWidthLeft = 900
-            , gutterCustomWidthRight = 100
-            , gutterHeight = 300
-              // Computed variables
-            , sizes = this.getSizes()
-            , leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterCustomWidthLeft
-            , rightLimit = sizes.width - gutterCustomWidthRight - (sizes.viewBox.x * sizes.realZoom)
-            , topLimit = -((sizes.viewBox.y + sizes.viewBox.height) * sizes.realZoom) + gutterHeight
-            , bottomLimit = sizes.height - gutterHeight - (sizes.viewBox.y * sizes.realZoom)
-
-          customPan = {}
-          customPan.x = Math.max(leftLimit, Math.min(rightLimit, newPan.x))
-          customPan.y = Math.max(topLimit, Math.min(bottomLimit, newPan.y))
-
-          return customPan
-        }
+   
     
     var panZoom = svgPanZoom(allSVG, {
         zoomEnabled: true,
         minZoom: 0.8,
-        refreshRate: 60,
+        refreshRate: 80,
         controlIconsEnabled: false,
         preventMouseEventsDefault: false,
-        fit: true,
-        beforePan: beforePan
+
         
     });
     
@@ -197,14 +175,7 @@ $(window).on('load', (function(){
         rectID.push(b[i].id);
     }
 
-    function zoom(zoomIn){
-        if (zoomIn){
-            panZoom.zoomIn();
-        }
-        else{
-            panZoom.zoomOut();
-        }
-    }
+
 
     
     

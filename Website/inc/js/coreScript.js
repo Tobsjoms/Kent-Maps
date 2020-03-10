@@ -5,8 +5,9 @@
 //potentially can be done by clicking anywhere BUT a room returns specific ID and check for that ID returned If SO then don't change or change back to the timetable UI!
 //need more UI Divs to hook onto for each bit of data eg staffid, name, department
 
-
 $(window).on('load', (function(){
+
+    
     var searchValue = "";
     var URL = window.location.href; 
     if (URL.includes("search")) {
@@ -180,3 +181,11 @@ function buildingPopup(currentID, buildingData) {
     }
 }
 
+            function zoom(zoomIn){
+        if (zoomIn){
+            panZoom.zoomIn();
+        }
+        else{
+            panZoom.zoomOut();
+        }
+    }

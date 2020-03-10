@@ -36,6 +36,9 @@
 	if (isset($_SESSION['id'])) $bodyProperties .= 'class="logged-in"';
 	if (isset($_SESSION['colour_scheme'])) $bodyProperties .= ' id="' . $_SESSION['colour_scheme'] . '"';
     
+
+    $svgLib = "svg-pan-zoom.js";
+    $core = "coreScript.js";
     // If we have a building parameter in the url, 
 	if (isset($_GET["buildingID"])) {
 		$building = $_GET["buildingID"];
@@ -72,9 +75,9 @@
 		<link rel="stylesheet" type="text/css" href="inc/css/style.css">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<script src="inc/js/jquery-3.4.1.js"></script>
-		<script src="inc/js/svg-pan-zoom.js"></script>
+		<?= "<script src='inc/js/$svgLib'></script>" ?>
         <?= "<script src='inc/js/$mapScript'></script>" ?>
-		<script src="inc/js/coreScript.js"></script>
+        <?= "<script src='inc/js/$core'></script>" ?>
 		<script src="inc/js/toggle-tab-funcs.js"></script>
 	</head>
 
