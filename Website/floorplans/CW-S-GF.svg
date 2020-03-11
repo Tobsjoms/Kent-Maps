@@ -252,11 +252,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6568544"
-     inkscape:cx="746.90618"
-     inkscape:cy="468.359"
+     inkscape:zoom="0.7071068"
+     inkscape:cx="-220.26119"
+     inkscape:cy="610.86122"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer5"
+     inkscape:current-layer="Rooms"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
@@ -390,8 +390,7 @@
      inkscape:groupmode="layer"
      id="Rooms"
      inkscape:label="Rooms"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <rect
        id="G01B"
        width="9.0778913"
@@ -464,7 +463,7 @@
        inkscape:label="#rect1518-37-5-2-92-0"
        style="fill:#b06c6c;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
-       id="G02"
+       id="KITC"
        width="27.505692"
        height="26.367092"
        x="5.4115634"
@@ -550,10 +549,11 @@
        style="fill:#b06c6c;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
        d="m 51.107297,81.16582 h 16.739 v -4.331701 l 43.439873,-1.3e-5 V 58.784447 l -60.147626,-8e-6 v 18.04968 z"
-       id="path2072"
+       id="ITOP"
        inkscape:connector-curvature="0"
        style="fill:#b06c6c;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       sodipodi:nodetypes="cccccccc" />
+       sodipodi:nodetypes="cccccccc"
+       inkscape:label="#path2072" />
     <rect
        id="G16"
        width="33.814278"
@@ -1147,7 +1147,8 @@
      inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="Labels "
-     style="display:inline">
+     style="display:inline"
+     sodipodi:insensitive="true">
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:5.53903961px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.13847603"
