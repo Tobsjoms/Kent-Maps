@@ -4,16 +4,26 @@ $(window).on('load', (function(){
 //------SVG Manipulation---------------------------------------------------------------//
 
     var a = document.getElementById('stage');
+    
     var svgDoc = a.contentDocument;
+    
     var allSVG= svgDoc.getElementById("Map");
+    
     var buildingEntire = svgDoc.getElementById("Building");
+    
     var buildingShape = buildingEntire.getElementsByTagName("path");
-    console.log(buildingShape);
-    var mapRooms = svgDoc.getElementById("Rooms"); //All Rooms
+    
+    var mapRooms = svgDoc.getElementById("Rooms");//All Rooms
     var roomPaths = mapRooms.getElementsByTagName("path");
     var roomRect = mapRooms.getElementsByTagName("rect");
+    
+    var IconsObjects = svgDoc.getElementById("Icons");
+   // var iconPaths = IconsObjects.getElementsByTagName("path");
+    
     var targets = ["Building", "Rooms", "Pathways", "Doors", "Icons", "Labels"];
     getBuildingRoomData();
+    
+    
     
 function getBuildingRoomData() {
 //loading in all data for all rooms on a floor, ready to colour each room
