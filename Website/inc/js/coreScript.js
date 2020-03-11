@@ -7,24 +7,22 @@
 
 $(window).on('load', (function(){
 
+
     
     var searchValue = "";
     var URL = window.location.href; 
     if (URL.includes("search")) {
     var URLSearchValue = URL.substring(
     URL.lastIndexOf("=") +1);
-    console.log("URL search = " + URLSearchValue);
     }
     
     if (typeof URLSearchValue != "undefined" ||  typeof URLSearchValue != null || URLSearchValue != "" ) {
         
         searchValue = URLSearchValue;
-        console.log(searchValue);
     }
     
     
     var storedSearchValue = sessionStorage.getItem("searchValue");
-     console.log(searchValue);
     
      if (URL.includes("search")) {
             if (searchValue != "") {
@@ -48,7 +46,7 @@ $(window).on('load', (function(){
         sessionStorage.setItem("searchValue", searchValue);
         location.replace("/Kent-Maps/Website/index.php?search=" + searchValue);
         var searchData = []; //data prep for return JSON data
-        console.log(searchValue);
+        
     
          
      });
@@ -56,10 +54,10 @@ $(window).on('load', (function(){
 
 
  function searchPopup(searchData) {
-    console.log("--------Data------------");
+/*    console.log("--------Data------------");
      console.log(searchData);
     console.log("------------------------");
-     //loop through data
+  */   //loop through data
      //add to page on each loop inside a list element
      //you could check if data exists, so like on lines 79 and 81 if you check for a column and it doesnt exist
      //then it will return undefined when you try to access it, use that to your advantage in a big if statement
@@ -68,9 +66,7 @@ $(window).on('load', (function(){
 
 function roomPopup(currentID, roomInfo) {
     //check room has data
-    console.log("--------Data------------");
-    console.log(roomInfo);
-    console.log("------------------------");
+   
     //Check for empty response from DB
     if (roomInfo.length == 0) {
         console.log("No DB.Room or DB.Staff Information for " + currentID);

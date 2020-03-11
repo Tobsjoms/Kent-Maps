@@ -3,6 +3,7 @@
 	include 'inc/php/timetable-funcs.php';
 	include('inc/php/db.php');
 
+    
 	$loggedIn = isset($_SESSION['email']);
 
 	if ($loggedIn){
@@ -51,12 +52,59 @@
 	$mapFile = "Campus Map Entire.svg";
 	$mapScript = "mainMap.js";
 	$showParkingButton = true;
+    $pathfinder = "none.js";
+
+    $pathfinderMenu = "";
+    
+
 
     if (isset($_GET["buildingID"])) {
 
     	$mapFile = $_GET["buildingID"];
     	$mapScript = "indoorMap.js";
     	$showParkingButton = false;
+
+                if ($mapFile == "CW-Oct-GF.svg") {
+            //for PATHFINDER
+            $pathfinder = "pathfinder.js";
+            $pathfinderMenu = "  <div id = 'pathFinderTemp'>  <h1>Path Finder Demo</h1>
+    
+    <label>Search:</label> <input type='text' id='room' required>
+    <button onclick='loadData();'>Search</button>
+    <label>Choose starting point:</label>
+    <select id='options' onchange='highlight()' '>
+        <option>E1</option>
+        <option>E2</option>
+        <option>E3</option>
+        <option>Stairs</option>
+        <option>Lift</option>
+        <option>SE01</option>
+        <option>SE03</option>
+        <option>SE05</option>
+        <option>SE06</option>
+        <option>SE07</option>
+        <option>SE08</option>
+        <option>SE09</option>
+        <option>SE11</option>
+        <option>SE12</option>
+        <option>SE13</option>
+        <option>SE14</option>
+        <option>SE15</option>
+        <option>SE16</option>
+        <option>SE17</option>
+        <option>SE18</option>
+        <option>SE19</option>
+        <option>SE20</option>
+        <option>SE21</option>
+        <option>SE22</option>
+        <option>SE23</option>
+        <option>SE24</option>
+    </select>
+    <label>Shortest route:</label><input type='checkbox' id='shortest'>
+    <a id = 'demo'> test </a>
+    </div>";        
+                    
+        }
     }
 
 	if (isset($_GET["search"])) {
@@ -79,9 +127,13 @@
         <?= "<script src='inc/js/$mapScript'></script>" ?>
         <?= "<script src='inc/js/$core'></script>" ?>
 		<script src="inc/js/toggle-tab-funcs.js"></script>
+        <?= "<script src='inc/js/$pathfinder'></script>" ?>
 	</head>
 
-	<body <?= $bodyProperties ?> >
+	<body <?= $bodyProperties ?> 
+          
+          >
+        <?php echo $pathfinderMenu ?>
 		<div id="map">
 			<?php echo "<object id='stage' data='floorplans/$mapFile' type='image/svg+xml'></object>" ?>
         	<div id="zoom-controls">

@@ -29,12 +29,11 @@ function getBuildingRoomData() {
 //loading in all data for all rooms on a floor, ready to colour each room
     //get mapName from URL file (buildingID="X-X-X".svg)
     var URL = window.location.href;
-    console.log(URL);
     var mapName = URL.substring(
     URL.lastIndexOf("=") +1,
         URL.lastIndexOf(".svg")
         );
-    console.log(mapName);
+
     getRoomData(mapName);
     
 }
@@ -75,7 +74,7 @@ function updateSVGColourScheme() {
         var att = document.createAttribute("filter");
        // att.value = "url(#shadow)";
         current.setAttribute("filter", "url(#shadow2)");
-        console.log("set shadow");
+
     }
     
     //var textsObject = svgDoc.getElementById("Text");

@@ -17,6 +17,10 @@ html, body {
   box-sizing: inherit;
 }
 
+#pathFinderTemp {
+    margin-top: 5em;
+}
+
 a{
 	color:#2d3436;
 }
