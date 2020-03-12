@@ -11,7 +11,10 @@ $(window).on('load', (function(){
     
     var buildingEntire = svgDoc.getElementById("Building");
     
-    var buildingShape = buildingEntire.getElementsByTagName("path");
+    var buildingShape = 
+    buildingEntire.getElementsByTagName("BuildingShape");
+    
+    var buildingNodes = buildingEntire.getElementsByTagName("path");
     
     var mapRooms = svgDoc.getElementById("Rooms");//All Rooms
     var roomPaths = mapRooms.getElementsByTagName("path");
@@ -23,18 +26,17 @@ $(window).on('load', (function(){
     var targets = ["Building", "Rooms", "Pathways", "Doors", "Icons", "Labels"];
     getBuildingRoomData();
     
-    
+
     
 function getBuildingRoomData() {
 //loading in all data for all rooms on a floor, ready to colour each room
     //get mapName from URL file (buildingID="X-X-X".svg)
     var URL = window.location.href;
-    console.log(URL);
     var mapName = URL.substring(
     URL.lastIndexOf("=") +1,
         URL.lastIndexOf(".svg")
         );
-    console.log(mapName);
+
     getRoomData(mapName);
     
 }
@@ -70,12 +72,12 @@ function updateSVGColourScheme() {
     
         //CHROME FIX FOR OBJECT SHADOWS
     //USES PRESET "<feDropShadow> shadow3" values inbedded in the "<def>" tag at the top of the SVG doc
-    for(var i = 0; i < buildingShape.length; i++) {
-        var current = buildingShape[i];
+    for(var i = 0; i < buildingNodes.length; i++) {
+        var current = buildingNodes[i];
         var att = document.createAttribute("filter");
        // att.value = "url(#shadow)";
         current.setAttribute("filter", "url(#shadow2)");
-        console.log("set shadow");
+
     }
     
     //var textsObject = svgDoc.getElementById("Text");
@@ -87,45 +89,7 @@ function updateSVGColourScheme() {
         
         
     }
-//-----------------------------------------------------------------------------------//
-    
-//-----------------PATHFINDING------------------------------------------------//
-/**
-    var pathLayer = svgDoc.getElementById("Pathways");
-    var pathway = svgDoc.getElementById("path1142");
-    var pathCoord = pathway.getAttribute("d");
-    
-    var sod = pathway.getAttribute("sodipodi:nodetypes");
-    console.log(pathway);
-    console.log(pathCoord);
-    console.log(sod.length + " Paths");
-    
-    $(pathway).click(function() {
-       buildThis();
-        console.log("click");
-    });
-    
-    function buildThis() {
-        //M = base XY, H = Draw Horizontal, V = verticle
-        //each number is a nodePoint
-        pathway.setAttribute("d", "M 5.6594321,94.005023 H 16.557347 27.969756 43.685203 v 31.898617 h 17.679881 16.089625 10.944687 11.599498 11.505956 20.01848 40.5047 17.67988 v -8.60608 -8.60607" );
-        
-        //building new line - doesn't work (doesn't appear?)
-       var newElem = document.createElement("path");
-        newElem.setAttribute("style", "fill-opacity: 1; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;");
-        newElem.setAttribute("d", pathCoord);
-        newElem.setAttribute("inkscape:connector-curvature", "0");
-        newElem.setAttribute("sodipodi:nodetypes", sod);
-        newElem.style.stroke = "#ff0000";
-        newElem.style.visibility = "true";
-        newElem.style.strokeWidth = "5px";
-        pathLayer.append(newElem);
-    }
-*/
-    
-//-------------------------------------------------------------------------//
-  
-//---Panning settings ----------------------------------------------------//
+
 var roomIDs = new Array();
 var panZoom = svgPanZoom(allSVG, {
     zoomEnabled: true,
