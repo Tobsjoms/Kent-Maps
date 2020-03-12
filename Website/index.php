@@ -101,7 +101,7 @@
         <option>SE24</option>
     </select>
     <label>Shortest route:</label><input type='checkbox' id='shortest'>
-    <a id = 'demo'> test </a>
+    <a id = 'demo'></a>
     </div>";        
                     
         }
@@ -133,7 +133,6 @@
 	<body <?= $bodyProperties ?> 
           
           >
-        <?php echo $pathfinderMenu ?>
 		<div id="map">
 			<?php echo "<object id='stage' data='floorplans/$mapFile' type='image/svg+xml'></object>" ?>
         	<div id="zoom-controls">
@@ -227,6 +226,11 @@
 
 					<input class="button" id="submit-button" type="submit" name="submit" value="Save"/>
 				</form>
+                <div>
+                    <?php 
+                    echo $pathfinderMenu
+                    ?>
+                </div>
 			</div>
 
 			<div class="tab-content" id="sidebar-user">
@@ -255,6 +259,7 @@
 			</div>
 
             <div class = "tab-content" id="sidebar-search">
+                <div id = "search results"></div>
                 <div id = "itemTitle"><a>The University Of Kent</a></div>
                 <div id = "itemInfo"></div>
                 <div id = "itemPicture">
