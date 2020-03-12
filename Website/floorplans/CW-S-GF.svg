@@ -252,15 +252,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7071068"
-     inkscape:cx="-220.26119"
-     inkscape:cy="610.86122"
+     inkscape:zoom="1"
+     inkscape:cx="557.14888"
+     inkscape:cy="402.70872"
      inkscape:document-units="mm"
-     inkscape:current-layer="Rooms"
+     inkscape:current-layer="layer5"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      showguides="false"
@@ -367,7 +367,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -376,8 +376,7 @@
      inkscape:groupmode="layer"
      id="Building"
      transform="translate(0,-87)"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <path
        d="m 51.133951,145.72066 102.016869,0.0784 v 18.03499 h 17.31072 l -1e-5,-26.12381 h 38.47453 l 0.0289,2.05102 h 80.00748 v 44.94828 h 3.8747 l -0.0333,23.1449 h -3.84137 v 17.1122 h -65.22378 l -1e-5,-4.36565 h -14.34331 v 16.10089 H 166.2329 v -20.4615 h -21.13245 v 20.12604 H 51.178739 v -9.39216 H 33.065248 v 8.38584 H 5.5595525 V 202.48755 H 2.7362284 l 0.081343,-57.0239 H 32.904639 v 18.44889 l 18.2339,-0.0784 z"
        id="BuildingShape"
@@ -1147,8 +1146,7 @@
      inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="Labels "
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:5.53903961px;line-height:1.25;font-family:Bahnschrift;-inkscape-font-specification:'Bahnschrift Light';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.59139781;stroke:none;stroke-width:0.13847603"
