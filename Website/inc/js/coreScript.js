@@ -96,6 +96,7 @@ function roomPopup(currentID, roomInfo) {
 }    
   
 function buildingPopup(currentID, buildingData) {
+    console.log("popup");
     var gotHOS = true; //got head of school data, assumed true
     var thisBuilding = buildingData[0];
     if(typeof thisBuilding == 'undefined') {
@@ -175,6 +176,7 @@ function buildingPopup(currentID, buildingData) {
 
         document.getElementById("itemRooms").innerHTML = "<a id ='panel-title'> Lecture Rooms </a> </br>" + lecRooms + "<a id ='panel-title'> Computing Rooms </a> </br>" + CompRooms + "<a id ='panel-title'> Seminar Rooms </a> </br>" + SemRooms;
     }
+    document.getElementById('search-result').click();
 }
 
             function zoom(zoomIn){

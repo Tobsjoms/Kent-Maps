@@ -162,12 +162,10 @@ $(window).on('load', (function(){
         refreshRate: 80,
         controlIconsEnabled: false,
         preventMouseEventsDefault: false,
-        animate: true
-
-        
+        dblClickZoomEnabled: false
+  
     });
     
-    var panzoom = Panzoom(allSVG);
     
     panZoom.contain();
     panZoom.center();
@@ -194,10 +192,10 @@ $(window).on('load', (function(){
     //Building Interactivity----------------------------------------------
     //--------------------------------------------------------------------
     svgItem.onclick = function(event) {
+        console.log("click!");
         var currentID = event.target.id;
         //get current id of object within svgItem
         getBuildingData(currentID);
-        console.log(getBuildingData(currentID));
     }
     
     function getBuildingData(id) {
