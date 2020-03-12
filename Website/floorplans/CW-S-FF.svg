@@ -215,6 +215,36 @@
       </g>
     </symbol>
   </defs>
+    <defs
+     id="defs5">
+    <filter
+       id="shadow">
+      <feDropShadow
+         dx="0.4"
+         dy="0.4"
+         stdDeviation="0.2"
+         flood-color="black"
+         flood-opacity="0.3" />
+    </filter>
+    <filter
+       id="shadow2">
+      <feDropShadow
+         dx="0.5"
+         dy="0.5"
+         stdDeviation="0.8"
+         flood-color="black"
+         flood-opacity="0.6" />
+    </filter>
+    <filter
+       id="shadow3">
+      <feDropShadow
+         dx="0.3"
+         dy="0.3"
+         stdDeviation="0.2"
+         flood-color="black"
+         flood-opacity="0.4" />
+    </filter>
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -223,16 +253,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="4.0000001"
-     inkscape:cx="499.49068"
-     inkscape:cy="465.97384"
+     inkscape:cx="446.12523"
+     inkscape:cy="319.17657"
      inkscape:document-units="mm"
-     inkscape:current-layer="Rooms"
+     inkscape:current-layer="layer4"
      showgrid="false"
-     inkscape:window-width="1600"
-     inkscape:window-height="1017"
-     inkscape:window-x="312"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
      showguides="false"
      inkscape:guide-bbox="true">
     <inkscape:grid
@@ -346,8 +376,7 @@
      inkscape:groupmode="layer"
      id="Building"
      transform="translate(0,-87)"
-     style="display:inline"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <path
        d="m 92.262585,111.28646 198.663565,0.14461 v 33.27699 l -0.37516,133.83202 H 92.349805 V 261.21033 H 57.076317 v 15.47301 H 3.5128278 v -60.65428 h -5.498028 l 0.158403,-105.21681 H 56.763552 v 34.04069 l 35.507963,-0.14461 z"
        id="BuildingShape"
@@ -369,53 +398,6 @@
        y="167.93192"
        inkscape:label="#rect1518"
        style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.1154397;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       id="G48"
-       width="28.849562"
-       height="28.995054"
-       x="411.97208"
-       y="102.13878"
-       inkscape:label="#rect1518-37-5"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.1440317;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       id="rect1518-37-5-2"
-       width="16.690971"
-       height="29.066448"
-       x="385.28876"
-       y="158.97446"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.1440317;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       id="G46"
-       width="16.690971"
-       height="29.066448"
-       x="411.97208"
-       y="73.072327"
-       inkscape:label="#rect1518-37-5-2-8"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.1440317;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       id="G45"
-       width="20.380056"
-       height="29.051367"
-       x="364.90869"
-       y="158.97446"
-       inkscape:label="#rect1518-37-5-2-9"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.15911359;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       id="G44"
-       width="12.740376"
-       height="29.084604"
-       x="419.68188"
-       y="61.934132"
-       inkscape:label="#rect1518-37-5-2-92"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.12587631;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       id="G43"
-       width="21.667788"
-       height="28.950235"
-       x="398.0141"
-       y="61.934132"
-       inkscape:label="#rect1518-37-5-2-92-0"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.10654858;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
        id="S113"
        width="31.91972"
@@ -440,35 +422,6 @@
        y="94.670151"
        inkscape:label="#rect1518-37-5-2-92-0-7"
        style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.08655206;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <path
-       d="m 398.59752,192.39748 h 24.10947 v -6.23903 h 14.52972 v -25.99726 h -38.59418 v 25.99726 z"
-       id="path2072"
-       inkscape:connector-curvature="0"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.1440317;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       id="G15"
-       width="48.03746"
-       height="25.997238"
-       x="401.51794"
-       y="136.41679"
-       inkscape:label="#rect1518-37-5-2-3-9-2-1"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.1440317;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       id="G16"
-       width="48.703281"
-       height="25.997238"
-       x="406.42834"
-       y="147.00012"
-       inkscape:label="#rect1518-37-5-2-3-9-2-1-4"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.1440317;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       id="STAIRWELL1"
-       width="11.595088"
-       height="25.99725"
-       x="398.64252"
-       y="134.16394"
-       inkscape:label="#rect1518-37-5-2-8-1-8"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.1440317;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
        id="rect1518-37-5-2-3-3-3-2"
        width="41.693733"
@@ -485,14 +438,6 @@
        y="126.66122"
        inkscape:label="#rect1518-37-5-2-3-5-3"
        style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.15967745;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <rect
-       id="G04"
-       width="25.868452"
-       height="15.487144"
-       x="-42.943859"
-       y="232.33333"
-       inkscape:label="#rect1518-37-5-2-3-5-3-2-9"
-       style="fill:#c06b46;fill-opacity:1;stroke:#000000;stroke-width:0.16986795;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
        id="S106"
        width="34.453407"
@@ -790,52 +735,21 @@
      inkscape:groupmode="layer"
      id="Pathways"
      inkscape:label="Pathways"
-     style="display:none"
-     sodipodi:insensitive="true">
-    <path
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 5.6594321,94.005023 H 16.557347 27.969756 43.685203 v 31.898617 h 17.679881 16.089625 10.944687 11.599498 11.505956 20.01848 40.5047 17.67988 v -8.60608 -8.60607 -11.412413 -9.728611 -7.390004"
-       id="path1142"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccccccccccccccccc" />
-  </g>
+     style="display:inline" />
   <g
      inkscape:groupmode="layer"
      id="layer6"
      inkscape:label="Doors"
-     style="display:none"
-     sodipodi:insensitive="true">
-    <path
-       style="fill:#575757;fill-opacity:1;stroke:none;stroke-width:0.22927551px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 32.425084,123.19915 h -0.479389 v 5.05716 h 0.475499 z"
-       id="path12563"
-       inkscape:connector-curvature="0" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path14680"
-       d="m 52.029867,123.19915 h -0.47939 v 5.05716 h 0.4755 z"
-       style="fill:#575757;fill-opacity:1;stroke:none;stroke-width:0.22927551px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path14680-6"
-       d="m 224.76916,112.22968 h -0.47939 v 5.05716 h 0.4755 z"
-       style="fill:#575757;fill-opacity:1;stroke:none;stroke-width:0.22927551px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path14680-2"
-       d="m 204.9783,53.577436 v -0.479387 h -5.05716 v 0.475503 z"
-       style="fill:#575757;fill-opacity:1;stroke:none;stroke-width:0.22927551px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-  </g>
+     style="display:inline" />
   <g
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="Icons"
-     style="display:none"
-     sodipodi:insensitive="true">
+     style="display:inline">
     <g
        id="g7789"
        clip-path="url(#clipPath7791)"
-       transform="matrix(0.16268594,0,0,0.16268594,52.306737,145.7697)">
+       transform="matrix(0.16268594,0,0,0.16268594,-240.29993,91.13981)">
       <g
          inkscape:label="Clip"
          id="g7787">
@@ -866,7 +780,7 @@
     <g
        id="g7789-5"
        clip-path="url(#clipPath7791-4)"
-       transform="matrix(0.16268594,0,0,0.16268594,227.19533,139.61919)">
+       transform="matrix(0.16268594,0,0,0.16268594,-65.411341,84.9893)">
       <g
          inkscape:label="Clip"
          id="g7787-0">
@@ -897,7 +811,7 @@
     <g
        id="g7789-4"
        clip-path="url(#clipPath7791-0)"
-       transform="matrix(0.16268594,0,0,-0.16268594,275.1924,48.109644)">
+       transform="matrix(0.16268594,0,0,-0.16268594,-17.414271,-6.520246)">
       <g
          inkscape:label="Clip"
          id="g7787-1">
@@ -928,7 +842,7 @@
     <g
        id="g7789-3"
        clip-path="url(#clipPath7791-5)"
-       transform="matrix(0.16268594,0,0,0.16268594,52.114123,70.497664)">
+       transform="matrix(0.16268594,0,0,0.16268594,-240.49255,15.867774)">
       <g
          inkscape:label="Clip"
          id="g7787-6">
@@ -964,7 +878,7 @@
        y="0"
        width="100%"
        height="100%"
-       transform="matrix(0.20873315,0,0,0.20873315,51.766176,91.225226)" />
+       transform="matrix(0.20873315,0,0,0.20873315,101.46988,68.196785)" />
     <use
        id="use12819"
        style="display:inline;fill:#c7d2b1;fill-opacity:1;stroke:#000000"
@@ -973,16 +887,7 @@
        y="0"
        width="100%"
        height="100%"
-       transform="matrix(0.20873315,0,0,0.20873315,51.766176,96.206462)" />
-    <use
-       id="use14643"
-       transform="matrix(0.1473533,0,0,0.1473533,51.838185,110.9313)"
-       style="display:inline;fill:#c7d2b1;fill-opacity:1;stroke:#000000;stroke-width:87.34492493;stroke-miterlimit:4;stroke-dasharray:none"
-       xlink:href="#WheelChair_Inv"
-       x="0"
-       y="0"
-       width="100%"
-       height="100%" />
+       transform="matrix(0.20873315,0,0,0.20873315,94.693367,122.34704)" />
   </g>
   <g
      inkscape:groupmode="layer"

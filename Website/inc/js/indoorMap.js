@@ -77,6 +77,7 @@ function updateSVGColourScheme() {
         var att = document.createAttribute("filter");
        // att.value = "url(#shadow)";
         current.setAttribute("filter", "url(#shadow2)");
+        //current.style.fill = "#e01e52";
 
     }
     
