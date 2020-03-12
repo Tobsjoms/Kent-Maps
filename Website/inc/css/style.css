@@ -407,10 +407,13 @@ a{
 
 
 #itemTitle {
+    font-weight: 500;
     font-size: 26px;
 }
 
 #panel-title {
+    padding-bottom: 1%;
+    font-weight: 500;
     font-size: 22px;
 }
 
@@ -419,8 +422,61 @@ a{
     max-height: 100%;
     display: block;
 }
+#itemInfo {
+    font-size: 18px;
+}
 
+/********************************************
+                
+            SIDEBAR PATHFINDER
 
+*********************************************/
+
+#pathfinder {
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+    border-bottom: 2px solid black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+#startPoint {
+        margin-bottom: 1%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    margin: 1%;
+}
+
+#searchSection {
+    margin-bottom: 1%;
+    padding-bottom: 2%;
+    font-size: 16px;
+    margin: 1%;
+}
+
+.searchButton {
+    margin-top: 2%;
+	border-radius:4px;
+	background-color:#efefef;
+	border:1px solid rgba(0,0,0,0.15);
+	box-shadow: 0 2px 3px rgba(0,0,0,0.06);
+    cursor:pointer;
+	font-size:1.2em;
+	color:rgb(134, 134, 134);
+	outline:none;
+}
+
+.searchButton:hover {
+    background-color:#c7c7c7;
+}
+
+#options {
+    margin-bottom: 1%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+}
 
 
 /*****************************************************

@@ -341,7 +341,7 @@ var nodeObjects = [];
                              var temp = allSVG.getElementById(currentNode);
                             var jqTemp = allSVG.getElementById(currentNode);
                              if (/D/i.test(currentNode)) {
-                                 temp.style.fill = "#ffba00";
+                                 temp.style.fill = "#2f2f2f";
                                     temp.style.stroke = "#black";
                         $(jqTemp).animate({opacity: '0.5'}, "slow" );
                         $(jqTemp).animate({opacity: '1'}, "slow" );

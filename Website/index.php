@@ -67,10 +67,9 @@
                 if ($mapFile == "CW-Oct-GF.svg") {
             //for PATHFINDER
             $pathfinder = "pathfinder.js";
-            $pathfinderMenu = "  <div id = 'pathFinderTemp'>  <h1>Path Finder Demo</h1>
+            $pathfinderMenu = "  <div id = 'pathfinder'>  <h1>Path Finder Demo</h1>
     
-    <label>Search:</label> <input type='text' id='room' required>
-    <button onclick='loadData();'>Search</button>
+    <div id = 'startPoint'>
     <label>Choose starting point:</label>
     <select id='options' onchange='highlight()' '>
         <option>E1</option>
@@ -99,8 +98,11 @@
         <option>SE22</option>
         <option>SE23</option>
         <option>SE24</option>
-    </select>
-    <label>Shortest route:</label><input type='checkbox' id='shortest'>
+    </select> </div> </br>
+    <div id = 'searchSection'>
+    <label id = 'searchLabel'>Search:</label> <input type='text' id='room' required>
+    <button onclick='loadData();' class = 'searchButton'>Search</button>  
+    <label>Shortest route:</label><input type='checkbox' id='shortest'> </div>
     <a id = 'demo'></a>
     </div>";        
                     
@@ -226,11 +228,7 @@
 
 					<input class="button" id="submit-button" type="submit" name="submit" value="Save"/>
 				</form>
-                <div>
-                    <?php 
-                    echo $pathfinderMenu
-                    ?>
-                </div>
+
 			</div>
 
 			<div class="tab-content" id="sidebar-user">
@@ -259,7 +257,9 @@
 			</div>
 
             <div class = "tab-content" id="sidebar-search">
+            <?php echo $pathfinderMenu ?>
                 <div id = "search results"></div>
+                <h1> Building/Room Information</h1>
                 <div id = "itemTitle"><a>The University Of Kent</a></div>
                 <div id = "itemInfo"></div>
                 <div id = "itemPicture">
