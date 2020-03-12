@@ -7,8 +7,9 @@
     var allSVG= svgDoc.getElementById("Map");   
 
     var pathways = allSVG.getElementById("Pathways");
-    //ellipse objects
-    var pathwayObjects = pathways.getElementsByTagName('ellipse');
+    //path objects
+       // console.log(pathways);
+    var pathwayObjects = pathways.getElementsByTagName('path');
 
    //col()
         
@@ -117,7 +118,7 @@ var nodeObjects = [];
                 this.addToQueue(currentNode);  
             }
             // Plot path to goal
-            pathPlot(this.paths);
+            pathPlot(this.paths, goal);
         }
 
         addToQueue(currentNode) {
@@ -302,7 +303,7 @@ var nodeObjects = [];
         
         
     
-        function pathPlot(path) {
+        function pathPlot(path, goal) {
              var a = document.getElementById('stage');
 
             var svgDoc = a.contentDocument;
@@ -310,8 +311,8 @@ var nodeObjects = [];
             var allSVG= svgDoc.getElementById("Map");   
 
             var pathways = allSVG.getElementById("Pathways");
-        //ellipse objects
-            var pathwayObjects = pathways.getElementsByTagName('ellipse');
+        //path objects
+            var pathwayObjects = pathways.getElementsByTagName('path');
 
             let shortest = document.getElementById("shortest").checked;
 
@@ -331,16 +332,25 @@ var nodeObjects = [];
                         for (var j = 0; j < index.length; j++) {
                             var currentNode = index[j];
                            // d3.select("#" + currentNode).style("fill", "red");
-                            var temp = allSVG.getElementById(currentNode);
-                            temp.style.fill = "red";
+
                         }
                     } else {
                         for (var i = 0; i < path.length; i++) {
                             for (var j = 0; j < path[i].length; j++) {
                                 var currentNode = path[i][j];
-                                //d3.select("#" + currentNode).style("fill", "red");
-                                 var temp = allSVG.getElementById(currentNode);
-                                temp.style.fill = "red";
+                             var temp = allSVG.getElementById(currentNode);
+                            var jqTemp = allSVG.getElementById(currentNode);
+                             if (/D/i.test(currentNode)) {
+                                 temp.style.fill = "#ffba00";
+                                    temp.style.stroke = "#black";
+                        $(jqTemp).animate({opacity: '0.5'}, "slow" );
+                        $(jqTemp).animate({opacity: '1'}, "slow" );
+                         $(jqTemp).animate({opacity: '0.5'}, "slow" );
+                         $(jqTemp).animate({opacity: '1'}, "slow" );
+                        
+                    } else {
+                        temp.style.fill = "#ff4400";
+                    }
                             }       
                         }
                     }
@@ -357,8 +367,8 @@ var nodeObjects = [];
             var allSVG= svgDoc.getElementById("Map");   
 
             var pathways = allSVG.getElementById("Pathways");
-        //ellipse objects
-            var pathwayObjects = pathways.getElementsByTagName('ellipse');
+        //path objects
+            var pathwayObjects = pathways.getElementsByTagName('path');
 
 
                     console.log("highlight called");
@@ -381,7 +391,13 @@ var nodeObjects = [];
             }
                   //  d3.select("#" + start).style("fill", "red");
                     var temp2 = allSVG.getElementById(start);
-                    temp2.style.fill = "red";
+
+                    if (/D/i.test(start)) {
+                        temp2.style.fill = "black";
+                    } else {
+                        temp2.style.fill = "#ff4400";
+                    }
+                    
 			
         }
 
