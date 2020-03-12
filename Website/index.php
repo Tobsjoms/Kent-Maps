@@ -175,6 +175,10 @@
 				<span id="settings-button" onClick="changeTab(this)" target="sidebar-user">
 					<i class="material-icons">person</i>
 				</span>
+                <span id = "search-result" onClick="changeTab(this)"
+                      target = "sidebar-search">
+                    <i class = "material-icons">search</i>
+                </span>
 			</div>
 			<div class="tab-content" id="sidebar-timetable">
 				<?php
@@ -250,7 +254,7 @@
 				</form>
 			</div>
 
-            <div class = "tab-content" id="mapResults">
+            <div class = "tab-content" id="sidebar-search">
                 <div id = "itemTitle"><a>The University Of Kent</a></div>
                 <div id = "itemInfo"></div>
                 <div id = "itemPicture">
