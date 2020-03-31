@@ -112,7 +112,6 @@ var panZoom = svgPanZoom(allSVG, {
     mapRooms.onclick = function(event) {
     var currentID = event.target.id;
     getRoomData(currentID);
-    document.getElementById("mapTab").click()
     }
     
 

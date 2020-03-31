@@ -5,6 +5,8 @@
 //potentially can be done by clicking anywhere BUT a room returns specific ID and check for that ID returned If SO then don't change or change back to the timetable UI!
 //need more UI Divs to hook onto for each bit of data eg staffid, name, department
 
+
+
 $(window).on('load', (function(){
 
 
@@ -52,6 +54,40 @@ $(window).on('load', (function(){
      });
 }));
 
+var LongNames = [
+    ["CW-S-GF", "Cornwallis South Ground"],
+    ["CW-S-FF", "Cornwallis South First"],
+    ["CW-E-GF", "Cornwallis East Ground"],
+    ["CW-E-FF", "Cornwallis East First"],
+    ["CW-SW-GF", "Cornwallis SouthWest Ground"],
+    ["CW-SW-FF", "Cornwallis SouthWest First"],
+    ["CW-Oct-GF", "Cornwallis Octogon Ground"],
+    ["CW-Oct-FF", "Cornwallis Octogon First"],
+];
+
+
+
+function getCurrentMap() {
+    //finds map name from the filename of the loaded map in 'stage'
+    var mapObj = document.getElementById("stage");
+    var dataURL = mapObj.data;
+    
+    var name = dataURL.substring(
+    dataURL.lastIndexOf("floorplans/") +11,
+        dataURL.lastIndexOf(".svg")
+        );
+    
+    for(i = 0; i < LongNames.length; i++) {
+        if (name == LongNames[i][0]) {
+            name = LongNames[i][1];
+        }
+    }
+    return name;
+}
+
+
+
+
 
  function searchPopup(searchData) {
 /*    console.log("--------Data------------");
@@ -66,7 +102,7 @@ $(window).on('load', (function(){
 
 function roomPopup(currentID, roomInfo) {
     //check room has data
-   
+   console.log(roomInfo);
     //Check for empty response from DB
     if (roomInfo.length == 0) {
         console.log("No DB.Room or DB.Staff Information for " + currentID);
@@ -90,8 +126,8 @@ function roomPopup(currentID, roomInfo) {
             console.log("No DB.Staff Information for " + currentID);
             }
         }
-    document.getElementById('itemTitle').innerHTML = "<a id = 'panel-title'> " + currentID
-    
+    document.getElementById('itemTitle').innerHTML = "<a id = 'panel-title'> " + getCurrentMap() + ": " + currentID;
+    document.getElementById('search-result').click();
 
 }    
   
