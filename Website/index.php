@@ -266,7 +266,8 @@
                     <img id = "itemIMG">
                 </div>
                 
-                <div id = "itemStaffInfo"></div>
+                <div id = "itemStaffInfo">
+                </div>
                 <div id = "itemLinks"></div>
                 <div id = "itemRooms"></div>
             </div>

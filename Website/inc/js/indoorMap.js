@@ -95,7 +95,11 @@ var roomIDs = new Array();
 var panZoom = svgPanZoom(allSVG, {
     zoomEnabled: true,
     minZoom: 0.8,
-    controlIconsEnabled: false
+    controlIconsEnabled: false,
+            refreshRate: 80,
+        preventMouseEventsDefault: false,
+        dblClickZoomEnabled: false
+  
 });
     panZoom.zoom(0.8);
     panZoom.center();
