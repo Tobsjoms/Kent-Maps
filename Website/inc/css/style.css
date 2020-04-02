@@ -440,6 +440,18 @@ a{
     font-size: 18px;
 }
 
+#textSeperator {
+    margin-top: 2%;
+    padding-top: 2%;
+    border-top: 3px solid #e0e0e0;
+}
+
+
+#smallRoomDetails {
+    font-size: 15px;
+    color: #747474;
+}
+
 /********************************************
                 
             SIDEBAR PATHFINDER

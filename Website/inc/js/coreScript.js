@@ -97,6 +97,10 @@ function getCurrentMap() {
      //add to page on each loop inside a list element
      //you could check if data exists, so like on lines 79 and 81 if you check for a column and it doesnt exist
      //then it will return undefined when you try to access it, use that to your advantage in a big if statement
+     
+     
+     //README
+     //call roomPopup or building popup with new payload
 
  }
 
@@ -161,6 +165,7 @@ function roomPopup(currentID, roomInfo) { //------------------------------------
     if (gotRoom) {
         document.getElementById('itemTitle').innerHTML = " <a> " + roomInfo[roomInfo.length-1].RoomType + "</a> </br>";
         document.getElementById('itemInfo').innerHTML = "<a id = 'panel-title'> Room: " + currentID + "</br>" + getCurrentMap() + "</br>";
+        document.getElementById('itemRooms').innerHTML = "</br> <a id = 'textSeperator'> Other Room Details </a> </br> <a id = 'smallRoomDetails'> Equipment:  "+ roomInfo[roomInfo.length-1].Equipment + "</br> Disabled Access: " + roomInfo[roomInfo.length-1]["Disabled Access"] + "</br> Capactiy: " + roomInfo[roomInfo.length-1].Capacity + " </a>"
     }
     
     //-------if we DONT have staff info---------------------
@@ -186,6 +191,8 @@ function roomPopup(currentID, roomInfo) { //------------------------------------
             
 
     document.getElementById('search-result').click();
+    
+    
 
 }//--------------------------------------------------------------------------------------------
 

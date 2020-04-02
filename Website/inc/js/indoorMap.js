@@ -37,7 +37,7 @@ function getBuildingRoomData() {
         URL.lastIndexOf(".svg")
         );
 
-    getRoomData(mapName);
+   // getRoomData(mapName);
     
 }
     
