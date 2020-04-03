@@ -5,6 +5,8 @@
 //potentially can be done by clicking anywhere BUT a room returns specific ID and check for that ID returned If SO then don't change or change back to the timetable UI!
 //need more UI Divs to hook onto for each bit of data eg staffid, name, department
 
+
+
 $(window).on('load', (function(){
 
 
@@ -52,6 +54,40 @@ $(window).on('load', (function(){
      });
 }));
 
+var LongNames = [
+    ["CW-S-GF", "Cornwallis South Ground"],
+    ["CW-S-FF", "Cornwallis South First"],
+    ["CW-E-GF", "Cornwallis East Ground"],
+    ["CW-E-FF", "Cornwallis East First"],
+    ["CW-SW-GF", "Cornwallis SouthWest Ground"],
+    ["CW-SW-FF", "Cornwallis SouthWest First"],
+    ["CW-Oct-GF", "Cornwallis Octogon Ground"],
+    ["CW-Oct-FF", "Cornwallis Octogon First"],
+];
+
+function getCurrentMap() {
+    //finds map name from the filename of the loaded map in 'stage'
+    var mapObj = document.getElementById("stage");
+    var dataURL = mapObj.data;
+    
+    var name = dataURL.substring(
+    dataURL.lastIndexOf("floorplans/") +11,
+        dataURL.lastIndexOf(".svg")
+        );
+    
+    
+    //if a building longname exists, replace it instead of shortname
+    for(i = 0; i < LongNames.length; i++) {
+        if (name == LongNames[i][0]) {
+            name = LongNames[i][1];
+        }
+    }
+    return name;
+}
+
+
+
+
 
  function searchPopup(searchData) {
 /*    console.log("--------Data------------");
@@ -61,39 +97,107 @@ $(window).on('load', (function(){
      //add to page on each loop inside a list element
      //you could check if data exists, so like on lines 79 and 81 if you check for a column and it doesnt exist
      //then it will return undefined when you try to access it, use that to your advantage in a big if statement
+     
+     
+     //README
+     //call roomPopup or building popup with new payload
 
  }
 
-function roomPopup(currentID, roomInfo) {
-    //check room has data
-   
-    //Check for empty response from DB
+function roomPopup(currentID, roomInfo) { //-----------------------------------------------
+    var gotRoom = true;
+    var gotStaff = true;
+    var staffLength;
+    console.log(roomInfo);
+
+    //-------IF RETURN DATA IS EMPTY-------------------------------------------
     if (roomInfo.length == 0) {
         console.log("No DB.Room or DB.Staff Information for " + currentID);
+        gotRoom = false;
+        gotStaff = false;
     }
+    //---------IF RETURN DATA IS NOT EMPTY-------------------------------------
     else if (roomInfo.length > 0) {
-        
+        //-------------Check if specific room data exists------------
         var checkRoomData = roomInfo[roomInfo.length-1].RoomType;
-        
         if(typeof checkRoomData == "undefined") {
-            
-            console.log("No DB.Room Information for " + currentID);
-            document.getElementById('itemInfo').innerHTML = "<a> " + "Staff Office" + "</a> </br>";
-            
+            gotRoom = false;
         } else {
-            
-            document.getElementById('itemInfo').innerHTML = "<a> " + roomInfo[roomInfo.length-1].RoomType + "</a> </br>";
+            gotRoom = true;
                }
-        
+        //------------Check If Room's Staff data Exists--------------
         var checkStaffData = roomInfo[0].StaffID;
         if(typeof checkStaffData == "undefined") {
-            console.log("No DB.Staff Information for " + currentID);
+            gotStaff = false;
+            }
+        
+        else {
+            if (gotStaff) {
+                    if(gotRoom) {
+                        staffLength = roomInfo.length -1;
+                        console.log(staffLength);
+                    }
+                    if(!gotRoom) {
+                        staffLength = roomInfo.length;
+                        console.log(staffLength);
+                    }
+                
+
+                
+            }
+             
+            
             }
         }
-    document.getElementById('itemTitle').innerHTML = "<a id = 'panel-title'> " + currentID
+    
+    /*---------------------putting into page------------------------
+    ---------------------------------------------------------------*/
+    
+    //---------if we don't have room info--------------------
+    if(!gotRoom) {
+        document.getElementById('itemTitle').innerHTML = "<a> " + "Unknown Room" + "</a> </br>";
+        document.getElementById('itemInfo').innerHTML = "<a> Sorry! it appears we don't have any data for this room! </br> If you think this room is accessible then report this issue to </br> <a id = 'linkgen'> help@UKCGuru.com </a> </a> ";
+        document.getElementById('itemLinks').innerHTML = "";
+        document.getElementById('itemRooms').innerHTML = "";
+    }
+    
+    //--------if we DO have room Info-----------------------
+    if (gotRoom) {
+        document.getElementById('itemTitle').innerHTML = " <a> " + roomInfo[roomInfo.length-1].RoomType + "</a> </br>";
+        document.getElementById('itemInfo').innerHTML = "<a id = 'panel-title'> Room: " + currentID + "</br>" + getCurrentMap() + "</br>";
+        document.getElementById('itemRooms').innerHTML = "</br> <a id = 'textSeperator'> Other Room Details </a> </br> <a id = 'smallRoomDetails'> Equipment:  "+ roomInfo[roomInfo.length-1].Equipment + "</br> Disabled Access: " + roomInfo[roomInfo.length-1]["Disabled Access"] + "</br> Capactiy: " + roomInfo[roomInfo.length-1].Capacity + " </a>"
+    }
+    
+    //-------if we DONT have staff info---------------------
+    
+    if (!gotStaff) {
+        document.getElementById("itemStaffInfo").innerHTML = "</br> <a id = 'panel-title-h1'> Staff Details </br> " + "</br> <a id = 'panel-title-h2'> There is no staff assigned to this room </a>";
+    }
+    
+    
+    
+    //--------if We DO have Staff Info----------------------
+    
+    if(gotStaff) {
+        document.getElementById("itemStaffInfo").innerHTML = "</br> <a id = 'panel-title-h1'> Staff Details </a> </br>";
+        
+        for(i = 0; i < staffLength; i++) {
+            document.getElementById("itemStaffInfo").innerHTML += "</br> <a id = 'panel-title-h2'> " + roomInfo[i].StaffName + " (" + roomInfo[i].StaffID + ")</a>" + "<div id = 'sDetails" + i + "'" + "</div>";
+            elemID = "sDetails" + i;
+            document.getElementById(elemID).innerHTML += "<a>"+ roomInfo[i].StaffDescription + "</br>" + roomInfo[i].StaffEmail +"</a>";
+        }
+        
+    }
+            
+
+    document.getElementById('search-result').click();
+    
     
 
-}    
+}//--------------------------------------------------------------------------------------------
+
+
+
   
 function buildingPopup(currentID, buildingData) {
     console.log("popup");

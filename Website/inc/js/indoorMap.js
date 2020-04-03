@@ -37,7 +37,7 @@ function getBuildingRoomData() {
         URL.lastIndexOf(".svg")
         );
 
-    getRoomData(mapName);
+   // getRoomData(mapName);
     
 }
     
@@ -95,7 +95,11 @@ var roomIDs = new Array();
 var panZoom = svgPanZoom(allSVG, {
     zoomEnabled: true,
     minZoom: 0.8,
-    controlIconsEnabled: false
+    controlIconsEnabled: false,
+            refreshRate: 80,
+        preventMouseEventsDefault: false,
+        dblClickZoomEnabled: false
+  
 });
     panZoom.zoom(0.8);
     panZoom.center();
@@ -112,7 +116,6 @@ var panZoom = svgPanZoom(allSVG, {
     mapRooms.onclick = function(event) {
     var currentID = event.target.id;
     getRoomData(currentID);
-    document.getElementById("mapTab").click()
     }
     
 
