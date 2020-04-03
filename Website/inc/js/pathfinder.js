@@ -401,9 +401,9 @@ getBuildingID();
     var svgDoc = a.contentDocument;
         
         var mapString = a.data;
-        var splitcheck = mapString.includes("Campus");
+        var gotMainMap = mapString.includes("Campus");
     
-        if (splitcheck) {
+        if (gotMainMap) {
             var allSVG= svgDoc.getElementById("svg16");
         } else {
             var allSVG= svgDoc.getElementById("Map");
@@ -422,7 +422,7 @@ getBuildingID();
             var start = document.getElementById("options").value;
             start = start.toUpperCase();
             
-            if(splitcheck) {
+            if(gotMainMap) {
                 start = start;
             } else {
 
