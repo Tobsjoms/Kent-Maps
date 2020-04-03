@@ -47,6 +47,7 @@
 	else{
 		// Default map (main)
 		$loadscript = "<script src='inc/js/mainMap.js'></script>";
+        
 	}
 
 	$mapFile = "Campus Map Entire.svg";
@@ -107,6 +108,45 @@
     </div>";        
                     
         }
+    } else {
+        
+        $pathfinder = "pathfinder.js";
+            $pathfinderMenu = "  <div id = 'pathfinder'>  <h1>Path Finder Demo</h1>
+    
+    <div id = 'startPoint'>
+    <label>Choose starting point:</label>
+    <select id='options' onchange='highlight()' '>
+        <option value='CH-MD'>Chipperfield (CH) Main Entrance</option>
+			<option value='SIB-MD'>Sibson Main Entrance</option>
+			<option value='KEN-MD'>Kennedy (KEN) Main Entrance</option>
+			<option value='JEN-MD'>Jennison (J) Main Entrance</option>
+			<option value='GYM-MD'>Sports Centre</option>
+			<option value='I-MD'>Ingram (I) Main Entrance</option>
+			<option value='S-MD'>Stacey (S) Main Entrance</option>
+			<option value='SHOPSD'>COOP/CAFE/FOOD</option>
+			<option value='E-MD'>Eliot College</option>
+			<option value='EE-MD'>Eliot Extension</option>
+			<option value='LIB-MD'>Library Main Entrance</option>
+			<option value='G-MD'>Grimond Main Entrance</option>
+			<option value='LIB-RED'>Library Road Entrance</option>
+			<option value='GULB-MD'>The Gulbenkian Main Entrance</option>
+			<option value='CW-MD'>Cornwallis West Main Entrance</option>
+			<option value='CS-MD'>Cornwallis South Main Entrance</option>
+			<option value='R-MD'>Rutherford Main Entrance</option>
+			<option value='RE-MD'>Rutherford Extension (RE) Main Entrance</option>
+			<option value='REG-MD'>The Registry Main Entrance</option>
+			<option value='CSE-OCT-MD'>Cornwallis South East/Octagan</option>
+			<option value='CC-MD'>Cornwallis Central Main Entrance </option>
+			<option value='CE-MD'>Cornwallis East Main Entrance</option>
+			<option value='D-MD'>Darwin Main Entrance</option>
+    </select> </div> </br>
+    <div id = 'searchSection'>
+    <label id = 'searchLabel'>Search:</label> <input type='text' id='room' required>
+    <button onclick='loadData();' class = 'searchButton'>Search</button>  
+    <label>Shortest route:</label><input type='checkbox' id='shortest'> </div>
+    <a id = 'demo'></a>
+    </div>";
+        
     }
 
 	if (isset($_GET["search"])) {
@@ -136,7 +176,7 @@
           
           >
         <div id = "overlay">
-        <img  id = "loadimg" src=   "inc/img/loading.gif" alt="Loading">
+        <img  id = "loadimg" src= "inc/img/loading.gif" alt="Loading">
         </div>
 		<div id="map">
 			<?php echo "<object id='stage' data='floorplans/$mapFile' type='image/svg+xml'></object>" ?>

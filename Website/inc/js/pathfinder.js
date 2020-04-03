@@ -1,11 +1,24 @@
-    $(window).on('load', (function(){ 
+    
+var splitcheck;
+
+
+
+$(window).on('load', (function(){ 
 
     var a = document.getElementById('stage');
 
     var svgDoc = a.contentDocument;
-
-    var allSVG= svgDoc.getElementById("Map");   
-
+        
+        var mapString = a.data;
+        var splitcheck = mapString.includes("Campus");
+        if (splitcheck) {
+            var allSVG= svgDoc.getElementById("svg16");
+        } else {
+            var allSVG= svgDoc.getElementById("Map");
+        }
+        
+ 
+        console.log(allSVG);
     var pathways = allSVG.getElementById("Pathways");
     //path objects
        // console.log(pathways);
@@ -32,22 +45,33 @@
     //PATHFINDING
     //Variables
         
-    
+     
 
     }));
 
+function getBuildingID() {
 
-var nodeObjects = [];
-
- function getBuildingID() {
         //get mapName from URL file (buildingID="X-X-X".svg)
     var URL = window.location.href;
     var mapName = URL.substring(
     URL.lastIndexOf("buildingID=") +11, //THIS IS DODGY BUT GENIUS
         URL.lastIndexOf(".svg")
         );
+     
+    
+    var notMain = URL.includes("buildingID=");
+     if (!notMain){
+         mapName = "mainMap";
+     }
+        
         return mapName;
+     
     }
+
+
+var nodeObjects = [];
+
+getBuildingID();
 
     class Pathfinder {
         // Nodes in queue waiting to be visited
@@ -240,6 +264,7 @@ var nodeObjects = [];
 
 
     function loadData() {
+        var type = getBuildingID();
             $.ajax({
                 type: "GET",
                 url: "inc/JSON/" + getBuildingID() + ".json",
@@ -304,15 +329,26 @@ var nodeObjects = [];
         
     
         function pathPlot(path, goal) {
-             var a = document.getElementById('stage');
+            var a = document.getElementById('stage');
 
-            var svgDoc = a.contentDocument;
-
-            var allSVG= svgDoc.getElementById("Map");   
-
-            var pathways = allSVG.getElementById("Pathways");
-        //path objects
-            var pathwayObjects = pathways.getElementsByTagName('path');
+    var svgDoc = a.contentDocument;
+        
+        var mapString = a.data;
+        var splitcheck = mapString.includes("Campus");
+        console.log(splitcheck);
+        if (splitcheck) {
+            var allSVG= svgDoc.getElementById("svg16");
+        } else {
+            var allSVG= svgDoc.getElementById("Map");
+        }
+        
+ 
+        console.log(allSVG);
+    var pathways = allSVG.getElementById("Pathways");
+    //path objects
+       // console.log(pathways);
+    var pathwayObjects = pathways.getElementsByTagName('path');
+            console.log(pathwayObjects);
 
             let shortest = document.getElementById("shortest").checked;
 
@@ -362,29 +398,47 @@ var nodeObjects = [];
         function highlight() {
             var a = document.getElementById('stage');
 
-            var svgDoc = a.contentDocument;
-
-            var allSVG= svgDoc.getElementById("Map");   
-
-            var pathways = allSVG.getElementById("Pathways");
-        //path objects
-            var pathwayObjects = pathways.getElementsByTagName('path');
+    var svgDoc = a.contentDocument;
+        
+        var mapString = a.data;
+        var splitcheck = mapString.includes("Campus");
+    
+        if (splitcheck) {
+            var allSVG= svgDoc.getElementById("svg16");
+        } else {
+            var allSVG= svgDoc.getElementById("Map");
+        }
+        
+ 
+        console.log(allSVG);
+    var pathways = allSVG.getElementById("Pathways");
+    //path objects
+       // console.log(pathways);
+    var pathwayObjects = pathways.getElementsByTagName('path');
 
 
                     console.log("highlight called");
             // Starting room
             var start = document.getElementById("options").value;
             start = start.toUpperCase();
-
-            if ((start == "E1") || (start == "E2") || (start == "E3")) {
+            
+            if(splitcheck) {
                 start = start;
-            } else if(start == "SE13") {
-                start = "SE14D";
             } else {
-                start = start + "D";
-            }
 
+                if ((start == "E1") || (start == "E2") || (start == "E3")) {
+                start = start;
+                } else if(start == "SE13") {
+                start = "SE14D";
+                }   else {
+                start = start + "D";
+                }
+            }
+            console.log(pathwayObjects);
+            console.log(start);
                     for (i = 0; i < pathwayObjects.length; i++) {
+            
+                        
                 var temp = pathwayObjects[i];
                temp.style.fill = "none";
 
