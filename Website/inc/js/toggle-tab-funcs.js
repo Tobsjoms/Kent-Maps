@@ -2,7 +2,6 @@
 activeTab = null;
 
 function changeTab(event){
-   
 	body = document.getElementById("sidebar");
 	sideBar = document.getElementById("sidebar");
 

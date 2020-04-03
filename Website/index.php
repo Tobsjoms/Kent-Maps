@@ -135,6 +135,9 @@
 	<body <?= $bodyProperties ?> 
           
           >
+        <div id = "overlay">
+        <img  id = "loadimg" src=   "inc/img/loading.gif" alt="Loading">
+        </div>
 		<div id="map">
 			<?php echo "<object id='stage' data='floorplans/$mapFile' type='image/svg+xml'></object>" ?>
         	<div id="zoom-controls">
@@ -261,12 +264,14 @@
                 <div id = "search results"></div>
                 <h1> Building/Room Information</h1>
                 <div id = "itemTitle"><a>The University Of Kent</a></div>
-                <div id = "itemInfo"></div>
+                <div id = "itemInfo">
+                <a>Welcome to the University Of Kent's Campus Maps! </a> </div>
                 <div id = "itemPicture">
-                    <img id = "itemIMG">
+                    <br>
+                    <img id = "itemIMG" src="inc/img/buildings/Placeholder.jpg">
                 </div>
-                
-                <div id = "itemStaffInfo">
+                <div id = "itemStaffInfo"> <br>
+                    You can view building or room information in this sidebar by clicking on or searching for a building
                 </div>
                 <div id = "itemLinks"></div>
                 <div id = "itemRooms"></div>

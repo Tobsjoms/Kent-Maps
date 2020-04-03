@@ -6,10 +6,9 @@
 //need more UI Divs to hook onto for each bit of data eg staffid, name, department
 
 
-
 $(window).on('load', (function(){
 
-
+    $('#overlay').delay(500).fadeOut(400);  
     
     var searchValue = "";
     var URL = window.location.href; 
@@ -105,6 +104,7 @@ function getCurrentMap() {
  }
 
 function roomPopup(currentID, roomInfo) { //-----------------------------------------------
+    document.getElementById("itemPicture").innerHTML = "";
     var gotRoom = true;
     var gotStaff = true;
     var staffLength;
