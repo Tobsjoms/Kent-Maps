@@ -192,8 +192,9 @@ $(window).on('load', (function(){
     //Building Interactivity----------------------------------------------
     //--------------------------------------------------------------------
     svgItem.onclick = function(event) {
-        console.log("click!");
+        
         var currentID = event.target.id;
+        console.log("click!"+ currentID);
         //get current id of object within svgItem
         getBuildingData(currentID);
     }

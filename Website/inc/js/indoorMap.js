@@ -1,5 +1,6 @@
 
 $(window).on('load', (function(){
+
  
 //------SVG Manipulation---------------------------------------------------------------//
 
@@ -24,22 +25,11 @@ $(window).on('load', (function(){
    // var iconPaths = IconsObjects.getElementsByTagName("path");
     
     var targets = ["Building", "Rooms", "Pathways", "Doors", "Icons", "Labels"];
-    getBuildingRoomData();
+    
     
 
     
-function getBuildingRoomData() {
-//loading in all data for all rooms on a floor, ready to colour each room
-    //get mapName from URL file (buildingID="X-X-X".svg)
-    var URL = window.location.href;
-    var mapName = URL.substring(
-    URL.lastIndexOf("=") +1,
-        URL.lastIndexOf(".svg")
-        );
 
-   // getRoomData(mapName);
-    
-}
     
 //Strip SVG Style
 updateSVGColourScheme();
@@ -81,6 +71,18 @@ function updateSVGColourScheme() {
 
     }
     
+    var allText = svgDoc.getElementById("Labels");
+    var textObjs = allText.getElementsByTagName("text");
+    for(i = 0; i < textObjs.length; i++) {
+        var temp = textObjs[i];
+        temp.style.removeProperty('fill');
+        temp.style.removeProperty('stroke');
+        temp.style.removeProperty('stroke-width');
+        temp.style.removeProperty('fill-opacity');
+        temp.style.fill = "black";
+    }
+    
+    
     //var textsObject = svgDoc.getElementById("Text");
    // var textElem = textsObject.getElementsByTagName("tspan");
 }
@@ -108,6 +110,7 @@ var panZoom = svgPanZoom(allSVG, {
     for(i=0; i < roomRect.length; i++) {
         //pushing all rect elements within mapRooms into an array for search functionality
         roomIDs.push(roomRect[i].id);
+        console.log(roomIDs[i]);
     }    
     for(i=0; i < roomPaths.length; i++) {
         roomIDs.push(roomPaths[i].id);
@@ -115,11 +118,54 @@ var panZoom = svgPanZoom(allSVG, {
     //Click anywhere on the SVG 
     mapRooms.onclick = function(event) {
     var currentID = event.target.id;
-    getRoomData(currentID);
+        getRoomData(currentID);
+        getBuildingRoomData(roomIDs);
     }
+    
+    
+    
+function getBuildingRoomData(roomIDs) {
+//loading in all data for all rooms on a floor, ready to colour each room
+    //get mapName from URL file (buildingID="X-X-X".svg)
+    var URL = window.location.href;
+    var mapName = URL.substring(
+    URL.lastIndexOf("=") +1,
+        URL.lastIndexOf(".svg")
+        );
+    
+    var roomTypeSet = [];
+    for(i = 0; i < roomIDs.length; i++) {
+        var currrentID = roomIDs[i];
+        $.post("../Website/inc/php/getRoomTypesData.php",
+              {
+            id: currrentID
+        },
+               function(data, status) {
+            response = JSON.parse(data);
+            updateDataSet(response);
+        });
+        
+           function updateDataSet(data){
+           roomTypeSet.push(data);
+    }     
+}
+            console.log("roomtypeSET");
+        console.log(roomTypeSet);
+        console.log(roomTypeSet.length);
+    
+    for(i = 0; i < roomTypeSet.length; i++) {
+        console.log(roomTypeSet[i].RoomID);
+    }
+
+}
+    
+    
     
 
 }));
+
+
+
 
 //----------------------------------------------------------------------//   
 //-----API Calls & Obtaing Data----------------------------------------------------------------//
@@ -139,7 +185,9 @@ function getRoomData(id) {
 
     });
         
+
 }
+
 
 
 

@@ -14,7 +14,7 @@ $dbconnect = new mysqli($server, $dbusername, $dbpassword, $dbname);
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = $_POST['id'];
  
-    $sql = "SELECT RoomID, RoomType FROM roomdata WHERE BuildingID LIKE '$data' ";
+    $sql = "SELECT RoomID, RoomType FROM roomdata WHERE RoomID LIKE '$data' ";
     
     
     $result = mysqli_query($dbconnect, $sql);

@@ -61,7 +61,8 @@ var LongNames = [
     ["CW-SW-GF", "Cornwallis SouthWest Ground"],
     ["CW-SW-FF", "Cornwallis SouthWest First"],
     ["CW-Oct-GF", "Cornwallis Octogon Ground"],
-    ["CW-Oct-FF", "Cornwallis Octogon First"],
+    ["CW-NW-GF", "Cornwallis NorthWest First"],
+    ["CW-NW-FF", "Cornwallis NorthWest First"]
 ];
 
 function getCurrentMap() {
