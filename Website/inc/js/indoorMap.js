@@ -132,35 +132,8 @@ function getBuildingRoomData(roomIDs) {
     URL.lastIndexOf("=") +1,
         URL.lastIndexOf(".svg")
         );
-    
-    var roomTypeSet = [];
-    for(i = 0; i < roomIDs.length; i++) {
-        var currrentID = roomIDs[i];
-        $.post("../Website/inc/php/getRoomTypesData.php",
-              {
-            id: currrentID
-        },
-               function(data, status) {
-            response = JSON.parse(data);
-            updateDataSet(response);
-        });
-        
-           function updateDataSet(data){
-           roomTypeSet.push(data);
-    }     
-}
-            console.log("roomtypeSET");
-        console.log(roomTypeSet);
-        console.log(roomTypeSet.length);
-    
-    for(i = 0; i < roomTypeSet.length; i++) {
-        console.log(roomTypeSet[i].RoomID);
-    }
-
-}
-    
-    
-    
+   
+ 
 
 }));
 
