@@ -1,8 +1,8 @@
-{"PathNodes": [
+{"PathNoes": [
 {
 "current": "P1",
 "north": "null",
-"south": "SHOPSD",
+"south": "SHOPS",
 "east": "P2",
 "west": "null"
 },
@@ -64,7 +64,7 @@
 },
 {
 "current": "P18",
-"north": "G-MD",
+"north": "G",
 "south": "P17",
 "east": "P19",
 "west": "null"
@@ -86,7 +86,7 @@
 {
 "current": "P20",
 "north": "null",
-"south": "LIB-RED",
+"south": "LIB-RE",
 "east": "P21",
 "west": "P78"
 },
@@ -123,7 +123,7 @@
 "north": "P61",
 "south": "P39",
 "east": "null",
-"west": "GULB-MD"
+"west": "GULB"
 },
 {
 "current": "P61",
@@ -136,7 +136,7 @@
 "current": "P62",
 "north": "P63",
 "south": "P61",
-"east": "CW-MD",
+"east": "CW",
 "west": "null"
 },
 {
@@ -197,7 +197,7 @@
 },
 {
 "current": "P15",
-"north": "LIB-MD",
+"north": "LIB",
 "south": "P86",
 "east": "P81",
 "west": "P11"
@@ -282,7 +282,7 @@
 {
 "current": "P4",
 "north": "P6",
-"south": "E-MD",
+"south": "E",
 "east": "P5",
 "west": "P85"
 },
@@ -296,7 +296,7 @@
 {
 "current": "P7",
 "north": "null",
-"south": "EE-MD",
+"south": "EE",
 "east": "P8",
 "west": "P87"
 },
@@ -393,7 +393,7 @@
 },
 {
 "current": "P42",
-"north": "CS-MD",
+"north": "CS",
 "south": "P43",
 "east": "P44",
 "west": "P90"
@@ -442,7 +442,7 @@
 },
 {
 "current": "P49",
-"north": "REG-MD",
+"north": "REG",
 "south": "P48",
 "east": "null",
 "west": "P47"
@@ -471,7 +471,7 @@
 {
 "current": "P50",
 "north": "null",
-"south": "R-MD",
+"south": "R",
 "east": "P51",
 "west": "P33"
 },
@@ -485,7 +485,7 @@
 {
 "current": "P32",
 "north": "null",
-"south": "RE-MD",
+"south": "RE",
 "east": "P33",
 "west": "P30"
 },
@@ -514,7 +514,7 @@
 "current": "P72",
 "north": "null",
 "south": "null",
-"east": "D-MD",
+"east": "",
 "west": "P71"
 },
 {
@@ -554,7 +554,7 @@
 },
 {
 "current": "P57",
-"north": "CSE-OCT-MD",
+"north": "CSE-OCT",
 "south": "null",
 "east": "P58",
 "west": "P56"
@@ -575,7 +575,7 @@
 },
 {
 "current": "P59",
-"north": "CE-MD",
+"north": "CE",
 "south": "null",
 "east": "null",
 "west": "P60"
@@ -585,7 +585,7 @@
 "north": "null",
 "south": "P59",
 "east": "null",
-"west": "CC-MD"
+"west": "CC"
 },
 {
 "current": "P64",
@@ -634,7 +634,7 @@
 "north": "P68",
 "south": "null",
 "east": "null",
-"west": "CE-MD"
+"west": "CE"
 },
 {
 "current": "P13",
@@ -644,262 +644,262 @@
 "west": "null"
 },
 {
-"current": "p75",
-"north": "p95",
-"south": "p76",
-"east": "p13",
+"current": "P75",
+"north": "P95",
+"south": "P76",
+"east": "P13",
 "west": "null"
 },
 {
-"current": "p95",
-"north": "p96",
-"south": "p75",
+"current": "P95",
+"north": "P96",
+"south": "P75",
 "east": "null",
-"west": "S-MD"
+"west": "S"
 },
 {
-"current": "p96",
-"north": "p97",
-"south": "p95",
-"east": "p98",
-"west": "S-MD"
+"current": "P96",
+"north": "P97",
+"south": "P95",
+"east": "P98",
+"west": "S"
 },
 {
-"current": "p98",
-"north": "I-MD",
-"south": "p96",
+"current": "P98",
+"north": "I",
+"south": "P96",
 "east": "null",
-"west": "p97"
+"west": "P97"
 },
 {
-"current": "p97",
-"north": "p99",
-"south": "p96",
-"east": "p98",
-"west": "p100"
+"current": "P97",
+"north": "P99",
+"south": "P96",
+"east": "P98",
+"west": "P100"
 },
 {
-"current": "p99",
-"north": "p101",
-"south": "p97",
+"current": "P99",
+"north": "P101",
+"south": "P97",
 "east": "null",
-"west": "p100"
+"west": "P100"
 },
 {
-"current": "p101",
-"north": "p102",
-"south": "p99",
-"east": "JEN-MD",
+"current": "P101",
+"north": "P102",
+"south": "P99",
+"east": "JEN",
 "west": "null"
 },
 {
-"current": "p102",
-"north": "p104",
-"south": "p101",
-"east": "JEN-MD",
-"west": "p103"
+"current": "P102",
+"north": "P104",
+"south": "P101",
+"east": "JEN",
+"west": "P103"
 },
 {
-"current": "p103",
+"current": "P103",
 "north": "null",
-"south": "KEN-MD",
-"east": "p102",
-"west": "p104"
+"south": "KEN",
+"east": "P102",
+"west": "P104"
 },
 {
-"current": "p104",
-"north": "SIB-MD",
-"south": "p102",
+"current": "P104",
+"north": "SIB",
+"south": "P102",
 "east": "null",
-"west": "p103"
+"west": "P103"
 },
 {
-"current": "p105",
-"north": "SIB-MD",
+"current": "P105",
+"north": "SIB",
 "south": "null",
-"east": "p104",
-"west": "CH-MD"
+"east": "P104",
+"west": "CH"
 },
 {
-"current": "CH-MD",
-"north": "null",
-"south": "null",
-"east": "p105",
-"west": "null"
-},
-{
-"current": "SIB-MD",
-"north": "null",
-"south": "p105",
-"east": "null",
-"west": "null"
-},
-{
-"current": "KEN-MD",
-"north": "p103",
-"south": "null",
-"east": "null",
-"west": "null"
-},
-{
-"current": "JEN-MD",
+"current": "CH",
 "north": "null",
 "south": "null",
-"east": "p101",
-"west": "p102"
-},
-{
-"current": "p106",
-"north": "null",
-"south": "GYM-MD",
-"east": "p100",
+"east": "P105",
 "west": "null"
 },
 {
-"current": "GYM-MD",
-"north": "p106",
+"current": "SIB",
+"north": "null",
+"south": "P105",
+"east": "null",
+"west": "null"
+},
+{
+"current": "KEN",
+"north": "P103",
 "south": "null",
 "east": "null",
 "west": "null"
 },
 {
-"current": "p100",
-"north": "p99",
-"south": "p97",
-"east": "null",
-"west": "p106"
+"current": "JEN",
+"north": "null",
+"south": "null",
+"east": "P101",
+"west": "P102"
 },
 {
-"current": "I-MD",
+"current": "P106",
 "north": "null",
-"south": "p98",
-"east": "null",
+"south": "GYM",
+"east": "P100",
 "west": "null"
 },
 {
-"current": "S-MD",
-"north": "null",
-"south": "null",
-"east": "p85",
-"west": "p96"
-},
-{
-"current": "SHOPSD",
-"north": "p1",
+"current": "GYM",
+"north": "P106",
 "south": "null",
 "east": "null",
 "west": "null"
 },
 {
-"current": "E-MD",
-"north": "p4",
+"current": "P100",
+"north": "P99",
+"south": "P97",
+"east": "null",
+"west": "P106"
+},
+{
+"current": "I",
+"north": "null",
+"south": "P98",
+"east": "null",
+"west": "null"
+},
+{
+"current": "S",
+"north": "null",
+"south": "null",
+"east": "P85",
+"west": "P96"
+},
+{
+"current": "SHOPS",
+"north": "P1",
 "south": "null",
 "east": "null",
 "west": "null"
 },
 {
-"current": "p107",
-"north": "null",
-"south": "p7",
-"east": "p8",
-"west": "p5"
-},
-{
-"current": "EE-MD",
-"north": "p7",
+"current": "E",
+"north": "P4",
 "south": "null",
 "east": "null",
 "west": "null"
 },
 {
-"current": "LIB-MD",
+"current": "P107",
 "north": "null",
-"south": "p15",
-"east": "null",
-"west": "null"
+"south": "P7",
+"east": "P8",
+"west": "P5"
 },
 {
-"current": "G-MD",
-"north": "null",
-"south": "p18",
-"east": "null",
-"west": "null"
-},
-{
-"current": "LIB-RED",
-"north": "p20",
+"current": "EE",
+"north": "P7",
 "south": "null",
 "east": "null",
 "west": "null"
 },
 {
-"current": "GULB-MD",
+"current": "LIB",
 "north": "null",
-"south": "null",
-"east": "p61",
-"west": "null"
-},
-{
-"current": "CW-MD",
-"north": "null",
-"south": "null",
-"east": "null",
-"west": "p62"
-},
-{
-"current": "CS-MD",
-"north": "null",
-"south": "p42",
+"south": "P15",
 "east": "null",
 "west": "null"
 },
 {
-"current": "RE-MD",
-"north": "p32",
+"current": "G",
+"north": "null",
+"south": "P18",
+"east": "null",
+"west": "null"
+},
+{
+"current": "LIB-RE",
+"north": "P20",
 "south": "null",
 "east": "null",
 "west": "null"
 },
 {
-"current": "R-MD",
-"north": "p50",
+"current": "GULB",
+"north": "null",
+"south": "null",
+"east": "P61",
+"west": "null"
+},
+{
+"current": "CW",
+"north": "null",
+"south": "null",
+"east": "null",
+"west": "P62"
+},
+{
+"current": "CS",
+"north": "null",
+"south": "P42",
+"east": "null",
+"west": "null"
+},
+{
+"current": "RE",
+"north": "P32",
 "south": "null",
 "east": "null",
 "west": "null"
 },
 {
-"current": "REG-MD",
-"north": "null",
-"south": "p49",
-"east": "null",
-"west": "null"
-},
-{
-"current": "CSE-OCT-MD",
-"north": "null",
-"south": "p57",
-"east": "null",
-"west": "null"
-},
-{
-"current": "CC-MD",
-"north": "null",
-"south": "null",
-"east": "p60",
-"west": "null"
-},
-{
-"current": "CE-MD",
-"north": "null",
-"south": "p59",
-"east": "p69",
-"west": "null"
-},
-{
-"current": "D-MD",
-"north": "null",
+"current": "R",
+"north": "P50",
 "south": "null",
 "east": "null",
-"west": "p72"
+"west": "null"
+},
+{
+"current": "REG",
+"north": "null",
+"south": "P49",
+"east": "null",
+"west": "null"
+},
+{
+"current": "CSE-OCT",
+"north": "null",
+"south": "P57",
+"east": "null",
+"west": "null"
+},
+{
+"current": "CC",
+"north": "null",
+"south": "null",
+"east": "P60",
+"west": "null"
+},
+{
+"current": "CE",
+"north": "null",
+"south": "P59",
+"east": "P69",
+"west": "null"
+},
+{
+"current": "",
+"north": "null",
+"south": "null",
+"east": "null",
+"west": "P72"
 },
 ]}
