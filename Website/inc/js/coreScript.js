@@ -8,7 +8,7 @@
 
 $(window).on('load', (function(){
 
-    $('#overlay').delay(500).fadeOut(400);  
+    $('#overlay').delay(400).fadeOut(200);  
     
     var searchValue = "";
     var URL = window.location.href; 
@@ -61,7 +61,8 @@ var LongNames = [
     ["CW-SW-GF", "Cornwallis SouthWest Ground"],
     ["CW-SW-FF", "Cornwallis SouthWest First"],
     ["CW-Oct-GF", "Cornwallis Octogon Ground"],
-    ["CW-Oct-FF", "Cornwallis Octogon First"],
+    ["CW-NW-GF", "Cornwallis NorthWest First"],
+    ["CW-NW-FF", "Cornwallis NorthWest First"]
 ];
 
 function getCurrentMap() {

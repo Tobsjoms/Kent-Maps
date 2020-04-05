@@ -18,7 +18,7 @@ $(window).on('load', (function(){
         }
         
  
-        console.log(allSVG);
+       // console.log(allSVG);
     var pathways = allSVG.getElementById("Pathways");
     //path objects
        // console.log(pathways);
@@ -343,12 +343,12 @@ getBuildingID();
         }
         
  
-        console.log(allSVG);
+       // console.log(allSVG);
     var pathways = allSVG.getElementById("Pathways");
     //path objects
        // console.log(pathways);
     var pathwayObjects = pathways.getElementsByTagName('path');
-            console.log(pathwayObjects);
+         //   console.log(pathwayObjects);
 
             let shortest = document.getElementById("shortest").checked;
 
@@ -410,14 +410,14 @@ getBuildingID();
         }
         
  
-        console.log(allSVG);
+      //  console.log(allSVG);
     var pathways = allSVG.getElementById("Pathways");
     //path objects
        // console.log(pathways);
     var pathwayObjects = pathways.getElementsByTagName('path');
 
 
-                    console.log("highlight called");
+                   // console.log("highlight called");
             // Starting room
             var start = document.getElementById("options").value;
             start = start.toUpperCase();
@@ -434,8 +434,8 @@ getBuildingID();
                 start = start + "D";
                 }
             }
-            console.log(pathwayObjects);
-            console.log(start);
+            //console.log(pathwayObjects);
+           // console.log(start);
                     for (i = 0; i < pathwayObjects.length; i++) {
             
                         

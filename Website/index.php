@@ -160,6 +160,7 @@
 ?>
 <HTML>
 	<head>
+        <link rel="icon" href="inc/img/favicon.ico" type="image/ico">
 		<title>UKCGURU</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="inc/css/style.css">

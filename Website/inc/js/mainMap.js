@@ -39,7 +39,7 @@ $(window).on('load', (function(){
     var BusIconsObject = svgDoc.getElementById("Bus-Symbols");
    // BusIconsObject.classList.add("svg-bussymbols");
 
-    console.log(parkIconsObject);
+   // console.log(parkIconsObject);
     allSVG = svgDoc.getElementById("svg16");
 
     var b = svgItem.getElementsByTagName("path");
@@ -121,7 +121,7 @@ $(window).on('load', (function(){
        // att.value = "url(#shadow)";
         current.setAttribute("filter", "url(#shadow)");
         
-        console.log("set shadow");
+      //  console.log("set shadow");
     }
     
 
@@ -192,8 +192,9 @@ $(window).on('load', (function(){
     //Building Interactivity----------------------------------------------
     //--------------------------------------------------------------------
     svgItem.onclick = function(event) {
-        console.log("click!");
+        
         var currentID = event.target.id;
+        console.log("click!"+ currentID);
         //get current id of object within svgItem
         getBuildingData(currentID);
     }
