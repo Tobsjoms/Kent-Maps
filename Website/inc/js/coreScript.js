@@ -8,7 +8,7 @@
 
 $(window).on('load', (function(){
 
-    $('#overlay').delay(500).fadeOut(400);  
+    $('#overlay').delay(400).fadeOut(200);  
     
     var searchValue = "";
     var URL = window.location.href; 

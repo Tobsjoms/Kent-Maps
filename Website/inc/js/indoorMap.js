@@ -1,9 +1,6 @@
-
 $(window).on('load', (function(){
-
  
 //------SVG Manipulation---------------------------------------------------------------//
-
     var a = document.getElementById('stage');
     
     var svgDoc = a.contentDocument;
@@ -25,12 +22,23 @@ $(window).on('load', (function(){
    // var iconPaths = IconsObjects.getElementsByTagName("path");
     
     var targets = ["Building", "Rooms", "Pathways", "Doors", "Icons", "Labels"];
+    getBuildingRoomData();
     
     
+function getBuildingRoomData() {
+//loading in all data for all rooms on a floor, ready to colour each room
+    //get mapName from URL file (buildingID="X-X-X".svg)
+    var URL = window.location.href;
+    var mapName = URL.substring(
+    URL.lastIndexOf("=") +1,
+        URL.lastIndexOf(".svg")
+        );
 
-    
+    getRoomData(mapName);
+   // getRoomData(mapName);
 
-    
+}
+
 //Strip SVG Style
 updateSVGColourScheme();
 function updateSVGColourScheme() {
@@ -38,9 +46,7 @@ function updateSVGColourScheme() {
 	//var svgObject = document.getElementById("stage").contentDocument;
 	// Get all groups
 	var groups = svgDoc.getElementsByTagName("g");
-
 	var targetedNodes = {};
-
 	for (var i = 0; i < groups.length; i++){
 		// Get group label
 		var groupName = groups[i].getAttribute("inkscape:label");
@@ -49,7 +55,6 @@ function updateSVGColourScheme() {
 			targetedNodes = Array.from(targetedNodes).concat(Array.from(groups[i].childNodes));
 		}
 	}
-
 	for (var i = 0; i < targetedNodes.length; i++) {
 		// Skip weird # elements
 		if (typeof targetedNodes[i].tagName === 'undefined'){continue};
@@ -68,20 +73,7 @@ function updateSVGColourScheme() {
        // att.value = "url(#shadow)";
         current.setAttribute("filter", "url(#shadow2)");
         //current.style.fill = "#e01e52";
-
     }
-    
-    var allText = svgDoc.getElementById("Labels");
-    var textObjs = allText.getElementsByTagName("text");
-    for(i = 0; i < textObjs.length; i++) {
-        var temp = textObjs[i];
-        temp.style.removeProperty('fill');
-        temp.style.removeProperty('stroke');
-        temp.style.removeProperty('stroke-width');
-        temp.style.removeProperty('fill-opacity');
-        temp.style.fill = "black";
-    }
-    
     
     //var textsObject = svgDoc.getElementById("Text");
    // var textElem = textsObject.getElementsByTagName("tspan");
@@ -92,7 +84,6 @@ function updateSVGColourScheme() {
         
         
     }
-
 var roomIDs = new Array();
 var panZoom = svgPanZoom(allSVG, {
     zoomEnabled: true,
@@ -110,7 +101,6 @@ var panZoom = svgPanZoom(allSVG, {
     for(i=0; i < roomRect.length; i++) {
         //pushing all rect elements within mapRooms into an array for search functionality
         roomIDs.push(roomRect[i].id);
-        console.log(roomIDs[i]);
     }    
     for(i=0; i < roomPaths.length; i++) {
         roomIDs.push(roomPaths[i].id);
@@ -118,31 +108,12 @@ var panZoom = svgPanZoom(allSVG, {
     //Click anywhere on the SVG 
     mapRooms.onclick = function(event) {
     var currentID = event.target.id;
-        getRoomData(currentID);
-        getBuildingRoomData(roomIDs);
+    getRoomData(currentID);
     }
     
-    
-    
-function getBuildingRoomData(roomIDs) {
-//loading in all data for all rooms on a floor, ready to colour each room
-    //get mapName from URL file (buildingID="X-X-X".svg)
-    var URL = window.location.href;
-    var mapName = URL.substring(
-    URL.lastIndexOf("=") +1,
-        URL.lastIndexOf(".svg")
-        );
-   
- 
-
 }));
-
-
-
-
 //----------------------------------------------------------------------//   
 //-----API Calls & Obtaing Data----------------------------------------------------------------//
-
 //obtain the roomData        
 function getRoomData(id) {
     var roomData = []; //data prep for return JSON data
@@ -155,16 +126,6 @@ function getRoomData(id) {
             roomData = JSON.parse(response); //parse as JSON object
             roomPopup(id, roomData); //pass room and JSON object to RoomPopup function
         }
-
     });
         
-
 }
-
-
-
-
-
-
-
-  
