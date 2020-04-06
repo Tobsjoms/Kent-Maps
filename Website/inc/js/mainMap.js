@@ -194,9 +194,29 @@ $(window).on('load', (function(){
     svgItem.onclick = function(event) {
         
         var currentID = event.target.id;
+        var currentItem = event.target;
+        focusSvgElement(currentItem);
+            
         console.log("click!"+ currentID);
         //get current id of object within svgItem
         getBuildingData(currentID);
+        
+        
+
+    }
+    
+    
+    function focusSvgElement(currentItem) {
+        //pass object
+        currentID = currentItem.id;
+        for(i = 0; i < rectID.length; i++) {
+            if (currentID != rectID[i]) {
+                svgDoc.getElementById(rectID[i]).style.fill = "#dbdbdb"; 
+            }
+        }
+        
+         currentItem.style.fill = "#efdfab";
+        
     }
     
     function getBuildingData(id) {

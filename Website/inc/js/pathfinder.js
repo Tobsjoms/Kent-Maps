@@ -313,7 +313,9 @@ getBuildingID();
                     
                     if (gotMainMap) {
                         goal = goal;
-                    } 
+                    }
+                    console.log(goal);
+                    console.log(start);
                     
                     else {
                         if ((goal == "E1") || (goal == "E2") || (goal == "E3")) {
