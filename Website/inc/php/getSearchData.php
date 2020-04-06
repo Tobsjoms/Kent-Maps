@@ -14,8 +14,9 @@ $dbconnect = new mysqli($server, $dbusername, $dbpassword, $dbname);
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = $_POST['value'];
  
-    $sql = "SELECT * FROM staff WHERE StaffRoomID LIKE '%$data%' ";
-    $sql2 = "SELECT * FROM roomdata WHERE RoomID LIKE '%$data%' ";
+    $sql = "SELECT * FROM `buildingdata` WHERE `BuildingID` OR `BuildingName` OR `BuildingDescription` OR `BuildingFloorID` OR `FloorCount` OR `SchoolHead` LIKE '%$data%' ";
+    
+    $sql2 = "SELECT * FROM `roomdata` WHERE `RoomID` OR `BuildingID` OR `RoomType` OR `Capacity` OR `Equipment` OR `Disabled Access` OR `BasicDirections` LIKE '%$data%' ";
     $sql3 = "SELECT * FROM staff WHERE StaffName LIKE '%$data%' ";
     
     // SELECT * FROM staff INNER JOIN roomdata ON staff.RoomID=roomdata.RoomID 
