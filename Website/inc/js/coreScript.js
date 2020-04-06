@@ -258,7 +258,7 @@ function buildingPopup(currentID, buildingData) {
     var SemRooms = "<a> None </a> </br>";
     
     if(typeof buildingData[1] != "undefined" || typeof buildingData[1] != null){
-        console.log(buildingData);
+       // console.log(buildingData);
         for (i = 0; i < buildingData.length; i++) {
             
             if (buildingData[i].RoomType == "Lecture Theatre" && typeof buildingData[i].RoomID != "undefined") {

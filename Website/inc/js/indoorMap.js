@@ -79,11 +79,7 @@ function updateSVGColourScheme() {
    // var textElem = textsObject.getElementsByTagName("tspan");
 }
     
-    function loadColorCodes(data) {
-        
-        
-        
-    }
+
 var roomIDs = new Array();
 var panZoom = svgPanZoom(allSVG, {
     zoomEnabled: true,

@@ -116,29 +116,29 @@
     <div id = 'startPoint'>
     <label>Choose starting point:</label>
     <select id='options' onchange='highlight()' '>
-        <option value='CH-MD'>Chipperfield (CH) Main Entrance</option>
-			<option value='SIB-MD'>Sibson Main Entrance</option>
-			<option value='KEN-MD'>Kennedy (KEN) Main Entrance</option>
-			<option value='JEN-MD'>Jennison (J) Main Entrance</option>
-			<option value='GYM-MD'>Sports Centre</option>
-			<option value='I-MD'>Ingram (I) Main Entrance</option>
-			<option value='S-MD'>Stacey (S) Main Entrance</option>
-			<option value='SHOPSD'>COOP/CAFE/FOOD</option>
-			<option value='E-MD'>Eliot College</option>
-			<option value='EE-MD'>Eliot Extension</option>
-			<option value='LIB-MD'>Library Main Entrance</option>
-			<option value='G-MD'>Grimond Main Entrance</option>
-			<option value='LIB-RED'>Library Road Entrance</option>
-			<option value='GULB-MD'>The Gulbenkian Main Entrance</option>
-			<option value='CW-MD'>Cornwallis West Main Entrance</option>
-			<option value='CS-MD'>Cornwallis South Main Entrance</option>
-			<option value='R-MD'>Rutherford Main Entrance</option>
-			<option value='RE-MD'>Rutherford Extension (RE) Main Entrance</option>
-			<option value='REG-MD'>The Registry Main Entrance</option>
-			<option value='CSE-OCT-MD'>Cornwallis South East/Octagan</option>
-			<option value='CC-MD'>Cornwallis Central Main Entrance </option>
-			<option value='CE-MD'>Cornwallis East Main Entrance</option>
-			<option value='D-MD'>Darwin Main Entrance</option>
+        <option value='LIB'>Library Main Entrance</option>
+			<option value='CH'>Chipperfield (CH) Main Entrance</option>
+			<option value='SIB'>Sibson Main Entrance</option>
+			<option value='KEN'>Kennedy (KEN) Main Entrance</option>
+			<option value='JEN'>Jennison (J) Main Entrance</option>
+			<option value='GYM'>Sports Centre</option>
+			<option value='I'>Ingram (I) Main Entrance</option>
+			<option value='S'>Stacey (S) Main Entrance</option>
+			<option value='SHOPS'>COOP/CAFE/FOOD</option>
+			<option value='E'>Eliot College</option>
+			<option value='EE'>Eliot Extension</option>
+			<option value='G'>Grimond Main Entrance</option>
+			<option value='LIB-RE'>Library Road Entrance</option>
+			<option value='GULB'>The Gulbenkian Main Entrance</option>
+			<option value='CW'>Cornwallis West Main Entrance</option>
+			<option value='CS'>Cornwallis South Main Entrance</option>
+			<option value='R'>Rutherford Main Entrance</option>
+			<option value='RE'>Rutherford Extension (RE) Main Entrance</option>
+			<option value='REG'>The Registry Main Entrance</option>
+			<option value='CSE-OCT'>Cornwallis South East/Octagan</option>
+			<option value='CC'>Cornwallis Central Main Entrance </option>
+			<option value='CE'>Cornwallis East Main Entrance</option>
+			<option value='D'>Darwin Main Entrance</option>
     </select> </div> </br>
     <div id = 'searchSection'>
     <label id = 'searchLabel'>Search:</label> <input type='text' id='room' required>

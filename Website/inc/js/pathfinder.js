@@ -264,7 +264,9 @@ getBuildingID();
 
 
     function loadData() {
+        
         var type = getBuildingID();
+        console.log("LOADING for: " + type);
             $.ajax({
                 type: "GET",
                 url: "inc/JSON/" + getBuildingID() + ".json",
@@ -289,7 +291,8 @@ getBuildingID();
 
                     // Goal room    
                     var goal = document.getElementById("room").value;
-                    goal = goal.toUpperCase();   
+                    goal = goal.toUpperCase(); 
+                    console.log(goal);
 
                     if ((goal == "E1") || (goal == "E2") || (goal == "E3")) {
                         goal = goal;
