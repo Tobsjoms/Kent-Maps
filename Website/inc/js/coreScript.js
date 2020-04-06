@@ -225,7 +225,7 @@ function buildingPopup(currentID, buildingData) {
     
     //Building Image
     var placeholderImg = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/Placeholder.jpg >";
-    var img = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/" + currentID + ".jpg" + " style= 'object-fit: contain'>";
+    var img = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/" + currentID + ".jpg" + " style= 'object-fit: contain; transform: rotate(180deg)'>";
     document.getElementById('itemPicture').innerHTML = img;
     //Image error handling
     $("#itemIMG").on("error", function() {
@@ -238,7 +238,7 @@ function buildingPopup(currentID, buildingData) {
     
     //Head of School information
     if (gotHOS == true) {  //only adding staff data if avaliable
-    document.getElementById('itemStaffInfo').innerHTML = "<a id = 'panel-title'>" + "Head Of School: " + "</br> </a>" + "<a>" + thisBuilding.StaffName + "</br>" + thisBuilding.StaffDescription + "</br>" + thisBuilding.StaffRoomID  + "</br>" + "</a>";
+    document.getElementById('itemStaffInfo').innerHTML = " <a id = 'panel-title-h2'>" + "Head Of School: " + "</br> </a>" + "<a>" + thisBuilding.StaffName + "</br>" + thisBuilding.StaffDescription + "</br>" + thisBuilding.StaffRoomID  + "</br>" + "</a> </br>";
     }
     //Interior Maps links
     var mapLink = "";

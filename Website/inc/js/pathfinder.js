@@ -264,14 +264,27 @@ getBuildingID();
 
 
     function loadData() {
-        
+        var a = document.getElementById('stage');
+        var svgDoc = a.contentDocument;
+        var mapString = a.data;
+        var gotMainMap = mapString.includes("Campus");
+        if (gotMainMap) {
+            var allSVG= svgDoc.getElementById("svg16");
+        } else {
+            var allSVG= svgDoc.getElementById("Map");
+        }
         var type = getBuildingID();
         console.log("LOADING for: " + type);
             $.ajax({
                 type: "GET",
-                url: "inc/JSON/" + getBuildingID() + ".json",
+                url: "inc/JSON/" + type + ".json",
                 dataType: 'json',
+                error: function(xhr, thrownError) {
+                  console.log(xhr.status);
+                    console.log(thrownError);
+                },
                 success: function(data) {
+                    console.log("success!");
                     for(var j = 0; j < data.pathNodes.length; j++) {
                         node = new PathNode(data.pathNodes[j]);
                         nodeObjects[j] = node;
@@ -280,6 +293,10 @@ getBuildingID();
                     // Starting room
                     var start = document.getElementById("options").value;
                     start = start.toUpperCase();
+                    
+                    if(gotMainMap) {
+                start = start;
+            } else {
 
                     if ((start == "E1") || (start == "E2") || (start == "E3")) {
                         start = start;
@@ -288,18 +305,24 @@ getBuildingID();
                     } else {
                         start = start + "D";
                     }
+            }
 
                     // Goal room    
                     var goal = document.getElementById("room").value;
                     goal = goal.toUpperCase(); 
-                    console.log(goal);
-
-                    if ((goal == "E1") || (goal == "E2") || (goal == "E3")) {
+                    
+                    if (gotMainMap) {
                         goal = goal;
-                    } else if (goal == "SE13") {
+                    } 
+                    
+                    else {
+                        if ((goal == "E1") || (goal == "E2") || (goal == "E3")) {
+                        goal = goal;
+                        } else if (goal == "SE13") {
                         goal = "SE14D";
-                    } else {
+                        } else {
                         goal = goal + "D";
+                        } 
                     }
 
                     findPath(start, goal);
@@ -314,6 +337,7 @@ getBuildingID();
                     }
 
                     function findPath(start, goal) {
+                        console.log(goal);
                         if ((start.length != 0) && (goal.length != 0)) {
                             if ((searchFile(start) != false) || searchFile(goal != false)) {
                                 path = new Pathfinder();

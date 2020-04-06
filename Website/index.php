@@ -111,7 +111,7 @@
     } else {
         
         $pathfinder = "pathfinder.js";
-            $pathfinderMenu = "  <div id = 'pathfinder'>  <h1>Path Finder Demo</h1>
+            $pathfinderMenu = "  <div id = 'pathfinder'>  <h1>PathFinder</h1>
     
     <div id = 'startPoint'>
     <label>Choose starting point:</label>
