@@ -184,12 +184,16 @@
         	<div id="zoom-controls">
         		<button id = "zoomIn">+</button>
         		<button id = "zoomOut">-</button>
+                <button id = "map_centre"> <i class="material-icons">gps_fixed</i></button>
+                 <button id = "home"> <i class="material-icons">home</i></button>
+               
+               
         	</div>
         </div>
 		<div id="topbar">
 
 			<div id="logo">
-				<b>UKC</b>GURU
+				<b>UKC</b>MAPS
 			</div>
 
 			<div id="search">

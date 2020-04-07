@@ -18,6 +18,10 @@ html, body {
 }
 
 
+.svg-pan-zoom_viewport {
+    transition: transform 0.5s ease;
+}
+
 #overlay {
     position: relative;
     z-index: 99999;
@@ -84,7 +88,6 @@ a{
 	cursor:pointer;
 	float:left;
 	background:none;
-	border:none;
 	height:2em;
 	width:2em;
 	font-size:1.2em;
@@ -95,6 +98,27 @@ a{
 #zoom-controls button:hover{
 	background-color:rgba(0,0,0,0.1);
 	color:#000;
+}
+
+#zoomIn{
+    border: none; 
+}
+
+#zoomOut {
+    border: none;
+    border-left: 1px solid rgba(206, 206, 206, 0.72);
+}
+
+#map_centre {
+    border: none;
+    border-left: 1px solid rgba(206, 206, 206, 0.72);
+}
+
+#home {
+    padding: 2px;
+    border: none;
+    border-left: 2px solid rgba(206, 206, 206, 0.72);
+    
 }
 
 /* SEARCH BAR & LOGO */
@@ -122,6 +146,14 @@ a{
 	height:2.2em;
 	font-weight:300;
 	margin-right:1em;
+            cursor: pointer;
+
+               	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 #search{
@@ -717,6 +749,7 @@ input:checked + .slider:before {
 	}
 
 	#logo{
+        cursor: pointer;
 		float:none;
 		height:auto;
 		margin-right:0;

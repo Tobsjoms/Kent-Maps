@@ -10,6 +10,17 @@ $(window).on('load', (function(){
 
     $('#overlay').delay(400).fadeOut(200);  
     
+    $("#logo").click(function() {
+       location.replace("/Kent-Maps/Website/index.php");
+    }); 
+    
+    $("#home").click(function() {
+       location.replace("/Kent-Maps/Website/index.php");
+    });
+    
+    
+    
+
     var searchValue = "";
     var URL = window.location.href; 
     if (URL.includes("search")) {
@@ -110,6 +121,15 @@ function roomPopup(currentID, roomInfo) { //------------------------------------
     var gotStaff = true;
     var staffLength;
     console.log(roomInfo);
+    
+    document.getElementById("itemTitle").style.opacity = "0";
+    document.getElementById("itemInfo").style.opacity = "0";
+    document.getElementById("itemPicture").style.opacity = "0";
+    //document.getElementById("itemIMG").style.opacity = "0";
+    document.getElementById("itemStaffInfo").style.opacity = "0";
+    document.getElementById("itemLinks").style.opacity = "0";
+    document.getElementById("itemRooms").style.opacity = "0"
+    
 
     //-------IF RETURN DATA IS EMPTY-------------------------------------------
     if (roomInfo.length == 0) {
@@ -142,8 +162,6 @@ function roomPopup(currentID, roomInfo) { //------------------------------------
                         staffLength = roomInfo.length;
                         console.log(staffLength);
                     }
-                
-
                 
             }
              
@@ -191,7 +209,19 @@ function roomPopup(currentID, roomInfo) { //------------------------------------
     }
             
 
-    document.getElementById('search-result').click();
+        if ($('#sidebar').hasClass('open')) {
+     
+    } else {
+        document.getElementById('search-result').click();
+    }
+    
+    $("#itemTitle").animate({opacity: "1"}, 100);
+    $("#itemInfo").animate({opacity: "1"}, 100);
+    $("#itemPicture").animate({opacity: "1"}, 100);
+    $("#itemIMG").animate({opacity: "1"}, 100);
+    $("#itemStaffInfo").animate({opacity: "1"}, 100);
+    $("#itemLinks").animate({opacity: "1"}, 100);
+    $("#itemRooms").animate({opacity: "1"}, 100);
     
     
 
@@ -201,6 +231,17 @@ function roomPopup(currentID, roomInfo) { //------------------------------------
 
   
 function buildingPopup(currentID, buildingData) {
+    
+    document.getElementById("itemTitle").style.opacity = "0";
+    document.getElementById("itemInfo").style.opacity = "0";
+    document.getElementById("itemPicture").style.opacity = "0";
+    document.getElementById("itemIMG").style.opacity = "0";
+    document.getElementById("itemStaffInfo").style.opacity = "0";
+    document.getElementById("itemLinks").style.opacity = "0";
+    document.getElementById("itemRooms").style.opacity = "0";
+    
+    
+    
     console.log("popup");
     var gotHOS = true; //got head of school data, assumed true
     var thisBuilding = buildingData[0];
@@ -248,7 +289,7 @@ function buildingPopup(currentID, buildingData) {
             if (i == 2) { long = " Second Floor"; short = "SF" };
             if (i == 3) { long = " Third Floor"; short = "TF" };
             if (i == 4) { long = " Fourth Floor"; short = "4F" };
-        mapLink +=  '<a id = linkgen onclick=window.open("/Kent-Maps/Website/index.php?buildingID=' + thisBuilding.BuildingID + "-" + short + ".svg" + '")>' + thisBuilding.BuildingName + long + '</a> </br>';
+        mapLink +=  '<a id = linkgen onclick=location.replace("/Kent-Maps/Website/index.php?buildingID=' + thisBuilding.BuildingID + "-" + short + ".svg" + '")>' + thisBuilding.BuildingName + long + '</a> </br>';
     }
     document.getElementById("itemLinks").innerHTML = "<a id = 'panel-title'> Interior Map Links </a> </br>" + mapLink;
     
@@ -281,7 +322,21 @@ function buildingPopup(currentID, buildingData) {
 
         document.getElementById("itemRooms").innerHTML = "<a id ='panel-title'> Lecture Rooms </a> </br>" + lecRooms + "<a id ='panel-title'> Computing Rooms </a> </br>" + CompRooms + "<a id ='panel-title'> Seminar Rooms </a> </br>" + SemRooms;
     }
-    document.getElementById('search-result').click();
+    
+    if ($('#sidebar').hasClass('open')) {
+     
+    } else {
+        document.getElementById('search-result').click();
+    }
+    
+    $("#itemTitle").animate({opacity: "1"}, 100);
+    $("#itemInfo").animate({opacity: "1"}, 100);
+    $("#itemPicture").animate({opacity: "1"}, 100);
+    $("#itemIMG").animate({opacity: "1"}, 100);
+    $("#itemStaffInfo").animate({opacity: "1"}, 100);
+    $("#itemLinks").animate({opacity: "1"}, 100);
+    $("#itemRooms").animate({opacity: "1"}, 100);
+
 }
 
             function zoom(zoomIn){
