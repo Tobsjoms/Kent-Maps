@@ -18,86 +18,87 @@ $(window).on('load', (function(){
        location.replace("/Kent-Maps/Website/index.php");
     });
     
-    
-    
+    function getBuildingID() {
 
+        //get mapName from URL file (buildingID="X-X-X".svg)
+    var URL = window.location.href;
+    var mapName = URL.substring(
+    URL.lastIndexOf("buildingID=") +11, //THIS IS DODGY BUT GENIUS
+        URL.lastIndexOf(".svg")
+        );
+     
+    
+    var notMain = URL.includes("buildingID=");
+     if (!notMain){
+         mapName = "mainMap";
+     }
+        
+        return mapName;
+     
+    }
+    
+//----------------------------------SEARCH------------------------------------------------------------------------//
     var searchValue = "";
     var URL = window.location.href; 
     if (URL.includes("search")) {
+    
     var URLSearchValue = URL.substring(
     URL.lastIndexOf("=") +1);
+        ajaxSearch(URL, URLSearchValue);
+        
+        if(URLSearchValue != "undefined") {
+            document.getElementById("sInput").value = URLSearchValue;
+        }
     }
     
-    if (typeof URLSearchValue != "undefined" ||  typeof URLSearchValue != null || URLSearchValue != "" ) {
+    if ( URLSearchValue != "undefined" ||   URLSearchValue != null || URLSearchValue != "" ) {
         
         searchValue = URLSearchValue;
     }
-    
-    
     var storedSearchValue = sessionStorage.getItem("searchValue");
     
-     if (URL.includes("search")) {
-            if (searchValue != "") {
-                $.ajax({
-                    type: "POST",
-                    url: "../Website/inc/php/getSearchData.php",
-                    data: {value: searchValue}, 
-                    success: function(response) {
-                        searchData = JSON.parse(response); //parse as JSON object
-                        searchPopup(searchData);
-                            }
-                        });
-                    }
-                }
+        sessionStorage.setItem("searchValue", searchValue);
+         var urlMapID = getBuildingID();
+         
+
     
-     $("#sButton").click(function() {
+         $("#sButton").click(function() {
          if(searchValue != "" || searchValue != null || typeof searchValue != "undefined" ) {
              var searchValue = document.getElementById("sInput").value;
+             console.log(searchValue);
+             ajaxSearch(URL, searchValue);
+             
          }
-         
-        sessionStorage.setItem("searchValue", searchValue);
-        location.replace("/Kent-Maps/Website/index.php?search=" + searchValue);
+            if (urlMapID == "mainMap") {
+             var url2 = "/Kent-Maps/Website/index.php?search=" + searchValue;
+             window.history.pushState("index", "UKC Maps", url2);
+         } else {
+             var url3 = "/Kent-Maps/Website/index.php?buildingID="+ urlMapID + ".svg&search=" + searchValue;
+             window.history.pushState("index", "UKC Maps", url3);
+         }
         var searchData = []; //data prep for return JSON data
         
     
          
      });
-}));
+             
+     
+}));//end of window.onload()----------------------
 
-var LongNames = [
-    ["CW-S-GF", "Cornwallis South Ground"],
-    ["CW-S-FF", "Cornwallis South First"],
-    ["CW-E-GF", "Cornwallis East Ground"],
-    ["CW-E-FF", "Cornwallis East First"],
-    ["CW-SW-GF", "Cornwallis SouthWest Ground"],
-    ["CW-SW-FF", "Cornwallis SouthWest First"],
-    ["CW-Oct-GF", "Cornwallis Octogon Ground"],
-    ["CW-NW-GF", "Cornwallis NorthWest First"],
-    ["CW-NW-FF", "Cornwallis NorthWest First"]
-];
-
-function getCurrentMap() {
-    //finds map name from the filename of the loaded map in 'stage'
-    var mapObj = document.getElementById("stage");
-    var dataURL = mapObj.data;
-    
-    var name = dataURL.substring(
-    dataURL.lastIndexOf("floorplans/") +11,
-        dataURL.lastIndexOf(".svg")
-        );
-    
-    
-    //if a building longname exists, replace it instead of shortname
-    for(i = 0; i < LongNames.length; i++) {
-        if (name == LongNames[i][0]) {
-            name = LongNames[i][1];
-        }
+//----------Search Ajax Call-------------------//
+function ajaxSearch(URL, searchValue) {
+    if (searchValue != "") {
+        $.ajax({
+            type: "POST",
+            url: "../Website/inc/php/getSearchData.php",
+            data: {value: searchValue}, 
+            success: function(response) {
+                searchData = JSON.parse(response);//parse as JSON object
+                searchPopup(searchData);
+                    }
+                });
+            }
     }
-    return name;
-}
-
-
-
 
 
  function searchPopup(searchData) {
@@ -114,6 +115,41 @@ function getCurrentMap() {
      //call roomPopup or building popup with new payload
 
  }
+//--------------------------------------------------------------------------------------------------------------//    
+var LongNames = [
+    ["CW-S-GF", "Cornwallis South Ground"],
+    ["CW-S-FF", "Cornwallis South First"],
+    ["CW-E-GF", "Cornwallis East Ground"],
+    ["CW-E-FF", "Cornwallis East First"],
+    ["CW-SW-GF", "Cornwallis SouthWest Ground"],
+    ["CW-SW-FF", "Cornwallis SouthWest First"],
+    ["CW-Oct-GF", "Cornwallis Octogon Ground"],
+    ["CW-NW-GF", "Cornwallis NorthWest First"],
+    ["CW-NW-FF", "Cornwallis NorthWest First"]
+];
+
+function getCurrentMap() {
+    //finds map name from the filename of the loaded map in 'stage' BUT INCLUDES LONGNAMES
+    var mapObj = document.getElementById("stage");
+    var dataURL = mapObj.data;
+    
+    var name = dataURL.substring(
+    dataURL.lastIndexOf("floorplans/") +11,
+        dataURL.lastIndexOf(".svg")
+        );
+    
+    
+    
+    
+    //if a building longname exists, replace it instead of shortname
+    for(i = 0; i < LongNames.length; i++) {
+        if (name == LongNames[i][0]) {
+            name = LongNames[i][1];
+        }
+    }
+    return name;
+}
+
 
 function roomPopup(currentID, roomInfo) { //-----------------------------------------------
     document.getElementById("itemPicture").innerHTML = "";
