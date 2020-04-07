@@ -8,7 +8,7 @@
 
 $(window).on('load', (function(){
 
-    $('#overlay').delay(400).fadeOut(200);  
+    $('#overlay').delay(400).fadeOut(200);
     
     $("#logo").click(function() {
        location.replace("/Kent-Maps/Website/index.php");

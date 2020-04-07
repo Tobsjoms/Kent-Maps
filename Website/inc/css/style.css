@@ -380,6 +380,14 @@ a{
 	border-radius:4px;
 }
 
+.card .delete-deadline{
+	display:none;
+}
+
+.card:hover .delete-deadline{
+	display:inline;
+}
+
 #timetable{
 	position:relative;
 	box-sizing:border-box; 
@@ -712,6 +720,31 @@ input:checked + .slider:before {
 }
 
 
+
+
+form input[type=text], form input[type=datetime-local], form select{
+	width:100%;
+	border-radius:2px;
+	border:1px solid #757575;
+	margin-bottom:8px;
+	padding:8px;
+}
+
+form input[type=submit]{
+	width:100%;
+	border-radius:2px;
+	padding:1em;
+	font-weight:bold;
+	background:none;
+	border:none;
+	-webkit-transition: background 0.2s ease;
+	-moz-transition: background 0.2s ease;
+	-ms-transition: background 0.2s ease;
+	-o-transition: background 0.2s ease;
+	transition: background 0.2s ease;
+	background-color:#2d3436;
+	color:#fff;
+}
 
 
 @media only screen and (max-width: 1000px) {

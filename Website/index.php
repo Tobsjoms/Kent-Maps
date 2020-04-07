@@ -22,6 +22,20 @@
 			// Get
 			$events = $iCal->eventsByDateBetween($week_start, $week_end);
 		}
+
+		function dateDifference($d1, $differenceFormat = '%d days %h hours' )
+		{
+		    $d1 = date_create($d1);
+		    $d2 = new DateTime("now", new DateTimeZone('Europe/London') );
+		    $interval = date_diff($d1, $d2);
+		    return $interval->format($differenceFormat);
+		}
+
+		$sql= "SELECT * FROM deadlines WHERE user_id = :user_id ORDER BY deadline_datetime ASC";
+		$stmt = $conn->prepare($sql);
+		$stmt->bindParam(':user_id', $_SESSION['id'], PDO::PARAM_STR);
+		$stmt->execute();
+		$deadlineRows = $stmt->fetchAll();
 	}
 
 	// For use with timetables, deadlines
@@ -219,7 +233,12 @@
 					<i class="material-icons">date_range</i>
 				</span>
 				<span onClick="changeTab(this)" target="sidebar-deadlines">
-					<i class="material-icons">alarm</i><span id="deadline-number">1</span>
+					<i class="material-icons">alarm</i>
+					<?php
+						if (count($deadlineRows) != 0){
+							echo "<span id='deadline-number'>" . count($deadlineRows) . "</span>";
+						}
+					?>
 				</span>
 				<span id="settings-button" onClick="changeTab(this)" target="sidebar-user">
 					<i class="material-icons">person</i>
@@ -267,16 +286,43 @@
 			</div>
 
 			<div class="tab-content" id="sidebar-deadlines">
-				<?php include('inc/php/views/get-deadlines.php'); ?>
+				<?php 
+					if (count($deadlineRows) == 0){
+						echo "<div class='heading'>No deadlines!</div>Add one with the form below.";
+					}
+					else{
+						foreach ($deadlineRows as $row){
+							$dateDifferenceDays = dateDifference($row[4], '%a');
+							$borderColour = "#2ecc71"; // Green
 
+							if ($dateDifferenceDays < 1){
+								$borderColour = "#e74c3c";
+							}
+							elseif ($dateDifferenceDays <= 7) {
+								$borderColour = "#e67e22"; 
+							}
+
+							$additionalText = "Due in ";
+							$date = new DateTime($row[4]);
+							$now = new DateTime("now", new DateTimeZone('Europe/London') );
+
+							if($date < $now) {
+							    $additionalText = "Overdue by ";
+							    $borderColour = "#000";
+							}
+
+							echo "<div class='card' style='border-color:" . $borderColour . "'><a href='" . $row[3] . "'>" . $row[2] . "</a></br><b>" . $additionalText . dateDifference($row[4]) . "</b> <a class='delete-deadline' href='inc/php/handlers/handle-delete-deadline.php?id=" . $row[0] . "'>X</a></div>";
+						}
+					}
+				?>
+
+				<hr>
 				<form action="inc/php/handlers/handle-add-deadline.php" method="post">
-				    <input name="title" type="text" autocapitalize="off" spellcheck="true" required>   
-				    <input name="link" type="text" autocapitalize="off" spellcheck="true" required>
+				    <input name="title" type="text" autocapitalize="off" spellcheck="true" placeholder="Title" required>   
+				    <input name="link" type="text" autocapitalize="off" spellcheck="true" placeholder="Relevant URL" required>
 				    <input name="date-time" type="datetime-local" required>
-
-					<input class="button" id="submit-button" type="submit" name="submit" value="Save"/>
+					<input class="button" id="submit-button" type="submit" name="submit" value="Add Deadline"/>
 				</form>
-
 			</div>
 
 			<div class="tab-content" id="sidebar-user">
@@ -286,17 +332,14 @@
 				<div class="heading">Settings</div>
 				<form action="inc/php/handlers/handle-settings-attempt.php" method="post">
 				    <div class="group">      
-				        <input id="timetable-url-input" name="timetable-url" type="text" autocapitalize="off" spellcheck="false" <?php if (isset($url)) echo 'value="' . $url . '"'; ?>>
-				        <span class="highlight"></span>
-				        <span class="bar"></span>
-				        <label for="timetable-url-input">Timetable URL</label>
+				        <input id="timetable-url-input" placeholder="Timetable URL" name="timetable-url" type="text" autocapitalize="off" spellcheck="false" <?php if (isset($url)) echo 'value="' . $url . '"'; ?>>
 				    </div>
 
 				    <div class="group">      
 						<select id="colour-scheme-input" name="colour-scheme">
-						  <option <?php if (isset($col) && $col == "default") echo "selected" ?> value="default">Default</option>
-						  <option <?php if (isset($col) && $col == "darkmode") echo "selected" ?> value="darkmode">Dark Mode</option>
-						  <option <?php if (isset($col) && $col == "colourblindmode") echo "selected" ?> value="colourblindmode">Colour Blind Mode</option>
+						  <option <?php if (isset($col) && $col == "default") echo "selected" ?> value="default">Default Colour Scheme</option>
+						  <option <?php if (isset($col) && $col == "darkmode") echo "selected" ?> value="darkmode">Dark Colour Scheme</option>
+						  <option <?php if (isset($col) && $col == "colourblindmode") echo "selected" ?> value="colourblindmode">High Contrast Colour Scheme</option>
 						</select>
 				    </div>
 
