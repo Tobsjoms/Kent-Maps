@@ -23,7 +23,7 @@
 	    // Set PDO error mode
 	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	    
-	    // Check table exists
+	    // Check tables exist, create if not
 	    if (!tableExists($conn, "users")){
 	    	// Create users table
 	    	$createUsersStmt = $conn->prepare("
@@ -38,9 +38,22 @@
 	    	$createUsersStmt->execute();
 	    }
 
-	    // Check table exists
+	   	if (!tableExists($conn, "user_reset")){
+	    	// Create user reset table
+	    	$createUsersStmt = $conn->prepare("
+				CREATE TABLE user_reset (
+					user_reset_key VARCHAR(30) NOT NULL,
+					user_reset_expires datetime,
+					user_id INT(10) UNSIGNED,
+					PRIMARY KEY (user_reset_key, user_reset_expires),
+					FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+				)
+	    	");
+	    	$createUsersStmt->execute();
+	    }
+
 	    if (!tableExists($conn, "deadlines")){
-	    	// Create users table
+	    	// Create deadlines table
 	    	$createDeadlineStmt = $conn->prepare("
 				CREATE TABLE deadlines (
 					deadline_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -48,7 +61,7 @@
 					deadline_title VARCHAR(100) NOT NULL,
 					deadline_link VARCHAR(1000) NOT NULL,
 					deadline_datetime DATETIME NOT NULL,
-					FOREIGN KEY (user_id) REFERENCES users(user_id)
+					FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 				)
 	    	");
 	    	$createDeadlineStmt->execute();

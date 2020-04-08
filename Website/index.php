@@ -328,7 +328,7 @@
 			<div class="tab-content" id="sidebar-user">
 				<div class="heading">Account</div>
 				<span><?= $_SESSION['email'] ?> (<a href="logout.php">log out</a>)</span></br></br>
-				<form action="inc/php/handlers/handle-delete-account.php" method="post">
+				<form action="inc/php/handlers/handle-delete-account.php" method="post" onSubmit="return confirm('Click OK to confirm the deletion of your account.')">
 					<input class="button enabled" id="submit-button-delete-account" type="submit" name="submit" value="Delete Account"/>
 				</form>
 				<hr>
