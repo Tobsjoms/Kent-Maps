@@ -280,6 +280,7 @@ $(window).on('load', (function(){
         url: "../Website/inc/php/getBuildingData.php",
         data: {id: id}, //send roomID to script
         success: function(response) {
+            console.log(response);
             buildingData = JSON.parse(response); //parse as JSON object
             buildingPopup(id, buildingData); //pass room and JSON object to RoomPopup function
             }

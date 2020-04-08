@@ -12,12 +12,11 @@ $dbconnect = new mysqli($server, $dbusername, $dbpassword, $dbname);
 
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $data = $mysqli->real_escape_string($_POST['id']);
+    $data = $_POST['id'];
  
     $sql = "SELECT * FROM `buildingdata` LEFT JOIN staff ON buildingdata.SchoolHead=staff.StaffID WHERE BuildingID LIKE '$data' ";
     $sql2 = "SELECT RoomID, RoomType FROM roomdata WHERE BuildingID LIKE '$data' ";
     
-    $result->bind_param('s', $data);
 
     
     $result = mysqli_query($dbconnect, $sql);
