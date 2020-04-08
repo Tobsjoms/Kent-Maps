@@ -7,6 +7,9 @@
 
 
 $(window).on('load', (function(){
+    
+     var a = document.getElementById('stage');
+    var svgDoc = a.contentDocument;
 
     $('#overlay').delay(400).fadeOut(200);
     
@@ -23,7 +26,7 @@ $(window).on('load', (function(){
         //get mapName from URL file (buildingID="X-X-X".svg)
     var URL = window.location.href;
     var mapName = URL.substring(
-    URL.lastIndexOf("buildingID=") +11, //THIS IS DODGY BUT GENIUS
+    URL.lastIndexOf("buildingID=") +11, 
         URL.lastIndexOf(".svg")
         );
      
@@ -85,6 +88,10 @@ $(window).on('load', (function(){
      
 }));//end of window.onload()----------------------
 
+
+
+
+
 //----------Search Ajax Call-------------------//
 function ajaxSearch(URL, searchValue) {
     if (searchValue != "") {
@@ -102,6 +109,11 @@ function ajaxSearch(URL, searchValue) {
 
 
  function searchPopup(searchData) {
+     
+     var a = document.getElementById('stage');
+    var svgDoc = a.contentDocument;
+     var svgItem = svgDoc.getElementById("Buildings");
+     
      var mapType = getBuildingID();
      console.log("--------Data------------");
      console.log(searchData);
@@ -110,7 +122,7 @@ function ajaxSearch(URL, searchValue) {
      
      searchDiv.style.opacity = "0";
     
-     searchDiv.innerHTML = "<h1> Search Results </h1> <div id = resultList </div>";
+     searchDiv.innerHTML = "<h1> Search Results: </h1> <div id = resultList </div> <br> <div id = 'resultList2'";
      
      var resultsSection = document.getElementById("resultList");
      var resultsLength = searchData.length;
@@ -195,13 +207,40 @@ function ajaxSearch(URL, searchValue) {
          console.log("Staff Data Length " + StaffIDLength );
          //Prioritise building search results
          if(indexOfBuilding != "none") {
-             resultsSection.innerHTML = "<div id = 'buildingResult'></div>"
+             resultsSection.innerHTML = "<div id = 'buildingResult'> <a id = 'panel-title-h2'> Campus Buildings: </a> </br></div>";
+             for(i = indexOfBuilding; i < BuildingIDLength; i++) {
+                 var fuckingID = searchData[i].BuildingID;
+                 document.getElementById("buildingResult").innerHTML += "<a id='names'>" +  searchData[i].BuildingName + "</a>" + " - <a class ='linkSet' id = 'link"+ i+"'>" +searchData[i].BuildingID +"</a></br>";
+                
+             }
+             
+             $(".linkSet").click(function() {
+                 var current = event.target.id;
+                 var fullValue = document.getElementById(current).textContent; 
+                 
+                 var selectBuilding = svgDoc.getElementById(fullValue);
+                 focusSvgElement(selectBuilding);
+                 buildingPopup(fullValue);
+                 
+             });
+             
+             
+
         }
-     }
-     
-     else {
+         
+     }else {
          
      }
+          
+     
+     function linkHandler(id, obj) {
+         console.log("link!");
+         return function() {
+             buildingPopup(id, obj)
+         };
+     }
+     
+     
      
      
      
@@ -216,7 +255,30 @@ function ajaxSearch(URL, searchValue) {
      
      
  }
+    function focusSvgElement(currentItem) {
+    var a = document.getElementById('stage');
+    var svgDoc = a.contentDocument;
+    var svgItem = svgDoc.getElementById("Buildings");
+    var b = svgItem.getElementsByTagName("path");
+    var rectID = new Array();
+    for(i=0; i < b.length; i++) {
+        //pushing all rect elements within svgItem into an array for search functionality
+        rectID.push(b[i].id);
+    }
+        //pass object
+        currentID = currentItem.id;
+        for(i = 0; i < rectID.length; i++) {
+            if (currentID != rectID[i]) {
+                svgDoc.getElementById(rectID[i]).style.removeProperty('fill'); 
+                svgDoc.getElementById(rectID[i]).style.removeProperty('stroke'); 
+            }
+        }
+        
+         currentItem.style.fill = "#efdfab";
+         currentItem.style.stroke = "#ffc400";
 
+        
+    }
 //--------------------------------------------------------------------------------------------------------------//    
 var LongNames = [
     ["CW-S-GF", "Cornwallis South Ground"],
@@ -368,8 +430,22 @@ function roomPopup(currentID, roomInfo) { //------------------------------------
 
 
   
-function buildingPopup(currentID, buildingData) {
+function buildingPopup(id) {
+    var buildingData = [] //JSON Data
+        $.ajax({
+        type: "POST",
+        url: "../Website/inc/php/getBuildingData.php",
+        data: {id: id}, //send roomID to script
+        success: function(response) {
+            
+            buildingData = JSON.parse(response); //parse as JSON object
+            mainPopup(id, buildingData); //pass room and JSON object to RoomPopup function
+            }
+        });
     
+    function mainPopup(currentID, buildingData) {
+    
+    console.log(buildingData);
     document.getElementById("itemTitle").style.opacity = "0";
     document.getElementById("itemInfo").style.opacity = "0";
     document.getElementById("itemPicture").style.opacity = "0";
@@ -474,6 +550,9 @@ function buildingPopup(currentID, buildingData) {
     $("#itemStaffInfo").animate({opacity: "1"}, 100);
     $("#itemLinks").animate({opacity: "1"}, 100);
     $("#itemRooms").animate({opacity: "1"}, 100);
+        
+    }
+    
 
 }
 
