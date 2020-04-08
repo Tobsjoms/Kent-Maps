@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	</head>
+	<body>
+		<labe>Start:</labe><select id="startOptions" onchange="highlight();">
+			<option value="LIBD">Library Main Entrance</option>
+			<option value="CHD">Chipperfield (CH) Main Entrance</option>
+			<option value="SIBD">Sibson Main Entrance</option>
+			<option value="KEND">Kennedy (KEN) Main Entrance</option>
+			<option value="JEND">Jennison (J) Main Entrance</option>
+			<option value="GYMD">Sports Centre</option>
+			<option value="ID">Ingram (I) Main Entrance</option>
+			<option value="SD">Stacey (S) Main Entrance</option>
+			<option value="SHOPSD">COOP/CAFE/FOOD</option>
+			<option value="ED">Eliot College</option>
+			<option value="EED">Eliot Extension</option>
+			<option value="GD">Grimond Main Entrance</option>
+			<option value="LIB-RED">Library Road Entrance</option>
+			<option value="GULBD">The Gulbenkian Main Entrance</option>
+			<option value="CWD">Cornwallis West Main Entrance</option>
+			<option value="CSD">Cornwallis South Main Entrance</option>
+			<option value="RD">Rutherford Main Entrance</option>
+			<option value="REXD">Rutherford Extension (RE) Main Entrance</option>
+			<option value="REGD">The Registry Main Entrance</option>
+			<option value="CSE-OCTD">Cornwallis South East/Octagan</option>
+			<option value="CCD">Cornwallis Central Main Entrance </option>
+			<option value="CED">Cornwallis East Main Entrance</option>
+			<option value="DARWD">Darwin Main Entrance</option>
+		</select>
+
+		<label>Destination:</label> <select id="destOptions" onchange="highlight();">
+			<option value="LIBD">Library Main Entrance</option>
+			<option value="CHD">Chipperfield (CH) Main Entrance</option>
+			<option value="SIBD">Sibson Main Entrance</option>
+			<option value="KEND">Kennedy (KEN) Main Entrance</option>
+			<option value="JEND">Jennison (J) Main Entrance</option>
+			<option value="GYMD">Sports Centre</option>
+			<option value="ID">Ingram (I) Main Entrance</option>
+			<option value="SD">Stacey (S) Main Entrance</option>
+			<option value="SHOPSD">COOP/CAFE/FOOD</option>
+			<option value="ED">Eliot College</option>
+			<option value="EED">Eliot Extension</option>
+			<option value="GD">Grimond Main Entrance</option>
+			<option value="LIB-RED">Library Road Entrance</option>
+			<option value="GULBD">The Gulbenkian Main Entrance</option>
+			<option value="CWD">Cornwallis West Main Entrance</option>
+			<option value="CSD">Cornwallis South Main Entrance</option>
+			<option value="RD">Rutherford Main Entrance</option>
+			<option value="REXD">Rutherford Extension (RE) Main Entrance</option>
+			<option value="REGD">The Registry Main Entrance</option>
+			<option value="CSE-OCTD">Cornwallis South East/Octagan</option>
+			<option value="CCD">Cornwallis Central Main Entrance </option>
+			<option value="CED">Cornwallis East Main Entrance</option>
+			<option value="DARWD">Darwin Main Entrance</option>
+		</select>
+
+		<button onclick="loadData();">Search</button>
+		
+		<p id="demo"></p>
+		
+	<script>
+			document.onload = this.highlight();
+			// Nodes
+			var nodeObjects = [];
+
+			// Stores all paths
+			class Pathfinder {
+				// Nodes in queue waiting to be visited
+				queue;
+
+				// Nodes already visited
+				visitedNodes;
+
+				paths = new Array();
+
+				getPath(node) {
+					for(var i = 0; i < nodeObjects.length; i++) {
+						if (nodeObjects[i].getCurrent() == node) {
+							return i;
+						} 
+					}
+					return -1;
+				}
+
+				findPathToGoal(start, goal) {
+					this.queue = new Array();
+					this.visitedNodes = new Array();
+
+					// Add start node to path
+					let currentNode = nodeObjects[this.getPath(start)];
+
+					// Add start node (current node) to visited nodes
+					this.visitedNodes.push(currentNode.getCurrent());
+
+					// Add valid directions to queue
+					this.addToQueue(currentNode);
+
+					// Explores all paths
+					while (currentNode.containsNode(goal) == false) {
+						currentNode = nodeObjects[this.getPath(this.queue[0])];
+						this.visitedNodes.push(currentNode.getCurrent());
+						this.queue.shift(); 
+
+						// Stop looping if currentNode contains goal after updating from queue
+						if (currentNode.containsNode(goal) == true) {
+							this.createPath(start, currentNode, goal);
+							break;
+						}
+						this.addToQueue(currentNode);
+					}
+					//this.findPathToGoal(goal, start);
+					this.visitedNodes.pop();
+					currentNode.setPrevious("null");
+
+					while (this.queue.length != 0) {
+						currentNode = nodeObjects[this.getPath(this.queue[0])];
+						this.visitedNodes.push(currentNode.getCurrent());
+						this.queue.shift(); 
+
+						// Stop looping if currentNode contains goal after updating from queue
+						if (currentNode.containsNode(goal) == true) {
+							this.createPath(start, currentNode, goal);
+							break;
+						}
+
+						this.addToQueue(currentNode);  
+					}
+					// Plot path to goal
+					pathPlot(this.paths);
+				}
+
+				addToQueue(currentNode) {
+					// Checks:
+					//  - != null || ends with 'D'
+					//  - not already visited
+					//  - not in queue 
+					var index = 0;
+					let nodeQueue = []
+					nodeQueue = Array.from(this.queue);
+					this.queue = [];
+					if (currentNode.getNorth().startsWith("P") == true) {
+						if (this.visitedNodes.indexOf(currentNode.getNorth()) == -1) {
+							const nextNode = nodeObjects[this.getPath(currentNode.getNorth())];
+							// Only set previous if previous is null (hasn't been set)
+							if (nextNode.getPrevious() == "null") {
+								nextNode.setPrevious(currentNode.getCurrent());
+							}
+							this.queue.splice(index, 0, nextNode.getCurrent());
+							++index;
+						}
+					} 
+							
+					if (currentNode.getSouth().startsWith("P") == true) {
+						if (this.visitedNodes.indexOf(currentNode.getSouth()) == -1) {
+							const nextNode = nodeObjects[this.getPath(currentNode.getSouth())];
+							// Only set previous if previous is null (hasn't been set)
+							if (nextNode.getPrevious() == "null") {
+								nextNode.setPrevious(currentNode.getCurrent());
+							}
+							this.queue.splice(index, 0, nextNode.getCurrent());
+							++index;
+						}
+					}
+							
+					if (currentNode.getEast().startsWith("P") == true) {
+						if (this.visitedNodes.indexOf(currentNode.getEast()) == -1) { 
+							const nextNode = nodeObjects[this.getPath(currentNode.getEast())];
+							// Only set previous if previous is null (hasn't been set)
+							if (nextNode.getPrevious() == "null") {
+								nextNode.setPrevious(currentNode.getCurrent());
+							}
+							this.queue.splice(index, 0, nextNode.getCurrent());
+							++index;
+						}
+					} 
+							
+					if (currentNode.getWest().startsWith("P") == true) {
+						if (this.visitedNodes.indexOf(currentNode.getWest()) == -1) {
+							const nextNode = nodeObjects[this.getPath(currentNode.getWest())];
+							// Only set previous if previous is null (hasn't been set)
+							if (nextNode.getPrevious() == "null") {
+								nextNode.setPrevious(currentNode.getCurrent());
+							}
+							this.queue.splice(index, 0, nextNode.getCurrent());
+							++index;
+						}
+					}
+					this.queue = this.queue.concat(nodeQueue);
+				}
+
+				// Creates path from start to finish
+				createPath(start, current, goalNode) {
+					let path = [];
+					let currentNode = current;
+
+					path.push(currentNode.getCurrent());
+					while(currentNode.getCurrent() != start) {
+						var index = this.visitedNodes.indexOf(currentNode.getPrevious());
+						currentNode = nodeObjects[this.getPath(this.visitedNodes[index])];
+						path.splice(0, 0, currentNode.getCurrent());
+					}
+					path.splice(0,0, start);
+					path.push(goalNode);
+					this.paths.push(path);
+				}
+			}
+
+			class PathNode {
+				constructor(node) {
+					this.currentNode = node.current;
+					this.northNode = node.north;
+					this.southNode = node.south;
+					this.eastNode = node.east;
+					this.westNode = node.west;
+					this.previous = "null";
+				}
+
+				getCurrent() {return this.currentNode;}
+				getNorth() {return this.northNode;}
+				getSouth() {return this.southNode;}
+				getEast() {return this.eastNode;}
+				getWest() {return this.westNode;}
+				getPrevious() {return this.previous;}
+
+				setPrevious(node) {this.previous = node;}
+
+				containsNode(node) {
+					if (this.currentNode == node) {
+						return true;
+					} else if (this.northNode == node) {
+						return true;
+					} else if (this.southNode == node) {
+						return true;
+					} else if (this.eastNode == node) {
+						return true;
+					} else if (this.westNode == node) {
+						return true;
+					}
+					return false;
+				}
+			}
+
+			function loadData() {
+				$.ajax({
+					type: "GET",
+					url: "mainMap.json",
+					dataType: 'json',
+					success: function(data) {
+						for(var j = 0; j < data.pathNodes.length; j++) {
+							node = new PathNode(data.pathNodes[j]);
+							nodeObjects[j] = node;
+						}
+
+						// Starting room
+						var start = document.getElementById("startOptions").value;
+						
+						// Goal room    
+						var goal = document.getElementById("destOptions").value;
+
+						findPath(start, goal);
+
+						function findPath(start, goal) {
+							if (start === goal) {
+								document.getElementById("demo").innerHTML = "Start and Destination are the same."
+							} else {
+								path = new Pathfinder();
+								path.findPathToGoal(start, goal);
+							}		
+						}
+					}
+				})
+			}
+
+			function pathPlot(path) {
+				// Find shortest path by length of node arrays inside path
+				let index = path[0];
+				for(var i = 0; i < path.length; i++) {
+					if (path[i].length < index.length) {
+						index = path[i];
+					}
+				}
+
+				var svg = d3.xml('mainMap.svg')
+					.then(data => {
+						d3.select("#demo").node().innerHTML = "";
+						d3.select("#demo").node().append(data.documentElement);
+						// Removing colour for all path elements
+						for (let i = 0; i < nodeObjects.length; i++) {
+							d3.select("#" + nodeObjects[i].getCurrent()).style("fill", "none");
+						}
+
+						for (var j = 0; j < index.length; j++) {
+							var currentNode = index[j];
+							d3.select("#" + currentNode).style("fill", "red");
+						}
+				})
+			}
+
+			function highlight() {
+				// Starting point
+				var start = document.getElementById("startOptions").value;
+
+				// Destination
+				var dest = document.getElementById("destOptions").value;
+
+				var svg = d3.xml('mainMap.svg')
+					.then(data => {
+						d3.select("#demo").node().innerHTML = "";
+						d3.select("#demo").node().append(data.documentElement);
+						// Removing colour for all path elements
+						for (let i = 0; i < nodeObjects.length; i++) {
+							let current = nodeObjects[i].getCurrent();
+							d3.select("#" + current).style("fill", "none");
+						}
+						d3.select("#" + start).style("fill", "red");
+						d3.select("#" + dest).style("fill", "red");
+				})
+			}
+    </script>
+	</body>
+</html>

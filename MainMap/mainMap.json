@@ -1,0 +1,912 @@
+{"pathNodes": [
+    {
+        "current": "P1",
+        "north": "null",
+        "south": "SHOPSD",
+        "east": "P2",
+        "west": "null"
+    },
+    {
+        "current": "P2",
+        "north": "P3",
+        "south": "P1",
+        "east": "P73",
+        "west": "null"
+    },
+    {
+        "current": "P3",
+        "north": "P74",
+        "south": "null",
+        "east": "P73",
+        "west": "P2"
+    },
+    {
+        "current": "P74",
+        "north": "P9",
+        "south": "P3",
+        "east": "P10",
+        "west": "null"
+    },
+    {
+        "current": "P9",
+        "north": "P76",
+        "south": "P74",
+        "east": "P10",
+        "west": "null"
+    },
+    {
+        "current": "P76",
+        "north": "P75",
+        "south": "P76",
+        "east": "P77",
+        "west": "null"
+    },
+    {
+        "current": "P77",
+        "north": "null",
+        "south": "P12",
+        "east": "P14",
+        "west": "P13"
+    },
+    {
+        "current": "P14",
+        "north": "P17",
+        "south": "P12",
+        "east": "null",
+        "west": "P77"
+    },
+    {
+        "current": "P17",
+        "north": "P18",
+        "south": "null",
+        "east": "P19",
+        "west": "P14"
+    },
+    {
+        "current": "P18",
+        "north": "GD",
+        "south": "P17",
+        "east": "P19",
+        "west": "null"
+    },
+    {
+        "current": "P19",
+        "north": "P18",
+        "south": "P17",
+        "east": "P78",
+        "west": "null"
+    },
+    {
+        "current": "P78",
+        "north": "null",
+        "south": "P20",
+        "east": "P21",
+        "west": "P19"
+    },
+    {
+        "current": "P20",
+        "north": "null",
+        "south": "LIB-RED",
+        "east": "P21",
+        "west": "P78"
+    },
+    {
+        "current": "P21",
+        "north": "null",
+        "south": "P20",
+        "east": "P36",
+        "west": "P78"
+    },
+    {
+        "current": "P36",
+        "north": "P37",
+        "south": "P24",
+        "east": "null",
+        "west": "P21"
+    },
+    {
+        "current": "P37",
+        "north": "P39",
+        "south": "null",
+        "east": "P38",
+        "west": "P36"
+    },
+    {
+        "current": "P39",
+        "north": "P61",
+        "south": "P37",
+        "east": "P38",
+        "west": "P40"
+    },
+    {
+        "current": "P40",
+        "north": "P61",
+        "south": "P39",
+        "east": "null",
+        "west": "GULBD"
+    },
+    {
+        "current": "P61",
+        "north": "P63",
+        "south": "P39",
+        "east": "P62",
+        "west": "P40"
+    },
+    {
+        "current": "P62",
+        "north": "P63",
+        "south": "P61",
+        "east": "CWD",
+        "west": "null"
+    },
+    {
+        "current": "P38",
+        "north": "P39",
+        "south": "P37",
+        "east": "P79",
+        "west": "null"
+    },
+    {
+        "current": "P89",
+        "north": "null",
+        "south": "P34",
+        "east": "P41",
+        "west": "P79"
+    },
+    {
+        "current": "P63",
+        "north": "P64",
+        "south": "P61",
+        "east": "P62",
+        "west": "null"
+    },
+    {
+        "current": "P79",
+        "north": "null",
+        "south": "P89",
+        "east": "P41",
+        "west": "P38"
+    },
+    {
+        "current": "P24",
+        "north": "P21",
+        "south": "P25",
+        "east": "P36",
+        "west": "P22"
+    },
+    {
+        "current": "P25",
+        "north": "P24",
+        "south": "P27",
+        "east": "null",
+        "west": "P22"
+    },
+    {
+        "current": "P22",
+        "north": "P24",
+        "south": "P25",
+        "east": "null",
+        "west": "P80"
+    },
+    {
+        "current": "P80",
+        "north": "null",
+        "south": "P23",
+        "east": "P22",
+        "west": "P16"
+    },
+    {
+        "current": "P16",
+        "north": "null",
+        "south": "P23",
+        "east": "P80",
+        "west": "P81"
+    },
+    {
+        "current": "P81",
+        "north": "P15",
+        "south": "P86",
+        "east": "P16",
+        "west": "P11"
+    },
+    {
+        "current": "P15",
+        "north": "LIBD",
+        "south": "P86",
+        "east": "P81",
+        "west": "P11"
+    },
+    {
+        "current": "P11",
+        "north": "P15",
+        "south": "P86",
+        "east": "P81",
+        "west": "P82"
+    },
+    {
+        "current": "P82",
+        "north": "P84",
+        "south": "null",
+        "east": "P11",
+        "west": "P83"
+    },
+    {
+        "current": "P83",
+        "north": "P84",
+        "south": "null",
+        "east": "P82",
+        "west": "P10"
+    },
+    {
+        "current": "P84",
+        "north": "P12",
+        "south": "null",
+        "east": "P82",
+        "west": "P83"
+    },
+    {
+        "current": "P12",
+        "north": "null",
+        "south": "P84",
+        "east": "P14",
+        "west": "P77"
+    },
+    {
+        "current": "P10",
+        "north": "P9",
+        "south": "P74",
+        "east": "P83",
+        "west": "null"
+    },
+    {
+        "current": "P73",
+        "north": "P3",
+        "south": "null",
+        "east": "P85",
+        "west": "P2"
+    },
+    {
+        "current": "P85",
+        "north": "P6",
+        "south": "P4",
+        "east": "P5",
+        "west": "P73"
+    },
+    {
+        "current": "P6",
+        "north": "P86",
+        "south": "P4",
+        "east": "P5",
+        "west": "P85"
+    },
+    {
+        "current": "P86",
+        "north": "P15",
+        "south": "P6",
+        "east": "P81",
+        "west": "P11"
+    },
+    {
+        "current": "P5",
+        "north": "P6",
+        "south": "P4",
+        "east": "P107",
+        "west": "P85"
+    },
+    {
+        "current": "P4",
+        "north": "P6",
+        "south": "ED",
+        "east": "P5",
+        "west": "P85"
+    },
+    {
+        "current": "P7",
+        "north": "null",
+        "south": "EED",
+        "east": "P8",
+        "west": "null"
+    },
+    {
+        "current": "P8",
+        "north": "null",
+        "south": "P7",
+        "east": "P26",
+        "west": "P107"
+    },
+    {
+        "current": "P26",
+        "north": "P27",
+        "south": "P8",
+        "east": "null",
+        "west": "P87"
+    },
+    {
+        "current": "P23",
+        "north": "null",
+        "south": "P87",
+        "east": "P80",
+        "west": "P81"
+    },
+    {
+        "current": "P87",
+        "north": "P23",
+        "south": "P26",
+        "east": "P27",
+        "west": "null"
+    },
+    {
+        "current": "P27",
+        "north": "P25",
+        "south": "P26",
+        "east": "P28",
+        "west": "P87"
+    },
+    {
+        "current": "P28",
+        "north": "P29",
+        "south": "P27",
+        "east": "null",
+        "west": "P25"
+    },
+    {
+        "current": "P29",
+        "north": "P31",
+        "south": "P28",
+        "east": "P30",
+        "west": "null"
+    },
+    {
+        "current": "P30",
+        "north": "P31",
+        "south": "P32",
+        "east": "P33",
+        "west": "P29"
+    },
+    {
+        "current": "P31",
+        "north": "P88",
+        "south": "P29",
+        "east": "P30",
+        "west": "null"
+    },
+    {
+        "current": "P88",
+        "north": "P34",
+        "south": "P31",
+        "east": "P35",
+        "west": "null"
+    },
+    {
+        "current": "P34",
+        "north": "P89",
+        "south": "P88",
+        "east": "P35",
+        "west": "null"
+    },
+    {
+        "current": "P41",
+        "north": "null",
+        "south": "P89",
+        "east": "P90",
+        "west": "P79"
+    },
+    {
+        "current": "P90",
+        "north": "P42",
+        "south": "P43",
+        "east": "P44",
+        "west": "P41"
+    },
+    {
+        "current": "P42",
+        "north": "CSD",
+        "south": "P43",
+        "east": "P44",
+        "west": "P90"
+    },
+    {
+        "current": "P43",
+        "north": "P42",
+        "south": "P45",
+        "east": "P44",
+        "west": "P90"
+    },
+    {
+        "current": "P45",
+        "north": "P43",
+        "south": "P46",
+        "east": "P54",
+        "west": "null"
+    },
+    {
+        "current": "P46",
+        "north": "P54",
+        "south": "P35",
+        "east": "P47",
+        "west": "P45"
+    },
+    {
+        "current": "P35",
+        "north": "P46",
+        "south": "P91",
+        "east": "P47",
+        "west": "null"
+    },
+    {
+        "current": "P91",
+        "north": "P35",
+        "south": "P88",
+        "east": "null",
+        "west": "P34"
+    },
+    {
+        "current": "P47",
+        "north": "P46",
+        "south": "P48",
+        "east": "P49",
+        "west": "P35"
+    },
+    {
+        "current": "P49",
+        "north": "REGD",
+        "south": "P48",
+        "east": "null",
+        "west": "P47"
+    },
+    {
+        "current": "P48",
+        "north": "P49",
+        "south": "P92",
+        "east": "null",
+        "west": "P47"
+    },
+    {
+        "current": "P92",
+        "north": "P48",
+        "south": "null",
+        "east": "P52",
+        "west": "P51"
+    },
+    {
+        "current": "P51",
+        "north": "P92",
+        "south": "P50",
+        "east": "P52",
+        "west": "P33"
+    },
+    {
+        "current": "P50",
+        "north": "null",
+        "south": "RD",
+        "east": "P51",
+        "west": "P33"
+    },
+    {
+        "current": "P33",
+        "north": "null",
+        "south": "P50",
+        "east": "P51",
+        "west": "P30"
+    },
+    {
+        "current": "P32",
+        "north": "null",
+        "south": "REXD",
+        "east": "P33",
+        "west": "P30"
+    },
+    {
+        "current": "P52",
+        "north": "P92",
+        "south": "null",
+        "east": "P53",
+        "west": "P51"
+    },
+    {
+        "current": "P53",
+        "north": "null",
+        "south": "null",
+        "east": "P71",
+        "west": "P52"
+    },
+    {
+        "current": "P71",
+        "north": "null",
+        "south": "null",
+        "east": "P72",
+        "west": "P53"
+    },
+    {
+        "current": "P72",
+        "north": "null",
+        "south": "null",
+        "east": "DARWD",
+        "west": "P71"
+    },
+    {
+        "current": "P54",
+        "north": "P55",
+        "south": "P46",
+        "east": "null",
+        "west": "P45"
+    },
+    {
+        "current": "P55",
+        "north": "null",
+        "south": "P54",
+        "east": "P56",
+        "west": "P93"
+    },
+    {
+        "current": "P44",
+        "north": "P42",
+        "south": "P43",
+        "east": "P93",
+        "west": "P90"
+    },
+    {
+        "current": "P93",
+        "north": "null",
+        "south": "P55",
+        "east": "P56",
+        "west": "P44"
+    },
+    {
+        "current": "P56",
+        "north": "P57",
+        "south": "P55",
+        "east": "P58",
+        "west": "P93"
+    },
+    {
+        "current": "P57",
+        "north": "CSE-OCTD",
+        "south": "null",
+        "east": "P58",
+        "west": "P56"
+    },
+    {
+        "current": "P58",
+        "north": "P57",
+        "south": "null",
+        "east": "P94",
+        "west": "P56"
+    },
+    {
+        "current": "P94",
+        "north": "P59",
+        "south": "null",
+        "east": "null",
+        "west": "P58"
+    },
+    {
+        "current": "P59",
+        "north": "CED",
+        "south": "null",
+        "east": "null",
+        "west": "P60"
+    },
+    {
+        "current": "P60",
+        "north": "null",
+        "south": "P59",
+        "east": "null",
+        "west": "CCD"
+    },
+    {
+        "current": "P64",
+        "north": "null",
+        "south": "P63",
+        "east": "P70",
+        "west": "null"
+    },
+    {
+        "current": "P70",
+        "north": "null",
+        "south": "P65",
+        "east": "P66",
+        "west": "P64"
+    },
+    {
+        "current": "P65",
+        "north": "null",
+        "south": "null",
+        "east": "P66",
+        "west": "P70"
+    },
+    {
+        "current": "P66",
+        "north": "null",
+        "south": "P65",
+        "east": "P67",
+        "west": "P70"
+    },
+    {
+        "current": "P67",
+        "north": "null",
+        "south": "P68",
+        "east": "null",
+        "west": "P66"
+    },
+    {
+        "current": "P68",
+        "north": "P67",
+        "south": "null",
+        "east": "null",
+        "west": "P69"
+    },
+    {
+        "current": "P69",
+        "north": "P68",
+        "south": "null",
+        "east": "null",
+        "west": "CED"
+    },
+    {
+        "current": "P13",
+        "north": "P75",
+        "south": "P76",
+        "east": "P77",
+        "west": "null"
+    },
+    {
+        "current": "P75",
+        "north": "P95",
+        "south": "P76",
+        "east": "P13",
+        "west": "null"
+    },
+    {
+        "current": "P95",
+        "north": "P96",
+        "south": "P75",
+        "east": "null",
+        "west": "SD"
+    },
+    {
+        "current": "P96",
+        "north": "P97",
+        "south": "P95",
+        "east": "P98",
+        "west": "SD"
+    },
+    {
+        "current": "P98",
+        "north": "ID",
+        "south": "P96",
+        "east": "null",
+        "west": "P97"
+    },
+    {
+        "current": "P97",
+        "north": "P99",
+        "south": "P96",
+        "east": "P98",
+        "west": "P100"
+    },
+    {
+        "current": "P99",
+        "north": "P101",
+        "south": "P97",
+        "east": "null",
+        "west": "P100"
+    },
+    {
+        "current": "P101",
+        "north": "P102",
+        "south": "P99",
+        "east": "JEND",
+        "west": "null"
+    },
+    {
+        "current": "P102",
+        "north": "P104",
+        "south": "P101",
+        "east": "JEND",
+        "west": "P103"
+    },
+    {
+        "current": "P103",
+        "north": "null",
+        "south": "KEND",
+        "east": "P102",
+        "west": "P104"
+    },
+    {
+        "current": "P104",
+        "north": "SIBD",
+        "south": "P102",
+        "east": "null",
+        "west": "P103"
+    },
+    {
+        "current": "P105",
+        "north": "SIBD",
+        "south": "null",
+        "east": "P104",
+        "west": "CHD"
+    },
+    {
+        "current": "CHD",
+        "north": "null",
+        "south": "null",
+        "east": "P105",
+        "west": "null"
+    },
+    {
+        "current": "SIBD",
+        "north": "null",
+        "south": "P105",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "KEND",
+        "north": "P103",
+        "south": "null",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "JEND",
+        "north": "null",
+        "south": "null",
+        "east": "P101",
+        "west": "P102"
+    },
+    {
+        "current": "P106",
+        "north": "null",
+        "south": "GYMD",
+        "east": "P100",
+        "west": "null"
+    },
+    {
+        "current": "GYMD",
+        "north": "P106",
+        "south": "null",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "P100",
+        "north": "P99",
+        "south": "P97",
+        "east": "null",
+        "west": "P106"
+    },
+    {
+        "current": "ID",
+        "north": "null",
+        "south": "P98",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "SD",
+        "north": "null",
+        "south": "null",
+        "east": "P85",
+        "west": "P96"
+    },
+    {
+        "current": "SHOPSD",
+        "north": "P1",
+        "south": "null",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "ED",
+        "north": "P4",
+        "south": "null",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "P107",
+        "north": "null",
+        "south": "P7",
+        "east": "P8",
+        "west": "P5"
+    },
+    {
+        "current": "EED",
+        "north": "P7",
+        "south": "null",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "LIBD",
+        "north": "null",
+        "south": "P15",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "GD",
+        "north": "null",
+        "south": "P18",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "LIB-RED",
+        "north": "P20",
+        "south": "null",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "GULBD",
+        "north": "null",
+        "south": "null",
+        "east": "P40",
+        "west": "null"
+    },
+    {
+        "current": "CWD",
+        "north": "null",
+        "south": "null",
+        "east": "null",
+        "west": "P62"
+    },
+    {
+        "current": "CSD",
+        "north": "null",
+        "south": "P42",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "REXD",
+        "north": "P32",
+        "south": "null",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "RD",
+        "north": "P50",
+        "south": "null",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "REGD",
+        "north": "null",
+        "south": "P49",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "CSE-OCTD",
+        "north": "null",
+        "south": "P57",
+        "east": "null",
+        "west": "null"
+    },
+    {
+        "current": "CCD",
+        "north": "null",
+        "south": "null",
+        "east": "P60",
+        "west": "null"
+    },
+    {
+        "current": "CED",
+        "north": "null",
+        "south": "P59",
+        "east": "P69",
+        "west": "null"
+    },
+    {
+        "current": "DARWD",
+        "north": "null",
+        "south": "null",
+        "east": "null",
+        "west": "P72"
+    }
+]}
