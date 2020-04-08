@@ -125,9 +125,11 @@ function ajaxSearch(URL, searchValue) {
      searchDiv.innerHTML = "<h1> Search Results: </h1> <div id = resultList </div> <div> ";
      
      searchDiv.innerHTML += "<div id = 'resultList2' > </div>";
+     searchDiv.innerHTML += "<div id = 'resultList3' > </div>";
      
      var resultsSection = document.getElementById("resultList");
      var resultsSection2 = document.getElementById("resultList2");
+     var resultsSection3 = document.getElementById("resultList3");
      var resultsLength = searchData.length;
      
 
@@ -226,7 +228,10 @@ function ajaxSearch(URL, searchValue) {
                  var selectBuilding = svgDoc.getElementById(fullValue);
                  focusSvgElement(selectBuilding);
                  buildingPopup(fullValue);
-                 $("#staffResult").slideUp();
+                      
+        var res = document.getElementById("search results");
+        $(res).slideUp();
+                 
                  
              });
              
@@ -234,26 +239,46 @@ function ajaxSearch(URL, searchValue) {
 
         } 
     }
+         resultsBuilderStaff(indexOfStaffID, StaffIDLength, searchData);
+    function resultsBuilderStaff(indexOfStaffID, StaffIDLength,searchData) {
         if(indexOfStaffID != "none") {
-            document.getElementById("itemTitle").style.opacity = "0";
-        resultsSection2.innerHTML = "<div id = 'staffResult'> <a id = 'panel-title-h2'> </br> Staff Information: </a> </br> </div>";
+            resultsSection2.innerHTML = "<div id = 'staffResult'> <a id = 'panel-title-h2'> </br> Staff Information: </a> </br> </div>";
             var flag = 0;
             for (i = indexOfStaffID; i < resultsLength; i++) {
                 flag++
                 if(flag < 4) {
-                    document.getElementById('staffResult').innerHTML += "<a>" + searchData[i].StaffName + "</a>" + "<a id ='smallRoomDetails'>" + "<br>" +searchData[i].StaffEmail + "<br>" + searchData[i].StaffDepartment + "</br>"+ searchData[i].StaffRoomID +"</a> </br>";
+                    document.getElementById('staffResult').innerHTML += "<a id = 'smallTextTopBorder'>" + searchData[i].StaffName + "</a>" + "<a id ='smallRoomDetails'>" + "<br>" +searchData[i].StaffEmail + "<br>" + searchData[i].StaffDepartment + "</br>"+ searchData[i].StaffRoomID +"</a> </br>";
+
                 }
                 
-            }
-            if (indexOfBuilding = "none" && indexOfStaffID !="none") {
+            } //massive edge case - can be fixed in database with inner join
+            if (indexOfStaffID !="none" && indexOfBuilding == "none") {
                 if (searchData[indexOfStaffID].StaffBuildingID == "CW-S") {
                     var setLength = 1;
                     var index = 0;
                     var tempSet = [{BuildingID: "CW-S", BuildingName: "Cornwallis South"}];
                     resultsBuilderBuilding(index, setLength, tempSet);
                     
+                    }
+
                 }
+            
+            
+            
             }
+         }
+         if(indexOfRoom !="none") {
+             resultsSection3.innerHTML = "<div id = 'roomsResult'></br> <a id = 'panel-title-h2'> Building Rooms: </a> </br> </div>";
+             var forLength = 0;
+             if(indexOfStaffID != "none") {
+                 forLength = indexOfStaffID - RoomIDLength;
+             }
+             else if (indexOfStaffID == "none") {
+                forLength = resultsLength - RoomIDLength;
+             }
+             for(i = indexOfRoom; i < forLength; i++) {
+                 document.getElementById("roomsResult").innerHTML += "<a>" + searchData[i].RoomID + "(" + searchData[i].RoomType + ") - " + searchData[i].BuildingID + "</a> </br>";
+             }
          }
          
          
@@ -270,17 +295,22 @@ function ajaxSearch(URL, searchValue) {
      }
      
      
+        var res = document.getElementById("search results");
+        $(res).slideDown();
+     
+//     
+//                         if (searchData[indexOfStaffID].StaffRoomID != "Unassigned" && indexOfRoom == "none") {
+//                    
+//                    }
+//     
      
      
      
      
      
-     
-     
-     
-     
-     
+    
     $(searchDiv).animate({opacity: "1"}, 100);
+    $("#staffResult").animate({opacity: "1"}, 100);
     // $("#staffR").animate({opacity: "1"}, 100);
      
      

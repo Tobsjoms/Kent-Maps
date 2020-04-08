@@ -351,6 +351,7 @@
 			</div>
 
             <div class = "tab-content" id="sidebar-search">
+                <div id = "scrollWrapper"> 
             <?php echo $pathfinderMenu ?>
                 <div id = "search results"></div>
                 <h1> Building/Room Information</h1>
@@ -359,7 +360,7 @@
                 <a>Welcome to the University Of Kent's Campus Maps! </a> </div>
                 <div id = "itemPicture">
                     <br>
-                    <img id = "itemIMG" src="inc/img/buildings/Placeholder.jpg">
+                    <img id = "itemIMG" src="floorplans/Campus%20Map%20Entire.svg">
                 </div>
                 <div id = "itemStaffInfo"> <br>
                     You can view building or room information in this sidebar by clicking on or searching for a building
@@ -367,6 +368,7 @@
                 <div id = "itemLinks"></div>
                 <div id = "itemRooms"></div>
             </div>
+             </div>    
         </div>
 <?php 
 	}

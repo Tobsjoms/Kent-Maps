@@ -253,6 +253,8 @@ $(window).on('load', (function(){
         //get current id of object within svgItem
         getBuildingData(currentID);
         console.log();
+        var res = document.getElementById("search results");
+        $(res).slideUp();
         
 
     }
