@@ -102,19 +102,121 @@ function ajaxSearch(URL, searchValue) {
 
 
  function searchPopup(searchData) {
-    console.log("--------Data------------");
+     var mapType = getBuildingID();
+     console.log("--------Data------------");
      console.log(searchData);
-    console.log("------------------------");
-     //loop through data
-     //add to page on each loop inside a list element
-     //you could check if data exists, so like on lines 79 and 81 if you check for a column and it doesnt exist
-     //then it will return undefined when you try to access it, use that to your advantage in a big if statement
+     console.log("------------------------");
+     var searchDiv = document.getElementById("search results");
      
+     searchDiv.style.opacity = "0";
+    
+     searchDiv.innerHTML = "<h1> Search Results </h1> <div id = resultList </div>";
      
-     //README
-     //call roomPopup or building popup with new payload
+     var resultsSection = document.getElementById("resultList");
+     var resultsLength = searchData.length;
+     
 
+     var StaffIDLength = 0;
+     var RoomIDLength = 0;
+     var BuildingIDLength = 0;
+     
+     var indexOfStaffID = findIndex("StaffID");
+     console.log("staffID start: " + indexOfStaffID);
+     var indexOfBuilding = findIndex("BuildingID");
+     console.log("BuildingID start: " + indexOfBuilding);
+     var indexOfRoom = findIndex("RoomID");
+     console.log("RoomID start: " + indexOfRoom);
+     
+     
+     function findIndex(type) {
+         
+        if (type == "StaffID") {
+            for (i = 0; i < resultsLength; i++) {
+                if ( typeof searchData[i].StaffID != "undefined") {
+                    break;
+                }
+                else if (i == resultsLength-1) {
+                    return "none";
+                }
+            }
+        }
+        else if (type == "RoomID") {
+            for (i = 0; i < resultsLength; i++) {
+                if (typeof searchData[i].RoomID != "undefined") {
+                    break;
+                }
+                                else if (i == resultsLength-1) {
+                    return "none";
+                }
+            }
+        }
+        else if (type == "BuildingID") {
+            for (i = 0; i < resultsLength; i++) {
+                if ( typeof searchData[i].BuildingID != "undefined") {
+                    break;
+                }
+                                else if (i == resultsLength-1) {
+                    return "none";
+                }
+            }
+        }
+        
+         return i;
+    }
+     
+     if (indexOfStaffID != "none") {
+         StaffIDLength = resultsLength - indexOfStaffID; 
+     } else {StaffIDLength = 0;}
+     
+     if (indexOfRoom != "none") {
+         if (indexOfStaffID != "none") {
+         RoomIDLength = indexOfStaffID-1 - indexOfRoom;
+         }
+         else {
+             RoomIDLength = indexOfRoom - resultsLength;
+         }
+     } else { RoomIDLength = 0; }
+     
+     if (indexOfBuilding !="none") {
+         if (indexOfRoom != "none") {
+         BuildingIDLength = indexOfRoom -1;
+         }
+         else if (indexOfStaffID !="none") {
+             BuildingIDLength = indexOfStaffID-1;
+         } else {BuildingIDLength = resultsLength;} 
+         
+    } else {BuildingIDLength = 0;}
+     
+     
+     
+     if (mapType == "mainMap") {
+         console.log("Building Data Length " + BuildingIDLength );
+         console.log("Room Data Length " + RoomIDLength );
+         console.log("Staff Data Length " + StaffIDLength );
+         //Prioritise building search results
+         if(indexOfBuilding != "none") {
+             resultsSection.innerHTML = "<div id = 'buildingResult'></div>"
+        }
+     }
+     
+     else {
+         
+     }
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+    $(searchDiv).animate({opacity: "1"}, 100);
+     
+     
  }
+
 //--------------------------------------------------------------------------------------------------------------//    
 var LongNames = [
     ["CW-S-GF", "Cornwallis South Ground"],
