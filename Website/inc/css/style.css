@@ -468,6 +468,13 @@ a{
     font-size: 18px;
 }
 
+.linkSet {
+    color: #1faae8;
+    cursor: pointer;
+    text-decoration: underline;
+
+}
+
 
 #itemTitle {
     font-weight: 500;
