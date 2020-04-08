@@ -4,23 +4,6 @@
 //consider edge case for getting timetable html back
 //potentially can be done by clicking anywhere BUT a room returns specific ID and check for that ID returned If SO then don't change or change back to the timetable UI!
 //need more UI Divs to hook onto for each bit of data eg staffid, name, department
-
-
-$(window).on('load', (function(){
-    
-     var a = document.getElementById('stage');
-    var svgDoc = a.contentDocument;
-
-    $('#overlay').delay(400).fadeOut(200);
-    
-    $("#logo").click(function() {
-       location.replace("/Kent-Maps/Website/index.php");
-    }); 
-    
-    $("#home").click(function() {
-       location.replace("/Kent-Maps/Website/index.php");
-    });
-    
     function getBuildingID() {
 
         //get mapName from URL file (buildingID="X-X-X".svg)
@@ -39,6 +22,23 @@ $(window).on('load', (function(){
         return mapName;
      
     }
+
+$(window).on('load', (function(){
+    
+     var a = document.getElementById('stage');
+    var svgDoc = a.contentDocument;
+
+    $('#overlay').delay(400).fadeOut(200);
+    
+    $("#logo").click(function() {
+       location.replace("/Kent-Maps/Website/index.php");
+    }); 
+    
+    $("#home").click(function() {
+       location.replace("/Kent-Maps/Website/index.php");
+    });
+    
+
     
 //----------------------------------SEARCH------------------------------------------------------------------------//
     var searchValue = "";
@@ -249,7 +249,7 @@ function ajaxSearch(URL, searchValue) {
                 if(flag < 4) {
                     document.getElementById('staffResult').innerHTML += "<a id = 'smallTextTopBorder'>" + searchData[i].StaffName + "</a>" + "<a id ='smallRoomDetails'>" + "<br>" +searchData[i].StaffEmail + "<br>" + searchData[i].StaffDepartment + "</br>"+ searchData[i].StaffRoomID +"</a> </br>";
 
-                }
+                } else { break; }
                 
             } //massive edge case - can be fixed in database with inner join
             if (indexOfStaffID !="none" && indexOfBuilding == "none") {
@@ -258,30 +258,31 @@ function ajaxSearch(URL, searchValue) {
                     var index = 0;
                     var tempSet = [{BuildingID: "CW-S", BuildingName: "Cornwallis South"}];
                     resultsBuilderBuilding(index, setLength, tempSet);
-                    
+                    if (indexOfRoom == "none") {
+                        var newTempSet = [{RoomID: "S104", RoomType: "Office", BuildingID: "CW-S"}];
+                        resultsBuilderRoom(index, setLength, newTempSet);
                     }
-
+                    
                 }
-            
-            
-            
+
             }
-         }
+        }
+    }
+    resultsBuilderRoom(indexOfRoom, RoomIDLength, searchData);
+    function resultsBuilderRoom(indexOfRoom, RoomIDLength, searchData) {
          if(indexOfRoom !="none") {
              resultsSection3.innerHTML = "<div id = 'roomsResult'></br> <a id = 'panel-title-h2'> Building Rooms: </a> </br> </div>";
              var forLength = 0;
-             if(indexOfStaffID != "none") {
-                 forLength = indexOfStaffID - RoomIDLength;
-             }
-             else if (indexOfStaffID == "none") {
-                forLength = resultsLength - RoomIDLength;
-             }
-             for(i = indexOfRoom; i < forLength; i++) {
+             for(i = indexOfRoom; i < RoomIDLength; i++) {
+                 forLength++
+                 if(forLength < 5) {
                  document.getElementById("roomsResult").innerHTML += "<a>" + searchData[i].RoomID + "(" + searchData[i].RoomType + ") - " + searchData[i].BuildingID + "</a> </br>";
+                 }
+                 else {break;}
              }
          }
          
-         
+    }
      }else {
          
      }
@@ -293,6 +294,14 @@ function ajaxSearch(URL, searchValue) {
              buildingPopup(id, obj)
          };
      }
+     
+     
+             if ($('#sidebar').hasClass('open')) {
+     
+    } else {
+        document.getElementById('search-result').click();
+    }
+    
      
      
         var res = document.getElementById("search results");
