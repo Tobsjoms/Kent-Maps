@@ -113,6 +113,16 @@ getBuildingID();
 
             // Explores all paths
             while (currentNode.containsNode(goal) == false) {
+               console.log(currentNode);
+//                console.log("------NODES--------");
+//                console.log(this.visitedNodes);
+//                console.log("------NODES--------");
+//                console.log("Q------------Q");
+//                console.log(this.queue);
+//                console.log("Q------------Q");
+                
+                console.log(currentNode.getPrevious());
+                
                 currentNode = nodeObjects[this.getPath(this.queue[0])];
                 this.visitedNodes.push(currentNode.getCurrent());
                 this.queue.shift(); 
@@ -158,7 +168,7 @@ getBuildingID();
                 if (this.visitedNodes.indexOf(currentNode.getNorth()) == -1) {
                     const nextNode = nodeObjects[this.getPath(currentNode.getNorth())];
                     // Only set previous if previous is null (hasn't been set)
-                    if (nextNode.getPrevious() == "null") {
+                    if (nextNode.getPrevious() == "null" || nextNode.getPrevious() === undefined ) {
                         nextNode.setPrevious(currentNode.getCurrent());
                     }
                     this.queue.splice(index, 0, nextNode.getCurrent());
@@ -170,7 +180,8 @@ getBuildingID();
                 if (this.visitedNodes.indexOf(currentNode.getSouth()) == -1) {
                     const nextNode = nodeObjects[this.getPath(currentNode.getSouth())];
                     // Only set previous if previous is null (hasn't been set)
-                    if (nextNode.getPrevious() == "null") {
+                    console.log("nextNode.previous" + nextNode.getPrevious());
+                    if (nextNode.getPrevious() == "null" || nextNode.getPrevious() === undefined) {
                         nextNode.setPrevious(currentNode.getCurrent());
                     }
                     this.queue.splice(index, 0, nextNode.getCurrent());
@@ -182,7 +193,7 @@ getBuildingID();
                 if (this.visitedNodes.indexOf(currentNode.getEast()) == -1) { 
                     const nextNode = nodeObjects[this.getPath(currentNode.getEast())];
                     // Only set previous if previous is null (hasn't been set)
-                    if (nextNode.getPrevious() == "null") {
+                    if (nextNode.getPrevious() == "null" || nextNode.getPrevious() === undefined) {
                         nextNode.setPrevious(currentNode.getCurrent());
                     }
                     this.queue.splice(index, 0, nextNode.getCurrent());
@@ -194,7 +205,7 @@ getBuildingID();
                 if (this.visitedNodes.indexOf(currentNode.getWest()) == -1) {
                     const nextNode = nodeObjects[this.getPath(currentNode.getWest())];
                     // Only set previous if previous is null (hasn't been set)
-                    if (nextNode.getPrevious() == "null") {
+                    if (nextNode.getPrevious() == "null" || nextNode.getPrevious() === undefined) {
                         nextNode.setPrevious(currentNode.getCurrent());
                     }
                     this.queue.splice(index, 0, nextNode.getCurrent());
@@ -264,12 +275,27 @@ getBuildingID();
 
 
     function loadData() {
+        var a = document.getElementById('stage');
+        var svgDoc = a.contentDocument;
+        var mapString = a.data;
+        var gotMainMap = mapString.includes("Campus");
+        if (gotMainMap) {
+            var allSVG= svgDoc.getElementById("svg16");
+        } else {
+            var allSVG= svgDoc.getElementById("Map");
+        }
         var type = getBuildingID();
+        console.log("LOADING for: " + type);
             $.ajax({
                 type: "GET",
-                url: "inc/JSON/" + getBuildingID() + ".json",
+                url: "inc/JSON/" + type + ".json",
                 dataType: 'json',
+                error: function(xhr, thrownError) {
+                  console.log(xhr.status);
+                    console.log(thrownError);
+                },
                 success: function(data) {
+                    console.log("success!");
                     for(var j = 0; j < data.pathNodes.length; j++) {
                         node = new PathNode(data.pathNodes[j]);
                         nodeObjects[j] = node;
@@ -278,6 +304,10 @@ getBuildingID();
                     // Starting room
                     var start = document.getElementById("options").value;
                     start = start.toUpperCase();
+                    
+                    if(gotMainMap) {
+                start = start;
+            } else {
 
                     if ((start == "E1") || (start == "E2") || (start == "E3")) {
                         start = start;
@@ -286,17 +316,23 @@ getBuildingID();
                     } else {
                         start = start + "D";
                     }
+            }
 
                     // Goal room    
                     var goal = document.getElementById("room").value;
-                    goal = goal.toUpperCase();   
-
-                    if ((goal == "E1") || (goal == "E2") || (goal == "E3")) {
+                    goal = goal.toUpperCase(); 
+                    
+                    if (gotMainMap) {
                         goal = goal;
-                    } else if (goal == "SE13") {
+                    }
+                    else {
+                        if ((goal == "E1") || (goal == "E2") || (goal == "E3")) {
+                        goal = goal;
+                        } else if (goal == "SE13") {
                         goal = "SE14D";
-                    } else {
+                        } else {
                         goal = goal + "D";
+                        } 
                     }
 
                     findPath(start, goal);

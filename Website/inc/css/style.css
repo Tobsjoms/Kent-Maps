@@ -18,6 +18,10 @@ html, body {
 }
 
 
+.svg-pan-zoom_viewport {
+    transition: transform 0.5s ease;
+}
+
 #overlay {
     position: relative;
     z-index: 99999;
@@ -84,7 +88,6 @@ a{
 	cursor:pointer;
 	float:left;
 	background:none;
-	border:none;
 	height:2em;
 	width:2em;
 	font-size:1.2em;
@@ -95,6 +98,27 @@ a{
 #zoom-controls button:hover{
 	background-color:rgba(0,0,0,0.1);
 	color:#000;
+}
+
+#zoomIn{
+    border: none; 
+}
+
+#zoomOut {
+    border: none;
+    border-left: 1px solid rgba(206, 206, 206, 0.72);
+}
+
+#map_centre {
+    border: none;
+    border-left: 1px solid rgba(206, 206, 206, 0.72);
+}
+
+#home {
+    padding: 2px;
+    border: none;
+    border-left: 2px solid rgba(206, 206, 206, 0.72);
+    
 }
 
 /* SEARCH BAR & LOGO */
@@ -122,6 +146,14 @@ a{
 	height:2.2em;
 	font-weight:300;
 	margin-right:1em;
+            cursor: pointer;
+
+               	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 #search{
@@ -348,6 +380,14 @@ a{
 	border-radius:4px;
 }
 
+.card .delete-deadline{
+	display:none;
+}
+
+.card:hover .delete-deadline{
+	display:inline;
+}
+
 #timetable{
 	position:relative;
 	box-sizing:border-box; 
@@ -525,6 +565,7 @@ a{
     padding-bottom: 2%;
     border-bottom: 1px solid black;
     font-size: 16px;
+    width: 80%;
 }
 
 
@@ -681,6 +722,31 @@ input:checked + .slider:before {
 
 
 
+form input[type=text], form input[type=datetime-local], form select{
+	width:100%;
+	border-radius:2px;
+	border:1px solid #757575;
+	margin-bottom:8px;
+	padding:8px;
+}
+
+form input[type=submit]{
+	width:100%;
+	border-radius:2px;
+	padding:1em;
+	font-weight:bold;
+	background:none;
+	border:none;
+	-webkit-transition: background 0.2s ease;
+	-moz-transition: background 0.2s ease;
+	-ms-transition: background 0.2s ease;
+	-o-transition: background 0.2s ease;
+	transition: background 0.2s ease;
+	background-color:#2d3436;
+	color:#fff;
+}
+
+
 @media only screen and (max-width: 1000px) {
 
 	.center.search-page{
@@ -716,6 +782,7 @@ input:checked + .slider:before {
 	}
 
 	#logo{
+        cursor: pointer;
 		float:none;
 		height:auto;
 		margin-right:0;

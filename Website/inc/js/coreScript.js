@@ -8,51 +8,114 @@
 
 $(window).on('load', (function(){
 
-    $('#overlay').delay(400).fadeOut(200);  
+    $('#overlay').delay(400).fadeOut(200);
     
+    $("#logo").click(function() {
+       location.replace("/Kent-Maps/Website/index.php");
+    }); 
+    
+    $("#home").click(function() {
+       location.replace("/Kent-Maps/Website/index.php");
+    });
+    
+    function getBuildingID() {
+
+        //get mapName from URL file (buildingID="X-X-X".svg)
+    var URL = window.location.href;
+    var mapName = URL.substring(
+    URL.lastIndexOf("buildingID=") +11, //THIS IS DODGY BUT GENIUS
+        URL.lastIndexOf(".svg")
+        );
+     
+    
+    var notMain = URL.includes("buildingID=");
+     if (!notMain){
+         mapName = "mainMap";
+     }
+        
+        return mapName;
+     
+    }
+    
+//----------------------------------SEARCH------------------------------------------------------------------------//
     var searchValue = "";
     var URL = window.location.href; 
     if (URL.includes("search")) {
+    
     var URLSearchValue = URL.substring(
     URL.lastIndexOf("=") +1);
+        ajaxSearch(URL, URLSearchValue);
+        
+        if(URLSearchValue != "undefined") {
+            document.getElementById("sInput").value = URLSearchValue;
+        }
     }
     
-    if (typeof URLSearchValue != "undefined" ||  typeof URLSearchValue != null || URLSearchValue != "" ) {
+    if ( URLSearchValue != "undefined" ||   URLSearchValue != null || URLSearchValue != "" ) {
         
         searchValue = URLSearchValue;
     }
-    
-    
     var storedSearchValue = sessionStorage.getItem("searchValue");
     
-     if (URL.includes("search")) {
-            if (searchValue != "") {
-                $.ajax({
-                    type: "POST",
-                    url: "../Website/inc/php/getSearchData.php",
-                    data: {value: searchValue}, 
-                    success: function(response) {
-                        searchData = JSON.parse(response); //parse as JSON object
-                        searchPopup(searchData);
-                            }
-                        });
-                    }
-                }
+        sessionStorage.setItem("searchValue", searchValue);
+         var urlMapID = getBuildingID();
+         
+
     
-     $("#sButton").click(function() {
+         $("#sButton").click(function() {
          if(searchValue != "" || searchValue != null || typeof searchValue != "undefined" ) {
              var searchValue = document.getElementById("sInput").value;
+             console.log(searchValue);
+             ajaxSearch(URL, searchValue);
+             
          }
-         
-        sessionStorage.setItem("searchValue", searchValue);
-        location.replace("/Kent-Maps/Website/index.php?search=" + searchValue);
+            if (urlMapID == "mainMap") {
+             var url2 = "/Kent-Maps/Website/index.php?search=" + searchValue;
+             window.history.pushState("index", "UKC Maps", url2);
+         } else {
+             var url3 = "/Kent-Maps/Website/index.php?buildingID="+ urlMapID + ".svg&search=" + searchValue;
+             window.history.pushState("index", "UKC Maps", url3);
+         }
         var searchData = []; //data prep for return JSON data
         
     
          
      });
-}));
+             
+     
+}));//end of window.onload()----------------------
 
+//----------Search Ajax Call-------------------//
+function ajaxSearch(URL, searchValue) {
+    if (searchValue != "") {
+        $.ajax({
+            type: "POST",
+            url: "../Website/inc/php/getSearchData.php",
+            data: {value: searchValue}, 
+            success: function(response) {
+                searchData = JSON.parse(response);//parse as JSON object
+                searchPopup(searchData);
+                    }
+                });
+            }
+    }
+
+
+ function searchPopup(searchData) {
+    console.log("--------Data------------");
+     console.log(searchData);
+    console.log("------------------------");
+     //loop through data
+     //add to page on each loop inside a list element
+     //you could check if data exists, so like on lines 79 and 81 if you check for a column and it doesnt exist
+     //then it will return undefined when you try to access it, use that to your advantage in a big if statement
+     
+     
+     //README
+     //call roomPopup or building popup with new payload
+
+ }
+//--------------------------------------------------------------------------------------------------------------//    
 var LongNames = [
     ["CW-S-GF", "Cornwallis South Ground"],
     ["CW-S-FF", "Cornwallis South First"],
@@ -66,7 +129,7 @@ var LongNames = [
 ];
 
 function getCurrentMap() {
-    //finds map name from the filename of the loaded map in 'stage'
+    //finds map name from the filename of the loaded map in 'stage' BUT INCLUDES LONGNAMES
     var mapObj = document.getElementById("stage");
     var dataURL = mapObj.data;
     
@@ -74,6 +137,8 @@ function getCurrentMap() {
     dataURL.lastIndexOf("floorplans/") +11,
         dataURL.lastIndexOf(".svg")
         );
+    
+    
     
     
     //if a building longname exists, replace it instead of shortname
@@ -86,30 +151,21 @@ function getCurrentMap() {
 }
 
 
-
-
-
- function searchPopup(searchData) {
-/*    console.log("--------Data------------");
-     console.log(searchData);
-    console.log("------------------------");
-  */   //loop through data
-     //add to page on each loop inside a list element
-     //you could check if data exists, so like on lines 79 and 81 if you check for a column and it doesnt exist
-     //then it will return undefined when you try to access it, use that to your advantage in a big if statement
-     
-     
-     //README
-     //call roomPopup or building popup with new payload
-
- }
-
 function roomPopup(currentID, roomInfo) { //-----------------------------------------------
     document.getElementById("itemPicture").innerHTML = "";
     var gotRoom = true;
     var gotStaff = true;
     var staffLength;
     console.log(roomInfo);
+    
+    document.getElementById("itemTitle").style.opacity = "0";
+    document.getElementById("itemInfo").style.opacity = "0";
+    document.getElementById("itemPicture").style.opacity = "0";
+    //document.getElementById("itemIMG").style.opacity = "0";
+    document.getElementById("itemStaffInfo").style.opacity = "0";
+    document.getElementById("itemLinks").style.opacity = "0";
+    document.getElementById("itemRooms").style.opacity = "0"
+    
 
     //-------IF RETURN DATA IS EMPTY-------------------------------------------
     if (roomInfo.length == 0) {
@@ -142,8 +198,6 @@ function roomPopup(currentID, roomInfo) { //------------------------------------
                         staffLength = roomInfo.length;
                         console.log(staffLength);
                     }
-                
-
                 
             }
              
@@ -191,7 +245,19 @@ function roomPopup(currentID, roomInfo) { //------------------------------------
     }
             
 
-    document.getElementById('search-result').click();
+        if ($('#sidebar').hasClass('open')) {
+     
+    } else {
+        document.getElementById('search-result').click();
+    }
+    
+    $("#itemTitle").animate({opacity: "1"}, 100);
+    $("#itemInfo").animate({opacity: "1"}, 100);
+    $("#itemPicture").animate({opacity: "1"}, 100);
+    $("#itemIMG").animate({opacity: "1"}, 100);
+    $("#itemStaffInfo").animate({opacity: "1"}, 100);
+    $("#itemLinks").animate({opacity: "1"}, 100);
+    $("#itemRooms").animate({opacity: "1"}, 100);
     
     
 
@@ -201,6 +267,17 @@ function roomPopup(currentID, roomInfo) { //------------------------------------
 
   
 function buildingPopup(currentID, buildingData) {
+    
+    document.getElementById("itemTitle").style.opacity = "0";
+    document.getElementById("itemInfo").style.opacity = "0";
+    document.getElementById("itemPicture").style.opacity = "0";
+    document.getElementById("itemIMG").style.opacity = "0";
+    document.getElementById("itemStaffInfo").style.opacity = "0";
+    document.getElementById("itemLinks").style.opacity = "0";
+    document.getElementById("itemRooms").style.opacity = "0";
+    
+    
+    
     console.log("popup");
     var gotHOS = true; //got head of school data, assumed true
     var thisBuilding = buildingData[0];
@@ -225,7 +302,7 @@ function buildingPopup(currentID, buildingData) {
     
     //Building Image
     var placeholderImg = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/Placeholder.jpg >";
-    var img = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/" + currentID + ".jpg" + " style= 'object-fit: contain'>";
+    var img = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/" + currentID + ".jpg" + " style= 'object-fit: contain; transform: rotate(180deg)'>";
     document.getElementById('itemPicture').innerHTML = img;
     //Image error handling
     $("#itemIMG").on("error", function() {
@@ -238,7 +315,7 @@ function buildingPopup(currentID, buildingData) {
     
     //Head of School information
     if (gotHOS == true) {  //only adding staff data if avaliable
-    document.getElementById('itemStaffInfo').innerHTML = "<a id = 'panel-title'>" + "Head Of School: " + "</br> </a>" + "<a>" + thisBuilding.StaffName + "</br>" + thisBuilding.StaffDescription + "</br>" + thisBuilding.StaffRoomID  + "</br>" + "</a>";
+    document.getElementById('itemStaffInfo').innerHTML = " <a id = 'panel-title-h2'>" + "Head Of School: " + "</br> </a>" + "<a>" + thisBuilding.StaffName + "</br>" + thisBuilding.StaffDescription + "</br>" + thisBuilding.StaffRoomID  + "</br>" + "</a> </br>";
     }
     //Interior Maps links
     var mapLink = "";
@@ -248,7 +325,7 @@ function buildingPopup(currentID, buildingData) {
             if (i == 2) { long = " Second Floor"; short = "SF" };
             if (i == 3) { long = " Third Floor"; short = "TF" };
             if (i == 4) { long = " Fourth Floor"; short = "4F" };
-        mapLink +=  '<a id = linkgen onclick=window.open("/Kent-Maps/Website/index.php?buildingID=' + thisBuilding.BuildingID + "-" + short + ".svg" + '")>' + thisBuilding.BuildingName + long + '</a> </br>';
+        mapLink +=  '<a id = linkgen onclick=location.replace("/Kent-Maps/Website/index.php?buildingID=' + thisBuilding.BuildingID + "-" + short + ".svg" + '")>' + thisBuilding.BuildingName + long + '</a> </br>';
     }
     document.getElementById("itemLinks").innerHTML = "<a id = 'panel-title'> Interior Map Links </a> </br>" + mapLink;
     
@@ -258,7 +335,7 @@ function buildingPopup(currentID, buildingData) {
     var SemRooms = "<a> None </a> </br>";
     
     if(typeof buildingData[1] != "undefined" || typeof buildingData[1] != null){
-        console.log(buildingData);
+       // console.log(buildingData);
         for (i = 0; i < buildingData.length; i++) {
             
             if (buildingData[i].RoomType == "Lecture Theatre" && typeof buildingData[i].RoomID != "undefined") {
@@ -281,7 +358,21 @@ function buildingPopup(currentID, buildingData) {
 
         document.getElementById("itemRooms").innerHTML = "<a id ='panel-title'> Lecture Rooms </a> </br>" + lecRooms + "<a id ='panel-title'> Computing Rooms </a> </br>" + CompRooms + "<a id ='panel-title'> Seminar Rooms </a> </br>" + SemRooms;
     }
-    document.getElementById('search-result').click();
+    
+    if ($('#sidebar').hasClass('open')) {
+     
+    } else {
+        document.getElementById('search-result').click();
+    }
+    
+    $("#itemTitle").animate({opacity: "1"}, 100);
+    $("#itemInfo").animate({opacity: "1"}, 100);
+    $("#itemPicture").animate({opacity: "1"}, 100);
+    $("#itemIMG").animate({opacity: "1"}, 100);
+    $("#itemStaffInfo").animate({opacity: "1"}, 100);
+    $("#itemLinks").animate({opacity: "1"}, 100);
+    $("#itemRooms").animate({opacity: "1"}, 100);
+
 }
 
             function zoom(zoomIn){

@@ -161,6 +161,7 @@ $(window).on('load', (function(){
         minZoom: 0.8,
         refreshRate: 80,
         controlIconsEnabled: false,
+        mouseWheelZoomEnabled: false,
         preventMouseEventsDefault: false,
         dblClickZoomEnabled: false
   
@@ -169,6 +170,7 @@ $(window).on('load', (function(){
     
     panZoom.contain();
     panZoom.center();
+    panZoom.setZoomScaleSensitivity(0.5);
     
     var rectID = new Array();
     for(i=0; i < b.length; i++) {
@@ -176,17 +178,66 @@ $(window).on('load', (function(){
         rectID.push(b[i].id);
     }
 
+    
+    function customZoomBy(amount, zoomtype) {
+        var animationTime = 300 // ms
+            , animationStepTime = 15 // one frame per 30 ms
+            , animationSteps = animationTime / animationStepTime
+            , animationStep = 0
+            , intervalID = null
+            , stepX = amount.x / animationSteps
+            , stepY = amount.y / animationSteps
 
+          intervalID = setInterval(function(){
+            if (animationStep++ < animationSteps) {
+                if (zoomtype == "zoomIn") {
+                    panZoom.zoomBy(amount);
+                }
+                else if (zoomtype == "zoomOut") {
+                    panZoom.zoomBy(amount);
+                }
+                
+                else if (zoomtype == "pan") {
+                    panZoom.panBy({x: stepX, y: stepY});
+                }
 
+                
+              
+            } else {
+              // Cancel interval
+              clearInterval(intervalID)
+            }
+          }, animationStepTime)
+        }
+ 
     $("#zoomIn").click(function() {
-        panZoom.zoomIn();
+            customZoomBy(1.02, "zoomIn");
+
     });    
     
     $("#zoomOut").click(function() {
-        panZoom.zoomOut();
+        customZoomBy(0.98, "zoomOut");
     });
     
-
+    
+    $('#map_centre').click(function() {
+        customZoomBy(0.95, "zoomOut");
+        customZoomBy({x: 25, y: 50}, "pan");
+        
+    });
+    
+    $(allSVG).on('wheel', function(e) {
+        var delta = e.originalEvent.deltaY;
+        
+        if (delta > 0) {
+            //down
+            customZoomBy(0.98, "zoomOut");
+        }
+        else {
+            //up
+            customZoomBy(1.02, "zoomIn");
+        }
+    })
     
     
     //Building Interactivity----------------------------------------------
@@ -194,9 +245,32 @@ $(window).on('load', (function(){
     svgItem.onclick = function(event) {
         
         var currentID = event.target.id;
+        var currentItem = event.target;
+        focusSvgElement(currentItem);
+            
         console.log("click!"+ currentID);
         //get current id of object within svgItem
         getBuildingData(currentID);
+        console.log();
+        
+
+    }
+    
+    
+    function focusSvgElement(currentItem) {
+        //pass object
+        currentID = currentItem.id;
+        for(i = 0; i < rectID.length; i++) {
+            if (currentID != rectID[i]) {
+                svgDoc.getElementById(rectID[i]).style.removeProperty('fill'); 
+                svgDoc.getElementById(rectID[i]).style.removeProperty('stroke'); 
+            }
+        }
+        
+         currentItem.style.fill = "#efdfab";
+         currentItem.style.stroke = "#ffc400";
+
+        
     }
     
     function getBuildingData(id) {

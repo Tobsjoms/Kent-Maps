@@ -79,11 +79,7 @@ function updateSVGColourScheme() {
    // var textElem = textsObject.getElementsByTagName("tspan");
 }
     
-    function loadColorCodes(data) {
-        
-        
-        
-    }
+
 var roomIDs = new Array();
 var panZoom = svgPanZoom(allSVG, {
     zoomEnabled: true,
@@ -97,6 +93,66 @@ var panZoom = svgPanZoom(allSVG, {
     panZoom.zoom(0.8);
     panZoom.center();
     
+function customZoomBy(amount, zoomtype) {
+        var animationTime = 300 // ms
+            , animationStepTime = 15 // one frame per 30 ms
+            , animationSteps = animationTime / animationStepTime
+            , animationStep = 0
+            , intervalID = null
+            , stepX = amount.x / animationSteps
+            , stepY = amount.y / animationSteps
+
+          intervalID = setInterval(function(){
+            if (animationStep++ < animationSteps) {
+                if (zoomtype == "zoomIn") {
+                    panZoom.zoomBy(amount);
+                }
+                else if (zoomtype == "zoomOut") {
+                    panZoom.zoomBy(amount);
+                }
+                
+                else if (zoomtype == "pan") {
+                    panZoom.panBy({x: stepX, y: stepY});
+                }
+
+                
+              
+            } else {
+              // Cancel interval
+              clearInterval(intervalID)
+            }
+          }, animationStepTime)
+        }
+ 
+    $("#zoomIn").click(function() {
+            customZoomBy(1.02, "zoomIn");
+
+    });    
+    
+    $("#zoomOut").click(function() {
+        customZoomBy(0.98, "zoomOut");
+    });
+    
+    
+    $('#map_centre').click(function() {
+        customZoomBy(0.95, "zoomOut");
+        customZoomBy({x: 25, y: 50}, "pan");
+        
+    });
+    
+    $(allSVG).on('wheel', function(e) {
+        var delta = e.originalEvent.deltaY;
+        
+        if (delta > 0) {
+            //down
+            customZoomBy(0.98, "zoomOut");
+        }
+        else {
+            //up
+            customZoomBy(1.02, "zoomIn");
+        }
+    });
+    
     //indexing RoomIDs from SVG
     for(i=0; i < roomRect.length; i++) {
         //pushing all rect elements within mapRooms into an array for search functionality
@@ -105,10 +161,33 @@ var panZoom = svgPanZoom(allSVG, {
     for(i=0; i < roomPaths.length; i++) {
         roomIDs.push(roomPaths[i].id);
     }
+
     //Click anywhere on the SVG 
     mapRooms.onclick = function(event) {
-    var currentID = event.target.id;
+        
+     var currentID = event.target.id;
+    var currentItem = event.target;
+    focusIndoorSvgElement(currentItem);
+        
     getRoomData(currentID);
+        
+        
+    }
+    
+    function focusIndoorSvgElement(currentItem) {
+        //pass object
+        currentID = currentItem.id;
+        for(i = 0; i < roomIDs.length; i++) {
+            if (currentID != roomIDs[i]) {
+                svgDoc.getElementById(roomIDs[i]).style.removeProperty('fill'); 
+                svgDoc.getElementById(roomIDs[i]).style.removeProperty('stroke'); 
+            }
+        }
+        
+         currentItem.style.fill = "#ffd461";
+         currentItem.style.stroke = "#695000";
+
+        
     }
     
 }));
