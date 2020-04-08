@@ -122,9 +122,12 @@ function ajaxSearch(URL, searchValue) {
      
      searchDiv.style.opacity = "0";
     
-     searchDiv.innerHTML = "<h1> Search Results: </h1> <div id = resultList </div> <br> <div id = 'resultList2'";
+     searchDiv.innerHTML = "<h1> Search Results: </h1> <div id = resultList </div> <div> ";
+     
+     searchDiv.innerHTML += "<div id = 'resultList2' > </div>";
      
      var resultsSection = document.getElementById("resultList");
+     var resultsSection2 = document.getElementById("resultList2");
      var resultsLength = searchData.length;
      
 
@@ -194,7 +197,7 @@ function ajaxSearch(URL, searchValue) {
          BuildingIDLength = indexOfRoom -1;
          }
          else if (indexOfStaffID !="none") {
-             BuildingIDLength = indexOfStaffID-1;
+             BuildingIDLength = indexOfStaffID;
          } else {BuildingIDLength = resultsLength;} 
          
     } else {BuildingIDLength = 0;}
@@ -206,10 +209,12 @@ function ajaxSearch(URL, searchValue) {
          console.log("Room Data Length " + RoomIDLength );
          console.log("Staff Data Length " + StaffIDLength );
          //Prioritise building search results
+         resultsBuilderBuilding(indexOfBuilding, BuildingIDLength,searchData);
+         function resultsBuilderBuilding(indexOfBuilding, BuildingIDLength, searchData) {
          if(indexOfBuilding != "none") {
              resultsSection.innerHTML = "<div id = 'buildingResult'> <a id = 'panel-title-h2'> Campus Buildings: </a> </br></div>";
              for(i = indexOfBuilding; i < BuildingIDLength; i++) {
-                 var fuckingID = searchData[i].BuildingID;
+                 var tuckingID = searchData[i].BuildingID;
                  document.getElementById("buildingResult").innerHTML += "<a id='names'>" +  searchData[i].BuildingName + "</a>" + " - <a class ='linkSet' id = 'link"+ i+"'>" +searchData[i].BuildingID +"</a></br>";
                 
              }
@@ -221,12 +226,36 @@ function ajaxSearch(URL, searchValue) {
                  var selectBuilding = svgDoc.getElementById(fullValue);
                  focusSvgElement(selectBuilding);
                  buildingPopup(fullValue);
+                 $("#staffResult").slideUp();
                  
              });
              
              
 
-        }
+        } 
+    }
+        if(indexOfStaffID != "none") {
+            document.getElementById("itemTitle").style.opacity = "0";
+        resultsSection2.innerHTML = "<div id = 'staffResult'> <a id = 'panel-title-h2'> </br> Staff Information: </a> </br> </div>";
+            var flag = 0;
+            for (i = indexOfStaffID; i < resultsLength; i++) {
+                flag++
+                if(flag < 4) {
+                    document.getElementById('staffResult').innerHTML += "<a>" + searchData[i].StaffName + "</a>" + "<a id ='smallRoomDetails'>" + "<br>" +searchData[i].StaffEmail + "<br>" + searchData[i].StaffDepartment + "</br>"+ searchData[i].StaffRoomID +"</a> </br>";
+                }
+                
+            }
+            if (indexOfBuilding = "none" && indexOfStaffID !="none") {
+                if (searchData[indexOfStaffID].StaffBuildingID == "CW-S") {
+                    var setLength = 1;
+                    var index = 0;
+                    var tempSet = [{BuildingID: "CW-S", BuildingName: "Cornwallis South"}];
+                    resultsBuilderBuilding(index, setLength, tempSet);
+                    
+                }
+            }
+         }
+         
          
      }else {
          
@@ -252,6 +281,7 @@ function ajaxSearch(URL, searchValue) {
      
      
     $(searchDiv).animate({opacity: "1"}, 100);
+    // $("#staffR").animate({opacity: "1"}, 100);
      
      
  }
