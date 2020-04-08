@@ -327,7 +327,10 @@
 
 			<div class="tab-content" id="sidebar-user">
 				<div class="heading">Account</div>
-				<span><?= $_SESSION['email'] ?> (<a href="logout.php">log out</a>)</span>
+				<span><?= $_SESSION['email'] ?> (<a href="logout.php">log out</a>)</span></br></br>
+				<form action="inc/php/handlers/handle-delete-account.php" method="post">
+					<input class="button enabled" id="submit-button-delete-account" type="submit" name="submit" value="Delete Account"/>
+				</form>
 				<hr>
 				<div class="heading">Settings</div>
 				<form action="inc/php/handlers/handle-settings-attempt.php" method="post">
