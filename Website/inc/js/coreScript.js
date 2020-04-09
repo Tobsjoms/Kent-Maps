@@ -27,6 +27,10 @@ $(window).on('load', (function(){
     
      var a = document.getElementById('stage');
     var svgDoc = a.contentDocument;
+    
+    
+    
+
 
     $('#overlay').delay(400).fadeOut(200);
     
@@ -37,6 +41,9 @@ $(window).on('load', (function(){
     $("#home").click(function() {
        location.replace("/Kent-Maps/Website/index.php");
     });
+    
+    
+
     
 
     
@@ -101,18 +108,19 @@ function ajaxSearch(URL, searchValue) {
             data: {value: searchValue}, 
             success: function(response) {
                 searchData = JSON.parse(response);//parse as JSON object
-                searchPopup(searchData);
+                searchPopup(searchData, searchValue);
                     }
                 });
             }
     }
 
 
- function searchPopup(searchData) {
+ function searchPopup(searchData, searchValue) {
      
      var a = document.getElementById('stage');
-    var svgDoc = a.contentDocument;
+     var svgDoc = a.contentDocument;
      var svgItem = svgDoc.getElementById("Buildings");
+
      
      var mapType = getBuildingID();
      console.log("--------Data------------");
@@ -143,6 +151,24 @@ function ajaxSearch(URL, searchValue) {
      console.log("BuildingID start: " + indexOfBuilding);
      var indexOfRoom = findIndex("RoomID");
      console.log("RoomID start: " + indexOfRoom);
+     
+     function getRoomIDs() {
+    if (getBuildingID() != "mainMap") {
+    var a = document.getElementById('stage');
+    var svgDoc = a.contentDocument;    
+    var mapRooms = svgDoc.getElementById("Rooms");//All Rooms
+    var roomPaths = mapRooms.getElementsByTagName("path");
+    var roomRect = mapRooms.getElementsByTagName("rect");
+    var roomIDs = new Array();
+    for(i=0; i < roomRect.length; i++) {
+
+    roomIDs.push(roomRect[i].id);
+    }    
+    for(i=0; i < roomPaths.length; i++) {
+        roomIDs.push(roomPaths[i].id);
+    } console.log(roomIDs);
+    } return roomIDs;
+    }
      
      
      function findIndex(type) {
@@ -204,12 +230,12 @@ function ajaxSearch(URL, searchValue) {
          
     } else {BuildingIDLength = 0;}
      
-     
-     
-     if (mapType == "mainMap") {
-         console.log("Building Data Length " + BuildingIDLength );
+              console.log("Building Data Length " + BuildingIDLength );
          console.log("Room Data Length " + RoomIDLength );
          console.log("Staff Data Length " + StaffIDLength );
+     
+     if (mapType == "mainMap") {
+
          //Prioritise building search results
          resultsBuilderBuilding(indexOfBuilding, BuildingIDLength,searchData);
          function resultsBuilderBuilding(indexOfBuilding, BuildingIDLength, searchData) {
@@ -285,9 +311,76 @@ function ajaxSearch(URL, searchValue) {
     }
      }else {
          
+         
+         resultsBuilderIndoor(indexOfRoom, RoomIDLength, searchData)
+         function resultsBuilderIndoor(indexOfRoom, RoomIDLength, searchData) {
+             var roomIDs = getRoomIDs();
+             for(i = 0; i < roomIDs.length; i++) {
+                 if(searchValue == roomIDs[i]) {
+                     var selectBuilding = svgDoc.getElementById(searchValue);
+                    
+                     focusIndoorSvgElement(selectBuilding);
+                 }
+             }
+             resultsBuilderIndoorRoom(indexOfRoom, RoomIDLength, searchData) 
+             
+             function resultsBuilderIndoorRoom(indexOfRoom, RoomIDLength, searchData) {
+             if (indexOfRoom != "none") {
+             resultsSection3.innerHTML = "<div id = 'roomsResult'></br> <a id = 'panel-title-h2'> Building Rooms: </a> </br> </div>";
+                              var forLength = 0;
+             for(i = indexOfRoom; i < RoomIDLength; i++) {
+                 forLength++
+                 if(forLength < 5) {
+                 document.getElementById("roomsResult").innerHTML += "<a>" + searchData[i].RoomID + "(" + searchData[i].RoomType + ") - " + searchData[i].BuildingID + "</a> </br>";
+                 }
+                 else {break;}
+                }
+                }
+             }
+             resultsBuilderBuildingIndoor(indexOfRoom, RoomIDLength, searchData)
+            function  resultsBuilderBuildingIndoor(indexOfRoom, RoomIDLength, searchData) {
+             if(indexOfBuilding != "none" && BuildingIDLength >= 0) {
+                resultsSection.innerHTML = "<div id = 'buildingResult'> <a id = 'panel-title-h2'> Campus Buildings: </a> </br></div>";
+                              for(i = indexOfBuilding; i < BuildingIDLength; i++) {
+                 var tuckingID = searchData[i].BuildingID;
+                 document.getElementById("buildingResult").innerHTML += "<a id='names'>" +  searchData[i].BuildingName + "</a>" + " - <a class ='linkSet' id = 'link"+ i+"'>" +searchData[i].BuildingID +"</a></br>";
+                
+             }
+                 
+             }
+         }
+             if(indexOfStaffID != "none") {
+                resultsSection2.innerHTML = "<div id = 'staffResult'> <a id = 'panel-title-h2'> </br> Staff Information: </a> </br> </div>";
+                             var flag = 0;
+            for (i = indexOfStaffID; i < resultsLength; i++) {
+                flag++
+                if(flag < 4) {
+                    document.getElementById('staffResult').innerHTML += "<a id = 'smallTextTopBorder'>" + searchData[i].StaffName + "</a>" + "<a id ='smallRoomDetails'>" + "<br>" +searchData[i].StaffEmail + "<br>" + searchData[i].StaffDepartment + "</br>"+ searchData[i].StaffRoomID +"</a> </br>";
+
+                } else { break; }
+                
+                }
+                             if (indexOfStaffID !="none" && indexOfBuilding == "none") {
+                if (searchData[indexOfStaffID].StaffBuildingID == "CW-S") {
+                    var setLength = 1;
+                    var index = 0;
+                    var tempSet = [{BuildingID: "CW-S", BuildingName: "Cornwallis South"}];
+                    resultsBuilderBuildingIndoor(index, setLength, tempSet);
+                    if (indexOfRoom == "none") {
+                        var newTempSet = [{RoomID: "S104", RoomType: "Office", BuildingID: "CW-S"}];
+                        resultsBuilderIndoorRoom(index, setLength, newTempSet);
+                    }
+                    
+                }
+
+            }
+                 
+                 
+                 
+             }
+         }    
      }
           
-     
      function linkHandler(id, obj) {
          console.log("link!");
          return function() {
@@ -307,24 +400,34 @@ function ajaxSearch(URL, searchValue) {
         var res = document.getElementById("search results");
         $(res).slideDown();
      
-//     
-//                         if (searchData[indexOfStaffID].StaffRoomID != "Unassigned" && indexOfRoom == "none") {
-//                    
-//                    }
-//     
-     
-     
-     
-     
+
      
     
     $(searchDiv).animate({opacity: "1"}, 100);
     $("#staffResult").animate({opacity: "1"}, 100);
     // $("#staffR").animate({opacity: "1"}, 100);
-     
+         function focusIndoorSvgElement(currentItem) {
+        
+        var roomIDs = getRoomIDs();
+        //pass object
+        currentID = currentItem.id;
+        
+        for(i = 0; i < roomIDs.length; i++) {
+            if (currentID != roomIDs[i]) {
+                svgDoc.getElementById(roomIDs[i]).style.removeProperty('fill'); 
+                svgDoc.getElementById(roomIDs[i]).style.removeProperty('stroke'); 
+            }
+        }
+        
+         currentItem.style.fill = "#ffd461";
+         currentItem.style.stroke = "#695000";
+        getRoomData(currentID);
+        
+    }
      
  }
     function focusSvgElement(currentItem) {
+        
     var a = document.getElementById('stage');
     var svgDoc = a.contentDocument;
     var svgItem = svgDoc.getElementById("Buildings");
@@ -348,6 +451,9 @@ function ajaxSearch(URL, searchValue) {
 
         
     }
+
+
+
 //--------------------------------------------------------------------------------------------------------------//    
 var LongNames = [
     ["CW-S-GF", "Cornwallis South Ground"],
