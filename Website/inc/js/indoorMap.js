@@ -155,7 +155,7 @@ function customZoomBy(amount, zoomtype) {
     
     //indexing RoomIDs from SVG
     for(i=0; i < roomRect.length; i++) {
-        //pushing all rect elements within mapRooms into an array for search functionality
+
         roomIDs.push(roomRect[i].id);
     }    
     for(i=0; i < roomPaths.length; i++) {

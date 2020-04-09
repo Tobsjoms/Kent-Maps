@@ -302,8 +302,11 @@ getBuildingID();
                     }
 
                     // Starting room
-                    var start = document.getElementById("options").value;
-                    start = start.toUpperCase();
+                var start = document.getElementById('startOptions').value;
+
+				// Destination
+				var goal = document.getElementById('destOptions').value;
+                start = start.toUpperCase();
                     
                     if(gotMainMap) {
                 start = start;
@@ -319,7 +322,6 @@ getBuildingID();
             }
 
                     // Goal room    
-                    var goal = document.getElementById("room").value;
                     goal = goal.toUpperCase(); 
                     
                     if (gotMainMap) {
@@ -455,7 +457,10 @@ getBuildingID();
 
                    // console.log("highlight called");
             // Starting room
-            var start = document.getElementById("options").value;
+                            var start = document.getElementById('startOptions').value;
+
+				// Destination
+				var goal = document.getElementById('destOptions').value;
             start = start.toUpperCase();
             
             if(gotMainMap) {
