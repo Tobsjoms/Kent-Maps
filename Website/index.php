@@ -13,7 +13,8 @@
 		// Retrieve timetable information if it has been set
 		if (isset($_SESSION['timetable_url']) && $_SESSION['timetable_url'] != NULL){
 			// Timetable source
-			$file = "http://" . $_SESSION['timetable_url'];
+			$file = $_SESSION['timetable_url'];
+            //$file ='inc/myevents';
 			$iCal = new iCal($file);
 			// Dates
 			$day = date('w');
@@ -127,38 +128,61 @@
         $pathfinder = "pathfinder.js";
             $pathfinderMenu = "  <div id = 'pathfinder'>  <h1>PathFinder</h1>
     
-    <div id = 'startPoint'>
-    <label>Choose starting point:</label>
-    <select id='options' onchange='highlight()' '>
-        <option value='LIB'>Library Main Entrance</option>
-			<option value='CH'>Chipperfield (CH) Main Entrance</option>
-			<option value='SIB'>Sibson Main Entrance</option>
-			<option value='KEN'>Kennedy (KEN) Main Entrance</option>
-			<option value='JEN'>Jennison (J) Main Entrance</option>
-			<option value='GYM'>Sports Centre</option>
-			<option value='I'>Ingram (I) Main Entrance</option>
-			<option value='S'>Stacey (S) Main Entrance</option>
-			<option value='SHOPS'>COOP/CAFE/FOOD</option>
-			<option value='E'>Eliot College</option>
-			<option value='EE'>Eliot Extension</option>
-			<option value='G'>Grimond Main Entrance</option>
-			<option value='LIB-RE'>Library Road Entrance</option>
-			<option value='GULB'>The Gulbenkian Main Entrance</option>
-			<option value='CW'>Cornwallis West Main Entrance</option>
-			<option value='CS'>Cornwallis South Main Entrance</option>
-			<option value='R'>Rutherford Main Entrance</option>
-			<option value='RE'>Rutherford Extension (RE) Main Entrance</option>
-			<option value='REG'>The Registry Main Entrance</option>
-			<option value='CSE-OCT'>Cornwallis South East/Octagan</option>
-			<option value='CC'>Cornwallis Central Main Entrance </option>
-			<option value='CE'>Cornwallis East Main Entrance</option>
-			<option value='D'>Darwin Main Entrance</option>
-    </select> </div> </br>
-    <div id = 'searchSection'>
-    <label id = 'searchLabel'>Search:</label> <input type='text' id='room' required>
-    <button onclick='loadData();' class = 'searchButton'>Search</button>  
-    <label>Shortest route:</label><input type='checkbox' id='shortest'> </div>
-    <a id = 'demo'></a>
+		<label>Start:</label><select id='startOptions' onchange='highlight();'>
+			<option value='LIBD'>Library Main Entrance</option>
+			<option value='CHD'>Chipperfield (CH) Main Entrance</option>
+			<option value='SIBD'>Sibson Main Entrance</option>
+			<option value='KEND'>Kennedy (KEN) Main Entrance</option>
+			<option value='JEND'>Jennison (J) Main Entrance</option>
+			<option value='GYMD'>Sports Centre</option>
+			<option value='ID'>Ingram (I) Main Entrance</option>
+			<option value='SD'>Stacey (S) Main Entrance</option>
+			<option value='SHOPSD'>COOP/CAFE/FOOD</option>
+			<option value='ED'>Eliot College</option>
+			<option value='EED'>Eliot Extension</option>
+			<option value='GD'>Grimond Main Entrance</option>
+			<option value='LIB-RED'>Library Road Entrance</option>
+			<option value='GULBD'>The Gulbenkian Main Entrance</option>
+			<option value='CWD'>Cornwallis West Main Entrance</option>
+			<option value='CSD'>Cornwallis South Main Entrance</option>
+			<option value='RD'>Rutherford Main Entrance</option>
+			<option value='REXD'>Rutherford Extension (RE) Main Entrance</option>
+			<option value='REGD'>The Registry Main Entrance</option>
+			<option value='CSE-OCTD'>Cornwallis South East/Octagan</option>
+			<option value='CCD'>Cornwallis Central Main Entrance </option>
+			<option value='CED'>Cornwallis East Main Entrance</option>
+			<option value='DARWD'>Darwin Main Entrance</option>
+		</select>
+
+		<label>Destination:</label> <select id='destOptions' onchange='highlight();'>
+			<option value='LIBD'>Library Main Entrance</option>
+			<option value='CHD'>Chipperfield (CH) Main Entrance</option>
+			<option value='SIBD'>Sibson Main Entrance</option>
+			<option value='KEND'>Kennedy (KEN) Main Entrance</option>
+			<option value='JEND'>Jennison (J) Main Entrance</option>
+			<option value='GYMD'>Sports Centre</option>
+			<option value='ID'>Ingram (I) Main Entrance</option>
+			<option value='SD'>Stacey (S) Main Entrance</option>
+			<option value='SHOPSD'>COOP/CAFE/FOOD</option>
+			<option value='ED'>Eliot College</option>
+			<option value='EED'>Eliot Extension</option>
+			<option value='GD'>Grimond Main Entrance</option>
+			<option value='LIB-RED'>Library Road Entrance</option>
+			<option value='GULBD'>The Gulbenkian Main Entrance</option>
+			<option value='CWD'>Cornwallis West Main Entrance</option>
+			<option value='CSD'>Cornwallis South Main Entrance</option>
+			<option value='RD'>Rutherford Main Entrance</option>
+			<option value='REXD'>Rutherford Extension (RE) Main Entrance</option>
+			<option value='REGD'>The Registry Main Entrance</option>
+			<option value='CSE-OCTD'>Cornwallis South East/Octagan</option>
+			<option value='CCD'>Cornwallis Central Main Entrance </option>
+			<option value='CED'>Cornwallis East Main Entrance</option>
+			<option value='DARWD'>Darwin Main Entrance</option>
+		</select>
+
+		<button class = 'pathFbutton' onclick='loadData();'>Search</button>
+		
+		<p id='demo'></p>
     </div>";
         
     }
@@ -327,7 +351,10 @@
 
 			<div class="tab-content" id="sidebar-user">
 				<div class="heading">Account</div>
-				<span><?= $_SESSION['email'] ?> (<a href="logout.php">log out</a>)</span>
+				<span><?= $_SESSION['email'] ?> (<a href="logout.php">log out</a>)</span></br></br>
+				<form action="inc/php/handlers/handle-delete-account.php" method="post" onSubmit="return confirm('Click OK to confirm the deletion of your account.')">
+					<input class="button enabled" id="submit-button-delete-account" type="submit" name="submit" value="Delete Account"/>
+				</form>
 				<hr>
 				<div class="heading">Settings</div>
 				<form action="inc/php/handlers/handle-settings-attempt.php" method="post">
@@ -348,6 +375,7 @@
 			</div>
 
             <div class = "tab-content" id="sidebar-search">
+                <div id = "scrollWrapper"> 
             <?php echo $pathfinderMenu ?>
                 <div id = "search results"></div>
                 <h1> Building/Room Information</h1>
@@ -356,7 +384,7 @@
                 <a>Welcome to the University Of Kent's Campus Maps! </a> </div>
                 <div id = "itemPicture">
                     <br>
-                    <img id = "itemIMG" src="inc/img/buildings/Placeholder.jpg">
+                    <img id = "itemIMG" src="floorplans/Campus%20Map%20Entire.svg">
                 </div>
                 <div id = "itemStaffInfo"> <br>
                     You can view building or room information in this sidebar by clicking on or searching for a building
@@ -364,6 +392,7 @@
                 <div id = "itemLinks"></div>
                 <div id = "itemRooms"></div>
             </div>
+             </div>    
         </div>
 <?php 
 	}

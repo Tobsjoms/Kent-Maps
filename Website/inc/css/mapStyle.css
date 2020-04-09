@@ -77,15 +77,15 @@
 /*************/
 
 .darkmode .svg-buildings path {
-	fill: #066733;
-	stroke: #FFF;
-	stroke-width: 0px;
+	fill: #504d50;
+	stroke: #2f2f2f;
+	stroke-width: 0.08px;
 }
 
 .darkmode .svg-buildings path:hover {
-    fill: #066733;
+    fill: #4b4b4b;
 	stroke: #FFF;
-	stroke-width: 0.35px;
+	stroke-width: 0.18px;
 	cursor: pointer;
 }
 
@@ -95,25 +95,27 @@
 }
 
 .darkmode .svg-ground path{
-	fill: #152237;
+	fill: #4e7945;
     stroke: none;
 }
 
 .darkmode .svg-ground rect{
-	fill: #242f3e;
+	fill: #3a3e48;
 }
 
 .darkmode .svg-roads path{
-	fill: #212121;
+	fill: #2f2f2f;
 	stroke-width: 0.18px;
+    stroke: #000000;
 }
 
 .darkmode .svg-text text {
 	/* Prevent text from being hovered, instead target shape below */
 	font: 0.15em arial, sans-serif;
     pointer-events: none;
-    fill:#000;
-    stroke:#000;
+    fill:#a5a5a5;
+    stroke:#272727;
+    stroke-width: 0.08px;
 }
 
 
@@ -137,8 +139,9 @@
 }
 
 .colourblindmode .svg-pathways path{
-    fill: #616161;
-    stroke-width: 0.18px;
+    fill: #9d9d9d;
+    stroke-width: 0.12px;
+    fill: #818181;
 }
 
 .colourblindmode .svg-ground path{
@@ -151,8 +154,9 @@
 }
 
 .colourblindmode .svg-roads path{
-	fill: #989898;
-	stroke-width: 0.18px;
+    fill: #c4c4c4;
+    stroke-width: 0.12px;
+    fill: #818181;
 }
 
 .colourblindmode .svg-text text {

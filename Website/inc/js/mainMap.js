@@ -245,6 +245,7 @@ $(window).on('load', (function(){
     svgItem.onclick = function(event) {
         
         var currentID = event.target.id;
+        
         var currentItem = event.target;
         focusSvgElement(currentItem);
             
@@ -252,6 +253,8 @@ $(window).on('load', (function(){
         //get current id of object within svgItem
         getBuildingData(currentID);
         console.log();
+        var res = document.getElementById("search results");
+        $(res).slideUp();
         
 
     }
@@ -274,16 +277,7 @@ $(window).on('load', (function(){
     }
     
     function getBuildingData(id) {
-        var buildingData = [] //JSON Data
-        $.ajax({
-        type: "POST",
-        url: "../Website/inc/php/getBuildingData.php",
-        data: {id: id}, //send roomID to script
-        success: function(response) {
-            buildingData = JSON.parse(response); //parse as JSON object
-            buildingPopup(id, buildingData); //pass room and JSON object to RoomPopup function
-            }
-        });
+            buildingPopup(id);
     }
     
     function inspectBuilding(id) {
