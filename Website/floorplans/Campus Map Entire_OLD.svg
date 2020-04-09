@@ -15,7 +15,7 @@
    version="1.1"
    id="svg16"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="Campus Map Entire.svg">
+   sodipodi:docname="Campus Map Entire_old.svg">
   <defs
      id="defs5">
     <marker
@@ -88,11 +88,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.0000001"
-     inkscape:cx="-60.205518"
-     inkscape:cy="264.29309"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="669.31931"
+     inkscape:cy="784.84245"
      inkscape:document-units="mm"
-     inkscape:current-layer="Text"
+     inkscape:current-layer="Buildings"
      showgrid="false"
      inkscape:window-width="2560"
      inkscape:window-height="1377"
@@ -1096,7 +1096,7 @@
        inkscape:connector-curvature="0"
        style="display:inline;opacity:1;vector-effect:none;fill:#dd8881;fill-opacity:0.96464646;stroke:none;stroke-width:0.04209945;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0.52764195;stroke-opacity:1;paint-order:normal"
        d="m 128.19885,44.681787 0.61548,-0.557731 0.30277,-0.274371 -0.001,0.807268 0.49624,4.79e-4 0.003,-1.831712 -0.49623,-4.8e-4 -0.001,0.894054 -0.26852,-0.296322 -0.5575,-0.615224 -0.3678,0.333288 0.5575,0.615225 -0.61547,0.557732 z"
-       id="CW"
+       id="CWD"
        inkscape:label="# cw" />
     <path
        inkscape:connector-curvature="0"

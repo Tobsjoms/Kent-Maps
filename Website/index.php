@@ -13,7 +13,8 @@
 		// Retrieve timetable information if it has been set
 		if (isset($_SESSION['timetable_url']) && $_SESSION['timetable_url'] != NULL){
 			// Timetable source
-			$file = "http://" . $_SESSION['timetable_url'];
+			$file = $_SESSION['timetable_url'];
+            //$file ='inc/myevents';
 			$iCal = new iCal($file);
 			// Dates
 			$day = date('w');
@@ -179,7 +180,7 @@
 			<option value='DARWD'>Darwin Main Entrance</option>
 		</select>
 
-		<button onclick='loadData();'>Search</button>
+		<button class = 'pathFbutton' onclick='loadData();'>Search</button>
 		
 		<p id='demo'></p>
     </div>";

@@ -306,7 +306,7 @@ getBuildingID();
 
 				// Destination
 				var goal = document.getElementById('destOptions').value;
-                start = start.toUpperCase();
+
                     
                     if(gotMainMap) {
                 start = start;
@@ -320,14 +320,14 @@ getBuildingID();
                         start = start + "D";
                     }
             }
-
-                    // Goal room    
-                    goal = goal.toUpperCase(); 
+ 
+                     
                     
                     if (gotMainMap) {
                         goal = goal;
-                    }
+                    } 
                     else {
+                        goal = goal.toUpperCase();
                         if ((goal == "E1") || (goal == "E2") || (goal == "E3")) {
                         goal = goal;
                         } else if (goal == "SE13") {
@@ -367,13 +367,14 @@ getBuildingID();
         
     
         function pathPlot(path, goal) {
+
+            var shortest = true;
             var a = document.getElementById('stage');
 
     var svgDoc = a.contentDocument;
         
         var mapString = a.data;
         var splitcheck = mapString.includes("Campus");
-        console.log(splitcheck);
         if (splitcheck) {
             var allSVG= svgDoc.getElementById("svg16");
         } else {
@@ -388,24 +389,25 @@ getBuildingID();
     var pathwayObjects = pathways.getElementsByTagName('path');
          //   console.log(pathwayObjects);
 
-            let shortest = document.getElementById("shortest").checked;
+            
 
             // Find shortest path by length of node arrays inside path
             let index = path[0];
+
+            
             for(var i = 0; i < path.length; i++) {
                 if (path[i].length < index.length) {
                     index = path[i];
                 }
             }
-        for (i = 0; i < pathwayObjects.length; i++) {
-                var temp = pathwayObjects[i];
-               temp.style.fill = "none";
 
-            }
                     if (shortest == true) {
                         for (var j = 0; j < index.length; j++) {
                             var currentNode = index[j];
-                           // d3.select("#" + currentNode).style("fill", "red");
+                            var pathways = allSVG.getElementById(currentNode);
+                            console.log("pathways");
+                            console.log(pathways);
+                            pathways.style.fill = "#ff4400";
 
                         }
                     } else {
@@ -416,7 +418,7 @@ getBuildingID();
                             var jqTemp = allSVG.getElementById(currentNode);
                              if (/D/i.test(currentNode)) {
                                  temp.style.fill = "#2f2f2f";
-                                    temp.style.stroke = "#black";
+                                    temp.style.stroke = "black";
                         $(jqTemp).animate({opacity: '0.5'}, "slow" );
                         $(jqTemp).animate({opacity: '1'}, "slow" );
                          $(jqTemp).animate({opacity: '0.5'}, "slow" );
@@ -458,10 +460,8 @@ getBuildingID();
                    // console.log("highlight called");
             // Starting room
                             var start = document.getElementById('startOptions').value;
-
 				// Destination
 				var goal = document.getElementById('destOptions').value;
-            start = start.toUpperCase();
             
             if(gotMainMap) {
                 start = start;
@@ -486,11 +486,18 @@ getBuildingID();
             }
                   //  d3.select("#" + start).style("fill", "red");
                     var temp2 = allSVG.getElementById(start);
+                    var temp3 = allSVG.getElementById(goal);
+
 
                     if (/D/i.test(start)) {
                         temp2.style.fill = "black";
                     } else {
                         temp2.style.fill = "#ff4400";
+                    }
+                    if (/D/i.test(goal)) {
+                        temp3.style.fill = "black";
+                    } else {
+                        temp3.style.fill = "#ff4400";
                     }
                     
 			
