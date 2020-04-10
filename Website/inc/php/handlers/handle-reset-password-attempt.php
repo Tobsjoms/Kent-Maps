@@ -24,25 +24,26 @@
 		// If it's still valid,
 		if (strtotime($activeResetQueryResult[0]) > time()){
 
+			// Hash new password
 			$passwordHash = password_hash($inputNewPassword, PASSWORD_DEFAULT);
-
+			// Update password
 			$changePassQuerySQL = "UPDATE users SET user_password = :newpass WHERE user_id = :user_id";
 			$changePassQuerySTMT = $conn->prepare($changePassQuerySQL);
 			$changePassQuerySTMT->bindParam(':newpass', $passwordHash, PDO::PARAM_STR);
 			$changePassQuerySTMT->bindParam(':user_id', $activeResetQueryResult[1], PDO::PARAM_STR);
 			$changePassQuerySTMT->execute();
-
+			// Delete the reset entry
 			$deleteResetRowSQL = "DELETE FROM user_reset WHERE user_reset_key = :key";
 			$deleteResetRowSTMT = $conn->prepare($deleteResetRowSQL);
 			$deleteResetRowSTMT->bindParam(':key', $inputKey, PDO::PARAM_STR);
 			$deleteResetRowSTMT->execute();
-
+			// Session message to inform the user that it was successful, redirect to login
 			$_SESSION["message"] = "Password Successfully Changed";
 			header("Location: login.php");
 			die();
 		}
 	}
-
+	// Session message to inform the user that it was unsuccessful, remain on same page
 	$_SESSION["message"] = "Reset Link Invalid or Expired";
 	header("Location: ?");
 	die();
