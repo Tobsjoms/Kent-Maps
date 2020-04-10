@@ -1,3 +1,4 @@
+
 <?php
 
 	include("inc/php/group-prerequisites/user.php");
@@ -27,3 +28,4 @@
 	include 'inc/php/views/login.php';
 
 ?>
+
