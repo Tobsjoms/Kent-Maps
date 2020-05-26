@@ -655,7 +655,7 @@ function buildingPopup(id) {
     
     //Building Image
     var placeholderImg = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/Placeholder.jpg >";
-    var img = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/" + currentID + ".jpg" + " style= 'object-fit: contain; transform: rotate(180deg)'>";
+    var img = "<img id = 'itemIMG' src = ../Website/inc/img/buildings/" + currentID + ".jpg" + " style= 'object-fit: contain'>";
     document.getElementById('itemPicture').innerHTML = img;
     //Image error handling
     $("#itemIMG").on("error", function() {
